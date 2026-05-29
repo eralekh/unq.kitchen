@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNQ Kitchen — Menus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f0f0f;
+      color: #f5f0e6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .tagline {
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #c9a96a;
+      margin-bottom: 48px;
+    }
+    .menus {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid #c9a96a;
+      border-radius: 14px;
+      padding: 36px 56px;
+      transition: background 0.25s, transform 0.25s;
+      min-width: 220px;
+    }
+    .card:hover { background: #c9a96a; color: #0f0f0f; transform: translateY(-3px); }
+    .card .label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 500;
+    }
+    .card .sub { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 6px; opacity: 0.75; }
+    footer { margin-top: 56px; font-size: 0.8rem; opacity: 0.55; letter-spacing: 0.06em; }
+    footer a { color: #c9a96a; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>UNQ Kitchen</h1>
+  <p class="tagline">Pure Veg · Freshly Made</p>
+  <nav class="menus">
+    <a class="card" href="mains/">
+      <div class="label">Main Menu</div>
+      <div class="sub">Thalis · Curries · Rice · Breads</div>
+    </a>
+    <a class="card" href="snacks/">
+      <div class="label">Snacks &amp; Beverages</div>
+      <div class="sub">Bites · Shakes · Drinks</div>
+    </a>
+  </nav>
+  <footer>
+    <a href="tel:+917030070800">+91 70300 70800</a>
+  </footer>
+</body>
+</html>
