@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Generated artifacts (regenerate from HTML; too big for git / GitHub's 100MB limit)
+*.pdf
+
+# Editor / OS junk
+Thumbs.db
+*.swp
+.vscode/

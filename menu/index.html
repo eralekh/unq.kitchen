@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNQ Kitchen — Menu</title>
+  <meta name="description" content="UNQ Kitchen menu — pure vegetarian. Mains, curries, breads, rice, snacks and beverages." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'BlippoMN';
+      src: url('../assets/BlippoMN.ttf') format('truetype');
+      font-display: swap;
+    }
+    :root {
+      --olive: #7A8434;
+      --olive-dark: #5C6330;
+      --ink: #14160C;
+      --gold: #c9a96a;
+      --paper: #ffffff;
+      --paper-2: #faf9f3;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .crest {
+      width: 168px; height: 67px;
+      background-color: var(--olive-dark);
+      -webkit-mask: url('../assets/crest.png') center/contain no-repeat;
+      mask: url('../assets/crest.png') center/contain no-repeat;
+      margin-bottom: 6px;
+    }
+    .kitchen {
+      font-family: 'BlippoMN', 'Cormorant Garamond', serif;
+      font-size: 1.5rem; letter-spacing: 0.32em;
+      text-transform: uppercase; color: var(--olive);
+      margin-bottom: 10px; padding-left: 0.32em;
+    }
+    .pureveg {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #2E7D32; margin-bottom: 44px;
+    }
+    .pureveg .box { width: 14px; height: 14px; border: 1.6px solid #2E7D32; border-radius: 2px; display: inline-flex; align-items: center; justify-content: center; }
+    .pureveg .dot { width: 7px; height: 7px; border-radius: 50%; background: #2E7D32; }
+    .menus { display: flex; gap: 22px; flex-wrap: wrap; justify-content: center; width: 100%; max-width: 560px; }
+    .card {
+      flex: 1 1 220px; display: block; text-decoration: none; color: inherit;
+      background: var(--paper-2); border: 1px solid rgba(122,132,52,0.28);
+      border-radius: 16px; padding: 38px 28px;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(122,132,52,0.18); border-color: var(--olive); }
+    .card .label { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 600; color: var(--olive-dark); }
+    .card .sub { font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px; color: rgba(20,22,12,0.6); }
+    .back { margin-top: 40px; }
+    .back a { color: var(--olive); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.08em; }
+    .back a:hover { text-decoration: underline; }
+    footer { margin-top: 22px; font-size: 0.78rem; color: rgba(20,22,12,0.5); letter-spacing: 0.05em; }
+    footer a { color: var(--olive); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="crest" role="img" aria-label="UNQ"></div>
+  <div class="kitchen">Kitchen</div>
+  <div class="pureveg"><span class="box"><span class="dot"></span></span> Pure Vegetarian</div>
+
+  <nav class="menus">
+    <a class="card" href="mains/">
+      <div class="label">Main Menu</div>
+      <div class="sub">Thalis · Curries · Rice · Breads</div>
+    </a>
+    <a class="card" href="snacks/">
+      <div class="label">Snacks &amp; Beverages</div>
+      <div class="sub">Bites · Shakes · Drinks</div>
+    </a>
+  </nav>
+
+  <div class="back"><a href="../">&larr; Back to home</a></div>
+  <footer><a href="tel:+917030070800">+91 70300 70800</a></footer>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNQ Kitchen — Pure Veg Restaurant, Bilaspur</title>
+  <meta name="description" content="UNQ Kitchen — a pure vegetarian kitchen in Sarkanda, Bilaspur. Freshly made thalis, curries, snacks, shakes & more. Open every day 8 AM – 10:30 PM." />
+  <meta property="og:title" content="UNQ Kitchen — Pure Veg Restaurant" />
+  <meta property="og:description" content="Crafted with Care · Served with Soul. Open every day 8 AM – 10:30 PM, Sarkanda, Bilaspur." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    @font-face { font-family: 'BlippoMN'; src: url('assets/BlippoMN.ttf') format('truetype'); font-display: swap; }
+    :root {
+      --olive: #7A8434;
+      --olive-dark: #5C6330;
+      --ink: #14160C;
+      --gold: #c9a96a;
+      --paper: #ffffff;
+      --paper-2: #faf9f3;
+      --line: rgba(122,132,52,0.22);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.55; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+    /* ===== Hero ===== */
+    .hero { position: relative; text-align: center; padding: 64px 24px 56px; overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(122,132,52,0.08), transparent 60%),
+        var(--paper-2);
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .crest {
+      width: 230px; height: 92px; margin: 0 auto;
+      background-color: var(--olive-dark);
+      -webkit-mask: url('assets/crest.png') center/contain no-repeat;
+      mask: url('assets/crest.png') center/contain no-repeat;
+    }
+    .kitchen {
+      font-family: 'BlippoMN', 'Cormorant Garamond', serif;
+      font-size: 1.9rem; letter-spacing: 0.34em; text-transform: uppercase;
+      color: var(--olive); margin-top: 4px; padding-left: 0.34em;
+    }
+    .divider { display: flex; align-items: center; justify-content: center; gap: 14px; max-width: 280px; margin: 18px auto 16px; }
+    .divider .line { flex: 1; height: 1px; background: var(--gold); opacity: 0.6; }
+    .divider .diamond { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); }
+    .tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem; color: var(--olive-dark); }
+    .pureveg {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 22px;
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: #2E7D32;
+    }
+    .pureveg .box { width: 15px; height: 15px; border: 1.6px solid #2E7D32; border-radius: 2px; display: inline-flex; align-items: center; justify-content: center; }
+    .pureveg .dot { width: 7px; height: 7px; border-radius: 50%; background: #2E7D32; }
+
+    /* ===== CTAs ===== */
+    .ctas { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin-top: 38px; }
+    .btn {
+      display: inline-flex; flex-direction: column; align-items: center; text-decoration: none;
+      border-radius: 14px; padding: 20px 40px; min-width: 230px;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .btn .t { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; }
+    .btn .s { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 3px; opacity: 0.8; }
+    .btn-primary { background: var(--olive); color: #fff; }
+    .btn-primary:hover { background: var(--olive-dark); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(122,132,52,0.32); }
+    .btn-outline { background: var(--paper); color: var(--olive-dark); border: 1.5px solid var(--olive); }
+    .btn-outline:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(122,132,52,0.18); }
+
+    /* ===== Info band ===== */
+    .info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 8px; }
+    .info .cell { background: var(--paper); padding: 30px 22px; text-align: center; }
+    .info .ico { font-size: 1.3rem; color: var(--olive); }
+    .info h3 { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--olive); margin: 10px 0 6px; }
+    .info p { font-size: 0.95rem; color: var(--ink); }
+    .info a { color: var(--olive-dark); text-decoration: none; font-weight: 600; }
+    .info a:hover { text-decoration: underline; }
+
+    /* ===== Gallery ===== */
+    .gallery { padding: 56px 0 12px; text-align: center; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--olive-dark); }
+    .section-sub { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(20,22,12,0.55); margin-top: 6px; margin-bottom: 30px; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .grid figure { background: var(--paper-2); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+    .grid img { width: 100%; aspect-ratio: 1/1; object-fit: contain; }
+    .grid figcaption { font-size: 0.82rem; color: var(--olive-dark); margin-top: 8px; font-weight: 500; }
+
+    /* ===== Celebrate ===== */
+    .celebrate { margin: 56px 0; background: var(--paper-2); border: 1px solid var(--line); border-radius: 18px; padding: 40px 32px; text-align: center; }
+    .celebrate p { max-width: 560px; margin: 12px auto 0; color: rgba(20,22,12,0.75); }
+    .celebrate .occasions { margin-top: 14px; font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--olive); font-style: italic; }
+    .celebrate .call { display: inline-block; margin-top: 20px; background: var(--olive); color: #fff; text-decoration: none; padding: 12px 28px; border-radius: 10px; font-size: 0.9rem; letter-spacing: 0.04em; }
+    .celebrate .call:hover { background: var(--olive-dark); }
+
+    /* ===== Footer ===== */
+    footer.site { background: var(--ink); color: #f5f0e6; text-align: center; padding: 44px 24px; }
+    footer.site .fkitchen { font-family: 'BlippoMN', 'Cormorant Garamond', serif; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-size: 1.1rem; padding-left: 0.3em; }
+    footer.site p { font-size: 0.88rem; opacity: 0.85; margin-top: 10px; }
+    footer.site a { color: var(--gold); text-decoration: none; }
+    footer.site .small { font-size: 0.74rem; opacity: 0.5; margin-top: 18px; letter-spacing: 0.05em; }
+
+    @media (max-width: 720px) {
+      .info { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .tagline { font-size: 1.3rem; }
+      .btn { min-width: 0; flex: 1 1 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="crest" role="img" aria-label="UNQ"></div>
+    <div class="kitchen">Kitchen</div>
+    <div class="divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+    <p class="tagline">Crafted with Care · Served with Soul</p>
+    <div class="pureveg"><span class="box"><span class="dot"></span></span> Pure Vegetarian Kitchen</div>
+
+    <div class="ctas">
+      <a class="btn btn-primary" href="digital-menu/">
+        <span class="t">Digital Menu</span>
+        <span class="s">Browse &amp; explore on your phone</span>
+      </a>
+      <a class="btn btn-outline" href="menu/">
+        <span class="t">View Menu</span>
+        <span class="s">Mains · Snacks · Beverages</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="info" aria-label="Visit us">
+    <div class="cell">
+      <div class="ico">&#128336;</div>
+      <h3>We Are Open</h3>
+      <p>Every day<br>8:00 AM – 10:30 PM</p>
+    </div>
+    <div class="cell">
+      <div class="ico">&#128205;</div>
+      <h3>Find Us</h3>
+      <p>Khamtarai, Baima Nagoi Road,<br>Sarkanda, Bilaspur, Chhattisgarh</p>
+    </div>
+    <div class="cell">
+      <div class="ico">&#128222;</div>
+      <h3>Call &amp; WhatsApp</h3>
+      <p><a href="tel:+917030070800">+91 70300 70800</a></p>
+    </div>
+  </section>
+
+  <section class="gallery wrap">
+    <h2 class="section-title">A Taste of UNQ</h2>
+    <p class="section-sub">Freshly made, every plate</p>
+    <div class="grid">
+      <figure><img src="menu/mains/assets/Veg Thali.png" alt="Veg Thali" loading="lazy"><figcaption>Veg Thali</figcaption></figure>
+      <figure><img src="menu/mains/assets/Paneer Biryani.png" alt="Paneer Biryani" loading="lazy"><figcaption>Biryani</figcaption></figure>
+      <figure><img src="menu/mains/assets/Malai Kofta.png" alt="Malai Kofta" loading="lazy"><figcaption>Malai Kofta</figcaption></figure>
+      <figure><img src="menu/snacks/assets/food-photos/dosa.png" alt="Dosa" loading="lazy"><figcaption>Dosa</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="celebrate wrap">
+    <h2 class="section-title">Celebrate With Us</h2>
+    <p class="occasions">Birthdays · Kitty Parties · Anniversaries · Get-Togethers &amp; More</p>
+    <p>A dedicated party menu is available. Call or WhatsApp us to reserve your date and customise your celebration.</p>
+    <a class="call" href="tel:+917030070800">&#128222; Book Your Date — 70 300 70 800</a>
+  </section>
+
+  <footer class="site">
+    <div class="fkitchen">UNQ Kitchen</div>
+    <p>Pure Vegetarian · Open Every Day 8 AM – 10:30 PM</p>
+    <p>Khamtarai, Baima Nagoi Road, Sarkanda, Bilaspur, Chhattisgarh</p>
+    <p><a href="tel:+917030070800">+91 70300 70800</a></p>
+    <p class="small">We make everything fresh — please allow 10–30 min for preparation.</p>
+  </footer>
+
+</body>
+</html>
