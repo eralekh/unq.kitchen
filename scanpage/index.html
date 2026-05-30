@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNQ Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --olive: #7A8434;
+      --olive-dark: #5C6330;
+      --ink: #14160C;
+      --gold: #c9a96a;
+      --paper: #ffffff;
+      --paper-2: #faf9f3;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: var(--paper-2);
+      color: var(--ink);
+    }
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px 48px;
+      gap: 0;
+    }
+
+    /* Logo */
+    .logo {
+      max-width: 200px;
+      width: 60vw;
+      margin-bottom: 10px;
+    }
+
+    /* Tagline */
+    .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--olive-dark);
+      opacity: 0.85;
+      margin-bottom: 8px;
+    }
+
+    /* Pure veg badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #2E7D32;
+      margin-bottom: 44px;
+    }
+    .badge .box {
+      width: 14px; height: 14px;
+      border: 1.5px solid #2E7D32;
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .badge .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #2E7D32;
+    }
+
+    /* Buttons */
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      max-width: 340px;
+    }
+    .btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 16px;
+      padding: 22px 24px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn .label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .btn .sub {
+      font-size: 0.68rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      margin-top: 5px;
+      opacity: 0.75;
+    }
+    .btn-menu {
+      background: var(--olive);
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(122,132,52,0.28);
+    }
+    .btn-order {
+      background: var(--paper);
+      color: var(--olive-dark);
+      border: 1.5px solid var(--olive);
+      box-shadow: 0 4px 16px rgba(122,132,52,0.10);
+    }
+
+    /* Divider */
+    .divider {
+      display: flex; align-items: center; gap: 12px;
+      width: 100%; max-width: 340px; margin: 28px 0 0;
+    }
+    .divider .line { flex: 1; height: 1px; background: var(--gold); opacity: 0.4; }
+    .divider .diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
+
+    /* Google Review link */
+    .review-link {
+      margin-top: 20px;
+      font-size: 0.78rem;
+      color: var(--olive-dark);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      opacity: 0.75;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .review-link:hover { opacity: 1; text-decoration: underline; }
+
+    /* Footer note */
+    .foot {
+      margin-top: 44px;
+      font-size: 0.68rem;
+      color: var(--ink);
+      opacity: 0.35;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <img class="logo" src="../UNQ_Text_Black.png" alt="UNQ Kitchen" />
+    <p class="tagline">Crafted with Care · Served with Soul</p>
+    <div class="badge">
+      <span class="box"><span class="dot"></span></span>
+      Pure Vegetarian Kitchen
+    </div>
+
+    <div class="buttons">
+      <a class="btn btn-menu" href="../digital-menu/">
+        <span class="label">Menu</span>
+        <span class="sub">Browse our full menu</span>
+      </a>
+      <a class="btn btn-order" href="https://wa.me/917030070800">
+        <span class="label">Order</span>
+        <span class="sub">WhatsApp us your order</span>
+      </a>
+    </div>
+
+    <div class="divider">
+      <span class="line"></span><span class="diamond"></span><span class="line"></span>
+    </div>
+
+    <a class="review-link" href="https://www.google.com/maps/place/UNQ+KITCHEN/@22.1198162,82.17209,17z/data=!4m8!3m7!1s0x3a280b0011f3b6e9:0x5685abb16965387c!8m2!3d22.1198162!4d82.1746649!9m1!1b1!16s%2Fg%2F11ytlq2m3f?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
+      ⭐ Leave us a Google Review
+    </a>
+
+    <p class="foot">Open every day · 8 AM – 10:30 PM</p>
+  </div>
+</body>
+</html>
