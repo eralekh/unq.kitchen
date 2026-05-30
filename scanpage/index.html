@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UNQ Kitchen</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --olive: #7A8434;
       --olive-dark: #5C6330;
       --ink: #14160C;
-      --gold: #c9a96a;
-      --paper: #ffffff;
       --paper-2: #faf9f3;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,158 +26,148 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 24px 48px;
+      padding: 40px 24px;
       gap: 0;
     }
 
-    /* Logo */
     .logo {
-      max-width: 200px;
-      width: 60vw;
-      margin-bottom: 10px;
+      max-width: 180px;
+      width: 55vw;
+      margin-bottom: 48px;
     }
 
-    /* Tagline */
-    .tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: var(--olive-dark);
-      opacity: 0.85;
-      margin-bottom: 8px;
-    }
-
-    /* Pure veg badge */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #2E7D32;
-      margin-bottom: 44px;
-    }
-    .badge .box {
-      width: 14px; height: 14px;
-      border: 1.5px solid #2E7D32;
-      border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .badge .dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: #2E7D32;
-    }
-
-    /* Buttons */
     .buttons {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
       width: 100%;
       max-width: 340px;
     }
+
     .btn {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      gap: 16px;
       text-decoration: none;
-      border-radius: 16px;
-      padding: 22px 24px;
+      border-radius: 18px;
+      padding: 20px 22px;
       transition: transform 0.15s ease, box-shadow 0.15s ease;
       -webkit-tap-highlight-color: transparent;
     }
     .btn:active { transform: scale(0.97); }
-    .btn .label {
+
+    .btn-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.5rem;
+    }
+
+    .btn-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .btn-label {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.7rem;
+      font-size: 1.6rem;
       font-weight: 600;
       line-height: 1;
     }
-    .btn .sub {
-      font-size: 0.68rem;
-      letter-spacing: 0.13em;
+    .btn-sub {
+      font-size: 0.67rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-top: 5px;
-      opacity: 0.75;
-    }
-    .btn-menu {
-      background: var(--olive);
-      color: #fff;
-      box-shadow: 0 8px 24px rgba(122,132,52,0.28);
-    }
-    .btn-order {
-      background: var(--paper);
-      color: var(--olive-dark);
-      border: 1.5px solid var(--olive);
-      box-shadow: 0 4px 16px rgba(122,132,52,0.10);
+      opacity: 0.65;
     }
 
-    /* Divider */
-    .divider {
-      display: flex; align-items: center; gap: 12px;
-      width: 100%; max-width: 340px; margin: 28px 0 0;
-    }
-    .divider .line { flex: 1; height: 1px; background: var(--gold); opacity: 0.4; }
-    .divider .diamond { width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); opacity: 0.7; }
-
-    /* Google Review link */
-    .review-link {
-      margin-top: 20px;
-      font-size: 0.78rem;
-      color: var(--olive-dark);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      opacity: 0.75;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .review-link:hover { opacity: 1; text-decoration: underline; }
-
-    /* Footer note */
-    .foot {
-      margin-top: 44px;
-      font-size: 0.68rem;
+    /* All buttons share the same style */
+    .btn-menu,
+    .btn-google,
+    .btn-instagram {
+      background: #fff;
       color: var(--ink);
-      opacity: 0.35;
-      letter-spacing: 0.08em;
-      text-align: center;
+      border: 1.5px solid #e8e8e2;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     }
+    .btn-menu .btn-icon,
+    .btn-google .btn-icon,
+    .btn-instagram .btn-icon {
+      background: #f4f4f0;
+    }
+
+    /* Google G SVG icon */
+    .g-icon { width: 22px; height: 22px; }
+
+    /* Instagram SVG icon */
+    .ig-icon { width: 22px; height: 22px; }
   </style>
 </head>
 <body>
   <div class="page">
 
     <img class="logo" src="../assets/unq-logo.png" alt="UNQ Kitchen" />
-    <p class="tagline">Crafted with Care · Served with Soul</p>
-    <div class="badge">
-      <span class="box"><span class="dot"></span></span>
-      Pure Vegetarian Kitchen
-    </div>
 
     <div class="buttons">
+
+      <!-- Menu -->
       <a class="btn btn-menu" href="../digital-menu/">
-        <span class="label">Menu</span>
-        <span class="sub">Browse our full menu</span>
+        <div class="btn-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 2v7c0 1.66 1.34 3 3 3h1v10h2V12h1c1.66 0 3-1.34 3-3V2h-2v5H9V2H7v5H5V2H3z" fill="#5C6330"/>
+            <path d="M17 2c-1.66 0-3 1.34-3 3v6c0 1.48 1.02 2.72 2.4 3.08L16 22h2l-.4-7.92C18.98 13.72 20 12.48 20 11V5c0-1.66-1.34-3-3-3z" fill="#5C6330"/>
+          </svg>
+        </div>
+        <div class="btn-text">
+          <span class="btn-label">Menu</span>
+          <span class="btn-sub">Browse our full menu</span>
+        </div>
       </a>
-      <a class="btn btn-order" href="https://wa.me/917030070800">
-        <span class="label">Order</span>
-        <span class="sub">WhatsApp us your order</span>
+
+      <!-- Google Review -->
+      <a class="btn btn-google" href="https://www.google.com/maps/place/UNQ+KITCHEN/@22.1198162,82.17209,17z/data=!4m8!3m7!1s0x3a280b0011f3b6e9:0x5685abb16965387c!8m2!3d22.1198162!4d82.1746649!9m1!1b1!16s%2Fg%2F11ytlq2m3f?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
+        <div class="btn-icon">
+          <svg class="g-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+          </svg>
+        </div>
+        <div class="btn-text">
+          <span class="btn-label">Review Us</span>
+          <span class="btn-sub">Rate us on Google</span>
+        </div>
       </a>
+
+      <!-- Instagram -->
+      <a class="btn btn-instagram" href="https://www.instagram.com/unqkitchen" target="_blank" rel="noopener">
+        <div class="btn-icon">
+          <svg class="ig-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="ig-grad" cx="30%" cy="100%" r="120%">
+                <stop offset="0%" stop-color="#fdf497"/>
+                <stop offset="20%" stop-color="#fd5949"/>
+                <stop offset="55%" stop-color="#d6249f"/>
+                <stop offset="100%" stop-color="#285AEB"/>
+              </radialGradient>
+            </defs>
+            <rect x="2" y="2" width="20" height="20" rx="6" fill="url(#ig-grad)"/>
+            <circle cx="12" cy="12" r="4" stroke="white" stroke-width="2" fill="none"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="white"/>
+          </svg>
+        </div>
+        <div class="btn-text">
+          <span class="btn-label">Follow Us</span>
+          <span class="btn-sub">@unqkitchen on Instagram</span>
+        </div>
+      </a>
+
     </div>
-
-    <div class="divider">
-      <span class="line"></span><span class="diamond"></span><span class="line"></span>
-    </div>
-
-    <a class="review-link" href="https://www.google.com/maps/place/UNQ+KITCHEN/@22.1198162,82.17209,17z/data=!4m8!3m7!1s0x3a280b0011f3b6e9:0x5685abb16965387c!8m2!3d22.1198162!4d82.1746649!9m1!1b1!16s%2Fg%2F11ytlq2m3f?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">
-      ⭐ Leave us a Google Review
-    </a>
-
-    <p class="foot">Open every day · 8 AM – 10:30 PM</p>
   </div>
 </body>
 </html>
