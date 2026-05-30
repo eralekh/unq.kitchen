@@ -17,9 +17,8 @@
       --muted:rgba(20,22,12,0.6); --veg:#2E7D32;
     }
     *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-    body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;padding-bottom:64px;}
+    body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.5;padding-bottom:90px;}
 
-    /* Header */
     header.top{background:var(--paper-2);border-bottom:1px solid var(--line);text-align:center;padding:18px 16px 14px;}
     .crest{width:124px;height:50px;margin:0 auto;background-color:var(--olive-dark);
       -webkit-mask:url('../assets/crest.png') center/contain no-repeat;mask:url('../assets/crest.png') center/contain no-repeat;}
@@ -28,19 +27,16 @@
     .pv .box{width:12px;height:12px;border:1.4px solid var(--veg);border-radius:2px;display:inline-flex;align-items:center;justify-content:center;}
     .pv .dot{width:6px;height:6px;border-radius:50%;background:var(--veg);}
 
-    /* Search */
     .searchbar{position:sticky;top:0;z-index:30;background:var(--paper);padding:10px 14px;border-bottom:1px solid var(--line);}
     .searchbar input{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 14px;font-size:.95rem;font-family:inherit;background:var(--paper-2);}
     .searchbar input:focus{outline:none;border-color:var(--olive);}
 
-    /* Category nav */
     nav.cats{position:sticky;top:57px;z-index:20;background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:8px;overflow-x:auto;padding:10px 14px;scrollbar-width:none;}
     nav.cats::-webkit-scrollbar{display:none;}
     nav.cats button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper-2);color:var(--olive-dark);
       border-radius:999px;padding:7px 14px;font-size:.78rem;font-weight:600;white-space:nowrap;cursor:pointer;font-family:inherit;}
     nav.cats button.active{background:var(--olive);color:#fff;border-color:var(--olive);}
 
-    /* Sections */
     main{max-width:720px;margin:0 auto;padding:0 14px;}
     .group-head{font-family:'Cormorant Garamond',serif;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);text-align:center;margin:26px 0 4px;}
     .cat-block{scroll-margin-top:108px;padding-top:14px;}
@@ -56,13 +52,21 @@
     .item .single-price{display:inline-block;margin-top:8px;font-weight:700;color:var(--olive-dark);font-size:1rem;}
 
     .variants{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
-    .variant{display:flex;align-items:flex-start;gap:10px;}
+    .variant{display:flex;align-items:center;gap:10px;}
     .variant .vmain{flex:1;min-width:0;}
     .variant .vname{font-size:.9rem;font-weight:600;}
     .variant .ving{font-size:.76rem;color:var(--muted);}
     .variant .vprice{font-weight:700;color:var(--olive-dark);font-size:.95rem;white-space:nowrap;}
-    /* order-slot: reserved for future Add/Order button (kept empty for now) */
     .order-slot{flex:0 0 auto;}
+
+    /* Qty controls */
+    .qc{display:flex;align-items:center;gap:4px;}
+    .qc .qp,.qc .qm{width:28px;height:28px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;font-size:1.15rem;line-height:1;cursor:pointer;font-weight:700;transition:background .12s;}
+    .qc .qp{background:var(--olive);color:#fff;}
+    .qc .qp:active{background:var(--olive-dark);}
+    .qc .qm{background:#e8e8e2;color:var(--ink);}
+    .qc .qm:active{background:#ccc;}
+    .qc .qn{min-width:20px;text-align:center;font-size:.88rem;font-weight:700;}
 
     .legend{max-width:720px;margin:24px auto 0;padding:16px 14px;text-align:center;color:var(--muted);font-size:.78rem;border-top:1px solid var(--line);}
     .legend .row{margin:4px 0;}
@@ -73,6 +77,67 @@
     footer.foot p{font-size:.8rem;opacity:.85;margin-top:8px;}
     footer.foot a{color:var(--gold);text-decoration:none;}
     .backhome{display:inline-block;margin-top:14px;font-size:.78rem;color:var(--gold);text-decoration:none;border:1px solid rgba(201,169,106,.5);border-radius:8px;padding:7px 16px;}
+
+    /* Cart FAB */
+    #cart-fab{
+      position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+      z-index:100;display:none;
+      background:var(--olive-dark);color:#fff;border:none;border-radius:999px;
+      padding:13px 22px;font-family:inherit;font-size:.93rem;font-weight:600;
+      cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.28);
+      white-space:nowrap;align-items:center;gap:10px;
+    }
+    #cart-fab.visible{display:flex;}
+    #cart-fab .fab-badge{background:rgba(255,255,255,.25);border-radius:999px;padding:2px 8px;font-size:.8rem;font-weight:700;}
+
+    /* Cart overlay */
+    #cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;}
+    #cart-overlay.open{opacity:1;pointer-events:all;}
+
+    /* Cart sheet */
+    #cart-sheet{
+      position:fixed;bottom:0;left:0;right:0;max-height:88vh;
+      background:var(--paper);border-radius:20px 20px 0 0;
+      z-index:201;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+      display:flex;flex-direction:column;box-shadow:0 -4px 32px rgba(0,0,0,.15);
+    }
+    #cart-sheet.open{transform:translateY(0);}
+    .cs-handle{width:40px;height:4px;background:#ddd;border-radius:2px;margin:12px auto 6px;}
+    .cs-head{display:flex;align-items:center;justify-content:space-between;padding:10px 20px 14px;border-bottom:1px solid var(--line);}
+    .cs-head h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--olive-dark);}
+    .cs-close{background:none;border:none;font-size:1.3rem;color:var(--muted);cursor:pointer;padding:4px 8px;}
+    #cart-items{flex:1;overflow-y:auto;padding:4px 20px;}
+    .ci-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);}
+    .ci-info{flex:1;min-width:0;}
+    .ci-name{font-weight:600;font-size:.9rem;line-height:1.3;}
+    .ci-sub{font-size:.76rem;color:var(--muted);}
+    .ci-price{font-size:.84rem;font-weight:700;color:var(--olive-dark);margin-top:2px;}
+    .ci-ctrl{display:flex;align-items:center;gap:5px;flex:0 0 auto;}
+    .ci-btn{width:26px;height:26px;border-radius:50%;border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;font-weight:600;}
+    .ci-plus{background:var(--olive);color:#fff;}
+    .ci-minus{background:#e8e8e2;color:var(--ink);}
+    .ci-qty{min-width:20px;text-align:center;font-weight:700;font-size:.9rem;}
+
+    .cs-foot{padding:14px 20px 28px;border-top:1px solid var(--line);background:var(--paper);}
+    .cs-total-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;}
+    .cs-total-row span{font-size:.83rem;color:var(--muted);}
+    .cs-total-row strong{font-size:1.2rem;font-weight:700;}
+    .cs-field{margin-bottom:10px;}
+    .cs-field label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+    .cs-field input,.cs-field textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 13px;font-size:.92rem;font-family:inherit;background:var(--paper-2);}
+    .cs-field textarea{resize:none;height:58px;}
+    .cs-field input:focus,.cs-field textarea:focus{outline:none;border-color:var(--olive);}
+    #place-order-btn{width:100%;padding:15px;border:none;border-radius:12px;background:var(--olive);color:#fff;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;margin-top:4px;transition:background .15s;}
+    #place-order-btn:active{background:var(--olive-dark);}
+    #place-order-btn:disabled{background:#aaa;cursor:not-allowed;}
+
+    /* Order success */
+    #order-success{position:fixed;inset:0;z-index:300;background:var(--paper-2);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 28px;}
+    #order-success.show{display:flex;}
+    .si{font-size:3.5rem;margin-bottom:16px;}
+    .st{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--olive-dark);margin-bottom:8px;}
+    .sm{font-size:.95rem;color:var(--muted);line-height:1.6;max-width:300px;margin:0 auto 28px;}
+    .sb{background:var(--olive);color:#fff;border:none;border-radius:10px;padding:13px 28px;font-family:inherit;font-size:.95rem;font-weight:600;cursor:pointer;}
   </style>
 </head>
 <body>
@@ -84,7 +149,6 @@
 
   <div class="searchbar"><input id="search" type="search" placeholder="Search the menu…" aria-label="Search the menu" /></div>
   <nav class="cats" id="cats" aria-label="Menu categories"></nav>
-
   <main id="menu"></main>
   <p class="noresult" id="noresult">No dishes match your search.</p>
 
@@ -101,20 +165,99 @@
     <a class="backhome" href="../">← Back to home</a>
   </footer>
 
-  <script>
-    const SECTIONS = [{"group": "Mains", "category": "Starters", "sub": "Soups, salads, shared bites & grills", "items": [{"name": "Soup", "desc": "Warm, comforting and made fresh every time. A gentle, flavourful start to your main course", "img": "../menu/assets/mains/manchow-soup.png", "price": "", "variants": [{"name": "Manchow", "ing": "Spicy Indo-Chinese broth with crispy noodle garnish", "price": "₹100"}, {"name": "Hot & Sour", "ing": "Tangy, spicy broth with shredded vegetables and vinegar", "price": "₹100"}, {"name": "Lemon Coriander", "ing": "Light broth with fresh lemon and fragrant coriander", "price": "₹100"}, {"name": "Cream of Tomato", "ing": "Velvety tomato soup with a touch of fresh cream", "price": "₹120"}, {"name": "Veg Clear", "ing": "Delicate, light broth with fresh seasonal vegetables", "price": "₹90"}, {"name": "Sweet Corn🍬", "ing": "Creamy soup with sweet corn kernels and mild spices", "price": "₹120"}]}, {"name": "Accompaniments", "desc": "Light, fresh and wholesome. A clean start or a guilt-free side to any meal", "img": "../menu/assets/mains/mix-salad.png", "price": "", "variants": [{"name": "UNQ Special Salad", "ing": "Corn, Chana, Peanuts, Potato, Spices", "price": "₹120"}, {"name": "Garden Green Salad", "ing": "Cucumber, tomato, onion and greens — fresh and crisp", "price": "₹60"}, {"name": "Onion Salad", "ing": "Sliced onions with lemon and spices", "price": "₹40"}, {"name": "Corn Salad", "ing": "Sweet corn with fresh herbs and lemon dressing", "price": "₹100"}, {"name": "Chana Salad", "ing": "Chickpeas with tomato, onion and zesty lemon", "price": "₹100"}, {"name": "Peanut Masala", "ing": "Roasted peanuts with onion, tomato and spices", "price": "₹100"}, {"name": "Masala Papad", "ing": "Crispy papad with diced onion, tomato and chaat spices", "price": "₹50"}, {"name": "Roasted Papad", "ing": "Classic roasted papad — light and crispy", "price": "₹30"}, {"name": "Fry Papad", "ing": "Deep-fried papad — golden, puffy and perfectly crispy", "price": "₹35"}, {"name": "Fryums", "ing": "Crispy fried fryums — crunchy and fun on the side", "price": "₹40"}, {"name": "Dahi Kuchumber", "ing": "Yoghurt with cucumber, tomato and mild spices", "price": "₹70"}, {"name": "Plain Curd", "ing": "Fresh, creamy yoghurt — cool and refreshing", "price": "₹40"}, {"name": "Boondi Raita", "ing": "Soft boondi in chilled, mildly spiced yoghurt", "price": "₹60"}, {"name": "Mix Raita", "ing": "Chilled yoghurt with mixed vegetables and mild spices", "price": "₹60"}, {"name": "Pineapple Raita🍬", "ing": "Creamy yoghurt with sweet pineapple — cool and tangy", "price": "₹90"}]}, {"name": "Chinese Starter", "desc": "Indo-Chinese done right. Bold sauces, high heat and maximum flavour in every bite", "img": "../menu/assets/mains/paneer-chilli.png", "price": "", "variants": [{"name": "Chinese Platter", "ing": "Paneer Chilli, Veg Manchurian, Crispy Corn, Noodle/Rice", "price": "₹380"}, {"name": "Paneer Majestic", "ing": "Crispy paneer tossed in tangy, spiced curd-based sauce", "price": "₹220"}, {"name": "Veg Lollipop", "ing": "Crispy spiced vegetable lollipops — fun and flavourful", "price": "₹220"}, {"name": "Paneer Chilli🌶️", "ing": "Crispy paneer in fiery chilli-garlic sauce with peppers", "price": "₹200"}, {"name": "Soya Chaap Chilli🌶️", "ing": "Tender chaap in bold chilli-soy glaze with peppers", "price": "₹200"}, {"name": "Paneer 65", "ing": "South-style crispy paneer in aromatic spiced batter", "price": "₹200"}, {"name": "Honey Chilli Potato", "ing": "Crispy potato strips in sweet and spicy honey chilli glaze", "price": "₹180"}, {"name": "Mushroom Chilli🌶️", "ing": "Button mushrooms in zesty chilli sauce with capsicum", "price": "₹180"}, {"name": "Gobhi Chilli🌶️", "ing": "Crispy cauliflower tossed in spicy chilli sauce", "price": "₹160"}, {"name": "Corn Chilli🌶️", "ing": "Sweet corn in chilli-soy glaze with peppers and onions", "price": "₹160"}, {"name": "Veg Manchurian", "ing": "Crispy vegetable balls in Indo-Chinese Manchurian sauce", "price": "₹160"}, {"name": "Chana Chilli🌶️", "ing": "Chickpeas stir-fried in bold chilli-garlic sauce", "price": "₹150"}, {"name": "Chinese Bhel", "ing": "Crunchy noodle mix with vegetables and tangy sauces", "price": "₹150"}, {"name": "Crispy Corn", "ing": "Fried corn kernels tossed with spices and herbs", "price": "₹120"}, {"name": "Corn Roast", "ing": "Roasted corn kernels with butter and seasoning", "price": "₹100"}]}, {"name": "Tandoor Starter", "desc": "Fresh from the clay oven — charred, smoky and absolutely divine", "img": "../menu/assets/mains/chaap-tikka.png", "price": "", "variants": [{"name": "Tandoori Veg Platter", "ing": "5 items, 4 pcs each", "price": "₹500"}, {"name": "Flavours of Paneer Tikka", "ing": "4 Pcs per flavour — Tikka, Hariyali, Malai", "price": "₹350"}, {"name": "Soya Malai Chaap Tikka🍬", "ing": "Chaap in rich cream marinade, gently grilled", "price": "₹300"}, {"name": "Paneer Malai Tikka", "ing": "Creamy paneer in mild malai marinade, delicately grilled", "price": "₹280"}, {"name": "Soya Hariyali Chaap", "ing": "Chaap in fresh herb marinade, grilled fragrant and smoky", "price": "₹270"}, {"name": "Mushroom Tikka", "ing": "Mushrooms in tandoori marinade, charred in clay oven", "price": "₹250"}, {"name": "Paneer Hariyali Tikka", "ing": "Paneer in vibrant mint-coriander marinade, clay-grilled", "price": "₹240"}, {"name": "Paneer Lehsuni Tikka", "ing": "Paneer with roasted garlic marinade, grilled to perfection", "price": "₹240"}, {"name": "Soya Chaap Tikka", "ing": "Soya chaap in tandoori spices, grilled until smoky", "price": "₹240"}, {"name": "Dahi Kebab", "ing": "Melt-in-mouth kebabs of hung curd and mild spices", "price": "₹220"}, {"name": "Paneer Tikka", "ing": "Paneer cubes in tandoori spices, grilled in clay oven", "price": "₹220"}, {"name": "Veg Kurkure Kebab", "ing": "Vegetable kebabs with a crunchy kurkure coating", "price": "₹200"}, {"name": "Hara Bhara Kebab", "ing": "Green patties of spinach, peas and spiced paneer", "price": "₹160"}]}]}, {"group": "Mains", "category": "Curries", "sub": "Simmered with love & spice", "items": [{"name": "Paneer", "desc": "Our star ingredient — fresh cottage cheese cooked your way with aromatic spices and rich gravy", "img": "../menu/assets/mains/matar-paneer.png", "price": "", "variants": [{"name": "UNQ Special Paneer", "ing": "Chef's signature paneer — a unique spice blend, our pride", "price": "₹350"}, {"name": "Tikka Masala🌶️", "ing": "Grilled paneer tikka in rich, spiced tomato-cream gravy", "price": "₹250"}, {"name": "Paneer Korma", "ing": "Paneer in mildly spiced, creamy nut-based gravy", "price": "₹250"}, {"name": "Methi Malai Paneer🍬", "ing": "Creamy paneer with fresh fenugreek leaves and mild spices", "price": "₹250"}, {"name": "Kadhai Paneer🌶️", "ing": "Paneer and peppers in bold kadhai masala", "price": "₹240"}, {"name": "Punjabi Paneer🌶️", "ing": "Paneer in bold Punjabi-style gravy with whole spices", "price": "₹230"}, {"name": "Palak Paneer", "ing": "Fresh paneer in smooth, nutritious spinach gravy", "price": "₹220"}, {"name": "Paneer Do Pyaza", "ing": "Paneer with double onions in robust, spiced gravy", "price": "₹220"}, {"name": "Paneer Butter Masala", "ing": "Paneer in velvety, mildly sweet tomato butter gravy", "price": "₹220"}, {"name": "Paneer Bharta", "ing": "Roasted, mashed paneer with spices and vegetables", "price": "₹200"}, {"name": "Matar Paneer", "ing": "Paneer and peas in fragrant tomato-onion gravy", "price": "₹180"}, {"name": "Paneer Bhurji", "ing": "Crumbled paneer scrambled with onions, tomato and spices", "price": "₹180"}]}, {"name": "Chaap", "desc": "The vegetarian crowd-pleaser. Soya chaap in rich, bold gravies that hit just right", "img": "../menu/assets/mains/chaap-masala.png", "price": "", "variants": [{"name": "Chaap Tikka Masala", "ing": "Chaap tikka in rich, spiced tomato-cream masala", "price": "₹250"}, {"name": "Chaap Kadhai🌶️", "ing": "Chaap and peppers in rustic kadhai masala", "price": "₹220"}, {"name": "Chaap Masala🌶️", "ing": "Tender chaap in robust, spiced onion-tomato masala", "price": "₹200"}]}, {"name": "Mushroom", "desc": "Earthy and rich — mushrooms take on every spice with grace and depth", "img": "../menu/assets/mains/mushroom-masala.png", "price": "", "variants": [{"name": "Mushroom Kadhai🌶️", "ing": "Mushrooms and peppers in bold kadhai masala", "price": "₹220"}, {"name": "Mushroom Masala🌶️", "ing": "Mushrooms in rich, spiced tomato-onion masala", "price": "₹200"}, {"name": "Mushroom Do Pyaza", "ing": "Mushrooms with double onions in robust masala", "price": "₹200"}]},{"name": "Kaju", "desc": "Creamy, luxurious and rich. Cashews in a velvety masala worth every single bite", "img": "../menu/assets/mains/kaju-masala.png", "price": "", "variants": [{"name": "Kaju Masala🌶️", "ing": "Cashews in rich, aromatic masala gravy", "price": "₹280"}, {"name": "Kaju Paneer", "ing": "Cashews and paneer in velvety, mildly spiced gravy", "price": "₹280"}, {"name": "Kaju Mushroom", "ing": "Cashews and mushrooms in creamy, rich masala", "price": "₹280"}]}, {"name": "Kofta", "desc": "Soft, melt-in-your-mouth dumplings swimming in a creamy, aromatic gravy", "img": "../menu/assets/mains/malai-kofta.png", "price": "", "variants": [{"name": "Nargis Kofta", "ing": "Large stuffed vegetable dumplings in rich, aromatic gravy", "price": "₹350"}, {"name": "Malai🍬", "ing": "Creamy paneer-cashew dumplings in rich malai gravy", "price": "₹300"}, {"name": "Veg", "ing": "Spiced vegetable dumplings in flavourful aromatic gravy", "price": "₹200"}]}, {"name": "Corn", "desc": "Sweet corn in bold, spiced gravies — an unexpected delight on every plate", "img": "../menu/assets/mains/corn-palak.png", "price": "", "variants": [{"name": "Corn Palak", "ing": "Sweet corn in smooth, nutritious spinach gravy", "price": "₹220"}, {"name": "Corn Masala🌶️", "ing": "Sweet corn in bold, spiced tomato masala", "price": "₹180"}]}, {"name": "Mix", "desc": "A celebration of vegetables. Everything good, cooked together in perfect harmony", "img": "../menu/assets/mains/mix-veg-dry.png", "price": "", "variants": [{"name": "Mix Veg", "ing": "Seasonal vegetables in rich, aromatic masala", "price": "₹180"}, {"name": "Mix Veg Dry", "ing": "Stir-fried seasonal vegetables with whole spices", "price": "₹150"}]}, {"name": "UNQ Special Veg🌶️🍬", "desc": "Mix of Keema Veg, Corn Masala, Kaju Malai", "img": "../menu/assets/mains/seasonal-veg.png", "price": "₹300", "variants": []}, {"name": "Bhindi", "desc": "Okra done the Indian way — whether crispy, masala or do pyaza, it always delivers", "img": "../menu/assets/mains/bhindi-do-pyaza.png", "price": "", "variants": [{"name": "Bhindi Masala🌶️", "ing": "Okra in bold, spiced onion-tomato masala", "price": "₹180"}, {"name": "Bhindi Do Pyaza", "ing": "Okra with double onions in robust, fragrant masala", "price": "₹180"}, {"name": "Kurkure Bhindi🌶️", "ing": "Crispy fried okra seasoned with tangy spices", "price": "₹160"}, {"name": "Bhindi Peanut Fry", "ing": "Crispy okra stir-fried with roasted peanuts and spices", "price": "₹140"}]}, {"name": "Aloo", "desc": "The humble potato, elevated. Across several preparations it never gets old", "img": "../menu/assets/mains/jeera-alu.png", "price": "", "variants": [{"name": "Aloo Dam", "ing": "Baby potatoes slow-cooked in rich, spiced gravy", "price": "₹160"}, {"name": "Aloo Matar", "ing": "Potatoes and peas in light, fragrant tomato-onion gravy", "price": "₹160"}, {"name": "Aloo Palak", "ing": "Potatoes in smooth, nutritious spinach gravy", "price": "₹180"}, {"name": "Aloo Gobhi Matar Dry", "ing": "Potato, cauliflower and peas dry-fried with whole spices", "price": "₹160"}, {"name": "Jeera Aloo", "ing": "Potatoes tempered with cumin and mild spices", "price": "₹120"}, {"name": "Bhujiya Aloo", "ing": "Potatoes in tangy, spiced Rajasthani-style gravy", "price": "₹120"}]}, {"name": "Chana", "desc": "Rustic, hearty and deeply satisfying. Chickpeas simmered in bold, spiced gravy", "img": "../menu/assets/mains/chana-masala.png", "price": "", "variants": [{"name": "Chana Masala", "ing": "Chickpeas in bold, tangy and spiced tomato-onion gravy", "price": "₹160"}]}, {"name": "Sev", "desc": "A Rajasthani-inspired gem. Crunchy sev meets tangy tomato in a harmony of flavours", "img": "../menu/assets/mains/sev-tamaatar.png", "price": "", "variants": [{"name": "Sev Masala", "ing": "Crunchy sev in bold, spiced masala gravy", "price": "₹150"}, {"name": "Sev Tamatar", "ing": "Crispy sev with tangy tomatoes in spiced masala", "price": "₹130"}]}, {"name": "Seasonal", "desc": "Chef's pick of the season — a rotating special crafted from the freshest market finds", "img": "../menu/assets/mains/seasonal-veg.png", "price": "", "variants": [{"name": "Lahsuni Palak", "ing": "As per availability", "price": "₹220"}, {"name": "Seasonal Veg/Bhaji", "ing": "As per availability", "price": "₹150"}]}, {"name": "Daal", "desc": "The soul of Indian home cooking — slow-simmered, fragrant and always on our menu", "img": "../menu/assets/mains/daal.png", "price": "", "variants": [{"name": "Daal Fry / Jeera", "ing": "Lentils tempered with cumin and fresh spices", "price": "₹100"}, {"name": "Daal Tadka", "ing": "Yellow lentils with a sizzling ghee and spice tadka", "price": "₹120"}, {"name": "Dhaaba Daal", "ing": "Rustic slow-cooked lentils in dhaaba style", "price": "₹150"}, {"name": "Daal Palak", "ing": "Lentils cooked with fresh spinach and spices", "price": "₹140"}, {"name": "Daal Makhani", "ing": "Whole black lentils slow-cooked with butter and cream", "price": "₹180"}]}]}, {"group": "Mains", "category": "Breads", "sub": "From the tandoor & tawa", "items": [{"name": "Roti", "desc": "Baked in our clay oven or on the tawa — simple, wholesome and perfect with any curry", "img": "../menu/assets/mains/tandoori-roti.png", "price": "", "variants": [{"name": "Tandoori Roti", "ing": "Whole wheat bread baked fresh in clay oven", "price": "₹30"}, {"name": "Butter Tandoori Roti", "ing": "Tandoori roti finished with fresh butter", "price": "₹35"}, {"name": "Tawa Roti", "ing": "Soft whole wheat flatbread cooked on the tawa", "price": "₹25"}, {"name": "Butter Tawa Roti", "ing": "Tawa roti brushed with warm butter", "price": "₹30"}]}, {"name": "Naan", "desc": "Soft and pillowy, straight from the tandoor. A must-have alongside any curry", "img": "../menu/assets/mains/butter-naan.png", "price": "", "variants": [{"name": "Plain Naan", "ing": "Soft, fluffy leavened bread baked in tandoor", "price": "₹35"}, {"name": "Butter Naan", "ing": "Tandoori naan finished with a generous spread of butter", "price": "₹45"}, {"name": "Garlic Naan", "ing": "Soft naan topped with minced garlic and butter", "price": "₹60"}]}, {"name": "Kulcha", "desc": "Fluffy, stuffed flatbreads that are a hearty meal in themselves", "img": "../menu/assets/mains/kulcha.png", "price": "", "variants": [{"name": "Aloo Kulcha", "ing": "Fluffy bread stuffed with spiced mashed potato", "price": "₹50"}, {"name": "Paneer Kulcha", "ing": "Soft kulcha stuffed with spiced crumbled paneer", "price": "₹70"}, {"name": "Masala Kulcha", "ing": "Fluffy bread stuffed with fragrant spiced vegetables", "price": "₹60"}]}, {"name": "Paratha", "desc": "Layered, buttery and golden. The quintessential North Indian bread, done right", "img": "../menu/assets/mains/laccha-paratha.png", "price": "", "variants": [{"name": "Plain Paratha", "ing": "Layered whole wheat flatbread cooked with ghee", "price": "₹40"}, {"name": "Lachha Paratha", "ing": "Multi-layered, flaky whole wheat paratha", "price": "₹60"}, {"name": "Aloo Paratha", "ing": "Stuffed with spiced mashed potato — served with curd", "price": "₹60"}, {"name": "Paneer Paratha", "ing": "Stuffed with spiced crumbled paneer — served with curd", "price": "₹80"}, {"name": "Methi Paratha", "ing": "Whole wheat with fresh fenugreek — served with curd", "price": "₹60"}, {"name": "Cheese Paratha", "ing": "Golden flatbread stuffed with melted cheese — served with curd", "price": "₹100"}, {"name": "Mix Veg Paratha", "ing": "Stuffed with spiced mixed vegetables — served with curd", "price": "₹80"}]}]}, {"group": "Mains", "category": "Rice", "sub": "Fragrant, fluffy & perfectly cooked", "items": [{"name": "Rice", "desc": "Fragrant, fluffy and perfectly cooked. The heart of any wholesome Indian meal", "img": "../menu/assets/mains/ghee-rice.png", "price": "", "variants": [{"name": "Steam Rice", "ing": "Fluffy basmati rice — clean, light and ideal alongside any curry", "price": "₹100"}, {"name": "Jeera Rice", "ing": "Basmati rice tempered with cumin — fragrant and light", "price": "₹120"}, {"name": "Ghee Onion Rice", "ing": "Basmati rice with caramelised onions and ghee", "price": "₹150"}, {"name": "Lemon Rice", "ing": "Rice tossed with lemon, mustard seeds and curry leaves", "price": "₹150"}, {"name": "Tomato Onion Rice", "ing": "Basmati rice cooked with tomatoes and onions", "price": "₹140"}, {"name": "Indian Masala Rice", "ing": "Basmati rice with whole spices and fresh herbs", "price": "₹180"}, {"name": "Curd Rice", "ing": "Soft rice mixed with creamy curd and gentle tempering", "price": "₹150"}]}, {"name": "Khichadi", "desc": "Simple comfort food at its finest. Wholesome, one-pot goodness that warms the soul", "img": "../menu/assets/mains/daal-khichadi.png", "price": "", "variants": [{"name": "Daal Khichadi", "ing": "Wholesome rice and lentils cooked with mild spices", "price": "₹160"}, {"name": "Palak Khichadi", "ing": "Rice and lentils cooked with fresh spinach and spices", "price": "₹180"}]}, {"name": "Pulav", "desc": "Fragrant rice gently cooked with vegetables and whole spices. Light yet deeply satisfying", "img": "../menu/assets/mains/matar-pulao.png", "price": "", "variants": [{"name": "Veg Pulav", "ing": "Fragrant basmati with seasonal vegetables and whole spices", "price": "₹160"}, {"name": "Matar Pulav", "ing": "Basmati rice cooked with green peas and spices", "price": "₹180"}]}, {"name": "Biryani", "desc": "Slow-cooked, aromatic and loaded with flavour. Every grain tells a story of spice and care", "img": "../menu/assets/mains/paneer-biryani.png", "price": "", "variants": [{"name": "Paneer Tikka Biryani", "ing": "Grilled paneer tikka layered with fragrant basmati", "price": "₹250"}, {"name": "Chaap Biryani", "ing": "Basmati rice layered with marinated soya chaap", "price": "₹250"}, {"name": "Mushroom Biryani", "ing": "Fragrant basmati with earthy mushrooms and whole spices", "price": "₹250"}, {"name": "Paneer Biryani", "ing": "Aromatic basmati layered with spiced paneer", "price": "₹220"}, {"name": "Veg Biryani", "ing": "Basmati rice slow-cooked with vegetables and whole spices", "price": "₹200"}]}]}, {"group": "Mains", "category": "Combos", "sub": "Complete, wholesome meals", "items": [{"name": "Thali", "desc": "A complete, wholesome meal — choose your style and let us take care of the rest", "img": "../menu/assets/mains/veg-thali.png", "price": "", "variants": [{"name": "Regular", "ing": "Daal Fry, Veg, Steam Rice, Roti × 2, Dry Papad, Salad, Pickle", "price": "₹200"}, {"name": "Special", "ing": "Daal Tadka, Veg, Paneer Veg, Biryani Rice, Plain Paratha × 2, Dry Papad, Salad, Pickle, Raita, Sweet", "price": "₹300"}]}]}, {"group": "Mains", "category": "Dessert", "sub": "The perfect sweet note to end every meal", "items": [{"name": "Gulab Jamun", "desc": "Soft, syrup-soaked rounds of pure joy. The perfect sweet note to end every meal", "img": "../menu/assets/mains/gulaab-jaamun.png", "price": "", "variants": [{"name": "2 Pcs", "ing": "Golden milk dumplings soaked in rose-flavoured sugar syrup", "price": "₹50"}, {"name": "1 Pc With Ice Cream", "ing": "Warm gulab jamun paired with cool creamy ice cream", "price": "₹70"}]}, {"name": "Ice Cream", "desc": "Cool, creamy and delightfully simple. A scoop of happiness to close your meal", "img": "../menu/assets/mains/ice-cream.png", "price": "", "variants": [{"name": "Single Scoop", "ing": "A generous scoop of creamy, cool ice cream", "price": "₹40"}]}]}, {"group": "Mains", "category": "Beverages", "sub": "Cool, refreshing & ready to go", "items": [{"name": "Water Bottle 1L", "desc": "Chilled 1-litre mineral water", "img": "../menu/assets/mains/water.png", "price": "₹20", "variants": []}]}, {"group": "Snacks", "category": "Snacks", "sub": "Small plates & bites", "items": [{"name": "Pizza", "desc": "In-house dough, fresh ingredients, soft and cheesy", "img": "../menu/assets/food-photos/pizza.png", "price": "", "variants": [{"name": "Margherita", "ing": "Classic Cheese Pizza", "price": "₹200"}, {"name": "Veg Garden", "ing": "Mixed Vegetables + Cheese", "price": "₹230"}, {"name": "Corn", "ing": "Corn + Cheese", "price": "₹230"}, {"name": "Paneer", "ing": "Paneer + Onion + Cheese", "price": "₹250"}, {"name": "Mushroom", "ing": "Mushrooms + Garlic + Cheese", "price": "₹250"}, {"name": "Chaap", "ing": "Soya Chaap + Onion + Cheese", "price": "₹250"}, {"name": "Hawaiian", "ing": "Pineapple + Onion + Cheese", "price": "₹260"}, {"name": "Garlic Bread", "ing": "Toasted with garlic butter", "price": "₹100"}]}, {"name": "Grilled Sandwich", "desc": "Bread slices filled with fresh ingredients & grilled to perfection", "img": "../menu/assets/food-photos/sandwich.png", "price": "", "variants": [{"name": "Veg", "ing": "Onion + Tomato + Cucumber", "price": "₹100"}, {"name": "Veg Club", "ing": "Vegetables + Aloo Tikki", "price": "₹120"}, {"name": "Paneer", "ing": "Paneer + Onion + Tomato + Cheese", "price": "₹120"}, {"name": "Cheese Corn", "ing": "Sweet Corn + Cheese + Mayo", "price": "₹100"}, {"name": "Bombay", "ing": "Vegetables + Potato Slice + Green Chutney", "price": "₹120"}]}, {"name": "Pasta", "desc": "Italian favourite — sauced, savoured, with an Indian twist too", "img": "../menu/assets/food-photos/pasta.png", "price": "", "variants": [{"name": "Red", "ing": "Tomato-Based Sauce + Vegetables", "price": "₹150"}, {"name": "White", "ing": "Cream-Based Sauce + Paneer", "price": "₹170"}, {"name": "Indian Masala", "ing": "Spiced Indian Flavours + Vegetables", "price": "₹150"}]}, {"name": "French Fries", "desc": "Golden, crispy & irresistible — seasoned and served piping hot", "img": "../menu/assets/food-photos/fries.png", "price": "", "variants": [{"name": "Classic", "ing": "Classic Salted", "price": "₹90"}, {"name": "Peri-Peri", "ing": "Spiced With Peri-Peri Seasoning", "price": "₹110"}, {"name": "Cheesy", "ing": "Loaded With Melted Cheese", "price": "₹150"}]}, {"name": "Nuggets", "desc": "Crunchy outside, soft inside — little bites packed with flavour", "img": "../menu/assets/food-photos/nuggets.png", "price": "", "variants": [{"name": "Veg", "ing": "Mixed vegetable nuggets", "price": "₹150"}, {"name": "Cheese", "ing": "Cheese Filled Nuggets", "price": "₹180"}]}, {"name": "Dosa", "desc": "Born in the south, loved by India — our favourite is the special masala", "img": "../menu/assets/food-photos/dosa.png", "price": "", "variants": [{"name": "UNQ Special Masala", "ing": "Potato + Paneer + Veggies + Butter", "price": "₹180"}, {"name": "Cheese Corn Masala", "ing": "Cheese + Corn + Potato Mix Masala", "price": "₹180"}, {"name": "Paneer Masala", "ing": "Paneer + Potato Mix Masala", "price": "₹160"}, {"name": "Ghee Roast Masala", "ing": "Crispy Roast in Pure Ghee + Special Masala", "price": "₹150"}, {"name": "Butter Masala", "ing": "Butter Potato Masala", "price": "₹150"}, {"name": "Onion Masala", "ing": "Classic Potato Masala + Onion Filling", "price": "₹120"}, {"name": "Classic Masala", "ing": "Classic Potato Masala Filling", "price": "₹120"}, {"name": "Plain Dosa", "ing": "Served plain with Sambhar & Chutney", "price": "₹100"}]}, {"name": "Uttapam", "desc": "Some call it bread dosa — crispy outside, soft inside", "img": "../menu/assets/food-photos/uttapam.png", "price": "", "variants": [{"name": "Plain", "ing": "Plain Uttapam Served with Sambhar and Chutney", "price": "₹100"}, {"name": "Veg Uttapam", "ing": "Onion + Tomato + Chillies + Coriander", "price": "₹120"}, {"name": "UNQ Special Masala", "ing": "Potato + Paneer + Veggies + Butter", "price": "₹180"}, {"name": "Ghee Roast Masala", "ing": "Crispy Roast in Pure Ghee + Special Masala", "price": "₹150"}, {"name": "Butter Masala", "ing": "Butter Potato Masala", "price": "₹150"}]}, {"name": "Idli", "desc": "Soft, pillowy & wholesome — South India's gift to breakfast", "img": "../menu/assets/food-photos/idli.png", "price": "", "variants": [{"name": "Classic", "ing": "2 Pcs Steam Idli with Sambhar & Chutney", "price": "₹50"}, {"name": "Fried", "ing": "Crispy Fried Idli Served with Chutney", "price": "₹70"}, {"name": "Ghee Podi", "ing": "2 Pcs Idli + Pure Ghee + South Indian Podi", "price": "₹80"}]}, {"name": "North Indian Breakfast", "desc": "North Indian Classics — a wholesome morning treat", "img": "../menu/assets/food-photos/poha.png", "price": "", "variants": [{"name": "Poha", "ing": "Poha with Onion + Potato + Peas + Peanuts", "price": "₹40"}, {"name": "Upma", "ing": "Upma with Onion + Potato + Peas + Peanuts", "price": "₹50"}, {"name": "Chhole Bhature", "ing": "2 Pcs Bhature + Chhole + Onion + Pickle", "price": "₹130"}, {"name": "Poori Sabji", "ing": "2 Pcs Poori + Aloo Sabji + Onion + Pickle", "price": "₹120"}]}, {"name": "Noodles", "desc": "Wok-tossed, saucy & slurp-worthy — street-style noodles with an Indian punch", "img": "../menu/assets/food-photos/noodles.png", "price": "", "variants": [{"name": "Chilli Garlic Burnt🌶️", "ing": "Burnt Garlic Noodles + Chilli + Soy Sauce", "price": "₹180"}, {"name": "Schezwan🌶️", "ing": "Spicy Chilli Sauce + Vegetables", "price": "₹170"}, {"name": "Hakka", "ing": "Chinese Style Noodles with Vegetables + Sauce", "price": "₹160"}, {"name": "Chowmein", "ing": "Noodles tossed in Soy Sauce + Vegetables", "price": "₹140"}]}, {"name": "Fried Rice", "desc": "Fragrant, smoky & loaded — every spoonful a flavourful surprise", "img": "../menu/assets/food-photos/friedrice.png", "price": "", "variants": [{"name": "Paneer Fried Rice", "ing": "Rice tossed with Paneer + Vegetables", "price": "₹220"}, {"name": "Chilli Garlic Burnt🌶️", "ing": "Burnt Garlic Rice + Chilli", "price": "₹150"}, {"name": "Schezwan🌶️", "ing": "Fried Rice in Spicy Chilli Sauce + Vegetables", "price": "₹140"}, {"name": "Veg Fried Rice", "ing": "Mixed Vegetables Fried Rice + Soy Sauce", "price": "₹130"}]}, {"name": "Pakoda", "desc": "Golden, crispy & addictive — the perfect companion for any day", "img": "../menu/assets/food-photos/pakoda.png", "price": "", "variants": [{"name": "Paneer", "ing": "Paneer Cubes Inside", "price": "₹150"}, {"name": "Gobhi", "ing": "Cauliflower Filling", "price": "₹100"}, {"name": "Onion", "ing": "Cut Onion Filling", "price": "₹90"}, {"name": "Potato", "ing": "Potato Slice Filling", "price": "₹90"}, {"name": "Mix", "ing": "Mix of Onion, Potato, Paneer, Gobhi Pakodas", "price": "₹130"}]}, {"name": "Momo", "desc": "Soft dumplings packed with flavour — served with our fiery chutney", "img": "../menu/assets/food-photos/momo.png", "price": "", "variants": [{"name": "Tandoori Veg", "ing": "Tandoori Veggies, 6 Pcs", "price": "₹150"}, {"name": "Peri-Peri Fried", "ing": "Peri Peri Fried, 6 Pcs", "price": "₹120"}, {"name": "Fried Momos", "ing": "Veggies Fried, 6 Pcs", "price": "₹100"}, {"name": "Steamed Veg", "ing": "Classic Veggies Steamed, 6 Pcs", "price": "₹90"}]}]}, {"group": "Snacks", "category": "Hot Beverages", "sub": "Brewed fresh, served warm", "items": [{"name": "Tea", "desc": "Kadak, freshly brewed — choose your spice or keep it classic", "img": "../menu/assets/beverages/tea.png", "price": "", "variants": [{"name": "Regular", "ing": "Regular Milk Tea", "price": "₹25"}, {"name": "Masala", "ing": "Spiced with Ginger, Cloves, Cinnamon", "price": "₹30"}, {"name": "Black", "ing": "Pure Black Tea without Milk", "price": "₹20"}, {"name": "Lemon", "ing": "Black Tea with Fresh Lemon Juice", "price": "₹25"}]}, {"name": "Coffee", "desc": "Freshly brewed — your morning or any-time pick-me-up, your style", "img": "../menu/assets/beverages/coffee.png", "price": "", "variants": [{"name": "Instant", "ing": "Nescafe / Bru", "price": "₹30"}, {"name": "Filter Coffee", "ing": "Traditional South Indian Filter Coffee", "price": "₹30"}, {"name": "Black", "ing": "Pure Black Coffee without Milk", "price": "₹25"}]}, {"name": "Hot Milk", "desc": "Pure, comforting and warm — a glass of nourishment any time of day", "img": "../menu/assets/beverages/hot-milk.png", "price": "", "variants": [{"name": "Plain", "ing": "Pure Warm Milk With Light Sugar", "price": "₹40"}, {"name": "Turmeric", "ing": "Warm Milk With Light Sugar and Turmeric", "price": "₹40"}, {"name": "Horlicks", "ing": "Warm Milk With Horlicks", "price": "₹50"}]}, {"name": "Hot Chocolate", "desc": "Rich, comforting, indulgent — real chocolate stirred into warm whole milk", "img": "../menu/assets/food-photos/hotmilk.png", "price": "", "variants": [{"name": "Classic", "ing": "Rich chocolate milk, served hot", "price": "₹120"}]}]}, {"group": "Snacks", "category": "Cold Beverages", "sub": "Chilled, refreshing & crafted", "items": [{"name": "Mocktails", "desc": "Fresh, fizzy and fun — our house blends crafted to delight every sip", "img": "../menu/assets/beverages/mocktail.png", "price": "", "variants": [{"name": "Blue Lagoon", "ing": "Blue Curaçao, Lemonade, Mint", "price": "₹100"}, {"name": "Mint Mojito", "ing": "Fresh Mint, Lime, Soda", "price": "₹100"}, {"name": "Flavoured Mojito", "ing": "Choose your flavour: Rose, Strawberry or Mango", "price": "₹120"}, {"name": "Lemonade", "ing": "Fresh Lemon Juice, Sugar, Water", "price": "₹40"}, {"name": "Ice Tea", "ing": "Chilled Black Tea with Lemon", "price": "₹70"}]}, {"name": "Lassi", "desc": "Thick, chilled and soul-satisfying — a classic Indian cooler, fresh to order", "img": "../menu/assets/beverages/lassi.png", "price": "", "variants": [{"name": "Punjabi Lassi", "ing": "Thick & creamy, sweetened, topped with malai", "price": "₹60"}, {"name": "Chocolate Lassi", "ing": "Yogurt Lassi with Chocolate", "price": "₹100"}]}, {"name": "Butter Milk", "desc": "Light, tangy and wonderfully refreshing — the perfect digestive after a meal", "img": "../menu/assets/beverages/butter-milk.png", "price": "", "variants": [{"name": "Masala", "ing": "Spiced with ginger, coriander & chilli", "price": "₹50"}, {"name": "Plain Salted", "ing": "Salted Butter Milk", "price": "₹40"}]}, {"name": "Soft Drink", "desc": "Chilled and bubbly — the classic thirst quencher", "img": "../menu/assets/beverages/soft-drink.png", "price": "", "variants": [{"name": "Regular", "ing": "250ml of Sprite / Coke", "price": "₹25"}, {"name": "Masala / Flavoured", "ing": "Spiced with house masala mix, served chilled", "price": "₹50"}]}, {"name": "Shakes", "desc": "Thick, creamy and indulgent — blended fresh with real ingredients every time", "img": "../menu/assets/beverages/shakes.png", "price": "", "variants": [{"name": "Dry Fruit Shake", "ing": "Choose: Almonds or Cashews, blended with milk & cardamom", "price": "₹150"}, {"name": "Cookie Shake", "ing": "Choose: Crushed Kit Kat or Oreo, blended with milk", "price": "₹140"}, {"name": "Coffee Float", "ing": "Cold coffee + scoop of vanilla ice cream", "price": "₹140"}, {"name": "Cold Coffee", "ing": "Instant coffee, whole milk, blended frothy", "price": "₹100"}, {"name": "Flavoured Shake", "ing": "Choose your flavour: Rose, Vanilla or Chocolate", "price": "₹100"}, {"name": "Fruit Shake", "ing": "Mango, Strawberry, Apple or Pineapple", "price": "₹120"}]}, {"name": "Water", "desc": "Still and chilled. Always available", "img": "../menu/assets/beverages/water.png", "price": "", "variants": [{"name": "Water Bottle", "ing": "1L Bottled Water (Kinley / Bisleri)", "price": "₹20"}]}]}];
+  <!-- Cart FAB -->
+  <button id="cart-fab" aria-label="View cart">
+    🛒 <span id="fab-label">0 items</span>
+    <span class="fab-badge" id="fab-total">₹0</span>
+  </button>
 
-    const menu = document.getElementById('menu');
+  <!-- Cart overlay + sheet -->
+  <div id="cart-overlay"></div>
+  <div id="cart-sheet" role="dialog" aria-label="Your order">
+    <div class="cs-handle"></div>
+    <div class="cs-head">
+      <h3>Your Order</h3>
+      <button class="cs-close" id="cart-close">✕</button>
+    </div>
+    <div id="cart-items"></div>
+    <div class="cs-foot">
+      <div class="cs-total-row">
+        <span>Total</span>
+        <strong id="cs-total-amt">₹0</strong>
+      </div>
+      <div class="cs-field">
+        <label>Table Number / Your Name *</label>
+        <input id="table-input" placeholder="e.g. Table 3 or your name" autocomplete="off" />
+      </div>
+      <div class="cs-field">
+        <label>Special Requests (optional)</label>
+        <textarea id="note-input" placeholder="Less spicy, no onion, extra sauce…"></textarea>
+      </div>
+      <button id="place-order-btn">Place Order</button>
+    </div>
+  </div>
+
+  <!-- Success screen -->
+  <div id="order-success">
+    <div class="si">✅</div>
+    <div class="st">Order Placed!</div>
+    <div class="sm" id="success-msg">Your order has been sent to the kitchen.</div>
+    <button class="sb" id="success-back">Back to Menu</button>
+  </div>
+
+  <!--
+  ═══════════════════════════════════════════════════════
+  FIREBASE SETUP (do this once — takes ~5 min)
+  ───────────────────────────────────────────────────────
+  1. Go to https://console.firebase.google.com
+  2. Create a project (e.g. "unq-kitchen")
+  3. Build → Realtime Database → Create database
+     → choose "Start in test mode"
+  4. Project Settings (gear) → Your apps → Web app → Register
+     Copy the firebaseConfig values below
+  5. Paste the same config into /orders/index.html too
+  ═══════════════════════════════════════════════════════
+  -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script>
+    const FIREBASE_CONFIG = {
+      apiKey:            "YOUR_API_KEY",
+      authDomain:        "YOUR_PROJECT_ID.firebaseapp.com",
+      databaseURL:       "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+      projectId:         "YOUR_PROJECT_ID",
+      storageBucket:     "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId:             "YOUR_APP_ID"
+    };
+    const FB_READY = FIREBASE_CONFIG.apiKey !== "YOUR_API_KEY";
+    if (FB_READY) firebase.initializeApp(FIREBASE_CONFIG);
+
+    // ── Menu Data ──────────────────────────────────────────────────────
+    const SECTIONS = [{"group":"Mains","category":"Starters","sub":"Soups, salads, shared bites & grills","items":[{"name":"Soup","desc":"Warm, comforting and made fresh every time. A gentle, flavourful start to your main course","img":"../menu/assets/mains/manchow-soup.png","price":"","variants":[{"name":"Manchow","ing":"Spicy Indo-Chinese broth with crispy noodle garnish","price":"₹100"},{"name":"Hot & Sour","ing":"Tangy, spicy broth with shredded vegetables and vinegar","price":"₹100"},{"name":"Lemon Coriander","ing":"Light broth with fresh lemon and fragrant coriander","price":"₹100"},{"name":"Cream of Tomato","ing":"Velvety tomato soup with a touch of fresh cream","price":"₹120"},{"name":"Veg Clear","ing":"Delicate, light broth with fresh seasonal vegetables","price":"₹90"},{"name":"Sweet Corn🍬","ing":"Creamy soup with sweet corn kernels and mild spices","price":"₹120"}]},{"name":"Accompaniments","desc":"Light, fresh and wholesome. A clean start or a guilt-free side to any meal","img":"../menu/assets/mains/mix-salad.png","price":"","variants":[{"name":"UNQ Special Salad","ing":"Corn, Chana, Peanuts, Potato, Spices","price":"₹120"},{"name":"Garden Green Salad","ing":"Cucumber, tomato, onion and greens — fresh and crisp","price":"₹60"},{"name":"Onion Salad","ing":"Sliced onions with lemon and spices","price":"₹40"},{"name":"Corn Salad","ing":"Sweet corn with fresh herbs and lemon dressing","price":"₹100"},{"name":"Chana Salad","ing":"Chickpeas with tomato, onion and zesty lemon","price":"₹100"},{"name":"Peanut Masala","ing":"Roasted peanuts with onion, tomato and spices","price":"₹100"},{"name":"Masala Papad","ing":"Crispy papad with diced onion, tomato and chaat spices","price":"₹50"},{"name":"Roasted Papad","ing":"Classic roasted papad — light and crispy","price":"₹30"},{"name":"Fry Papad","ing":"Deep-fried papad — golden, puffy and perfectly crispy","price":"₹35"},{"name":"Fryums","ing":"Crispy fried fryums — crunchy and fun on the side","price":"₹40"},{"name":"Dahi Kuchumber","ing":"Yoghurt with cucumber, tomato and mild spices","price":"₹70"},{"name":"Plain Curd","ing":"Fresh, creamy yoghurt — cool and refreshing","price":"₹40"},{"name":"Boondi Raita","ing":"Soft boondi in chilled, mildly spiced yoghurt","price":"₹60"},{"name":"Mix Raita","ing":"Chilled yoghurt with mixed vegetables and mild spices","price":"₹60"},{"name":"Pineapple Raita🍬","ing":"Creamy yoghurt with sweet pineapple — cool and tangy","price":"₹90"}]},{"name":"Chinese Starter","desc":"Indo-Chinese done right. Bold sauces, high heat and maximum flavour in every bite","img":"../menu/assets/mains/paneer-chilli.png","price":"","variants":[{"name":"Chinese Platter","ing":"Paneer Chilli, Veg Manchurian, Crispy Corn, Noodle/Rice","price":"₹380"},{"name":"Paneer Majestic","ing":"Crispy paneer tossed in tangy, spiced curd-based sauce","price":"₹220"},{"name":"Veg Lollipop","ing":"Crispy spiced vegetable lollipops — fun and flavourful","price":"₹220"},{"name":"Paneer Chilli🌶️","ing":"Crispy paneer in fiery chilli-garlic sauce with peppers","price":"₹200"},{"name":"Soya Chaap Chilli🌶️","ing":"Tender chaap in bold chilli-soy glaze with peppers","price":"₹200"},{"name":"Paneer 65","ing":"South-style crispy paneer in aromatic spiced batter","price":"₹200"},{"name":"Honey Chilli Potato","ing":"Crispy potato strips in sweet and spicy honey chilli glaze","price":"₹180"},{"name":"Mushroom Chilli🌶️","ing":"Button mushrooms in zesty chilli sauce with capsicum","price":"₹180"},{"name":"Gobhi Chilli🌶️","ing":"Crispy cauliflower tossed in spicy chilli sauce","price":"₹160"},{"name":"Corn Chilli🌶️","ing":"Sweet corn in chilli-soy glaze with peppers and onions","price":"₹160"},{"name":"Veg Manchurian","ing":"Crispy vegetable balls in Indo-Chinese Manchurian sauce","price":"₹160"},{"name":"Chana Chilli🌶️","ing":"Chickpeas stir-fried in bold chilli-garlic sauce","price":"₹150"},{"name":"Chinese Bhel","ing":"Crunchy noodle mix with vegetables and tangy sauces","price":"₹150"},{"name":"Crispy Corn","ing":"Fried corn kernels tossed with spices and herbs","price":"₹120"},{"name":"Corn Roast","ing":"Roasted corn kernels with butter and seasoning","price":"₹100"}]},{"name":"Tandoor Starter","desc":"Fresh from the clay oven — charred, smoky and absolutely divine","img":"../menu/assets/mains/chaap-tikka.png","price":"","variants":[{"name":"Tandoori Veg Platter","ing":"5 items, 4 pcs each","price":"₹500"},{"name":"Flavours of Paneer Tikka","ing":"4 Pcs per flavour — Tikka, Hariyali, Malai","price":"₹350"},{"name":"Soya Malai Chaap Tikka🍬","ing":"Chaap in rich cream marinade, gently grilled","price":"₹300"},{"name":"Paneer Malai Tikka","ing":"Creamy paneer in mild malai marinade, delicately grilled","price":"₹280"},{"name":"Soya Hariyali Chaap","ing":"Chaap in fresh herb marinade, grilled fragrant and smoky","price":"₹270"},{"name":"Mushroom Tikka","ing":"Mushrooms in tandoori marinade, charred in clay oven","price":"₹250"},{"name":"Paneer Hariyali Tikka","ing":"Paneer in vibrant mint-coriander marinade, clay-grilled","price":"₹240"},{"name":"Paneer Lehsuni Tikka","ing":"Paneer with roasted garlic marinade, grilled to perfection","price":"₹240"},{"name":"Soya Chaap Tikka","ing":"Soya chaap in tandoori spices, grilled until smoky","price":"₹240"},{"name":"Dahi Kebab","ing":"Melt-in-mouth kebabs of hung curd and mild spices","price":"₹220"},{"name":"Paneer Tikka","ing":"Paneer cubes in tandoori spices, grilled in clay oven","price":"₹220"},{"name":"Veg Kurkure Kebab","ing":"Vegetable kebabs with a crunchy kurkure coating","price":"₹200"},{"name":"Hara Bhara Kebab","ing":"Green patties of spinach, peas and spiced paneer","price":"₹160"}]}]},{"group":"Mains","category":"Curries","sub":"Simmered with love & spice","items":[{"name":"Paneer","desc":"Our star ingredient — fresh cottage cheese cooked your way with aromatic spices and rich gravy","img":"../menu/assets/mains/matar-paneer.png","price":"","variants":[{"name":"UNQ Special Paneer","ing":"Chef's signature paneer — a unique spice blend, our pride","price":"₹350"},{"name":"Tikka Masala🌶️","ing":"Grilled paneer tikka in rich, spiced tomato-cream gravy","price":"₹250"},{"name":"Paneer Korma","ing":"Paneer in mildly spiced, creamy nut-based gravy","price":"₹250"},{"name":"Methi Malai Paneer🍬","ing":"Creamy paneer with fresh fenugreek leaves and mild spices","price":"₹250"},{"name":"Kadhai Paneer🌶️","ing":"Paneer and peppers in bold kadhai masala","price":"₹240"},{"name":"Punjabi Paneer🌶️","ing":"Paneer in bold Punjabi-style gravy with whole spices","price":"₹230"},{"name":"Palak Paneer","ing":"Fresh paneer in smooth, nutritious spinach gravy","price":"₹220"},{"name":"Paneer Do Pyaza","ing":"Paneer with double onions in robust, spiced gravy","price":"₹220"},{"name":"Paneer Butter Masala","ing":"Paneer in velvety, mildly sweet tomato butter gravy","price":"₹220"},{"name":"Paneer Bharta","ing":"Roasted, mashed paneer with spices and vegetables","price":"₹200"},{"name":"Matar Paneer","ing":"Paneer and peas in fragrant tomato-onion gravy","price":"₹180"},{"name":"Paneer Bhurji","ing":"Crumbled paneer scrambled with onions, tomato and spices","price":"₹180"}]},{"name":"Chaap","desc":"The vegetarian crowd-pleaser. Soya chaap in rich, bold gravies that hit just right","img":"../menu/assets/mains/chaap-masala.png","price":"","variants":[{"name":"Chaap Tikka Masala","ing":"Chaap tikka in rich, spiced tomato-cream masala","price":"₹250"},{"name":"Chaap Kadhai🌶️","ing":"Chaap and peppers in rustic kadhai masala","price":"₹220"},{"name":"Chaap Masala🌶️","ing":"Tender chaap in robust, spiced onion-tomato masala","price":"₹200"}]},{"name":"Mushroom","desc":"Earthy and rich — mushrooms take on every spice with grace and depth","img":"../menu/assets/mains/mushroom-masala.png","price":"","variants":[{"name":"Mushroom Kadhai🌶️","ing":"Mushrooms and peppers in bold kadhai masala","price":"₹220"},{"name":"Mushroom Masala🌶️","ing":"Mushrooms in rich, spiced tomato-onion masala","price":"₹200"},{"name":"Mushroom Do Pyaza","ing":"Mushrooms with double onions in robust masala","price":"₹200"}]},{"name":"Kaju","desc":"Creamy, luxurious and rich. Cashews in a velvety masala worth every single bite","img":"../menu/assets/mains/kaju-masala.png","price":"","variants":[{"name":"Kaju Masala🌶️","ing":"Cashews in rich, aromatic masala gravy","price":"₹280"},{"name":"Kaju Paneer","ing":"Cashews and paneer in velvety, mildly spiced gravy","price":"₹280"},{"name":"Kaju Mushroom","ing":"Cashews and mushrooms in creamy, rich masala","price":"₹280"}]},{"name":"Kofta","desc":"Soft, melt-in-your-mouth dumplings swimming in a creamy, aromatic gravy","img":"../menu/assets/mains/malai-kofta.png","price":"","variants":[{"name":"Nargis Kofta","ing":"Large stuffed vegetable dumplings in rich, aromatic gravy","price":"₹350"},{"name":"Malai🍬","ing":"Creamy paneer-cashew dumplings in rich malai gravy","price":"₹300"},{"name":"Veg","ing":"Spiced vegetable dumplings in flavourful aromatic gravy","price":"₹200"}]},{"name":"Corn","desc":"Sweet corn in bold, spiced gravies — an unexpected delight on every plate","img":"../menu/assets/mains/corn-palak.png","price":"","variants":[{"name":"Corn Palak","ing":"Sweet corn in smooth, nutritious spinach gravy","price":"₹220"},{"name":"Corn Masala🌶️","ing":"Sweet corn in bold, spiced tomato masala","price":"₹180"}]},{"name":"Mix","desc":"A celebration of vegetables. Everything good, cooked together in perfect harmony","img":"../menu/assets/mains/mix-veg-dry.png","price":"","variants":[{"name":"Mix Veg","ing":"Seasonal vegetables in rich, aromatic masala","price":"₹180"},{"name":"Mix Veg Dry","ing":"Stir-fried seasonal vegetables with whole spices","price":"₹150"}]},{"name":"UNQ Special Veg🌶️🍬","desc":"Mix of Keema Veg, Corn Masala, Kaju Malai","img":"../menu/assets/mains/seasonal-veg.png","price":"₹300","variants":[]},{"name":"Bhindi","desc":"Okra done the Indian way — whether crispy, masala or do pyaza, it always delivers","img":"../menu/assets/mains/bhindi-do-pyaza.png","price":"","variants":[{"name":"Bhindi Masala🌶️","ing":"Okra in bold, spiced onion-tomato masala","price":"₹180"},{"name":"Bhindi Do Pyaza","ing":"Okra with double onions in robust, fragrant masala","price":"₹180"},{"name":"Kurkure Bhindi🌶️","ing":"Crispy fried okra seasoned with tangy spices","price":"₹160"},{"name":"Bhindi Peanut Fry","ing":"Crispy okra stir-fried with roasted peanuts and spices","price":"₹140"}]},{"name":"Aloo","desc":"The humble potato, elevated. Across several preparations it never gets old","img":"../menu/assets/mains/jeera-alu.png","price":"","variants":[{"name":"Aloo Dam","ing":"Baby potatoes slow-cooked in rich, spiced gravy","price":"₹160"},{"name":"Aloo Matar","ing":"Potatoes and peas in light, fragrant tomato-onion gravy","price":"₹160"},{"name":"Aloo Palak","ing":"Potatoes in smooth, nutritious spinach gravy","price":"₹180"},{"name":"Aloo Gobhi Matar Dry","ing":"Potato, cauliflower and peas dry-fried with whole spices","price":"₹160"},{"name":"Jeera Aloo","ing":"Potatoes tempered with cumin and mild spices","price":"₹120"},{"name":"Bhujiya Aloo","ing":"Potatoes in tangy, spiced Rajasthani-style gravy","price":"₹120"}]},{"name":"Chana","desc":"Rustic, hearty and deeply satisfying. Chickpeas simmered in bold, spiced gravy","img":"../menu/assets/mains/chana-masala.png","price":"","variants":[{"name":"Chana Masala","ing":"Chickpeas in bold, tangy and spiced tomato-onion gravy","price":"₹160"}]},{"name":"Sev","desc":"A Rajasthani-inspired gem. Crunchy sev meets tangy tomato in a harmony of flavours","img":"../menu/assets/mains/sev-tamaatar.png","price":"","variants":[{"name":"Sev Masala","ing":"Crunchy sev in bold, spiced masala gravy","price":"₹150"},{"name":"Sev Tamatar","ing":"Crispy sev with tangy tomatoes in spiced masala","price":"₹130"}]},{"name":"Seasonal","desc":"Chef's pick of the season — a rotating special crafted from the freshest market finds","img":"../menu/assets/mains/seasonal-veg.png","price":"","variants":[{"name":"Lahsuni Palak","ing":"As per availability","price":"₹220"},{"name":"Seasonal Veg/Bhaji","ing":"As per availability","price":"₹150"}]},{"name":"Daal","desc":"The soul of Indian home cooking — slow-simmered, fragrant and always on our menu","img":"../menu/assets/mains/daal.png","price":"","variants":[{"name":"Daal Fry / Jeera","ing":"Lentils tempered with cumin and fresh spices","price":"₹100"},{"name":"Daal Tadka","ing":"Yellow lentils with a sizzling ghee and spice tadka","price":"₹120"},{"name":"Dhaaba Daal","ing":"Rustic slow-cooked lentils in dhaaba style","price":"₹150"},{"name":"Daal Palak","ing":"Lentils cooked with fresh spinach and spices","price":"₹140"},{"name":"Daal Makhani","ing":"Whole black lentils slow-cooked with butter and cream","price":"₹180"}]}]},{"group":"Mains","category":"Breads","sub":"From the tandoor & tawa","items":[{"name":"Roti","desc":"Baked in our clay oven or on the tawa — simple, wholesome and perfect with any curry","img":"../menu/assets/mains/tandoori-roti.png","price":"","variants":[{"name":"Tandoori Roti","ing":"Whole wheat bread baked fresh in clay oven","price":"₹30"},{"name":"Butter Tandoori Roti","ing":"Tandoori roti finished with fresh butter","price":"₹35"},{"name":"Tawa Roti","ing":"Soft whole wheat flatbread cooked on the tawa","price":"₹25"},{"name":"Butter Tawa Roti","ing":"Tawa roti brushed with warm butter","price":"₹30"}]},{"name":"Naan","desc":"Soft and pillowy, straight from the tandoor. A must-have alongside any curry","img":"../menu/assets/mains/butter-naan.png","price":"","variants":[{"name":"Plain Naan","ing":"Soft, fluffy leavened bread baked in tandoor","price":"₹35"},{"name":"Butter Naan","ing":"Tandoori naan finished with a generous spread of butter","price":"₹45"},{"name":"Garlic Naan","ing":"Soft naan topped with minced garlic and butter","price":"₹60"}]},{"name":"Kulcha","desc":"Fluffy, stuffed flatbreads that are a hearty meal in themselves","img":"../menu/assets/mains/kulcha.png","price":"","variants":[{"name":"Aloo Kulcha","ing":"Fluffy bread stuffed with spiced mashed potato","price":"₹50"},{"name":"Paneer Kulcha","ing":"Soft kulcha stuffed with spiced crumbled paneer","price":"₹70"},{"name":"Masala Kulcha","ing":"Fluffy bread stuffed with fragrant spiced vegetables","price":"₹60"}]},{"name":"Paratha","desc":"Layered, buttery and golden. The quintessential North Indian bread, done right","img":"../menu/assets/mains/laccha-paratha.png","price":"","variants":[{"name":"Plain Paratha","ing":"Layered whole wheat flatbread cooked with ghee","price":"₹40"},{"name":"Lachha Paratha","ing":"Multi-layered, flaky whole wheat paratha","price":"₹60"},{"name":"Aloo Paratha","ing":"Stuffed with spiced mashed potato — served with curd","price":"₹60"},{"name":"Paneer Paratha","ing":"Stuffed with spiced crumbled paneer — served with curd","price":"₹80"},{"name":"Methi Paratha","ing":"Whole wheat with fresh fenugreek — served with curd","price":"₹60"},{"name":"Cheese Paratha","ing":"Golden flatbread stuffed with melted cheese — served with curd","price":"₹100"},{"name":"Mix Veg Paratha","ing":"Stuffed with spiced mixed vegetables — served with curd","price":"₹80"}]}]},{"group":"Mains","category":"Rice","sub":"Fragrant, fluffy & perfectly cooked","items":[{"name":"Rice","desc":"Fragrant, fluffy and perfectly cooked. The heart of any wholesome Indian meal","img":"../menu/assets/mains/ghee-rice.png","price":"","variants":[{"name":"Steam Rice","ing":"Fluffy basmati rice — clean, light and ideal alongside any curry","price":"₹100"},{"name":"Jeera Rice","ing":"Basmati rice tempered with cumin — fragrant and light","price":"₹120"},{"name":"Ghee Onion Rice","ing":"Basmati rice with caramelised onions and ghee","price":"₹150"},{"name":"Lemon Rice","ing":"Rice tossed with lemon, mustard seeds and curry leaves","price":"₹150"},{"name":"Tomato Onion Rice","ing":"Basmati rice cooked with tomatoes and onions","price":"₹140"},{"name":"Indian Masala Rice","ing":"Basmati rice with whole spices and fresh herbs","price":"₹180"},{"name":"Curd Rice","ing":"Soft rice mixed with creamy curd and gentle tempering","price":"₹150"}]},{"name":"Khichadi","desc":"Simple comfort food at its finest. Wholesome, one-pot goodness that warms the soul","img":"../menu/assets/mains/daal-khichadi.png","price":"","variants":[{"name":"Daal Khichadi","ing":"Wholesome rice and lentils cooked with mild spices","price":"₹160"},{"name":"Palak Khichadi","ing":"Rice and lentils cooked with fresh spinach and spices","price":"₹180"}]},{"name":"Pulav","desc":"Fragrant rice gently cooked with vegetables and whole spices. Light yet deeply satisfying","img":"../menu/assets/mains/matar-pulao.png","price":"","variants":[{"name":"Veg Pulav","ing":"Fragrant basmati with seasonal vegetables and whole spices","price":"₹160"},{"name":"Matar Pulav","ing":"Basmati rice cooked with green peas and spices","price":"₹180"}]},{"name":"Biryani","desc":"Slow-cooked, aromatic and loaded with flavour. Every grain tells a story of spice and care","img":"../menu/assets/mains/paneer-biryani.png","price":"","variants":[{"name":"Paneer Tikka Biryani","ing":"Grilled paneer tikka layered with fragrant basmati","price":"₹250"},{"name":"Chaap Biryani","ing":"Basmati rice layered with marinated soya chaap","price":"₹250"},{"name":"Mushroom Biryani","ing":"Fragrant basmati with earthy mushrooms and whole spices","price":"₹250"},{"name":"Paneer Biryani","ing":"Aromatic basmati layered with spiced paneer","price":"₹220"},{"name":"Veg Biryani","ing":"Basmati rice slow-cooked with vegetables and whole spices","price":"₹200"}]}]},{"group":"Mains","category":"Combos","sub":"Complete, wholesome meals","items":[{"name":"Thali","desc":"A complete, wholesome meal — choose your style and let us take care of the rest","img":"../menu/assets/mains/veg-thali.png","price":"","variants":[{"name":"Regular","ing":"Daal Fry, Veg, Steam Rice, Roti × 2, Dry Papad, Salad, Pickle","price":"₹200"},{"name":"Special","ing":"Daal Tadka, Veg, Paneer Veg, Biryani Rice, Plain Paratha × 2, Dry Papad, Salad, Pickle, Raita, Sweet","price":"₹300"}]}]},{"group":"Mains","category":"Dessert","sub":"The perfect sweet note to end every meal","items":[{"name":"Gulab Jamun","desc":"Soft, syrup-soaked rounds of pure joy. The perfect sweet note to end every meal","img":"../menu/assets/mains/gulaab-jaamun.png","price":"","variants":[{"name":"2 Pcs","ing":"Golden milk dumplings soaked in rose-flavoured sugar syrup","price":"₹50"},{"name":"1 Pc With Ice Cream","ing":"Warm gulab jamun paired with cool creamy ice cream","price":"₹70"}]},{"name":"Ice Cream","desc":"Cool, creamy and delightfully simple. A scoop of happiness to close your meal","img":"../menu/assets/mains/ice-cream.png","price":"","variants":[{"name":"Single Scoop","ing":"A generous scoop of creamy, cool ice cream","price":"₹40"}]}]},{"group":"Mains","category":"Beverages","sub":"Cool, refreshing & ready to go","items":[{"name":"Water Bottle 1L","desc":"Chilled 1-litre mineral water","img":"../menu/assets/mains/water.png","price":"₹20","variants":[]}]},{"group":"Snacks","category":"Snacks","sub":"Small plates & bites","items":[{"name":"Pizza","desc":"In-house dough, fresh ingredients, soft and cheesy","img":"../menu/assets/food-photos/pizza.png","price":"","variants":[{"name":"Margherita","ing":"Classic Cheese Pizza","price":"₹200"},{"name":"Veg Garden","ing":"Mixed Vegetables + Cheese","price":"₹230"},{"name":"Corn","ing":"Corn + Cheese","price":"₹230"},{"name":"Paneer","ing":"Paneer + Onion + Cheese","price":"₹250"},{"name":"Mushroom","ing":"Mushrooms + Garlic + Cheese","price":"₹250"},{"name":"Chaap","ing":"Soya Chaap + Onion + Cheese","price":"₹250"},{"name":"Hawaiian","ing":"Pineapple + Onion + Cheese","price":"₹260"},{"name":"Garlic Bread","ing":"Toasted with garlic butter","price":"₹100"}]},{"name":"Grilled Sandwich","desc":"Bread slices filled with fresh ingredients & grilled to perfection","img":"../menu/assets/food-photos/sandwich.png","price":"","variants":[{"name":"Veg","ing":"Onion + Tomato + Cucumber","price":"₹100"},{"name":"Veg Club","ing":"Vegetables + Aloo Tikki","price":"₹120"},{"name":"Paneer","ing":"Paneer + Onion + Tomato + Cheese","price":"₹120"},{"name":"Cheese Corn","ing":"Sweet Corn + Cheese + Mayo","price":"₹100"},{"name":"Bombay","ing":"Vegetables + Potato Slice + Green Chutney","price":"₹120"}]},{"name":"Pasta","desc":"Italian favourite — sauced, savoured, with an Indian twist too","img":"../menu/assets/food-photos/pasta.png","price":"","variants":[{"name":"Red","ing":"Tomato-Based Sauce + Vegetables","price":"₹150"},{"name":"White","ing":"Cream-Based Sauce + Paneer","price":"₹170"},{"name":"Indian Masala","ing":"Spiced Indian Flavours + Vegetables","price":"₹150"}]},{"name":"French Fries","desc":"Golden, crispy & irresistible — seasoned and served piping hot","img":"../menu/assets/food-photos/fries.png","price":"","variants":[{"name":"Classic","ing":"Classic Salted","price":"₹90"},{"name":"Peri-Peri","ing":"Spiced With Peri-Peri Seasoning","price":"₹110"},{"name":"Cheesy","ing":"Loaded With Melted Cheese","price":"₹150"}]},{"name":"Nuggets","desc":"Crunchy outside, soft inside — little bites packed with flavour","img":"../menu/assets/food-photos/nuggets.png","price":"","variants":[{"name":"Veg","ing":"Mixed vegetable nuggets","price":"₹150"},{"name":"Cheese","ing":"Cheese Filled Nuggets","price":"₹180"}]},{"name":"Dosa","desc":"Born in the south, loved by India — our favourite is the special masala","img":"../menu/assets/food-photos/dosa.png","price":"","variants":[{"name":"UNQ Special Masala","ing":"Potato + Paneer + Veggies + Butter","price":"₹180"},{"name":"Cheese Corn Masala","ing":"Cheese + Corn + Potato Mix Masala","price":"₹180"},{"name":"Paneer Masala","ing":"Paneer + Potato Mix Masala","price":"₹160"},{"name":"Ghee Roast Masala","ing":"Crispy Roast in Pure Ghee + Special Masala","price":"₹150"},{"name":"Butter Masala","ing":"Butter Potato Masala","price":"₹150"},{"name":"Onion Masala","ing":"Classic Potato Masala + Onion Filling","price":"₹120"},{"name":"Classic Masala","ing":"Classic Potato Masala Filling","price":"₹120"},{"name":"Plain Dosa","ing":"Served plain with Sambhar & Chutney","price":"₹100"}]},{"name":"Uttapam","desc":"Some call it bread dosa — crispy outside, soft inside","img":"../menu/assets/food-photos/uttapam.png","price":"","variants":[{"name":"Plain","ing":"Plain Uttapam Served with Sambhar and Chutney","price":"₹100"},{"name":"Veg Uttapam","ing":"Onion + Tomato + Chillies + Coriander","price":"₹120"},{"name":"UNQ Special Masala","ing":"Potato + Paneer + Veggies + Butter","price":"₹180"},{"name":"Ghee Roast Masala","ing":"Crispy Roast in Pure Ghee + Special Masala","price":"₹150"},{"name":"Butter Masala","ing":"Butter Potato Masala","price":"₹150"}]},{"name":"Idli","desc":"Soft, pillowy & wholesome — South India's gift to breakfast","img":"../menu/assets/food-photos/idli.png","price":"","variants":[{"name":"Classic","ing":"2 Pcs Steam Idli with Sambhar & Chutney","price":"₹50"},{"name":"Fried","ing":"Crispy Fried Idli Served with Chutney","price":"₹70"},{"name":"Ghee Podi","ing":"2 Pcs Idli + Pure Ghee + South Indian Podi","price":"₹80"}]},{"name":"North Indian Breakfast","desc":"North Indian Classics — a wholesome morning treat","img":"../menu/assets/food-photos/poha.png","price":"","variants":[{"name":"Poha","ing":"Poha with Onion + Potato + Peas + Peanuts","price":"₹40"},{"name":"Upma","ing":"Upma with Onion + Potato + Peas + Peanuts","price":"₹50"},{"name":"Chhole Bhature","ing":"2 Pcs Bhature + Chhole + Onion + Pickle","price":"₹130"},{"name":"Poori Sabji","ing":"2 Pcs Poori + Aloo Sabji + Onion + Pickle","price":"₹120"}]},{"name":"Noodles","desc":"Wok-tossed, saucy & slurp-worthy — street-style noodles with an Indian punch","img":"../menu/assets/food-photos/noodles.png","price":"","variants":[{"name":"Chilli Garlic Burnt🌶️","ing":"Burnt Garlic Noodles + Chilli + Soy Sauce","price":"₹180"},{"name":"Schezwan🌶️","ing":"Spicy Chilli Sauce + Vegetables","price":"₹170"},{"name":"Hakka","ing":"Chinese Style Noodles with Vegetables + Sauce","price":"₹160"},{"name":"Chowmein","ing":"Noodles tossed in Soy Sauce + Vegetables","price":"₹140"}]},{"name":"Fried Rice","desc":"Fragrant, smoky & loaded — every spoonful a flavourful surprise","img":"../menu/assets/food-photos/friedrice.png","price":"","variants":[{"name":"Paneer Fried Rice","ing":"Rice tossed with Paneer + Vegetables","price":"₹220"},{"name":"Chilli Garlic Burnt🌶️","ing":"Burnt Garlic Rice + Chilli","price":"₹150"},{"name":"Schezwan🌶️","ing":"Fried Rice in Spicy Chilli Sauce + Vegetables","price":"₹140"},{"name":"Veg Fried Rice","ing":"Mixed Vegetables Fried Rice + Soy Sauce","price":"₹130"}]},{"name":"Pakoda","desc":"Golden, crispy & addictive — the perfect companion for any day","img":"../menu/assets/food-photos/pakoda.png","price":"","variants":[{"name":"Paneer","ing":"Paneer Cubes Inside","price":"₹150"},{"name":"Gobhi","ing":"Cauliflower Filling","price":"₹100"},{"name":"Onion","ing":"Cut Onion Filling","price":"₹90"},{"name":"Potato","ing":"Potato Slice Filling","price":"₹90"},{"name":"Mix","ing":"Mix of Onion, Potato, Paneer, Gobhi Pakodas","price":"₹130"}]},{"name":"Momo","desc":"Soft dumplings packed with flavour — served with our fiery chutney","img":"../menu/assets/food-photos/momo.png","price":"","variants":[{"name":"Tandoori Veg","ing":"Tandoori Veggies, 6 Pcs","price":"₹150"},{"name":"Peri-Peri Fried","ing":"Peri Peri Fried, 6 Pcs","price":"₹120"},{"name":"Fried Momos","ing":"Veggies Fried, 6 Pcs","price":"₹100"},{"name":"Steamed Veg","ing":"Classic Veggies Steamed, 6 Pcs","price":"₹90"}]}]},{"group":"Snacks","category":"Hot Beverages","sub":"Brewed fresh, served warm","items":[{"name":"Tea","desc":"Kadak, freshly brewed — choose your spice or keep it classic","img":"../menu/assets/beverages/tea.png","price":"","variants":[{"name":"Regular","ing":"Regular Milk Tea","price":"₹25"},{"name":"Masala","ing":"Spiced with Ginger, Cloves, Cinnamon","price":"₹30"},{"name":"Black","ing":"Pure Black Tea without Milk","price":"₹20"},{"name":"Lemon","ing":"Black Tea with Fresh Lemon Juice","price":"₹25"}]},{"name":"Coffee","desc":"Freshly brewed — your morning or any-time pick-me-up, your style","img":"../menu/assets/beverages/coffee.png","price":"","variants":[{"name":"Instant","ing":"Nescafe / Bru","price":"₹30"},{"name":"Filter Coffee","ing":"Traditional South Indian Filter Coffee","price":"₹30"},{"name":"Black","ing":"Pure Black Coffee without Milk","price":"₹25"}]},{"name":"Hot Milk","desc":"Pure, comforting and warm — a glass of nourishment any time of day","img":"../menu/assets/beverages/hot-milk.png","price":"","variants":[{"name":"Plain","ing":"Pure Warm Milk With Light Sugar","price":"₹40"},{"name":"Turmeric","ing":"Warm Milk With Light Sugar and Turmeric","price":"₹40"},{"name":"Horlicks","ing":"Warm Milk With Horlicks","price":"₹50"}]},{"name":"Hot Chocolate","desc":"Rich, comforting, indulgent — real chocolate stirred into warm whole milk","img":"../menu/assets/food-photos/hotmilk.png","price":"","variants":[{"name":"Classic","ing":"Rich chocolate milk, served hot","price":"₹120"}]}]},{"group":"Snacks","category":"Cold Beverages","sub":"Chilled, refreshing & crafted","items":[{"name":"Mocktails","desc":"Fresh, fizzy and fun — our house blends crafted to delight every sip","img":"../menu/assets/beverages/mocktail.png","price":"","variants":[{"name":"Blue Lagoon","ing":"Blue Curaçao, Lemonade, Mint","price":"₹100"},{"name":"Mint Mojito","ing":"Fresh Mint, Lime, Soda","price":"₹100"},{"name":"Flavoured Mojito","ing":"Choose your flavour: Rose, Strawberry or Mango","price":"₹120"},{"name":"Lemonade","ing":"Fresh Lemon Juice, Sugar, Water","price":"₹40"},{"name":"Ice Tea","ing":"Chilled Black Tea with Lemon","price":"₹70"}]},{"name":"Lassi","desc":"Thick, chilled and soul-satisfying — a classic Indian cooler, fresh to order","img":"../menu/assets/beverages/lassi.png","price":"","variants":[{"name":"Punjabi Lassi","ing":"Thick & creamy, sweetened, topped with malai","price":"₹60"},{"name":"Chocolate Lassi","ing":"Yogurt Lassi with Chocolate","price":"₹100"}]},{"name":"Butter Milk","desc":"Light, tangy and wonderfully refreshing — the perfect digestive after a meal","img":"../menu/assets/beverages/butter-milk.png","price":"","variants":[{"name":"Masala","ing":"Spiced with ginger, coriander & chilli","price":"₹50"},{"name":"Plain Salted","ing":"Salted Butter Milk","price":"₹40"}]},{"name":"Soft Drink","desc":"Chilled and bubbly — the classic thirst quencher","img":"../menu/assets/beverages/soft-drink.png","price":"","variants":[{"name":"Regular","ing":"250ml of Sprite / Coke","price":"₹25"},{"name":"Masala / Flavoured","ing":"Spiced with house masala mix, served chilled","price":"₹50"}]},{"name":"Shakes","desc":"Thick, creamy and indulgent — blended fresh with real ingredients every time","img":"../menu/assets/beverages/shakes.png","price":"","variants":[{"name":"Dry Fruit Shake","ing":"Choose: Almonds or Cashews, blended with milk & cardamom","price":"₹150"},{"name":"Cookie Shake","ing":"Choose: Crushed Kit Kat or Oreo, blended with milk","price":"₹140"},{"name":"Coffee Float","ing":"Cold coffee + scoop of vanilla ice cream","price":"₹140"},{"name":"Cold Coffee","ing":"Instant coffee, whole milk, blended frothy","price":"₹100"},{"name":"Flavoured Shake","ing":"Choose your flavour: Rose, Vanilla or Chocolate","price":"₹100"},{"name":"Fruit Shake","ing":"Mango, Strawberry, Apple or Pineapple","price":"₹120"}]},{"name":"Water","desc":"Still and chilled. Always available","img":"../menu/assets/beverages/water.png","price":"","variants":[{"name":"Water Bottle","ing":"1L Bottled Water (Kinley / Bisleri)","price":"₹20"}]}]}];
+
+    // ── Cart State ────────────────────────────────────────────────────────
+    let cart = {};
+    let varMap = {};
+    let vIdx = 0;
+    let cartSheetOpen = false;
+    const urlTable = new URLSearchParams(location.search).get('t') || '';
+
+    function pn(p){ return parseInt((p||'').replace(/[^0-9]/g,'')) || 0; }
+    function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    // ── Build Menu ────────────────────────────────────────────────────────
+    const menuEl = document.getElementById('menu');
     const cats = document.getElementById('cats');
     let lastGroup = '';
+
     SECTIONS.forEach((sec, i) => {
       const id = 'cat-' + i;
-      // group heading (Mains / Snacks) when it changes
       if (sec.group !== lastGroup) {
         const gh = document.createElement('div');
         gh.className = 'group-head';
         gh.textContent = sec.group;
-        menu.appendChild(gh);
+        menuEl.appendChild(gh);
         lastGroup = sec.group;
       }
       const block = document.createElement('section');
@@ -123,46 +266,194 @@
       block.innerHTML = '<h2 class="cat-title">' + esc(sec.category) + '</h2>' +
                         (sec.sub ? '<p class="cat-sub">' + esc(sec.sub) + '</p>' : '');
       sec.items.forEach(it => block.appendChild(renderItem(it)));
-      menu.appendChild(block);
+      menuEl.appendChild(block);
 
       const btn = document.createElement('button');
       btn.textContent = sec.category;
       btn.dataset.target = id;
-      btn.addEventListener('click', () => {
-        document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
-      });
+      btn.addEventListener('click', () => document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'}));
       cats.appendChild(btn);
     });
 
     function renderItem(it){
       const el = document.createElement('div');
       el.className = 'item';
-      el.dataset.search = (it.name + ' ' + it.desc + ' ' + it.variants.map(v=>v.name+' '+v.ing).join(' ')).toLowerCase();
+      el.dataset.search = (it.name+' '+it.desc+' '+it.variants.map(v=>v.name+' '+v.ing).join(' ')).toLowerCase();
       const thumb = it.img ? '<div class="thumb"><img src="'+it.img+'" alt="'+esc(it.name)+'" loading="lazy"></div>' : '';
       let body = '<div class="body"><div class="name">'+esc(it.name)+'</div>';
       if (it.desc) body += '<div class="desc">'+esc(it.desc)+'</div>';
       if (it.variants.length){
         body += '<div class="variants">';
         it.variants.forEach(v => {
-          body += '<div class="variant" data-item="'+esc(it.name)+'" data-variant="'+esc(v.name)+'" data-price="'+esc(v.price)+'">' +
+          const k = 'v'+(vIdx++);
+          varMap[k] = {name: it.name, variant: v.name, price: v.price, priceNum: pn(v.price)};
+          body += '<div class="variant" data-ck="'+k+'">' +
             '<div class="vmain"><div class="vname">'+esc(v.name)+'</div>' +
             (v.ing ? '<div class="ving">'+esc(v.ing)+'</div>' : '') + '</div>' +
             '<div class="vprice">'+esc(v.price)+'</div>' +
-            '<div class="order-slot"></div></div>';
+            '<div class="order-slot"><div class="qc"><button class="qp">+</button></div></div></div>';
         });
         body += '</div>';
       } else if (it.price){
-        body += '<div class="variant" data-item="'+esc(it.name)+'" data-price="'+esc(it.price)+'" style="margin-top:8px;">' +
-                '<span class="single-price">'+esc(it.price)+'</span><div class="order-slot"></div></div>';
+        const k = 'v'+(vIdx++);
+        varMap[k] = {name: it.name, variant: '', price: it.price, priceNum: pn(it.price)};
+        body += '<div class="variant" data-ck="'+k+'" style="margin-top:8px;">' +
+                '<div class="vmain"></div>' +
+                '<span class="single-price">'+esc(it.price)+'</span>' +
+                '<div class="order-slot"><div class="qc"><button class="qp">+</button></div></div></div>';
       }
       body += '</div>';
       el.innerHTML = thumb + body;
       return el;
     }
 
-    function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+    // ── +/- Event Delegation ──────────────────────────────────────────────
+    document.addEventListener('click', e => {
+      const plus  = e.target.closest('.qp');
+      const minus = e.target.closest('.qm');
+      if (!plus && !minus) return;
+      const varEl = (plus||minus).closest('[data-ck]');
+      if (!varEl) return;
+      const k = varEl.dataset.ck;
+      if (plus){ if(!cart[k]) cart[k]={...varMap[k],qty:0}; cart[k].qty++; }
+      else { if(cart[k]){ cart[k].qty--; if(cart[k].qty<=0) delete cart[k]; } }
+      updateCtrl(varEl);
+      updateFAB();
+      if (cartSheetOpen) renderCartSheet();
+    });
 
-    // Search filter
+    function updateCtrl(varEl){
+      const k = varEl.dataset.ck;
+      const qty = cart[k]?.qty || 0;
+      const slot = varEl.querySelector('.order-slot');
+      if (!slot) return;
+      slot.innerHTML = qty > 0
+        ? '<div class="qc"><button class="qm">−</button><span class="qn">'+qty+'</span><button class="qp">+</button></div>'
+        : '<div class="qc"><button class="qp">+</button></div>';
+    }
+
+    // ── FAB ───────────────────────────────────────────────────────────────
+    const fab = document.getElementById('cart-fab');
+    const fabLabel = document.getElementById('fab-label');
+    const fabTotal = document.getElementById('fab-total');
+
+    function cartTotal(){ return Object.values(cart).reduce((s,v)=>s+v.priceNum*v.qty,0); }
+    function cartCount(){ return Object.values(cart).reduce((s,v)=>s+v.qty,0); }
+
+    function updateFAB(){
+      const n = cartCount();
+      fab.classList.toggle('visible', n>0);
+      fabLabel.textContent = n===1 ? '1 item' : n+' items';
+      fabTotal.textContent = '₹'+cartTotal();
+    }
+
+    fab.addEventListener('click', openCart);
+
+    // ── Cart Sheet ────────────────────────────────────────────────────────
+    const overlay   = document.getElementById('cart-overlay');
+    const sheet     = document.getElementById('cart-sheet');
+    const cartItems = document.getElementById('cart-items');
+    const csTotal   = document.getElementById('cs-total-amt');
+    const tableInput = document.getElementById('table-input');
+    const noteInput  = document.getElementById('note-input');
+    const placeBtn   = document.getElementById('place-order-btn');
+
+    if (urlTable) tableInput.value = urlTable;
+
+    function openCart(){ cartSheetOpen=true; renderCartSheet(); sheet.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+    function closeCart(){ cartSheetOpen=false; sheet.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow=''; }
+
+    document.getElementById('cart-close').addEventListener('click', closeCart);
+    overlay.addEventListener('click', closeCart);
+
+    function renderCartSheet(){
+      csTotal.textContent = '₹'+cartTotal();
+      const items = Object.entries(cart);
+      if (!items.length){
+        cartItems.innerHTML = '<p style="padding:24px 0;text-align:center;color:var(--muted);font-size:.9rem;">Your cart is empty — add items from the menu.</p>';
+        return;
+      }
+      cartItems.innerHTML = items.map(([k,v]) =>
+        '<div class="ci-row">' +
+        '<div class="ci-info">' +
+          '<div class="ci-name">'+esc(v.name)+(v.variant?' <span style="font-weight:400;color:var(--muted)">— '+esc(v.variant)+'</span>':'')+'</div>' +
+          '<div class="ci-price">'+esc(v.price)+' × '+v.qty+' = ₹'+(v.priceNum*v.qty)+'</div>' +
+        '</div>' +
+        '<div class="ci-ctrl">' +
+          '<button class="ci-btn ci-minus" data-sm="'+k+'">−</button>' +
+          '<span class="ci-qty">'+v.qty+'</span>' +
+          '<button class="ci-btn ci-plus" data-sp="'+k+'">+</button>' +
+        '</div></div>'
+      ).join('');
+    }
+
+    cartItems.addEventListener('click', e => {
+      const sm = e.target.dataset.sm;
+      const sp = e.target.dataset.sp;
+      const k = sm || sp;
+      if (!k) return;
+      if (sm){ cart[k].qty--; if(cart[k].qty<=0) delete cart[k]; }
+      else    { cart[k].qty++; }
+      const varEl = document.querySelector('[data-ck="'+k+'"]');
+      if (varEl) updateCtrl(varEl);
+      updateFAB();
+      renderCartSheet();
+    });
+
+    // ── Place Order ───────────────────────────────────────────────────────
+    placeBtn.addEventListener('click', async () => {
+      const table = tableInput.value.trim();
+      if (!table){ tableInput.focus(); tableInput.style.borderColor='#c0392b'; return; }
+      tableInput.style.borderColor = '';
+      placeBtn.disabled = true;
+      placeBtn.textContent = 'Sending…';
+
+      const order = {
+        table,
+        items: Object.values(cart).map(v=>({name:v.name,variant:v.variant,price:v.price,qty:v.qty})),
+        total: cartTotal(),
+        note: noteInput.value.trim(),
+        status: 'pending',
+        timestamp: Date.now()
+      };
+
+      try {
+        if (FB_READY) await firebase.database().ref('orders').push(order);
+        closeCart();
+        clearCart();
+        showSuccess(table);
+      } catch(err){
+        console.error(err);
+        placeBtn.disabled = false;
+        placeBtn.textContent = 'Place Order';
+        alert('Could not send order. Please call the staff for help.');
+      }
+    });
+
+    function clearCart(){
+      Object.keys(cart).forEach(k => {
+        cart[k] = {...cart[k], qty:0};
+        const varEl = document.querySelector('[data-ck="'+k+'"]');
+        if (varEl) updateCtrl(varEl);
+      });
+      cart = {};
+      updateFAB();
+    }
+
+    function showSuccess(table){
+      document.getElementById('success-msg').textContent =
+        'Order sent for '+table+'. Our team has been notified and will start preparing right away!';
+      document.getElementById('order-success').classList.add('show');
+    }
+
+    document.getElementById('success-back').addEventListener('click', () => {
+      document.getElementById('order-success').classList.remove('show');
+      placeBtn.disabled = false;
+      placeBtn.textContent = 'Place Order';
+      noteInput.value = '';
+    });
+
+    // ── Search ────────────────────────────────────────────────────────────
     const search = document.getElementById('search');
     const noresult = document.getElementById('noresult');
     search.addEventListener('input', () => {
@@ -173,25 +464,23 @@
         it.style.display = match ? '' : 'none';
         if (match) any = true;
       });
-      // hide empty category blocks + their group/nav
       document.querySelectorAll('.cat-block').forEach(b => {
-        const visible = [...b.querySelectorAll('.item')].some(i => i.style.display !== 'none');
-        b.style.display = visible ? '' : 'none';
+        b.style.display = [...b.querySelectorAll('.item')].some(i=>i.style.display!=='none') ? '' : 'none';
       });
       cats.style.display = q ? 'none' : '';
       document.querySelectorAll('.group-head').forEach(g => g.style.display = q ? 'none' : '');
       noresult.style.display = any ? 'none' : 'block';
     });
 
-    // Highlight active category on scroll
-    const blocks = [...document.querySelectorAll('.cat-block')];
+    // ── Active category on scroll ─────────────────────────────────────────
+    const blocks  = [...document.querySelectorAll('.cat-block')];
     const navBtns = [...cats.querySelectorAll('button')];
-    const obs = new IntersectionObserver((entries) => {
+    const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting){
-          navBtns.forEach(b => b.classList.toggle('active', b.dataset.target === e.target.id));
+          navBtns.forEach(b => b.classList.toggle('active', b.dataset.target===e.target.id));
           const active = cats.querySelector('button.active');
-          if (active) active.scrollIntoView({inline:'center', block:'nearest', behavior:'smooth'});
+          if (active) active.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});
         }
       });
     }, {rootMargin:'-110px 0px -70% 0px'});

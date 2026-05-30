@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNQ Kitchen — Orders</title>
+  <meta name="theme-color" content="#5C6330" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --olive:#7A8434; --olive-dark:#5C6330; --ink:#14160C; --gold:#c9a96a;
+      --paper:#ffffff; --paper-2:#faf9f3; --line:rgba(122,132,52,0.18);
+      --muted:rgba(20,22,12,0.55); --red:#c0392b; --green:#2E7D32;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Inter',sans-serif;background:var(--paper-2);color:var(--ink);min-height:100vh;}
+
+    /* Header */
+    header{background:var(--olive-dark);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:10;}
+    header h1{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.05em;}
+    header .sub{font-size:.72rem;opacity:.75;margin-top:1px;}
+    #conn-dot{width:10px;height:10px;border-radius:50%;background:#aaa;flex-shrink:0;}
+    #conn-dot.live{background:#4caf50;}
+
+    /* Filters */
+    .filters{display:flex;gap:8px;padding:14px 16px;background:var(--paper);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;}
+    .filters::-webkit-scrollbar{display:none;}
+    .fil-btn{flex:0 0 auto;border:1px solid var(--line);background:var(--paper-2);color:var(--olive-dark);border-radius:999px;padding:7px 16px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;}
+    .fil-btn.active{background:var(--olive);color:#fff;border-color:var(--olive);}
+
+    /* Badge */
+    .badge{display:inline-block;background:var(--red);color:#fff;border-radius:999px;padding:1px 7px;font-size:.72rem;font-weight:700;margin-left:5px;vertical-align:middle;}
+
+    /* Orders list */
+    #orders-container{max-width:800px;margin:0 auto;padding:16px;}
+    .empty{text-align:center;color:var(--muted);padding:60px 20px;font-size:.95rem;}
+    .empty .icon{font-size:2.5rem;margin-bottom:12px;}
+
+    /* Order card */
+    .order-card{background:var(--paper);border-radius:14px;border:1px solid var(--line);margin-bottom:12px;overflow:hidden;transition:opacity .3s;}
+    .order-card.done{opacity:.55;}
+    .order-card .card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px 10px;}
+    .card-table{font-size:1.15rem;font-weight:700;font-family:'Cormorant Garamond',serif;color:var(--olive-dark);}
+    .card-time{font-size:.74rem;color:var(--muted);margin-top:2px;}
+    .card-total{font-weight:700;font-size:1rem;color:var(--ink);text-align:right;white-space:nowrap;}
+    .status-pill{display:inline-block;border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:3px;}
+    .status-pending{background:#fff3cd;color:#856404;}
+    .status-done{background:#d4edda;color:#155724;}
+
+    .card-items{padding:0 16px 10px;border-bottom:1px solid var(--line);}
+    .ci{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0;font-size:.88rem;}
+    .ci .iname{flex:1;min-width:0;}
+    .ci .iname .ivar{color:var(--muted);font-size:.8rem;}
+    .ci .iprice{color:var(--muted);font-size:.82rem;white-space:nowrap;margin-left:8px;}
+
+    .card-note{padding:8px 16px;font-size:.82rem;color:var(--muted);background:#fffbf0;font-style:italic;}
+    .card-foot{padding:10px 16px;display:flex;gap:8px;justify-content:flex-end;}
+    .btn-done{background:var(--green);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:.85rem;font-weight:700;cursor:pointer;font-family:inherit;}
+    .btn-undo{background:#e0e0e0;color:var(--ink);border:none;border-radius:8px;padding:9px 18px;font-size:.85rem;font-weight:700;cursor:pointer;font-family:inherit;}
+    .btn-del{background:none;border:1px solid #ddd;color:var(--muted);border-radius:8px;padding:9px 14px;font-size:.85rem;cursor:pointer;font-family:inherit;}
+
+    /* Setup notice */
+    #setup-notice{background:#fff3cd;border:1px solid #ffc107;border-radius:10px;padding:16px 18px;margin:16px;font-size:.88rem;line-height:1.6;color:#555;}
+    #setup-notice code{background:rgba(0,0,0,.07);padding:1px 5px;border-radius:4px;font-size:.85em;}
+    #setup-notice.hidden{display:none;}
+
+    /* Sound toggle */
+    #sound-btn{background:rgba(255,255,255,.15);border:none;color:#fff;border-radius:8px;padding:6px 12px;font-size:.8rem;cursor:pointer;font-family:inherit;white-space:nowrap;}
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>UNQ Kitchen — Orders</h1>
+      <div class="sub" id="conn-label">Connecting…</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button id="sound-btn">🔔 Sound On</button>
+      <div id="conn-dot"></div>
+    </div>
+  </header>
+
+  <div class="filters">
+    <button class="fil-btn active" data-filter="pending">⏳ Pending <span class="badge" id="pending-count">0</span></button>
+    <button class="fil-btn" data-filter="all">All Orders</button>
+    <button class="fil-btn" data-filter="done">✅ Done</button>
+  </div>
+
+  <div id="setup-notice">
+    <strong>⚙️ Firebase not configured yet.</strong> Orders will show here once you set up Firebase.<br>
+    Open <code>orders/index.html</code> and <code>digital-menu/index.html</code> and replace <code>YOUR_API_KEY</code> etc. with your Firebase project values.<br>
+    See the comment block in those files for step-by-step instructions.
+  </div>
+
+  <div id="orders-container">
+    <div class="empty" id="empty-state">
+      <div class="icon">🍽️</div>
+      <div>No orders yet. They'll appear here in real-time.</div>
+    </div>
+  </div>
+
+  <!--
+  ═══════════════════════════════════════════════════════
+  FIREBASE SETUP — paste your config here (same as digital-menu)
+  ═══════════════════════════════════════════════════════
+  -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script>
+    const FIREBASE_CONFIG = {
+      apiKey:            "YOUR_API_KEY",
+      authDomain:        "YOUR_PROJECT_ID.firebaseapp.com",
+      databaseURL:       "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+      projectId:         "YOUR_PROJECT_ID",
+      storageBucket:     "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId:             "YOUR_APP_ID"
+    };
+
+    const FB_READY = FIREBASE_CONFIG.apiKey !== "YOUR_API_KEY";
+    const setupNotice = document.getElementById('setup-notice');
+    if (FB_READY) {
+      setupNotice.classList.add('hidden');
+      firebase.initializeApp(FIREBASE_CONFIG);
+      startListening();
+    }
+
+    // ── State ─────────────────────────────────────────────────────────────
+    let orders = {};   // id -> order object
+    let filter = 'pending';
+    let soundOn = true;
+    const connDot   = document.getElementById('conn-dot');
+    const connLabel = document.getElementById('conn-label');
+
+    // ── Sound ─────────────────────────────────────────────────────────────
+    let audioCtx;
+    function playChime(){
+      if (!soundOn) return;
+      try {
+        audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+        [523, 659, 784].forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.frequency.value = freq;
+          osc.type = 'sine';
+          gain.gain.setValueAtTime(0.3, audioCtx.currentTime + i*0.15);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i*0.15 + 0.4);
+          osc.start(audioCtx.currentTime + i*0.15);
+          osc.stop(audioCtx.currentTime + i*0.15 + 0.5);
+        });
+      } catch(e){}
+    }
+
+    document.getElementById('sound-btn').addEventListener('click', function(){
+      soundOn = !soundOn;
+      this.textContent = soundOn ? '🔔 Sound On' : '🔕 Sound Off';
+      // Unlock AudioContext on first interaction
+      if (soundOn && audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    });
+
+    // ── Firebase Listener ─────────────────────────────────────────────────
+    function startListening(){
+      const db = firebase.database();
+      const ref = db.ref('orders');
+
+      // Connection state
+      db.ref('.info/connected').on('value', snap => {
+        const live = snap.val();
+        connDot.className = live ? 'live' : '';
+        connLabel.textContent = live ? 'Live · updates in real-time' : 'Reconnecting…';
+      });
+
+      let firstLoad = true;
+      ref.on('value', snap => {
+        const data = snap.val() || {};
+        const isFirst = firstLoad;
+        firstLoad = false;
+
+        // Detect new pending orders (not on first full load)
+        if (!isFirst){
+          Object.entries(data).forEach(([id, o]) => {
+            if (!orders[id] && o.status === 'pending') playChime();
+          });
+        }
+        orders = data;
+        renderOrders();
+      });
+    }
+
+    // ── Render ────────────────────────────────────────────────────────────
+    function renderOrders(){
+      const container = document.getElementById('orders-container');
+      const emptyEl   = document.getElementById('empty-state');
+      const pendingCount = document.getElementById('pending-count');
+
+      const all = Object.entries(orders).sort((a,b) => b[1].timestamp - a[1].timestamp);
+      const pending = all.filter(([,o]) => o.status === 'pending');
+      pendingCount.textContent = pending.length;
+
+      let filtered;
+      if (filter === 'pending') filtered = pending;
+      else if (filter === 'done') filtered = all.filter(([,o]) => o.status === 'done');
+      else filtered = all;
+
+      if (!filtered.length){
+        emptyEl.style.display = '';
+        // Remove all cards
+        [...container.querySelectorAll('.order-card')].forEach(c => c.remove());
+        return;
+      }
+      emptyEl.style.display = 'none';
+
+      // Build new cards
+      const existing = new Set([...container.querySelectorAll('.order-card')].map(c => c.dataset.id));
+      const shown    = new Set(filtered.map(([id]) => id));
+
+      // Remove cards no longer in filter
+      [...container.querySelectorAll('.order-card')].forEach(c => {
+        if (!shown.has(c.dataset.id)) c.remove();
+      });
+
+      // Add/update cards
+      filtered.forEach(([id, o], idx) => {
+        let card = container.querySelector('[data-id="'+id+'"]');
+        if (!card){
+          card = document.createElement('div');
+          card.className = 'order-card';
+          card.dataset.id = id;
+          container.insertBefore(card, container.children[idx] || null);
+        }
+        card.className = 'order-card' + (o.status==='done' ? ' done' : '');
+        card.innerHTML = buildCard(id, o);
+      });
+    }
+
+    function buildCard(id, o){
+      const time = new Date(o.timestamp).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true});
+      const dateStr = new Date(o.timestamp).toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+      const itemsHtml = o.items.map(it =>
+        '<div class="ci">' +
+          '<div class="iname">'+esc(it.name)+(it.variant?' <span class="ivar">— '+esc(it.variant)+'</span>':'')+'</div>' +
+          '<div class="iprice">×'+it.qty+' &nbsp; '+esc(it.price)+'</div>' +
+        '</div>'
+      ).join('');
+
+      const statusClass = o.status === 'done' ? 'status-done' : 'status-pending';
+      const statusText  = o.status === 'done' ? '✅ Done' : '⏳ Pending';
+
+      return `
+        <div class="card-head">
+          <div>
+            <div class="card-table">${esc(o.table)}</div>
+            <div class="card-time">${time} · ${dateStr}</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="card-total">₹${o.total}</div>
+            <span class="status-pill ${statusClass}">${statusText}</span>
+          </div>
+        </div>
+        <div class="card-items">${itemsHtml}</div>
+        ${o.note ? '<div class="card-note">📝 '+esc(o.note)+'</div>' : ''}
+        <div class="card-foot">
+          <button class="btn-del" onclick="deleteOrder('${id}')">Delete</button>
+          ${o.status==='pending'
+            ? '<button class="btn-done" onclick="markDone(\''+id+'\')">Mark as Done ✓</button>'
+            : '<button class="btn-undo" onclick="markPending(\''+id+'\')">Reopen</button>'}
+        </div>`;
+    }
+
+    function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+    // ── Actions ───────────────────────────────────────────────────────────
+    function markDone(id){
+      if (!FB_READY) return;
+      firebase.database().ref('orders/'+id+'/status').set('done');
+    }
+    function markPending(id){
+      if (!FB_READY) return;
+      firebase.database().ref('orders/'+id+'/status').set('pending');
+    }
+    function deleteOrder(id){
+      if (!confirm('Delete this order?')) return;
+      if (!FB_READY) return;
+      firebase.database().ref('orders/'+id).remove();
+    }
+
+    // ── Filter buttons ────────────────────────────────────────────────────
+    document.querySelectorAll('.fil-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.fil-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filter = btn.dataset.filter;
+        renderOrders();
+      });
+    });
+  </script>
+</body>
+</html>
