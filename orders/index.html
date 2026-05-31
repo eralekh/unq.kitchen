@@ -1,299 +1,539 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UNQ Kitchen — Orders</title>
-  <meta name="theme-color" content="#5C6330" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>UNQ Kitchen — Staff</title>
+  <meta name="theme-color" content="#5C6330"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root{
-      --olive:#7A8434; --olive-dark:#5C6330; --ink:#14160C; --gold:#c9a96a;
-      --paper:#ffffff; --paper-2:#faf9f3; --line:rgba(122,132,52,0.18);
-      --muted:rgba(20,22,12,0.55); --red:#c0392b; --green:#2E7D32;
+      --olive:#7A8434;--olive-dark:#5C6330;--ink:#14160C;--gold:#c9a96a;
+      --paper:#fff;--paper-2:#faf9f3;--line:rgba(122,132,52,0.18);
+      --muted:rgba(20,22,12,0.55);--red:#c0392b;--green:#2E7D32;
     }
-    *{margin:0;padding:0;box-sizing:border-box;}
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
     body{font-family:'Inter',sans-serif;background:var(--paper-2);color:var(--ink);min-height:100vh;}
 
-    /* Header */
-    header{background:var(--olive-dark);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:10;}
-    header h1{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.05em;}
-    header .sub{font-size:.72rem;opacity:.75;margin-top:1px;}
-    #conn-dot{width:10px;height:10px;border-radius:50%;background:#aaa;flex-shrink:0;}
+    /* ── Header ── */
+    header{background:var(--olive-dark);color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:50;}
+    header h1{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;letter-spacing:.04em;}
+    .hdr-right{display:flex;align-items:center;gap:10px;}
+    #conn-dot{width:9px;height:9px;border-radius:50%;background:#aaa;}
     #conn-dot.live{background:#4caf50;}
+    #conn-label{font-size:.72rem;opacity:.8;}
 
-    /* Filters */
-    .filters{display:flex;gap:8px;padding:14px 16px;background:var(--paper);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;}
-    .filters::-webkit-scrollbar{display:none;}
-    .fil-btn{flex:0 0 auto;border:1px solid var(--line);background:var(--paper-2);color:var(--olive-dark);border-radius:999px;padding:7px 16px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;}
-    .fil-btn.active{background:var(--olive);color:#fff;border-color:var(--olive);}
+    /* ── Tabs ── */
+    .tabs{display:flex;background:var(--paper);border-bottom:2px solid var(--line);position:sticky;top:56px;z-index:40;}
+    .tab{flex:1;padding:12px 8px;text-align:center;font-size:.8rem;font-weight:600;color:var(--muted);border:none;background:none;cursor:pointer;font-family:inherit;border-bottom:2px solid transparent;margin-bottom:-2px;}
+    .tab.active{color:var(--olive-dark);border-bottom-color:var(--olive);}
+    .tab .tab-badge{display:inline-block;background:var(--red);color:#fff;border-radius:999px;padding:1px 6px;font-size:.65rem;font-weight:700;margin-left:4px;vertical-align:middle;}
 
-    /* Badge */
-    .badge{display:inline-block;background:var(--red);color:#fff;border-radius:999px;padding:1px 7px;font-size:.72rem;font-weight:700;margin-left:5px;vertical-align:middle;}
+    /* ── Panel ── */
+    .panel{display:none;padding:14px;max-width:800px;margin:0 auto;}
+    .panel.active{display:block;}
 
-    /* Orders list */
-    #orders-container{max-width:800px;margin:0 auto;padding:16px;}
-    .empty{text-align:center;color:var(--muted);padding:60px 20px;font-size:.95rem;}
-    .empty .icon{font-size:2.5rem;margin-bottom:12px;}
+    /* ── Order cards ── */
+    .table-group{background:var(--paper);border-radius:14px;border:1px solid var(--line);margin-bottom:14px;overflow:hidden;}
+    .tg-head{background:var(--olive-dark);color:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+    .tg-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;}
+    .tg-count{font-size:.75rem;opacity:.8;}
+    .tg-total{font-weight:700;font-size:1rem;}
+    .tg-noted-btn{background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:8px;padding:7px 14px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;}
+    .tg-noted-btn:active{background:rgba(255,255,255,.35);}
 
-    /* Order card */
-    .order-card{background:var(--paper);border-radius:14px;border:1px solid var(--line);margin-bottom:12px;overflow:hidden;transition:opacity .3s;}
-    .order-card.done{opacity:.55;}
-    .order-card .card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:14px 16px 10px;}
-    .card-table{font-size:1.15rem;font-weight:700;font-family:'Cormorant Garamond',serif;color:var(--olive-dark);}
-    .card-time{font-size:.74rem;color:var(--muted);margin-top:2px;}
-    .card-total{font-weight:700;font-size:1rem;color:var(--ink);text-align:right;white-space:nowrap;}
-    .status-pill{display:inline-block;border-radius:999px;padding:3px 10px;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:3px;}
-    .status-pending{background:#fff3cd;color:#856404;}
-    .status-done{background:#d4edda;color:#155724;}
+    .order-card{border-bottom:1px solid var(--line);padding:12px 16px;}
+    .order-card:last-child{border-bottom:none;}
+    .oc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;}
+    .oc-customer{font-weight:700;font-size:.95rem;}
+    .oc-time{font-size:.72rem;color:var(--muted);}
+    .oc-phone{font-size:.72rem;color:var(--muted);}
+    .oc-btns{display:flex;gap:6px;flex-shrink:0;}
+    .btn-edit{background:var(--paper-2);border:1px solid var(--line);color:var(--ink);border-radius:7px;padding:6px 12px;font-size:.78rem;cursor:pointer;font-family:inherit;}
+    .btn-edit:hover{background:#eee;}
+    .oc-items{font-size:.85rem;}
+    .oc-item-row{display:flex;justify-content:space-between;gap:8px;padding:3px 0;}
+    .oc-item-row .oir-name{flex:1;color:var(--ink);}
+    .oc-item-row .oir-var{color:var(--muted);font-size:.78rem;}
+    .oc-item-row .oir-p{color:var(--muted);white-space:nowrap;}
+    .oc-note{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:4px;}
+    .oc-subtotal{font-size:.83rem;font-weight:700;color:var(--olive-dark);text-align:right;margin-top:6px;}
+    .no-orders{text-align:center;color:var(--muted);padding:50px 20px;}
+    .no-orders .ni{font-size:2.5rem;margin-bottom:10px;}
 
-    .card-items{padding:0 16px 10px;border-bottom:1px solid var(--line);}
-    .ci{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0;font-size:.88rem;}
-    .ci .iname{flex:1;min-width:0;}
-    .ci .iname .ivar{color:var(--muted);font-size:.8rem;}
-    .ci .iprice{color:var(--muted);font-size:.82rem;white-space:nowrap;margin-left:8px;}
+    /* ── Edit sheet ── */
+    #edit-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;}
+    #edit-overlay.open{display:block;}
+    #edit-sheet{position:fixed;bottom:0;left:0;right:0;max-height:90vh;background:var(--paper);border-radius:20px 20px 0 0;z-index:201;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
+    #edit-sheet.open{transform:translateY(0);}
+    .es-handle{width:40px;height:4px;background:#ddd;border-radius:2px;margin:12px auto 6px;}
+    .es-head{display:flex;align-items:center;justify-content:space-between;padding:10px 18px 12px;border-bottom:1px solid var(--line);}
+    .es-head h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;color:var(--olive-dark);}
+    .es-close{background:none;border:none;font-size:1.3rem;color:var(--muted);cursor:pointer;padding:4px 8px;}
+    #edit-items{flex:1;overflow-y:auto;padding:8px 18px;}
+    .ei-row{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);}
+    .ei-row:last-child{border:none;}
+    .ei-info{flex:1;min-width:0;}
+    .ei-name{font-size:.9rem;font-weight:600;}
+    .ei-var{font-size:.76rem;color:var(--muted);}
+    .ei-note-input{width:100%;border:1px solid var(--line);border-radius:6px;padding:5px 8px;font-size:.78rem;font-family:inherit;background:var(--paper-2);margin-top:5px;}
+    .ei-note-input:focus{outline:none;border-color:var(--olive);}
+    .ei-ctrl{display:flex;align-items:center;gap:5px;}
+    .ei-minus,.ei-plus{width:26px;height:26px;border-radius:50%;border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;font-weight:600;}
+    .ei-plus{background:var(--olive);color:#fff;}
+    .ei-minus{background:#e8e8e2;color:var(--ink);}
+    .ei-qty{min-width:20px;text-align:center;font-weight:700;font-size:.9rem;}
+    .ei-del{background:none;border:none;color:#c0392b;cursor:pointer;font-size:1.1rem;padding:4px;}
+    .es-add-section{padding:12px 18px;border-top:1px solid var(--line);}
+    .es-add-title{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+    .es-add-row{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+    .es-add-row input{border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.85rem;font-family:inherit;background:var(--paper-2);}
+    .es-add-row input:focus{outline:none;border-color:var(--olive);}
+    .ai-name{flex:2;min-width:120px;}
+    .ai-var{flex:1.5;min-width:80px;}
+    .ai-price{flex:1;min-width:60px;}
+    .ai-qty{flex:.6;min-width:40px;}
+    .btn-add-item{background:var(--olive);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer;white-space:nowrap;}
+    .es-foot{padding:12px 18px 24px;border-top:1px solid var(--line);display:flex;gap:10px;}
+    .btn-save-edit{flex:1;padding:13px;border:none;border-radius:10px;background:var(--olive);color:#fff;font-family:inherit;font-size:.95rem;font-weight:700;cursor:pointer;}
+    .btn-cancel-edit{padding:13px 18px;border:1.5px solid var(--line);border-radius:10px;background:none;font-family:inherit;font-size:.88rem;cursor:pointer;}
 
-    .card-note{padding:8px 16px;font-size:.82rem;color:var(--muted);background:#fffbf0;font-style:italic;}
-    .card-foot{padding:10px 16px;display:flex;gap:8px;justify-content:flex-end;}
-    .btn-done{background:var(--green);color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:.85rem;font-weight:700;cursor:pointer;font-family:inherit;}
-    .btn-undo{background:#e0e0e0;color:var(--ink);border:none;border-radius:8px;padding:9px 18px;font-size:.85rem;font-weight:700;cursor:pointer;font-family:inherit;}
-    .btn-del{background:none;border:1px solid #ddd;color:var(--muted);border-radius:8px;padding:9px 14px;font-size:.85rem;cursor:pointer;font-family:inherit;}
+    /* ── Table Keys panel ── */
+    .keys-toolbar{display:flex;gap:10px;margin-bottom:14px;align-items:center;flex-wrap:wrap;}
+    .btn-add-table{background:var(--olive);color:#fff;border:none;border-radius:8px;padding:9px 16px;font-family:inherit;font-size:.85rem;font-weight:600;cursor:pointer;}
+    .keys-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;}
+    .key-card{background:var(--paper);border-radius:12px;border:1px solid var(--line);padding:14px;}
+    .key-card-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--olive-dark);margin-bottom:10px;}
+    .key-display{display:flex;align-items:center;gap:8px;}
+    .key-val{flex:1;border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.92rem;font-family:'Courier New',monospace;font-weight:700;background:var(--paper-2);letter-spacing:.08em;}
+    .key-val:focus{outline:none;border-color:var(--olive);}
+    .btn-save-key{background:var(--olive);color:#fff;border:none;border-radius:8px;padding:8px 12px;font-size:.8rem;font-weight:600;cursor:pointer;font-family:inherit;}
+    .btn-del-table{background:none;border:none;color:#ccc;cursor:pointer;font-size:1rem;padding:4px;margin-top:8px;float:right;}
+    .btn-del-table:hover{color:var(--red);}
 
-    /* Setup notice */
-    #setup-notice{background:#fff3cd;border:1px solid #ffc107;border-radius:10px;padding:16px 18px;margin:16px;font-size:.88rem;line-height:1.6;color:#555;}
-    #setup-notice code{background:rgba(0,0,0,.07);padding:1px 5px;border-radius:4px;font-size:.85em;}
-    #setup-notice.hidden{display:none;}
-
-    /* Sound toggle */
-    #sound-btn{background:rgba(255,255,255,.15);border:none;color:#fff;border-radius:8px;padding:6px 12px;font-size:.8rem;cursor:pointer;font-family:inherit;white-space:nowrap;}
+    /* ── Export panel ── */
+    .export-card{background:var(--paper);border-radius:14px;border:1px solid var(--line);padding:20px;margin-bottom:14px;}
+    .export-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--olive-dark);margin-bottom:6px;}
+    .export-card p{font-size:.83rem;color:var(--muted);margin-bottom:14px;line-height:1.5;}
+    .btn-export{background:var(--olive-dark);color:#fff;border:none;border-radius:10px;padding:12px 24px;font-family:inherit;font-size:.92rem;font-weight:600;cursor:pointer;}
+    .btn-export:disabled{background:#aaa;cursor:not-allowed;}
+    .export-note{font-size:.75rem;color:var(--muted);margin-top:8px;}
   </style>
 </head>
 <body>
-  <header>
-    <div>
-      <h1>UNQ Kitchen — Orders</h1>
-      <div class="sub" id="conn-label">Connecting…</div>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <button id="sound-btn">🔔 Sound On</button>
-      <div id="conn-dot"></div>
-    </div>
-  </header>
 
-  <div class="filters">
-    <button class="fil-btn active" data-filter="pending">⏳ Pending <span class="badge" id="pending-count">0</span></button>
-    <button class="fil-btn" data-filter="all">All Orders</button>
-    <button class="fil-btn" data-filter="done">✅ Done</button>
+<header>
+  <h1>UNQ Kitchen · Staff</h1>
+  <div class="hdr-right">
+    <span id="conn-label">Connecting…</span>
+    <div id="conn-dot"></div>
   </div>
+</header>
 
-  <div id="setup-notice">
-    <strong>⚙️ Firebase not configured yet.</strong> Orders will show here once you set up Firebase.<br>
-    Open <code>orders/index.html</code> and <code>digital-menu/index.html</code> and replace <code>YOUR_API_KEY</code> etc. with your Firebase project values.<br>
-    See the comment block in those files for step-by-step instructions.
+<div class="tabs">
+  <button class="tab active" data-tab="orders">Orders <span class="tab-badge" id="orders-badge">0</span></button>
+  <button class="tab" data-tab="keys">Table Keys</button>
+  <button class="tab" data-tab="export">Export</button>
+</div>
+
+<!-- Active Orders -->
+<div class="panel active" id="panel-orders">
+  <div id="orders-list">
+    <div class="no-orders"><div class="ni">🍽️</div>No active orders.</div>
   </div>
+</div>
 
-  <div id="orders-container">
-    <div class="empty" id="empty-state">
-      <div class="icon">🍽️</div>
-      <div>No orders yet. They'll appear here in real-time.</div>
+<!-- Table Keys -->
+<div class="panel" id="panel-keys">
+  <div class="keys-toolbar">
+    <div style="flex:1;font-size:.85rem;color:var(--muted);">Share the key with seated customers. Change it for each new group.</div>
+    <button class="btn-add-table" id="btn-add-table">+ Add Table</button>
+  </div>
+  <div class="keys-grid" id="keys-grid"></div>
+</div>
+
+<!-- Export -->
+<div class="panel" id="panel-export">
+  <div class="export-card">
+    <h3>📊 Export All Orders to Excel</h3>
+    <p>Downloads a .xlsx file with three sheets:<br>
+    <strong>Order Detail</strong> · every order with table, customer, items, total, time<br>
+    <strong>Daily Summary</strong> · revenue and order count per day<br>
+    <strong>Item Sales</strong> · which items sold most, total revenue per item</p>
+    <button class="btn-export" id="btn-export">Download Excel</button>
+    <div class="export-note" id="export-note"></div>
+  </div>
+</div>
+
+<!-- Edit sheet -->
+<div id="edit-overlay"></div>
+<div id="edit-sheet">
+  <div class="es-handle"></div>
+  <div class="es-head">
+    <h3 id="edit-title">Edit Order</h3>
+    <button class="es-close" id="edit-close">✕</button>
+  </div>
+  <div id="edit-items"></div>
+  <div class="es-add-section">
+    <div class="es-add-title">Add Item</div>
+    <div class="es-add-row">
+      <input class="ai-name" id="ai-name" placeholder="Item name" type="text"/>
+      <input class="ai-var"  id="ai-var"  placeholder="Variant (opt)" type="text"/>
+      <input class="ai-price" id="ai-price" placeholder="₹ Price" type="text"/>
+      <input class="ai-qty"  id="ai-qty"  placeholder="Qty" type="number" min="1" value="1"/>
     </div>
+    <button class="btn-add-item" id="btn-add-item-row">+ Add</button>
   </div>
+  <div class="es-foot">
+    <button class="btn-cancel-edit" id="btn-cancel-edit">Cancel</button>
+    <button class="btn-save-edit" id="btn-save-edit">Save Changes</button>
+  </div>
+</div>
 
-  <!--
-  ═══════════════════════════════════════════════════════
-  FIREBASE SETUP — paste your config here (same as digital-menu)
-  ═══════════════════════════════════════════════════════
-  -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-  <script>
-    const FIREBASE_CONFIG = {
-      apiKey:            "YOUR_API_KEY",
-      authDomain:        "YOUR_PROJECT_ID.firebaseapp.com",
-      databaseURL:       "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
-      projectId:         "YOUR_PROJECT_ID",
-      storageBucket:     "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId:             "YOUR_APP_ID"
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+  const firebaseConfig = {
+      apiKey: "AIzaSyC6hukEXa4sj4C6PUWYMr3HjPctW2POUhQ",
+      authDomain: "unq-kitchen.firebaseapp.com",
+      databaseURL: "https://unq-kitchen-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "unq-kitchen",
+      storageBucket: "unq-kitchen.firebasestorage.app",
+      messagingSenderId: "227459477940",
+      appId: "1:227459477940:web:63430e3a5787f4c09102e1",
+      measurementId: "G-5YWN0N7E70"
     };
+  const FB_READY = (typeof firebaseConfig!=='undefined') && firebaseConfig.apiKey && firebaseConfig.apiKey!=='YOUR_API_KEY';
+  if(FB_READY){ try{firebase.initializeApp(firebaseConfig);}catch(e){} }
 
-    const FB_READY = FIREBASE_CONFIG.apiKey !== "YOUR_API_KEY";
-    const setupNotice = document.getElementById('setup-notice');
-    if (FB_READY) {
-      setupNotice.classList.add('hidden');
-      firebase.initializeApp(FIREBASE_CONFIG);
-      startListening();
+  function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function pn(p){return parseInt((p||'').replace(/[^0-9]/g,''))||0;}
+  function fmtTime(ts){
+    const d=new Date(ts);
+    return d.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true})+' · '+d.toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+  }
+
+  // ── Tabs ──────────────────────────────────────────────────────────────
+  document.querySelectorAll('.tab').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ── Firebase connection ───────────────────────────────────────────────
+  if(FB_READY){
+    firebase.database().ref('.info/connected').on('value',snap=>{
+      const live=snap.val();
+      document.getElementById('conn-dot').className=live?'live':'';
+      document.getElementById('conn-label').textContent=live?'Live':'Reconnecting…';
+    });
+  }
+
+  // ── Active orders ─────────────────────────────────────────────────────
+  let allOrders = {};
+
+  if(FB_READY){
+    firebase.database().ref('orders').on('value',snap=>{
+      allOrders = snap.val()||{};
+      renderOrders();
+    });
+  }
+
+  function renderOrders(){
+    const active = Object.entries(allOrders)
+      .map(([id,o])=>(({...o,id})))
+      .filter(o=>o.status==='active')
+      .sort((a,b)=>a.submittedAt-b.submittedAt);
+
+    document.getElementById('orders-badge').textContent = active.length;
+
+    const list = document.getElementById('orders-list');
+    if(!active.length){
+      list.innerHTML='<div class="no-orders"><div class="ni">🍽️</div>No active orders.</div>';
+      return;
     }
 
-    // ── State ─────────────────────────────────────────────────────────────
-    let orders = {};   // id -> order object
-    let filter = 'pending';
-    let soundOn = true;
-    const connDot   = document.getElementById('conn-dot');
-    const connLabel = document.getElementById('conn-label');
-
-    // ── Sound ─────────────────────────────────────────────────────────────
-    let audioCtx;
-    function playChime(){
-      if (!soundOn) return;
-      try {
-        audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
-        [523, 659, 784].forEach((freq, i) => {
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
-          osc.connect(gain); gain.connect(audioCtx.destination);
-          osc.frequency.value = freq;
-          osc.type = 'sine';
-          gain.gain.setValueAtTime(0.3, audioCtx.currentTime + i*0.15);
-          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i*0.15 + 0.4);
-          osc.start(audioCtx.currentTime + i*0.15);
-          osc.stop(audioCtx.currentTime + i*0.15 + 0.5);
-        });
-      } catch(e){}
-    }
-
-    document.getElementById('sound-btn').addEventListener('click', function(){
-      soundOn = !soundOn;
-      this.textContent = soundOn ? '🔔 Sound On' : '🔕 Sound Off';
-      // Unlock AudioContext on first interaction
-      if (soundOn && audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    // Group by tableName
+    const byTable = {};
+    active.forEach(o=>{
+      if(!byTable[o.tableName]) byTable[o.tableName]={orders:[],total:0};
+      byTable[o.tableName].orders.push(o);
+      byTable[o.tableName].total += o.subtotal||0;
     });
 
-    // ── Firebase Listener ─────────────────────────────────────────────────
-    function startListening(){
-      const db = firebase.database();
-      const ref = db.ref('orders');
+    list.innerHTML = Object.entries(byTable).map(([table,grp])=>{
+      const orderCards = grp.orders.map(o=>{
+        const itemsHtml = o.items.map(it=>
+          '<div class="oc-item-row">'+
+            '<div class="oir-name">'+esc(it.name)+(it.variant?' <span class="oir-var">— '+esc(it.variant)+'</span>':'')+'</div>'+
+            '<div class="oir-p">×'+it.qty+' &nbsp;'+esc(it.price)+'</div>'+
+          '</div>'
+        ).join('');
+        return '<div class="order-card">'+
+          '<div class="oc-head">'+
+            '<div>'+
+              '<div class="oc-customer">'+esc(o.customerName)+'</div>'+
+              '<div class="oc-time">'+fmtTime(o.submittedAt)+'</div>'+
+              (o.customerPhone?'<div class="oc-phone">'+esc(o.customerPhone)+'</div>':'')+'</div>'+
+            '<div class="oc-btns"><button class="btn-edit" data-oid="'+o.id+'">✏️ Edit</button></div>'+
+          '</div>'+
+          '<div class="oc-items">'+itemsHtml+'</div>'+
+          (o.note?'<div class="oc-note">📝 '+esc(o.note)+'</div>':'')+
+          '<div class="oc-subtotal">Subtotal: ₹'+o.subtotal+'</div>'+
+        '</div>';
+      }).join('');
 
-      // Connection state
-      db.ref('.info/connected').on('value', snap => {
-        const live = snap.val();
-        connDot.className = live ? 'live' : '';
-        connLabel.textContent = live ? 'Live · updates in real-time' : 'Reconnecting…';
-      });
+      const ids = grp.orders.map(o=>o.id).join(',');
+      return '<div class="table-group">'+
+        '<div class="tg-head">'+
+          '<div><div class="tg-title">'+esc(table)+'</div><div class="tg-count">'+grp.orders.length+' order'+(grp.orders.length>1?'s':'')+'</div></div>'+
+          '<div style="display:flex;align-items:center;gap:10px;">'+
+            '<div class="tg-total">₹'+grp.total+'</div>'+
+            '<button class="tg-noted-btn" data-ids="'+ids+'">✓ Noted in PetPooja</button>'+
+          '</div>'+
+        '</div>'+
+        orderCards+
+      '</div>';
+    }).join('');
+  }
 
-      let firstLoad = true;
-      ref.on('value', snap => {
-        const data = snap.val() || {};
-        const isFirst = firstLoad;
-        firstLoad = false;
+  // ── Button event delegation (avoids inline onclick quoting issues) ──────
+  document.addEventListener('click', e => {
+    const editBtn = e.target.closest('.btn-edit');
+    if(editBtn && editBtn.dataset.oid) { openEdit(editBtn.dataset.oid); return; }
+    const notedBtn = e.target.closest('.tg-noted-btn');
+    if(notedBtn && notedBtn.dataset.ids) { markTableNoted(notedBtn.dataset.ids); return; }
+    const delBtn = e.target.closest('.btn-del-table');
+    if(delBtn && delBtn.dataset.tname) { deleteTable(delBtn.dataset.tname); return; }
+    const saveKeyBtn = e.target.closest('.btn-save-key');
+    if(saveKeyBtn && saveKeyBtn.dataset.tname) { saveTableKey(saveKeyBtn.dataset.tname); return; }
+  });
 
-        // Detect new pending orders (not on first full load)
-        if (!isFirst){
-          Object.entries(data).forEach(([id, o]) => {
-            if (!orders[id] && o.status === 'pending') playChime();
-          });
-        }
-        orders = data;
-        renderOrders();
-      });
-    }
 
-    // ── Render ────────────────────────────────────────────────────────────
-    function renderOrders(){
-      const container = document.getElementById('orders-container');
-      const emptyEl   = document.getElementById('empty-state');
-      const pendingCount = document.getElementById('pending-count');
+  function markTableNoted(idsStr){
+    if(!FB_READY)return;
+    const ids = idsStr.split(',');
+    const updates = {};
+    ids.forEach(id=>{ updates['orders/'+id+'/status']='noted'; });
+    firebase.database().ref().update(updates);
+  }
 
-      const all = Object.entries(orders).sort((a,b) => b[1].timestamp - a[1].timestamp);
-      const pending = all.filter(([,o]) => o.status === 'pending');
-      pendingCount.textContent = pending.length;
+  // ── Edit sheet ────────────────────────────────────────────────────────
+  let editOrderId = null;
+  let editItems = [];
 
-      let filtered;
-      if (filter === 'pending') filtered = pending;
-      else if (filter === 'done') filtered = all.filter(([,o]) => o.status === 'done');
-      else filtered = all;
+  function openEdit(orderId){
+    editOrderId = orderId;
+    const o = allOrders[orderId];
+    if(!o) return;
+    editItems = JSON.parse(JSON.stringify(o.items)); // deep copy
+    document.getElementById('edit-title').textContent = 'Edit · '+o.customerName;
+    renderEditItems();
+    document.getElementById('edit-overlay').classList.add('open');
+    document.getElementById('edit-sheet').classList.add('open');
+    document.body.style.overflow='hidden';
+    // clear add-item fields
+    ['ai-name','ai-var','ai-price'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('ai-qty').value='1';
+  }
 
-      if (!filtered.length){
-        emptyEl.style.display = '';
-        // Remove all cards
-        [...container.querySelectorAll('.order-card')].forEach(c => c.remove());
+  function closeEdit(){
+    document.getElementById('edit-overlay').classList.remove('open');
+    document.getElementById('edit-sheet').classList.remove('open');
+    document.body.style.overflow='';
+    editOrderId=null; editItems=[];
+  }
+
+  document.getElementById('edit-close').addEventListener('click',closeEdit);
+  document.getElementById('btn-cancel-edit').addEventListener('click',closeEdit);
+  document.getElementById('edit-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('edit-overlay'))closeEdit();});
+
+  function renderEditItems(){
+    const container = document.getElementById('edit-items');
+    if(!editItems.length){container.innerHTML='<p style="padding:16px;color:var(--muted);font-size:.88rem;">No items — add some below.</p>';return;}
+    container.innerHTML = editItems.map((it,idx)=>
+      '<div class="ei-row">'+
+        '<div class="ei-info">'+
+          '<div class="ei-name">'+esc(it.name)+'</div>'+
+          (it.variant?'<div class="ei-var">'+esc(it.variant)+'</div>':'')+
+          '<input class="ei-note-input" placeholder="Kitchen note (e.g. no onion)" value="'+esc(it.note||'')+'" onchange="editItems['+idx+'].note=this.value"/>'+
+        '</div>'+
+        '<div class="ei-ctrl">'+
+          '<button class="ei-minus" onclick="changeEditQty('+idx+',-1)">−</button>'+
+          '<span class="ei-qty">'+it.qty+'</span>'+
+          '<button class="ei-plus" onclick="changeEditQty('+idx+',1)">+</button>'+
+          '<button class="ei-del" onclick="removeEditItem('+idx+')" title="Remove">✕</button>'+
+        '</div>'+
+      '</div>'
+    ).join('');
+  }
+
+  function changeEditQty(idx,delta){
+    editItems[idx].qty = Math.max(1,editItems[idx].qty+delta);
+    renderEditItems();
+  }
+
+  function removeEditItem(idx){
+    editItems.splice(idx,1);
+    renderEditItems();
+  }
+
+  document.getElementById('btn-add-item-row').addEventListener('click',()=>{
+    const name  = document.getElementById('ai-name').value.trim();
+    const vari  = document.getElementById('ai-var').value.trim();
+    const price = document.getElementById('ai-price').value.trim();
+    const qty   = parseInt(document.getElementById('ai-qty').value)||1;
+    if(!name||!price){alert('Enter item name and price.');return;}
+    const p = price.startsWith('₹')?price:'₹'+price;
+    editItems.push({name,variant:vari,price:p,qty,priceNum:pn(p)});
+    renderEditItems();
+    ['ai-name','ai-var','ai-price'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('ai-qty').value='1';
+    document.getElementById('ai-name').focus();
+  });
+
+  document.getElementById('btn-save-edit').addEventListener('click',async ()=>{
+    if(!FB_READY||!editOrderId)return;
+    const newSubtotal = editItems.reduce((s,it)=>s+(pn(it.price)*it.qty),0);
+    try{
+      await firebase.database().ref('orders/'+editOrderId).update({items:editItems,subtotal:newSubtotal});
+      closeEdit();
+    }catch(e){alert('Save failed. Try again.');}
+  });
+
+  // ── Table Keys panel ──────────────────────────────────────────────────
+  let tableKeys = {};
+
+  function loadTableKeys(){
+    if(!FB_READY)return;
+    firebase.database().ref('table_keys').on('value',snap=>{
+      tableKeys = snap.val()||{};
+      // Initialize T1–T20 if empty
+      if(!Object.keys(tableKeys).length){
+        const init={};
+        for(let i=1;i<=20;i++) init['T'+i]='';
+        firebase.database().ref('table_keys').set(init);
         return;
       }
-      emptyEl.style.display = 'none';
-
-      // Build new cards
-      const existing = new Set([...container.querySelectorAll('.order-card')].map(c => c.dataset.id));
-      const shown    = new Set(filtered.map(([id]) => id));
-
-      // Remove cards no longer in filter
-      [...container.querySelectorAll('.order-card')].forEach(c => {
-        if (!shown.has(c.dataset.id)) c.remove();
-      });
-
-      // Add/update cards
-      filtered.forEach(([id, o], idx) => {
-        let card = container.querySelector('[data-id="'+id+'"]');
-        if (!card){
-          card = document.createElement('div');
-          card.className = 'order-card';
-          card.dataset.id = id;
-          container.insertBefore(card, container.children[idx] || null);
-        }
-        card.className = 'order-card' + (o.status==='done' ? ' done' : '');
-        card.innerHTML = buildCard(id, o);
-      });
-    }
-
-    function buildCard(id, o){
-      const time = new Date(o.timestamp).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true});
-      const dateStr = new Date(o.timestamp).toLocaleDateString('en-IN',{day:'numeric',month:'short'});
-      const itemsHtml = o.items.map(it =>
-        '<div class="ci">' +
-          '<div class="iname">'+esc(it.name)+(it.variant?' <span class="ivar">— '+esc(it.variant)+'</span>':'')+'</div>' +
-          '<div class="iprice">×'+it.qty+' &nbsp; '+esc(it.price)+'</div>' +
-        '</div>'
-      ).join('');
-
-      const statusClass = o.status === 'done' ? 'status-done' : 'status-pending';
-      const statusText  = o.status === 'done' ? '✅ Done' : '⏳ Pending';
-
-      return `
-        <div class="card-head">
-          <div>
-            <div class="card-table">${esc(o.table)}</div>
-            <div class="card-time">${time} · ${dateStr}</div>
-          </div>
-          <div style="text-align:right;">
-            <div class="card-total">₹${o.total}</div>
-            <span class="status-pill ${statusClass}">${statusText}</span>
-          </div>
-        </div>
-        <div class="card-items">${itemsHtml}</div>
-        ${o.note ? '<div class="card-note">📝 '+esc(o.note)+'</div>' : ''}
-        <div class="card-foot">
-          <button class="btn-del" onclick="deleteOrder('${id}')">Delete</button>
-          ${o.status==='pending'
-            ? '<button class="btn-done" onclick="markDone(\''+id+'\')">Mark as Done ✓</button>'
-            : '<button class="btn-undo" onclick="markPending(\''+id+'\')">Reopen</button>'}
-        </div>`;
-    }
-
-    function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-
-    // ── Actions ───────────────────────────────────────────────────────────
-    function markDone(id){
-      if (!FB_READY) return;
-      firebase.database().ref('orders/'+id+'/status').set('done');
-    }
-    function markPending(id){
-      if (!FB_READY) return;
-      firebase.database().ref('orders/'+id+'/status').set('pending');
-    }
-    function deleteOrder(id){
-      if (!confirm('Delete this order?')) return;
-      if (!FB_READY) return;
-      firebase.database().ref('orders/'+id).remove();
-    }
-
-    // ── Filter buttons ────────────────────────────────────────────────────
-    document.querySelectorAll('.fil-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.fil-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        filter = btn.dataset.filter;
-        renderOrders();
-      });
+      renderTableKeys();
     });
-  </script>
+  }
+  loadTableKeys();
+
+  function renderTableKeys(){
+    const grid = document.getElementById('keys-grid');
+    // Sort table names naturally
+    const sorted = Object.entries(tableKeys).sort((a,b)=>{
+      const na=parseInt(a[0].replace(/\D/g,''))||0, nb=parseInt(b[0].replace(/\D/g,''))||0;
+      return na-nb || a[0].localeCompare(b[0]);
+    });
+    grid.innerHTML = sorted.map(([name,key])=>
+      '<div class="key-card">'+
+        '<div class="key-card-name">'+esc(name)+'</div>'+
+        '<div class="key-display">'+
+          '<input class="key-val" type="text" value="'+esc(key)+'" placeholder="Set a key…" id="kv-'+esc(name)+'"/>'+
+          '<button class="btn-save-key" data-tname="'+name+'">Save</button>'+
+        '</div>'+
+        '<button class="btn-del-table" data-tname="'+name+'">🗑</button>'+
+      '</div>'
+    ).join('');
+  }
+
+  function saveTableKey(name){
+    if(!FB_READY)return;
+    const val = document.getElementById('kv-'+name).value.trim();
+    firebase.database().ref('table_keys/'+name).set(val);
+  }
+
+  document.getElementById('btn-add-table').addEventListener('click',()=>{
+    const name = prompt('Table name (e.g. T21 or VIP1):');
+    if(!name||!name.trim())return;
+    const n = name.trim().toUpperCase();
+    if(tableKeys[n]){alert('Table already exists.');return;}
+    firebase.database().ref('table_keys/'+n).set('');
+  });
+
+  function deleteTable(name){
+    if(!confirm('Delete table '+name+'? This only removes the key — past orders are kept.'))return;
+    firebase.database().ref('table_keys/'+name).remove();
+  }
+
+  // ── Excel Export ──────────────────────────────────────────────────────
+  document.getElementById('btn-export').addEventListener('click',async ()=>{
+    if(!FB_READY){alert('Firebase not configured.');return;}
+    const btn = document.getElementById('btn-export');
+    const note = document.getElementById('export-note');
+    btn.disabled=true; btn.textContent='Fetching…'; note.textContent='';
+
+    try{
+      const snap = await firebase.database().ref('orders').once('value');
+      const all = snap.val()||{};
+      const orders = Object.entries(all).map(([id,o])=>(({...o,id}))).sort((a,b)=>a.submittedAt-b.submittedAt);
+
+      // Sheet 1: Order Detail
+      const detail = [];
+      orders.forEach(o=>{
+        o.items.forEach(it=>{
+          detail.push({
+            'Order ID': o.id,
+            'Table': o.tableName||'',
+            'Customer': o.customerName||'',
+            'Phone': o.customerPhone||'',
+            'Item': it.name||'',
+            'Variant': it.variant||'',
+            'Price': it.price||'',
+            'Qty': it.qty||0,
+            'Line Total': '₹'+(pn(it.price)*(it.qty||0)),
+            'Note': it.note||'',
+            'Order Note': o.note||'',
+            'Order Total': '₹'+(o.subtotal||0),
+            'Date': new Date(o.submittedAt).toLocaleDateString('en-IN'),
+            'Time': new Date(o.submittedAt).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true}),
+            'Status': o.status||''
+          });
+        });
+      });
+
+      // Sheet 2: Daily Summary
+      const byDate={};
+      orders.forEach(o=>{
+        const d=new Date(o.submittedAt).toLocaleDateString('en-IN');
+        if(!byDate[d]) byDate[d]={date:d,orders:0,revenue:0};
+        byDate[d].orders++; byDate[d].revenue+=o.subtotal||0;
+      });
+      const summary = Object.values(byDate).map(r=>({
+        'Date': r.date, 'Orders': r.orders, 'Revenue (₹)': r.revenue
+      }));
+
+      // Sheet 3: Item Sales
+      const byItem={};
+      orders.forEach(o=>o.items.forEach(it=>{
+        const k = it.name+(it.variant?' — '+it.variant:'');
+        if(!byItem[k]) byItem[k]={item:it.name,variant:it.variant||'',qty:0,revenue:0};
+        byItem[k].qty+=it.qty||0;
+        byItem[k].revenue+=pn(it.price)*(it.qty||0);
+      }));
+      const itemSales = Object.values(byItem)
+        .map(r=>({'Item':r.item,'Variant':r.variant,'Total Qty':r.qty,'Revenue (₹)':r.revenue}))
+        .sort((a,b)=>b['Total Qty']-a['Total Qty']);
+
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(detail.length?detail:[{note:'No orders'}]), 'Order Detail');
+      XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(summary.length?summary:[{note:'No data'}]), 'Daily Summary');
+      XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(itemSales.length?itemSales:[{note:'No data'}]), 'Item Sales');
+
+      const date = new Date().toLocaleDateString('en-IN').replace(/\//g,'-');
+      XLSX.writeFile(wb, 'UNQ-Kitchen-'+date+'.xlsx');
+      note.textContent = orders.length+' orders exported.';
+    }catch(e){
+      console.error(e); note.textContent='Export failed. Try again.';
+    }
+    btn.disabled=false; btn.textContent='Download Excel';
+  });
+</script>
 </body>
 </html>
