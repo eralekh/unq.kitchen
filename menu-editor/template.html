@@ -320,6 +320,67 @@ body {
 }
 .col-inst { display:none; }
 .col-chip  { display:none; }
+.venue-page .col-inst {
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+  width:90px;
+  padding:5px 8px;
+  border-right:1px solid var(--gold-dim);
+  font-family:'Cormorant Garamond','Georgia',serif;
+  font-size:12px;
+  font-style:italic;
+  color:var(--ink-mute);
+}
+.venue-page .col-chip {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  width:90px;
+  padding:5px 6px;
+}
+.venue-page .col-chip .chip {
+  font-size:8px;
+  white-space:normal;
+  text-align:center;
+  line-height:1.3;
+}
+.venue-page .col-items {
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  padding:4px 8px;
+}
+.venue-page .col-items .item-name {
+  font-size:14px;
+  padding:4px 0;
+  border-bottom:1px dotted rgba(122,132,52,0.15);
+  grid-column:unset;
+  line-height:1.5;
+}
+.venue-page .col-cat {
+  width:140px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  padding:8px;
+  white-space:nowrap;
+}
+.venue-page .col-cat .sec-name {
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:var(--gold-bright);
+  line-height:1.4;
+}
+.venue-page .col-inst {
+  font-size:13px;
+  padding:8px;
+}
+.venue-page .col-items {
+  padding:6px 8px;
+}
 .col-items {
   flex:1;
   min-width:0;
@@ -455,8 +516,8 @@ body.layout-b .chip-badge {
 }
 
 /* ── LAYOUT C: section cards, option C chip design ── */
-body.layout-c .table-header { display:none; }
-body.layout-c .section {
+body.layout-c .pkg-page .table-header { display:none; }
+body.layout-c .pkg-page .section {
   border:1px solid var(--gold-dim);
   border-radius:6px;
   margin-bottom:6px;
@@ -464,10 +525,10 @@ body.layout-c .section {
   flex-direction:column;
   border-bottom:1px solid var(--gold-dim);
 }
-body.layout-c .section:last-child { border-bottom:1px solid var(--gold-dim); }
-body.layout-c .col-cat { display:none; }
-body.layout-c .col-items { display:none; }
-body.layout-c .sec-banner { display:none; }
+body.layout-c .pkg-page .section:last-child { border-bottom:1px solid var(--gold-dim); }
+body.layout-c .pkg-page .col-cat { display:none; }
+body.layout-c .pkg-page .col-items { display:none; }
+body.layout-c .pkg-page .sec-banner { display:none; }
 body.layout-c .sec-head-b {
   display:flex;
   align-items:center;

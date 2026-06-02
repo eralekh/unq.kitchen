@@ -8,42 +8,37 @@
       "description": "A light, unhurried gathering over good tea and warm bites",
       "idealLabel": "Ideal For",
       "idealValue": "Office meetings · Informal get-togethers · Team lunches · Brief socials",
-      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "waterNote": "Complimentary RO water available. Packaged water charged extra.",
       "sections": [
         {
           "name": "Welcome",
-          "instruction": "On arrival",
+          "instruction": "Each guest picks 1 on the day",
           "chip": "1 per person",
           "items": [
             {
-              "name": "Tea / Coffee",
+              "name": "Masala Tea",
               "note": null,
               "masterMenuRefs": [
-                "Tea – Regular Tea",
-                "Coffee – Instant Coffee"
+                "Tea – Masala Tea"
+              ]
+            },
+            {
+              "name": "Soft Drink",
+              "note": null,
+              "masterMenuRefs": [
+                "Soft Drink – Soft Drink"
               ]
             }
-          ]
+          ],
+          "choiceType": "individual",
+          "servingQty": "1 per person",
+          "servingRefill": ""
         },
         {
-          "name": "Snacks",
-          "instruction": "Choose any two",
-          "chip": "1 round",
+          "name": "Snack 1",
+          "instruction": "Choose 1 at booking",
+          "chip": "1 round for the table · refill once",
           "items": [
-            {
-              "name": "Veg Pakoda",
-              "note": null,
-              "masterMenuRefs": [
-                "Pakoda – Mix"
-              ]
-            },
-            {
-              "name": "Steamed Momo",
-              "note": null,
-              "masterMenuRefs": [
-                "Momo – Steamed Veg"
-              ]
-            },
             {
               "name": "French Fries",
               "note": null,
@@ -52,37 +47,49 @@
               ]
             },
             {
+              "name": "Onion Pakoda",
+              "note": null,
+              "masterMenuRefs": [
+                "Pakoda – Onion"
+              ]
+            }
+          ],
+          "choiceType": "party",
+          "servingQty": "1 round for the table",
+          "servingRefill": "refill once"
+        },
+        {
+          "name": "Snack 2",
+          "instruction": "Choose 1 at booking",
+          "chip": "1 round for the table · refill once",
+          "items": [
+            {
               "name": "Veg Sandwich",
               "note": null,
               "masterMenuRefs": [
                 "Grilled Sandwich – Veg"
               ]
-            }
-          ]
-        },
-        {
-          "name": "To Close",
-          "instruction": "Choose one",
-          "chip": "1 per person",
-          "items": [
+            },
             {
-              "name": "Soft Drink / Buttermilk",
+              "name": "Steamed Veg Momo",
               "note": null,
               "masterMenuRefs": [
-                "Soft Drink – Soft Drink",
-                "Butter Milk – Masala"
+                "Momo – Steamed Veg"
               ]
             }
-          ]
+          ],
+          "choiceType": "party",
+          "servingQty": "1 round for the table",
+          "servingRefill": "refill once"
         }
       ],
       "booking": {
         "Format": "Table service, seated",
-        "Min – Max": "8 – 15 Persons",
+        "Min – Max": "8 – 30 Persons",
         "Advance": "50% to confirm"
       },
       "terms": [
-        "Advance booking required at least48 hoursbefore the event.",
+        "Advance booking required at least 48 hours before the event.",
         "Menu items subject to seasonal availability. Substitutions may apply."
       ],
       "cancellation": [
@@ -123,7 +130,9 @@
                 "Mocktails – Mint Mojito"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         },
         {
           "name": "Snacks",
@@ -158,7 +167,9 @@
                 "Nuggets – Veg"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": "Refill once"
         },
         {
           "name": "Main",
@@ -173,7 +184,9 @@
                 "Noodles – Chowmein"
               ]
             }
-          ]
+          ],
+          "servingQty": "1 plate",
+          "servingRefill": ""
         },
         {
           "name": "To Close",
@@ -188,7 +201,9 @@
                 "Coffee – Instant Coffee"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         }
       ],
       "booking": {
@@ -197,7 +212,7 @@
         "Advance": "50% to confirm"
       },
       "terms": [
-        "Advance booking required at least48 hoursbefore the event.",
+        "Advance booking required at least 48 hours before the event.",
         "Menu items subject to seasonal availability. Substitutions may apply."
       ],
       "cancellation": [
@@ -238,7 +253,9 @@
                 "Lassi – Punjabi Lassi"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         },
         {
           "name": "Starters",
@@ -273,7 +290,9 @@
                 "Nuggets – Veg"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": "Refill twice"
         },
         {
           "name": "Main",
@@ -301,7 +320,9 @@
                 "Fried Rice – Veg Fried Rice"
               ]
             }
-          ]
+          ],
+          "servingQty": "1 plate",
+          "servingRefill": ""
         },
         {
           "name": "Sides",
@@ -322,7 +343,9 @@
                 "Accompaniments – Masala Papad"
               ]
             }
-          ]
+          ],
+          "servingQty": "Served once",
+          "servingRefill": ""
         },
         {
           "name": "Dessert",
@@ -336,7 +359,9 @@
                 "Gulab Jamun – 2 pcs"
               ]
             }
-          ]
+          ],
+          "servingQty": "2",
+          "servingRefill": ""
         },
         {
           "name": "To Close",
@@ -351,7 +376,9 @@
                 "Coffee – Instant Coffee"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         }
       ],
       "booking": {
@@ -360,7 +387,7 @@
         "Advance": "50% to confirm"
       },
       "terms": [
-        "Advance booking required at least48 hoursbefore the event.",
+        "Advance booking required at least 48 hours before the event.",
         "Menu items subject to seasonal availability. Substitutions may apply."
       ],
       "cancellation": [
@@ -400,7 +427,9 @@
                 "Mocktails – Mint Mojito"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         },
         {
           "name": "Starters",
@@ -435,7 +464,9 @@
                 "Chinese Starter – Veg Manchurian"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": "Refill twice"
         },
         {
           "name": "Live Counter",
@@ -456,7 +487,9 @@
                 "Live Counter – Bhel"
               ]
             }
-          ]
+          ],
+          "servingQty": "Unlimited",
+          "servingRefill": ""
         },
         {
           "name": "Main",
@@ -484,7 +517,9 @@
                 "Fried Rice – Paneer Fried Rice"
               ]
             }
-          ]
+          ],
+          "servingQty": "1 plate",
+          "servingRefill": ""
         },
         {
           "name": "Sides",
@@ -505,7 +540,9 @@
                 "Accompaniments – Masala Papad"
               ]
             }
-          ]
+          ],
+          "servingQty": "Served once",
+          "servingRefill": ""
         },
         {
           "name": "Dessert",
@@ -526,7 +563,9 @@
                 "Gulab Jamun – 2 pcs"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         },
         {
           "name": "To Close",
@@ -541,7 +580,9 @@
                 "Coffee – Instant Coffee"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         }
       ],
       "booking": {
@@ -550,7 +591,7 @@
         "Advance": "50% to confirm"
       },
       "terms": [
-        "Advance booking required at least48 hoursbefore the event.",
+        "Advance booking required at least 48 hours before the event.",
         "Menu items subject to seasonal availability. Substitutions may apply."
       ],
       "cancellation": [
@@ -591,7 +632,9 @@
                 "Butter Milk – Masala"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         },
         {
           "name": "Soup",
@@ -606,7 +649,9 @@
                 "Soup – Sweet Corn"
               ]
             }
-          ]
+          ],
+          "servingQty": "Served once",
+          "servingRefill": ""
         },
         {
           "name": "Starters",
@@ -627,7 +672,9 @@
                 "Momo – Steamed Veg"
               ]
             }
-          ]
+          ],
+          "servingQty": "2",
+          "servingRefill": ""
         },
         {
           "name": "Main Course",
@@ -669,7 +716,9 @@
                 "Daal – Daal Tadka"
               ]
             }
-          ]
+          ],
+          "servingQty": "Limited",
+          "servingRefill": ""
         },
         {
           "name": "Breads",
@@ -690,7 +739,9 @@
                 "Naan – Plain Naan"
               ]
             }
-          ]
+          ],
+          "servingQty": "Unlimited",
+          "servingRefill": ""
         },
         {
           "name": "Rice & Sides",
@@ -718,7 +769,9 @@
                 "Accompaniments – Masala Papad"
               ]
             }
-          ]
+          ],
+          "servingQty": "Served once",
+          "servingRefill": ""
         },
         {
           "name": "Dessert",
@@ -732,7 +785,9 @@
                 "Gulab Jamun – 2 pcs"
               ]
             }
-          ]
+          ],
+          "servingQty": "Unlimited",
+          "servingRefill": ""
         }
       ],
       "booking": {
@@ -741,7 +796,7 @@
         "Advance": "50% to confirm"
       },
       "terms": [
-        "Advance booking required at least48 hoursbefore the event.",
+        "Advance booking required at least 48 hours before the event.",
         "Menu items subject to seasonal availability. Substitutions may apply."
       ],
       "cancellation": [
@@ -781,7 +836,9 @@
                 "Mocktails – Mint Mojito"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         },
         {
           "name": "Soup",
@@ -796,7 +853,9 @@
                 "Soup – Hot & Sour"
               ]
             }
-          ]
+          ],
+          "servingQty": "Served once",
+          "servingRefill": ""
         },
         {
           "name": "Starters",
@@ -817,7 +876,9 @@
                 "Chinese Starter – Soya Chaap Tikka"
               ]
             }
-          ]
+          ],
+          "servingQty": "Limited",
+          "servingRefill": ""
         },
         {
           "name": "Live Counter",
@@ -838,7 +899,9 @@
                 "Live Counter – Gupchup"
               ]
             }
-          ]
+          ],
+          "servingQty": "Unlimited",
+          "servingRefill": ""
         },
         {
           "name": "Main Course",
@@ -866,7 +929,9 @@
                 "Daal – Daal Makhani"
               ]
             }
-          ]
+          ],
+          "servingQty": "Limited",
+          "servingRefill": ""
         },
         {
           "name": "Breads",
@@ -887,7 +952,9 @@
                 "Naan – Butter Naan"
               ]
             }
-          ]
+          ],
+          "servingQty": "Unlimited",
+          "servingRefill": ""
         },
         {
           "name": "Rice & Sides",
@@ -923,7 +990,9 @@
                 "Accompaniments – Masala Papad"
               ]
             }
-          ]
+          ],
+          "servingQty": "Served once",
+          "servingRefill": ""
         },
         {
           "name": "Dessert",
@@ -944,7 +1013,9 @@
                 "Gulab Jamun – 2 pcs"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         }
       ],
       "booking": {
@@ -953,7 +1024,7 @@
         "Advance": "50% to confirm"
       },
       "terms": [
-        "Advance booking required at least48 hoursbefore the event.",
+        "Advance booking required at least 48 hours before the event.",
         "Menu items subject to seasonal availability. Substitutions may apply."
       ],
       "cancellation": [
@@ -994,7 +1065,9 @@
                 "Mocktails – Blue Lagoon"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         },
         {
           "name": "Soup",
@@ -1015,7 +1088,9 @@
                 "Soup – Hot & Sour"
               ]
             }
-          ]
+          ],
+          "servingQty": "Served once",
+          "servingRefill": ""
         },
         {
           "name": "Starters",
@@ -1043,7 +1118,9 @@
                 "Chinese Starter – Paneer Chilli"
               ]
             }
-          ]
+          ],
+          "servingQty": "Limited",
+          "servingRefill": ""
         },
         {
           "name": "Live Counter",
@@ -1071,7 +1148,9 @@
                 "Live Counter – Bhel"
               ]
             }
-          ]
+          ],
+          "servingQty": "Unlimited",
+          "servingRefill": ""
         },
         {
           "name": "Main Course",
@@ -1113,7 +1192,9 @@
                 "Daal – Daal Tadka"
               ]
             }
-          ]
+          ],
+          "servingQty": "Limited",
+          "servingRefill": ""
         },
         {
           "name": "Breads",
@@ -1141,7 +1222,9 @@
                 "Naan – Garlic Naan"
               ]
             }
-          ]
+          ],
+          "servingQty": "Unlimited",
+          "servingRefill": ""
         },
         {
           "name": "Rice & Sides",
@@ -1182,7 +1265,9 @@
               "note": null,
               "masterMenuRefs": []
             }
-          ]
+          ],
+          "servingQty": "Served once",
+          "servingRefill": ""
         },
         {
           "name": "Dessert",
@@ -1210,7 +1295,9 @@
                 "Ice Cream – Single Scoop"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         }
       ],
       "booking": {
@@ -1219,7 +1306,7 @@
         "Advance": "50% to confirm"
       },
       "terms": [
-        "Advance booking required at least48 hoursbefore the event.",
+        "Advance booking required at least 48 hours before the event.",
         "Menu items subject to seasonal availability. Substitutions may apply."
       ],
       "cancellation": [
@@ -1261,7 +1348,9 @@
                 "Mocktails – Flavoured Mojito"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         },
         {
           "name": "Soup",
@@ -1282,7 +1371,9 @@
                 "Soup – Hot & Sour"
               ]
             }
-          ]
+          ],
+          "servingQty": "Served once",
+          "servingRefill": ""
         },
         {
           "name": "Starters",
@@ -1317,7 +1408,9 @@
                 "Chinese Starter – Paneer Chilli"
               ]
             }
-          ]
+          ],
+          "servingQty": "Limited",
+          "servingRefill": ""
         },
         {
           "name": "Live Counters",
@@ -1338,7 +1431,9 @@
                 "Live Counter – Chaat"
               ]
             }
-          ]
+          ],
+          "servingQty": "Unlimited",
+          "servingRefill": ""
         },
         {
           "name": "Main Course",
@@ -1394,7 +1489,9 @@
                 "Daal – Daal Tadka"
               ]
             }
-          ]
+          ],
+          "servingQty": "Limited",
+          "servingRefill": ""
         },
         {
           "name": "Breads",
@@ -1422,7 +1519,9 @@
                 "Naan – Garlic Naan"
               ]
             }
-          ]
+          ],
+          "servingQty": "Unlimited",
+          "servingRefill": ""
         },
         {
           "name": "Rice & Sides",
@@ -1470,7 +1569,9 @@
               "note": null,
               "masterMenuRefs": []
             }
-          ]
+          ],
+          "servingQty": "Served once",
+          "servingRefill": ""
         },
         {
           "name": "Dessert",
@@ -1498,7 +1599,9 @@
                 "Gulab Jamun – 1 Pc With Ice Cream"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         }
       ],
       "booking": {
@@ -1507,7 +1610,7 @@
         "Advance": "50% to confirm"
       },
       "terms": [
-        "Advance booking required at least48 hoursbefore the event.",
+        "Advance booking required at least 48 hours before the event.",
         "Menu items subject to seasonal availability. Substitutions may apply."
       ],
       "cancellation": [
@@ -1557,7 +1660,9 @@
                 "Nuggets – Veg"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         },
         {
           "name": "Soup",
@@ -1578,7 +1683,9 @@
                 "Soup – Hot & Sour"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         },
         {
           "name": "Starters",
@@ -1613,7 +1720,9 @@
                 "Chinese Starter – Paneer Chilli"
               ]
             }
-          ]
+          ],
+          "servingQty": "Limited",
+          "servingRefill": ""
         },
         {
           "name": "Live Counters",
@@ -1648,7 +1757,9 @@
                 "Live Counter – Bhel"
               ]
             }
-          ]
+          ],
+          "servingQty": "Unlimited",
+          "servingRefill": ""
         },
         {
           "name": "Main Course",
@@ -1704,7 +1815,9 @@
                 "Daal – Daal Tadka"
               ]
             }
-          ]
+          ],
+          "servingQty": "Limited",
+          "servingRefill": ""
         },
         {
           "name": "Breads",
@@ -1739,7 +1852,9 @@
                 "Kulcha – Aloo Kulcha"
               ]
             }
-          ]
+          ],
+          "servingQty": "Unlimited",
+          "servingRefill": ""
         },
         {
           "name": "Rice & Sides",
@@ -1787,7 +1902,9 @@
               "note": null,
               "masterMenuRefs": []
             }
-          ]
+          ],
+          "servingQty": "Served once",
+          "servingRefill": ""
         },
         {
           "name": "Dessert",
@@ -1822,7 +1939,9 @@
                 "Ice Cream – Single Scoop"
               ]
             }
-          ]
+          ],
+          "servingQty": "1",
+          "servingRefill": ""
         }
       ],
       "booking": {
@@ -1831,7 +1950,7 @@
         "Advance": "50% to confirm"
       },
       "terms": [
-        "Advance booking required at least48 hoursbefore the event.",
+        "Advance booking required at least 48 hours before the event.",
         "Menu items subject to seasonal availability. Substitutions may apply."
       ],
       "cancellation": [
@@ -3378,5 +3497,6 @@
         ]
       }
     ]
-  }
+  },
+  "layoutTemplate": "b"
 }
