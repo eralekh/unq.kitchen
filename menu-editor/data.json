@@ -306,7 +306,7 @@
         {
           "name": "Sides",
           "instruction": "Included",
-          "chip": "Included",
+          "chip": "Served once",
           "items": [
             {
               "name": "Raita",
@@ -489,7 +489,7 @@
         {
           "name": "Sides",
           "instruction": "Included",
-          "chip": "Included",
+          "chip": "Served once",
           "items": [
             {
               "name": "Raita",
@@ -596,7 +596,7 @@
         {
           "name": "Soup",
           "instruction": "Choose one",
-          "chip": "Included",
+          "chip": "Served once",
           "items": [
             {
               "name": "Tomato Soup / Sweet Corn Soup",
@@ -695,7 +695,7 @@
         {
           "name": "Rice & Sides",
           "instruction": "",
-          "chip": "Included",
+          "chip": "Served once",
           "items": [
             {
               "name": "Jeera Rice",
@@ -786,7 +786,7 @@
         {
           "name": "Soup",
           "instruction": "Choose one",
-          "chip": "Included",
+          "chip": "Served once",
           "items": [
             {
               "name": "Tomato Soup / Hot & Sour",
@@ -892,7 +892,7 @@
         {
           "name": "Rice & Sides",
           "instruction": "",
-          "chip": "Included",
+          "chip": "Served once",
           "items": [
             {
               "name": "Biryani / Pulav",
@@ -999,7 +999,7 @@
         {
           "name": "Soup",
           "instruction": "Both served",
-          "chip": "Included",
+          "chip": "Served once",
           "items": [
             {
               "name": "Tomato Soup",
@@ -1146,7 +1146,7 @@
         {
           "name": "Rice & Sides",
           "instruction": "",
-          "chip": "Included",
+          "chip": "Served once",
           "items": [
             {
               "name": "Veg Biryani",
@@ -1266,7 +1266,7 @@
         {
           "name": "Soup",
           "instruction": "Both served",
-          "chip": "Included",
+          "chip": "Served once",
           "items": [
             {
               "name": "Tomato Soup",
@@ -1427,7 +1427,7 @@
         {
           "name": "Rice & Sides",
           "instruction": "",
-          "chip": "Included",
+          "chip": "Served once",
           "items": [
             {
               "name": "Veg Biryani",
@@ -1744,7 +1744,7 @@
         {
           "name": "Rice & Sides",
           "instruction": "",
-          "chip": "Included",
+          "chip": "Served once",
           "items": [
             {
               "name": "Veg Biryani",
