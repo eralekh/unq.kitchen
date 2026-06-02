@@ -1,0 +1,3382 @@
+{
+  "packages": [
+    {
+      "id": "pkg1",
+      "number": 1,
+      "name": "Quick Gather",
+      "price": 199,
+      "description": "A light, unhurried gathering over good tea and warm bites",
+      "idealLabel": "Ideal For",
+      "idealValue": "Office meetings · Informal get-togethers · Team lunches · Brief socials",
+      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "sections": [
+        {
+          "name": "Welcome",
+          "instruction": "On arrival",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Tea / Coffee",
+              "note": null,
+              "masterMenuRefs": [
+                "Tea – Regular Tea",
+                "Coffee – Instant Coffee"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Snacks",
+          "instruction": "Choose any two",
+          "chip": "1 round",
+          "items": [
+            {
+              "name": "Veg Pakoda",
+              "note": null,
+              "masterMenuRefs": [
+                "Pakoda – Mix"
+              ]
+            },
+            {
+              "name": "Steamed Momo",
+              "note": null,
+              "masterMenuRefs": [
+                "Momo – Steamed Veg"
+              ]
+            },
+            {
+              "name": "French Fries",
+              "note": null,
+              "masterMenuRefs": [
+                "French Fries – Classic"
+              ]
+            },
+            {
+              "name": "Veg Sandwich",
+              "note": null,
+              "masterMenuRefs": [
+                "Grilled Sandwich – Veg"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "To Close",
+          "instruction": "Choose one",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Soft Drink / Buttermilk",
+              "note": null,
+              "masterMenuRefs": [
+                "Soft Drink – Soft Drink",
+                "Butter Milk – Masala"
+              ]
+            }
+          ]
+        }
+      ],
+      "booking": {
+        "Format": "Table service, seated",
+        "Min – Max": "8 – 15 Persons",
+        "Advance": "50% to confirm"
+      },
+      "terms": [
+        "Advance booking required at least48 hoursbefore the event.",
+        "Menu items subject to seasonal availability. Substitutions may apply."
+      ],
+      "cancellation": [
+        {
+          "when": "More than 24 hrs",
+          "result": "Full Refund"
+        },
+        {
+          "when": "Within 24 hrs",
+          "result": "50% Refund"
+        },
+        {
+          "when": "Same Day",
+          "result": "No Refund"
+        }
+      ]
+    },
+    {
+      "id": "pkg2",
+      "number": 2,
+      "name": "Chai & Bites Plus",
+      "price": 249,
+      "description": "Warm snacks, a hearty main and good company",
+      "idealLabel": "Ideal For",
+      "idealValue": "Kitty parties · Ladies clubs · Evening socials · Small celebrations",
+      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "sections": [
+        {
+          "name": "Welcome",
+          "instruction": "On arrival",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Lassi / Mocktail",
+              "note": null,
+              "masterMenuRefs": [
+                "Lassi – Punjabi Lassi",
+                "Mocktails – Mint Mojito"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Snacks",
+          "instruction": "Choose any two",
+          "chip": "Repeatable x1",
+          "items": [
+            {
+              "name": "Veg Pakoda",
+              "note": null,
+              "masterMenuRefs": [
+                "Pakoda – Mix"
+              ]
+            },
+            {
+              "name": "Steamed Momo",
+              "note": null,
+              "masterMenuRefs": [
+                "Momo – Steamed Veg"
+              ]
+            },
+            {
+              "name": "French Fries",
+              "note": null,
+              "masterMenuRefs": [
+                "French Fries – Classic"
+              ]
+            },
+            {
+              "name": "Veg Nuggets",
+              "note": null,
+              "masterMenuRefs": [
+                "Nuggets – Veg"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Main",
+          "instruction": "Choose one",
+          "chip": "1 plate",
+          "items": [
+            {
+              "name": "Chhole Bhature / Veg Noodles",
+              "note": null,
+              "masterMenuRefs": [
+                "North Indian Breakfast – Chhole Bhature",
+                "Noodles – Chowmein"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "To Close",
+          "instruction": "",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Tea / Coffee",
+              "note": null,
+              "masterMenuRefs": [
+                "Tea – Regular Tea",
+                "Coffee – Instant Coffee"
+              ]
+            }
+          ]
+        }
+      ],
+      "booking": {
+        "Format": "Table service, seated",
+        "Min – Max": "8 – 20 Persons",
+        "Advance": "50% to confirm"
+      },
+      "terms": [
+        "Advance booking required at least48 hoursbefore the event.",
+        "Menu items subject to seasonal availability. Substitutions may apply."
+      ],
+      "cancellation": [
+        {
+          "when": "More than 24 hrs",
+          "result": "Full Refund"
+        },
+        {
+          "when": "Within 24 hrs",
+          "result": "50% Refund"
+        },
+        {
+          "when": "Same Day",
+          "result": "No Refund"
+        }
+      ]
+    },
+    {
+      "id": "pkg3",
+      "number": 3,
+      "name": "Kitty Classic",
+      "price": 299,
+      "description": "The perfect kitty party — starters that keep coming back",
+      "idealLabel": "Ideal For",
+      "idealValue": "Kitty parties · Birthday lunches · Casual celebrations",
+      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "sections": [
+        {
+          "name": "Welcome",
+          "instruction": "On arrival",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Mocktail / Lassi",
+              "note": null,
+              "masterMenuRefs": [
+                "Mocktails – Mint Mojito",
+                "Lassi – Punjabi Lassi"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Starters",
+          "instruction": "Choose any two",
+          "chip": "Repeatable x1-2",
+          "items": [
+            {
+              "name": "Veg Pakoda",
+              "note": null,
+              "masterMenuRefs": [
+                "Pakoda – Mix"
+              ]
+            },
+            {
+              "name": "Steamed Momo",
+              "note": null,
+              "masterMenuRefs": [
+                "Momo – Steamed Veg"
+              ]
+            },
+            {
+              "name": "French Fries",
+              "note": null,
+              "masterMenuRefs": [
+                "French Fries – Classic"
+              ]
+            },
+            {
+              "name": "Veg Nuggets",
+              "note": null,
+              "masterMenuRefs": [
+                "Nuggets – Veg"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Main",
+          "instruction": "Choose one",
+          "chip": "1 plate",
+          "items": [
+            {
+              "name": "Chhole Bhature",
+              "note": null,
+              "masterMenuRefs": [
+                "North Indian Breakfast – Chhole Bhature"
+              ]
+            },
+            {
+              "name": "Veg Hakka Noodles",
+              "note": null,
+              "masterMenuRefs": [
+                "Noodles – Hakka"
+              ]
+            },
+            {
+              "name": "Veg Fried Rice",
+              "note": null,
+              "masterMenuRefs": [
+                "Fried Rice – Veg Fried Rice"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sides",
+          "instruction": "Included",
+          "chip": "Included",
+          "items": [
+            {
+              "name": "Raita",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Mix Raita"
+              ]
+            },
+            {
+              "name": "Papad",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Masala Papad"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Dessert",
+          "instruction": "",
+          "chip": "2 pcs / person",
+          "items": [
+            {
+              "name": "Gulab Jamun",
+              "note": null,
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "To Close",
+          "instruction": "",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Tea / Coffee",
+              "note": null,
+              "masterMenuRefs": [
+                "Tea – Regular Tea",
+                "Coffee – Instant Coffee"
+              ]
+            }
+          ]
+        }
+      ],
+      "booking": {
+        "Format": "Table service, seated",
+        "Min – Max": "10 – 20 Persons",
+        "Advance": "50% to confirm"
+      },
+      "terms": [
+        "Advance booking required at least48 hoursbefore the event.",
+        "Menu items subject to seasonal availability. Substitutions may apply."
+      ],
+      "cancellation": [
+        {
+          "when": "More than 24 hrs",
+          "result": "Full Refund"
+        },
+        {
+          "when": "Within 24 hrs",
+          "result": "50% Refund"
+        },
+        {
+          "when": "Same Day",
+          "result": "No Refund"
+        }
+      ]
+    },
+    {
+      "id": "pkg4",
+      "number": 4,
+      "name": "Kitty Premium",
+      "price": 349,
+      "description": "Premium starters, a live counter — the kitty party they will talk about",
+      "idealLabel": "Ideal For",
+      "idealValue": "Kitty parties · Small birthdays · Ladies celebrations",
+      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "sections": [
+        {
+          "name": "Welcome",
+          "instruction": "On arrival",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Mocktail",
+              "note": null,
+              "masterMenuRefs": [
+                "Mocktails – Mint Mojito"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Starters",
+          "instruction": "Two items, repeatable",
+          "chip": "Repeatable x1-2",
+          "items": [
+            {
+              "name": "Paneer Tikka",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Paneer Tikka"
+              ]
+            },
+            {
+              "name": "Chaap Tikka",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Soya Chaap Tikka"
+              ]
+            },
+            {
+              "name": "Steamed Momo",
+              "note": null,
+              "masterMenuRefs": [
+                "Momo – Steamed Veg"
+              ]
+            },
+            {
+              "name": "Chinese Starter",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Veg Manchurian"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Live Counter",
+          "instruction": "Choose one",
+          "chip": "Unlimited",
+          "items": [
+            {
+              "name": "Live Counter – Gupchup",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Gupchup"
+              ]
+            },
+            {
+              "name": "Live Counter – Bhel",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Bhel"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Main",
+          "instruction": "Choose one",
+          "chip": "1 plate",
+          "items": [
+            {
+              "name": "Chhole Bhature",
+              "note": null,
+              "masterMenuRefs": [
+                "North Indian Breakfast – Chhole Bhature"
+              ]
+            },
+            {
+              "name": "Schezwan Noodles",
+              "note": null,
+              "masterMenuRefs": [
+                "Noodles – Schezwan"
+              ]
+            },
+            {
+              "name": "Paneer Fried Rice",
+              "note": null,
+              "masterMenuRefs": [
+                "Fried Rice – Paneer Fried Rice"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Sides",
+          "instruction": "Included",
+          "chip": "Included",
+          "items": [
+            {
+              "name": "Raita",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Mix Raita"
+              ]
+            },
+            {
+              "name": "Papad",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Masala Papad"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Dessert",
+          "instruction": "",
+          "chip": "At close",
+          "items": [
+            {
+              "name": "Gulab Jamun",
+              "note": null,
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            },
+            {
+              "name": "Kheer",
+              "note": null,
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "To Close",
+          "instruction": "",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Tea / Coffee",
+              "note": null,
+              "masterMenuRefs": [
+                "Tea – Regular Tea",
+                "Coffee – Instant Coffee"
+              ]
+            }
+          ]
+        }
+      ],
+      "booking": {
+        "Format": "Table service + Live counter",
+        "Min – Max": "10 – 25 Persons",
+        "Advance": "50% to confirm"
+      },
+      "terms": [
+        "Advance booking required at least48 hoursbefore the event.",
+        "Menu items subject to seasonal availability. Substitutions may apply."
+      ],
+      "cancellation": [
+        {
+          "when": "More than 24 hrs",
+          "result": "Full Refund"
+        },
+        {
+          "when": "Within 24 hrs",
+          "result": "50% Refund"
+        },
+        {
+          "when": "Same Day",
+          "result": "No Refund"
+        }
+      ]
+    },
+    {
+      "id": "pkg5",
+      "number": 5,
+      "name": "Simple Celebration",
+      "price": 399,
+      "description": "A proper buffet spread — warm, wholesome and complete",
+      "idealLabel": "Ideal For",
+      "idealValue": "Birthdays · Office lunches · Family gatherings · Casual parties",
+      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "sections": [
+        {
+          "name": "Welcome",
+          "instruction": "On arrival",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Lassi / Buttermilk",
+              "note": null,
+              "masterMenuRefs": [
+                "Lassi – Punjabi Lassi",
+                "Butter Milk – Masala"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Soup",
+          "instruction": "Choose one",
+          "chip": "Included",
+          "items": [
+            {
+              "name": "Tomato Soup / Sweet Corn Soup",
+              "note": null,
+              "masterMenuRefs": [
+                "Soup – Cream of Tomato",
+                "Soup – Sweet Corn"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Starters",
+          "instruction": "Pre-portioned",
+          "chip": "~3 pcs / person",
+          "items": [
+            {
+              "name": "Veg Pakoda",
+              "note": null,
+              "masterMenuRefs": [
+                "Pakoda – Mix"
+              ]
+            },
+            {
+              "name": "Steamed Momo",
+              "note": null,
+              "masterMenuRefs": [
+                "Momo – Steamed Veg"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Main Course",
+          "instruction": "Choose two sabzis",
+          "chip": "Limited",
+          "items": [
+            {
+              "name": "Aloo Jeera",
+              "note": null,
+              "masterMenuRefs": [
+                "Aloo – Jeera Aloo"
+              ]
+            },
+            {
+              "name": "Bhindi Masala",
+              "note": null,
+              "masterMenuRefs": [
+                "Bhindi – Bhindi Masala"
+              ]
+            },
+            {
+              "name": "Chana Masala",
+              "note": null,
+              "masterMenuRefs": [
+                "Chana – Chana Masala"
+              ]
+            },
+            {
+              "name": "Seasonal Veg",
+              "note": null,
+              "masterMenuRefs": [
+                "Seasonal – Seasonal Veg/Bhaji"
+              ]
+            },
+            {
+              "name": "Dal Tadka",
+              "note": null,
+              "masterMenuRefs": [
+                "Daal – Daal Tadka"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Breads",
+          "instruction": "Tandoor throughout",
+          "chip": "Unlimited",
+          "items": [
+            {
+              "name": "Roti",
+              "note": null,
+              "masterMenuRefs": [
+                "Roti – Tawa Roti"
+              ]
+            },
+            {
+              "name": "Naan",
+              "note": null,
+              "masterMenuRefs": [
+                "Naan – Plain Naan"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Rice & Sides",
+          "instruction": "",
+          "chip": "Included",
+          "items": [
+            {
+              "name": "Jeera Rice",
+              "note": null,
+              "masterMenuRefs": [
+                "Rice – Jeera Rice"
+              ]
+            },
+            {
+              "name": "Raita",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Mix Raita"
+              ]
+            },
+            {
+              "name": "Papad",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Masala Papad"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Dessert",
+          "instruction": "",
+          "chip": "Unlimited",
+          "items": [
+            {
+              "name": "Gulab Jamun",
+              "note": null,
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            }
+          ]
+        }
+      ],
+      "booking": {
+        "Format": "Buffet",
+        "Min – Max": "25 – 60 Persons",
+        "Advance": "50% to confirm"
+      },
+      "terms": [
+        "Advance booking required at least48 hoursbefore the event.",
+        "Menu items subject to seasonal availability. Substitutions may apply."
+      ],
+      "cancellation": [
+        {
+          "when": "More than 24 hrs",
+          "result": "Full Refund"
+        },
+        {
+          "when": "Within 24 hrs",
+          "result": "50% Refund"
+        },
+        {
+          "when": "Same Day",
+          "result": "No Refund"
+        }
+      ]
+    },
+    {
+      "id": "pkg6",
+      "number": 6,
+      "name": "Celebration Buffet",
+      "price": 449,
+      "description": "A live counter, premium starters and a full buffet — celebrations done right",
+      "idealLabel": "Ideal For",
+      "idealValue": "Anniversaries · Roka · Kitty (large group) · Birthdays",
+      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "sections": [
+        {
+          "name": "Welcome",
+          "instruction": "On arrival",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Mocktail",
+              "note": null,
+              "masterMenuRefs": [
+                "Mocktails – Mint Mojito"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Soup",
+          "instruction": "Choose one",
+          "chip": "Included",
+          "items": [
+            {
+              "name": "Tomato Soup / Hot & Sour",
+              "note": null,
+              "masterMenuRefs": [
+                "Soup – Cream of Tomato",
+                "Soup – Hot & Sour"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Starters",
+          "instruction": "Limited quantity",
+          "chip": "Limited",
+          "items": [
+            {
+              "name": "Paneer Tikka",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Paneer Tikka"
+              ]
+            },
+            {
+              "name": "Chaap Tikka",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Soya Chaap Tikka"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Live Counter",
+          "instruction": "Choose one",
+          "chip": "Unlimited",
+          "items": [
+            {
+              "name": "Live Counter – Chaat",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Chaat"
+              ]
+            },
+            {
+              "name": "Live Counter – Gupchup",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Gupchup"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Main Course",
+          "instruction": "Three sabzis",
+          "chip": "Limited",
+          "items": [
+            {
+              "name": "Paneer or Chaap — 1 premium",
+              "note": null,
+              "masterMenuRefs": [
+                "Paneer – UNQ Special Paneer"
+              ]
+            },
+            {
+              "name": "2 Regular Sabzis",
+              "note": null,
+              "masterMenuRefs": [
+                "Seasonal – Seasonal Veg/Bhaji"
+              ]
+            },
+            {
+              "name": "Dal Makhani",
+              "note": null,
+              "masterMenuRefs": [
+                "Daal – Daal Makhani"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Breads",
+          "instruction": "",
+          "chip": "Unlimited",
+          "items": [
+            {
+              "name": "Roti",
+              "note": null,
+              "masterMenuRefs": [
+                "Roti – Tandoori Roti"
+              ]
+            },
+            {
+              "name": "Naan",
+              "note": null,
+              "masterMenuRefs": [
+                "Naan – Butter Naan"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Rice & Sides",
+          "instruction": "",
+          "chip": "Included",
+          "items": [
+            {
+              "name": "Biryani / Pulav",
+              "note": null,
+              "masterMenuRefs": [
+                "Biryani – Veg Biryani",
+                "Pulav – Veg Pulav"
+              ]
+            },
+            {
+              "name": "Raita",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Mix Raita"
+              ]
+            },
+            {
+              "name": "Salad",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Garden Green Salad"
+              ]
+            },
+            {
+              "name": "Papad + Pickle",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Masala Papad"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Dessert",
+          "instruction": "",
+          "chip": "See below",
+          "items": [
+            {
+              "name": "Gulab Jamun",
+              "note": "Unlimited",
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            },
+            {
+              "name": "Kheer",
+              "note": "Limited",
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            }
+          ]
+        }
+      ],
+      "booking": {
+        "Format": "Buffet + Live counter",
+        "Min – Max": "30 – 70 Persons",
+        "Advance": "50% to confirm"
+      },
+      "terms": [
+        "Advance booking required at least48 hoursbefore the event.",
+        "Menu items subject to seasonal availability. Substitutions may apply."
+      ],
+      "cancellation": [
+        {
+          "when": "More than 24 hrs",
+          "result": "Full Refund"
+        },
+        {
+          "when": "Within 24 hrs",
+          "result": "50% Refund"
+        },
+        {
+          "when": "Same Day",
+          "result": "No Refund"
+        }
+      ]
+    },
+    {
+      "id": "pkg7",
+      "number": 7,
+      "name": "Grand Celebration",
+      "price": 499,
+      "description": "A grand spread with premium gravies, live counter and everything in between",
+      "idealLabel": "Ideal For",
+      "idealValue": "Anniversaries · Roka · Official events · Milestone birthdays",
+      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "sections": [
+        {
+          "name": "Welcome",
+          "instruction": "On arrival",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Mocktail Bar (2 options)",
+              "note": null,
+              "masterMenuRefs": [
+                "Mocktails – Mint Mojito",
+                "Mocktails – Blue Lagoon"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Soup",
+          "instruction": "Both served",
+          "chip": "Included",
+          "items": [
+            {
+              "name": "Tomato Soup",
+              "note": null,
+              "masterMenuRefs": [
+                "Soup – Cream of Tomato"
+              ]
+            },
+            {
+              "name": "Hot & Sour",
+              "note": null,
+              "masterMenuRefs": [
+                "Soup – Hot & Sour"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Starters",
+          "instruction": "Three items",
+          "chip": "Limited",
+          "items": [
+            {
+              "name": "Paneer Tikka",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Paneer Tikka"
+              ]
+            },
+            {
+              "name": "Chaap Tikka",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Soya Malai Chaap Tikka"
+              ]
+            },
+            {
+              "name": "Chinese Starter",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Paneer Chilli"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Live Counter",
+          "instruction": "Choose one",
+          "chip": "Unlimited",
+          "items": [
+            {
+              "name": "Live Counter – Chaat",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Chaat"
+              ]
+            },
+            {
+              "name": "Live Counter – Gupchup",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Gupchup"
+              ]
+            },
+            {
+              "name": "Live Counter – Bhel",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Bhel"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Main Course",
+          "instruction": "Four sabzis",
+          "chip": "Limited",
+          "items": [
+            {
+              "name": "Kaju Masala",
+              "note": null,
+              "masterMenuRefs": [
+                "Kaju – Kaju Masala"
+              ]
+            },
+            {
+              "name": "Paneer Gravy",
+              "note": null,
+              "masterMenuRefs": [
+                "Paneer – Paneer Butter Masala"
+              ]
+            },
+            {
+              "name": "2 Regular Sabzis",
+              "note": null,
+              "masterMenuRefs": [
+                "Seasonal – Seasonal Veg/Bhaji"
+              ]
+            },
+            {
+              "name": "Dal Makhani",
+              "note": null,
+              "masterMenuRefs": [
+                "Daal – Daal Makhani"
+              ]
+            },
+            {
+              "name": "Dal Tadka",
+              "note": null,
+              "masterMenuRefs": [
+                "Daal – Daal Tadka"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Breads",
+          "instruction": "",
+          "chip": "Unlimited",
+          "items": [
+            {
+              "name": "Roti",
+              "note": null,
+              "masterMenuRefs": [
+                "Roti – Tandoori Roti"
+              ]
+            },
+            {
+              "name": "Naan",
+              "note": null,
+              "masterMenuRefs": [
+                "Naan – Butter Naan"
+              ]
+            },
+            {
+              "name": "Garlic Naan",
+              "note": null,
+              "masterMenuRefs": [
+                "Naan – Garlic Naan"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Rice & Sides",
+          "instruction": "",
+          "chip": "Included",
+          "items": [
+            {
+              "name": "Veg Biryani",
+              "note": null,
+              "masterMenuRefs": [
+                "Biryani – Veg Biryani"
+              ]
+            },
+            {
+              "name": "Jeera Rice",
+              "note": null,
+              "masterMenuRefs": [
+                "Rice – Jeera Rice"
+              ]
+            },
+            {
+              "name": "Salad Bar",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – UNQ Special Salad"
+              ]
+            },
+            {
+              "name": "Raita + Papad",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Mix Raita",
+                "Accompaniments – Masala Papad"
+              ]
+            },
+            {
+              "name": "2 Chutneys",
+              "note": null,
+              "masterMenuRefs": []
+            }
+          ]
+        },
+        {
+          "name": "Dessert",
+          "instruction": "",
+          "chip": "See below",
+          "items": [
+            {
+              "name": "Gulab Jamun",
+              "note": "Unlimited",
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            },
+            {
+              "name": "Kheer",
+              "note": "Limited",
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            },
+            {
+              "name": "Seasonal Sweet",
+              "note": "1 serving",
+              "masterMenuRefs": [
+                "Ice Cream – Single Scoop"
+              ]
+            }
+          ]
+        }
+      ],
+      "booking": {
+        "Format": "Buffet + Live counter",
+        "Min – Max": "40 – 80 Persons",
+        "Advance": "50% to confirm"
+      },
+      "terms": [
+        "Advance booking required at least48 hoursbefore the event.",
+        "Menu items subject to seasonal availability. Substitutions may apply."
+      ],
+      "cancellation": [
+        {
+          "when": "More than 24 hrs",
+          "result": "Full Refund"
+        },
+        {
+          "when": "Within 24 hrs",
+          "result": "50% Refund"
+        },
+        {
+          "when": "Same Day",
+          "result": "No Refund"
+        }
+      ]
+    },
+    {
+      "id": "pkg8",
+      "number": 8,
+      "name": "Royal Buffet",
+      "price": 549,
+      "description": "Two live counters, four starters and a royal spread — for special occasions",
+      "idealLabel": "Ideal For",
+      "idealValue": "Premium birthdays · Corporate events · Grand Roka · Anniversaries",
+      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "sections": [
+        {
+          "name": "Welcome",
+          "instruction": "On arrival",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Mocktail Bar (3 options)",
+              "note": null,
+              "masterMenuRefs": [
+                "Mocktails – Mint Mojito",
+                "Mocktails – Blue Lagoon",
+                "Mocktails – Flavoured Mojito"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Soup",
+          "instruction": "Both served",
+          "chip": "Included",
+          "items": [
+            {
+              "name": "Tomato Soup",
+              "note": null,
+              "masterMenuRefs": [
+                "Soup – Cream of Tomato"
+              ]
+            },
+            {
+              "name": "Hot & Sour",
+              "note": null,
+              "masterMenuRefs": [
+                "Soup – Hot & Sour"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Starters",
+          "instruction": "Four items",
+          "chip": "Limited",
+          "items": [
+            {
+              "name": "Paneer Tikka",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Paneer Tikka"
+              ]
+            },
+            {
+              "name": "Chaap Tikka",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Soya Malai Chaap Tikka"
+              ]
+            },
+            {
+              "name": "Mushroom Starter",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Mushroom Tikka"
+              ]
+            },
+            {
+              "name": "Chinese Starter",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Paneer Chilli"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Live Counters",
+          "instruction": "Both simultaneously",
+          "chip": "Unlimited",
+          "items": [
+            {
+              "name": "Live Counter – Momos",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Momos"
+              ]
+            },
+            {
+              "name": "Live Counter – Chaat",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Chaat"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Main Course",
+          "instruction": "Five sabzis",
+          "chip": "Limited",
+          "items": [
+            {
+              "name": "Kaju Masala",
+              "note": null,
+              "masterMenuRefs": [
+                "Kaju – Kaju Masala"
+              ]
+            },
+            {
+              "name": "Paneer Lababdar",
+              "note": null,
+              "masterMenuRefs": [
+                "Paneer – Paneer Butter Masala"
+              ]
+            },
+            {
+              "name": "Chaap Masala",
+              "note": null,
+              "masterMenuRefs": [
+                "Chaap – Chaap Masala"
+              ]
+            },
+            {
+              "name": "Mushroom Masala",
+              "note": null,
+              "masterMenuRefs": [
+                "Mushroom – Mushroom Masala"
+              ]
+            },
+            {
+              "name": "Seasonal Sabzi",
+              "note": null,
+              "masterMenuRefs": [
+                "Seasonal – Seasonal Veg/Bhaji"
+              ]
+            },
+            {
+              "name": "Dal Makhani",
+              "note": null,
+              "masterMenuRefs": [
+                "Daal – Daal Makhani"
+              ]
+            },
+            {
+              "name": "Dal Tadka",
+              "note": null,
+              "masterMenuRefs": [
+                "Daal – Daal Tadka"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Breads",
+          "instruction": "",
+          "chip": "Unlimited",
+          "items": [
+            {
+              "name": "Roti",
+              "note": null,
+              "masterMenuRefs": [
+                "Roti – Tandoori Roti"
+              ]
+            },
+            {
+              "name": "Naan",
+              "note": null,
+              "masterMenuRefs": [
+                "Naan – Butter Naan"
+              ]
+            },
+            {
+              "name": "Garlic Naan",
+              "note": null,
+              "masterMenuRefs": [
+                "Naan – Garlic Naan"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Rice & Sides",
+          "instruction": "",
+          "chip": "Included",
+          "items": [
+            {
+              "name": "Veg Biryani",
+              "note": null,
+              "masterMenuRefs": [
+                "Biryani – Veg Biryani"
+              ]
+            },
+            {
+              "name": "Pulav",
+              "note": null,
+              "masterMenuRefs": [
+                "Pulav – Veg Pulav"
+              ]
+            },
+            {
+              "name": "Jeera Rice",
+              "note": null,
+              "masterMenuRefs": [
+                "Rice – Jeera Rice"
+              ]
+            },
+            {
+              "name": "Full Salad Bar",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – UNQ Special Salad"
+              ]
+            },
+            {
+              "name": "Raita + Papad",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Mix Raita",
+                "Accompaniments – Masala Papad"
+              ]
+            },
+            {
+              "name": "Chutney Bar (3 options)",
+              "note": null,
+              "masterMenuRefs": []
+            }
+          ]
+        },
+        {
+          "name": "Dessert",
+          "instruction": "",
+          "chip": "See below",
+          "items": [
+            {
+              "name": "Gulab Jamun",
+              "note": "Unlimited",
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            },
+            {
+              "name": "Kheer",
+              "note": "Limited",
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            },
+            {
+              "name": "Rasmalai",
+              "note": "1 serving",
+              "masterMenuRefs": [
+                "Gulab Jamun – 1 Pc With Ice Cream"
+              ]
+            }
+          ]
+        }
+      ],
+      "booking": {
+        "Format": "Full buffet + 2 Live counters",
+        "Min – Max": "50 – 100 Persons",
+        "Advance": "50% to confirm"
+      },
+      "terms": [
+        "Advance booking required at least48 hoursbefore the event.",
+        "Menu items subject to seasonal availability. Substitutions may apply."
+      ],
+      "cancellation": [
+        {
+          "when": "More than 24 hrs",
+          "result": "Full Refund"
+        },
+        {
+          "when": "Within 24 hrs",
+          "result": "50% Refund"
+        },
+        {
+          "when": "Same Day",
+          "result": "No Refund"
+        }
+      ]
+    },
+    {
+      "id": "pkg9",
+      "number": 9,
+      "name": "UNQ Royal Feast",
+      "price": 599,
+      "description": "The finest we offer — a complete, luxurious celebration experience",
+      "idealLabel": "Ideal For",
+      "idealValue": "Corporate galas · High-profile anniversaries · Grand celebrations · Premium Roka",
+      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "sections": [
+        {
+          "name": "Welcome",
+          "instruction": "On arrival",
+          "chip": "1 per person",
+          "items": [
+            {
+              "name": "Mocktail Bar (3 options)",
+              "note": null,
+              "masterMenuRefs": [
+                "Mocktails – Mint Mojito",
+                "Mocktails – Blue Lagoon",
+                "Mocktails – Flavoured Mojito"
+              ]
+            },
+            {
+              "name": "Welcome Snack — Momo / Nuggets",
+              "note": "Complimentary",
+              "masterMenuRefs": [
+                "Momo – Steamed Veg",
+                "Nuggets – Veg"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Soup",
+          "instruction": "Served at table",
+          "chip": "Table service",
+          "items": [
+            {
+              "name": "Tomato Soup",
+              "note": null,
+              "masterMenuRefs": [
+                "Soup – Cream of Tomato"
+              ]
+            },
+            {
+              "name": "Hot & Sour",
+              "note": null,
+              "masterMenuRefs": [
+                "Soup – Hot & Sour"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Starters",
+          "instruction": "Four items",
+          "chip": "Limited",
+          "items": [
+            {
+              "name": "Paneer Tikka",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Flavours of Paneer Tikka"
+              ]
+            },
+            {
+              "name": "Chaap Tikka",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Soya Malai Chaap Tikka"
+              ]
+            },
+            {
+              "name": "Mushroom Starter",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Mushroom Tikka"
+              ]
+            },
+            {
+              "name": "Chinese Starter",
+              "note": null,
+              "masterMenuRefs": [
+                "Chinese Starter – Paneer Chilli"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Live Counters",
+          "instruction": "Both simultaneously",
+          "chip": "Unlimited",
+          "items": [
+            {
+              "name": "Live Counter – Momos",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Momos"
+              ]
+            },
+            {
+              "name": "Live Counter – Chaat",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Chaat"
+              ]
+            },
+            {
+              "name": "Live Counter – Gupchup",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Gupchup"
+              ]
+            },
+            {
+              "name": "Live Counter – Bhel",
+              "note": null,
+              "masterMenuRefs": [
+                "Live Counter – Bhel"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Main Course",
+          "instruction": "Five premium sabzis",
+          "chip": "Limited",
+          "items": [
+            {
+              "name": "Kaju Masala",
+              "note": null,
+              "masterMenuRefs": [
+                "Kaju – Kaju Masala"
+              ]
+            },
+            {
+              "name": "Paneer Lababdar",
+              "note": null,
+              "masterMenuRefs": [
+                "Paneer – Paneer Butter Masala"
+              ]
+            },
+            {
+              "name": "Chaap Masala",
+              "note": null,
+              "masterMenuRefs": [
+                "Chaap – Chaap Masala"
+              ]
+            },
+            {
+              "name": "Mushroom Masala",
+              "note": null,
+              "masterMenuRefs": [
+                "Mushroom – Mushroom Masala"
+              ]
+            },
+            {
+              "name": "Premium Seasonal",
+              "note": null,
+              "masterMenuRefs": [
+                "Seasonal – Seasonal Veg/Bhaji"
+              ]
+            },
+            {
+              "name": "Dal Makhani",
+              "note": null,
+              "masterMenuRefs": [
+                "Daal – Daal Makhani"
+              ]
+            },
+            {
+              "name": "Dal Tadka",
+              "note": null,
+              "masterMenuRefs": [
+                "Daal – Daal Tadka"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Breads",
+          "instruction": "Four varieties",
+          "chip": "Unlimited",
+          "items": [
+            {
+              "name": "Roti",
+              "note": null,
+              "masterMenuRefs": [
+                "Roti – Tandoori Roti"
+              ]
+            },
+            {
+              "name": "Naan",
+              "note": null,
+              "masterMenuRefs": [
+                "Naan – Butter Naan"
+              ]
+            },
+            {
+              "name": "Garlic Naan",
+              "note": null,
+              "masterMenuRefs": [
+                "Naan – Garlic Naan"
+              ]
+            },
+            {
+              "name": "Kulcha",
+              "note": null,
+              "masterMenuRefs": [
+                "Kulcha – Aloo Kulcha"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Rice & Sides",
+          "instruction": "",
+          "chip": "Included",
+          "items": [
+            {
+              "name": "Veg Biryani",
+              "note": null,
+              "masterMenuRefs": [
+                "Biryani – Veg Biryani"
+              ]
+            },
+            {
+              "name": "Pulav",
+              "note": null,
+              "masterMenuRefs": [
+                "Pulav – Veg Pulav"
+              ]
+            },
+            {
+              "name": "Saffron Rice",
+              "note": null,
+              "masterMenuRefs": [
+                "Rice – Jeera Rice"
+              ]
+            },
+            {
+              "name": "Full Salad Bar",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – UNQ Special Salad"
+              ]
+            },
+            {
+              "name": "Raita + Papad",
+              "note": null,
+              "masterMenuRefs": [
+                "Accompaniments – Mix Raita",
+                "Accompaniments – Masala Papad"
+              ]
+            },
+            {
+              "name": "Full Chutney Bar",
+              "note": null,
+              "masterMenuRefs": []
+            }
+          ]
+        },
+        {
+          "name": "Dessert",
+          "instruction": "Dessert station",
+          "chip": "See below",
+          "items": [
+            {
+              "name": "Gulab Jamun",
+              "note": "Unlimited",
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            },
+            {
+              "name": "Kheer",
+              "note": "Limited",
+              "masterMenuRefs": [
+                "Gulab Jamun – 2 pcs"
+              ]
+            },
+            {
+              "name": "Rasmalai",
+              "note": "1 serving",
+              "masterMenuRefs": [
+                "Gulab Jamun – 1 Pc With Ice Cream"
+              ]
+            },
+            {
+              "name": "Ice Cream",
+              "note": "1 scoop",
+              "masterMenuRefs": [
+                "Ice Cream – Single Scoop"
+              ]
+            }
+          ]
+        }
+      ],
+      "booking": {
+        "Format": "Full buffet + 2 Live counters",
+        "Min – Max": "60 – 100 Persons",
+        "Advance": "50% to confirm"
+      },
+      "terms": [
+        "Advance booking required at least48 hoursbefore the event.",
+        "Menu items subject to seasonal availability. Substitutions may apply."
+      ],
+      "cancellation": [
+        {
+          "when": "More than 24 hrs",
+          "result": "Full Refund"
+        },
+        {
+          "when": "Within 24 hrs",
+          "result": "50% Refund"
+        },
+        {
+          "when": "Same Day",
+          "result": "No Refund"
+        }
+      ]
+    }
+  ],
+  "masterMenu": [
+    {
+      "name": "Pizza – Margherita",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 200
+    },
+    {
+      "name": "Pizza – Veg Garden",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 230
+    },
+    {
+      "name": "Pizza – Corn",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 230
+    },
+    {
+      "name": "Pizza – Paneer",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 250
+    },
+    {
+      "name": "Pizza – Mushroom",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 250
+    },
+    {
+      "name": "Pizza – Chaap",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 250
+    },
+    {
+      "name": "Pizza – Hawaiian",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 260
+    },
+    {
+      "name": "Grilled Sandwich – Veg",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 90
+    },
+    {
+      "name": "Grilled Sandwich – Veg Club",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Grilled Sandwich – Paneer",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Grilled Sandwich – Cheese Corn",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 100
+    },
+    {
+      "name": "Grilled Sandwich – Bombay",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Pasta – Red",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Pasta – White",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 170
+    },
+    {
+      "name": "Pasta – Indian Masala",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "French Fries – Classic",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 90
+    },
+    {
+      "name": "French Fries – Peri-Peri",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 110
+    },
+    {
+      "name": "French Fries – Cheesy",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Nuggets – Veg",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Nuggets – Cheese Nuggets",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 180
+    },
+    {
+      "name": "Dosa – Plain Dosa",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 100
+    },
+    {
+      "name": "Dosa – Classic Masala",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Dosa – Onion Masala",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Dosa – UNQ Special Masala",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 180
+    },
+    {
+      "name": "Dosa – Ghee Roast Masala",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Dosa – Butter Masala",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Dosa – Paneer Masala",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 160
+    },
+    {
+      "name": "Dosa – Cheese Corn Masala",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 180
+    },
+    {
+      "name": "Uttapam – Plain",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 100
+    },
+    {
+      "name": "Uttapam – Veg Uttapam",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Uttapam – UNQ Special Masala",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 180
+    },
+    {
+      "name": "Uttapam – Ghee Roast Masala",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Uttapam – Butter Masala",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Idli – Classic",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 50
+    },
+    {
+      "name": "Idli – Fried",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 70
+    },
+    {
+      "name": "Idli – Ghee Podi",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 80
+    },
+    {
+      "name": "North Indian Breakfast – Poha",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 40
+    },
+    {
+      "name": "North Indian Breakfast – Upma",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 50
+    },
+    {
+      "name": "North Indian Breakfast – Chhole Bhature",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 130
+    },
+    {
+      "name": "North Indian Breakfast – Poori Sabji",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Noodles – Chowmein",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 140
+    },
+    {
+      "name": "Noodles – Hakka",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 160
+    },
+    {
+      "name": "Noodles – Schezwan",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 170
+    },
+    {
+      "name": "Noodles – Chilli Garlic Burnt",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 180
+    },
+    {
+      "name": "Fried Rice – Schezwan",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 140
+    },
+    {
+      "name": "Fried Rice – Chilli Garlic Burnt",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Fried Rice – Veg Fried Rice",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 130
+    },
+    {
+      "name": "Fried Rice – Paneer Fried Rice",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 220
+    },
+    {
+      "name": "Pakoda – Onion",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 90
+    },
+    {
+      "name": "Pakoda – Potato",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 90
+    },
+    {
+      "name": "Pakoda – Paneer",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Pakoda – Gobhi",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 100
+    },
+    {
+      "name": "Pakoda – Mix",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 130
+    },
+    {
+      "name": "Momo – Steamed Veg",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 90
+    },
+    {
+      "name": "Momo – Tandoori Veg",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Momo – Fried Momos",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 100
+    },
+    {
+      "name": "Momo – Peri-Peri Fried",
+      "category": "Snacks",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Tea – Regular Tea",
+      "category": "Hot Beverages",
+      "menuSection": "Snacks",
+      "price": 25
+    },
+    {
+      "name": "Tea – Masala Tea",
+      "category": "Hot Beverages",
+      "menuSection": "Snacks",
+      "price": 30
+    },
+    {
+      "name": "Tea – Black Tea",
+      "category": "Hot Beverages",
+      "menuSection": "Snacks",
+      "price": 20
+    },
+    {
+      "name": "Tea – Lemon Tea",
+      "category": "Hot Beverages",
+      "menuSection": "Snacks",
+      "price": 25
+    },
+    {
+      "name": "Coffee – Instant Coffee",
+      "category": "Hot Beverages",
+      "menuSection": "Snacks",
+      "price": 30
+    },
+    {
+      "name": "Coffee – Filter Coffee",
+      "category": "Hot Beverages",
+      "menuSection": "Snacks",
+      "price": 30
+    },
+    {
+      "name": "Coffee – Black Coffee",
+      "category": "Hot Beverages",
+      "menuSection": "Snacks",
+      "price": 25
+    },
+    {
+      "name": "Hot Milk – Plain",
+      "category": "Hot Beverages",
+      "menuSection": "Snacks",
+      "price": 40
+    },
+    {
+      "name": "Hot Milk – Turmeric Milk",
+      "category": "Hot Beverages",
+      "menuSection": "Snacks",
+      "price": 40
+    },
+    {
+      "name": "Hot Milk – Horlicks Milk",
+      "category": "Hot Beverages",
+      "menuSection": "Snacks",
+      "price": 50
+    },
+    {
+      "name": "Hot Chocolate – Classic",
+      "category": "Hot Beverages",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Mocktails – Blue Lagoon",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 100
+    },
+    {
+      "name": "Mocktails – Mint Mojito",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 100
+    },
+    {
+      "name": "Mocktails – Flavoured Mojito",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Mocktails – Lemonade",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 40
+    },
+    {
+      "name": "Mocktails – Ice Tea",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 70
+    },
+    {
+      "name": "Lassi – Punjabi Lassi",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 60
+    },
+    {
+      "name": "Lassi – Chocolate Lassi",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 100
+    },
+    {
+      "name": "Butter Milk – Masala",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 50
+    },
+    {
+      "name": "Butter Milk – Plain Salted",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 40
+    },
+    {
+      "name": "Soft Drink – Soft Drink",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 25
+    },
+    {
+      "name": "Soft Drink – Masala / Flavoured",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 50
+    },
+    {
+      "name": "Shakes – Vanilla",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 100
+    },
+    {
+      "name": "Shakes – Rose",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 100
+    },
+    {
+      "name": "Shakes – Cold Coffee",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 100
+    },
+    {
+      "name": "Shakes – Strawberry",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Shakes – Mango",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Shakes – Apple",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Shakes – Pineapple",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Shakes – Chocolate",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 120
+    },
+    {
+      "name": "Shakes – Badam",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Shakes – Cold Coffee with Ice Cream",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 140
+    },
+    {
+      "name": "Shakes – Kit Kat",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 140
+    },
+    {
+      "name": "Shakes – Oreo",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 140
+    },
+    {
+      "name": "Shakes – Kaju",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 150
+    },
+    {
+      "name": "Water – Water Bottle",
+      "category": "Cold Beverages",
+      "menuSection": "Snacks",
+      "price": 20
+    },
+    {
+      "name": "Soup – Manchow",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 100
+    },
+    {
+      "name": "Soup – Hot & Sour",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 100
+    },
+    {
+      "name": "Soup – Lemon Coriander",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 100
+    },
+    {
+      "name": "Soup – Cream of Tomato",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 120
+    },
+    {
+      "name": "Soup – Veg Clear",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 90
+    },
+    {
+      "name": "Soup – Sweet Corn",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 120
+    },
+    {
+      "name": "Chinese Starter – Paneer Chilli",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 200
+    },
+    {
+      "name": "Chinese Starter – Soya Chaap Chilli",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 200
+    },
+    {
+      "name": "Chinese Starter – Mushroom Chilli",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Chinese Starter – Gobhi Chilli",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 160
+    },
+    {
+      "name": "Chinese Starter – Corn Chilli",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 160
+    },
+    {
+      "name": "Chinese Starter – Chana Chilli",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 150
+    },
+    {
+      "name": "Chinese Starter – Honey Chilli Potato",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Chinese Starter – Paneer 65",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 200
+    },
+    {
+      "name": "Chinese Starter – Paneer Majestic",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Chinese Starter – Crispy Corn",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 120
+    },
+    {
+      "name": "Chinese Starter – Corn Roast",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 100
+    },
+    {
+      "name": "Chinese Starter – Veg Manchurian",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 160
+    },
+    {
+      "name": "Chinese Starter – Chinese Bhel",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 150
+    },
+    {
+      "name": "Chinese Starter – Veg Lollipop",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Chinese Starter – Chinese Platter",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 380
+    },
+    {
+      "name": "Tandoor Starter",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": "8 Pcs"
+    },
+    {
+      "name": "Chinese Starter – Paneer Tikka",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Chinese Starter – Paneer Hariyali Tikka",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 240
+    },
+    {
+      "name": "Chinese Starter – Paneer Lehsuni Tikka",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 240
+    },
+    {
+      "name": "Chinese Starter – Paneer Malai Tikka",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 280
+    },
+    {
+      "name": "Chinese Starter – Flavours of Paneer Tikka",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 350
+    },
+    {
+      "name": "Chinese Starter – Soya Chaap Tikka",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 240
+    },
+    {
+      "name": "Chinese Starter – Soya Malai Chaap Tikka",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 300
+    },
+    {
+      "name": "Chinese Starter – Soya Hariyali Chaap Tikka",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 270
+    },
+    {
+      "name": "Chinese Starter – Mushroom Tikka",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 250
+    },
+    {
+      "name": "Chinese Starter – Hara Bhara Kebab",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 160
+    },
+    {
+      "name": "Chinese Starter – Dahi Kebab",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Chinese Starter – Veg Kurkure Kebab",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 200
+    },
+    {
+      "name": "Chinese Starter – Tandoori Veg Platter",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 500
+    },
+    {
+      "name": "Accompaniments – UNQ Special Salad",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 120
+    },
+    {
+      "name": "Accompaniments – Garden Green Salad",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 60
+    },
+    {
+      "name": "Accompaniments – Onion Salad",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 40
+    },
+    {
+      "name": "Accompaniments – Corn Salad",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 100
+    },
+    {
+      "name": "Accompaniments – Chana Salad",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 100
+    },
+    {
+      "name": "Accompaniments – Peanut Masala",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 100
+    },
+    {
+      "name": "Accompaniments – Masala Papad",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 50
+    },
+    {
+      "name": "Accompaniments – Roasted Papad",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 30
+    },
+    {
+      "name": "Accompaniments – Fry Papad",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 35
+    },
+    {
+      "name": "Accompaniments – Fryums",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 40
+    },
+    {
+      "name": "Accompaniments – Dahi Kuchumber",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 70
+    },
+    {
+      "name": "Accompaniments – Plain Curd",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 40
+    },
+    {
+      "name": "Accompaniments – Boondi Raita",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 60
+    },
+    {
+      "name": "Accompaniments – Mix Raita",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 60
+    },
+    {
+      "name": "Accompaniments – Pineapple Raita",
+      "category": "Main (Starter)",
+      "menuSection": "Mains",
+      "price": 90
+    },
+    {
+      "name": "Paneer – Tikka Masala",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 250
+    },
+    {
+      "name": "Paneer – Matar Paneer",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Paneer – Palak Paneer",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Paneer – Paneer Korma",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 250
+    },
+    {
+      "name": "Paneer – Kadhai Paneer",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 240
+    },
+    {
+      "name": "Paneer – Paneer Do Pyaza",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Paneer – Paneer Butter Masala",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Paneer – Punjabi Paneer",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 230
+    },
+    {
+      "name": "Paneer – Methi Malai Paneer",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 250
+    },
+    {
+      "name": "Paneer – Paneer Bhurji",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Paneer – Paneer Bharta",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 200
+    },
+    {
+      "name": "Paneer – UNQ Special Paneer",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 350
+    },
+    {
+      "name": "Chaap – Chaap Tikka Masala",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 250
+    },
+    {
+      "name": "Chaap – Chaap Kadhai",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Chaap – Chaap Masala",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 200
+    },
+    {
+      "name": "Mushroom – Mushroom Masala",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 200
+    },
+    {
+      "name": "Mushroom – Mushroom Kadhai",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Mushroom – Mushroom Do Pyaza",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 200
+    },
+    {
+      "name": "Kaju – Kaju Masala",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 280
+    },
+    {
+      "name": "Kaju – Kaju Paneer",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 280
+    },
+    {
+      "name": "Kaju – Kaju Mushroom",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 280
+    },
+    {
+      "name": "Kofta",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": "~25 Min Prep"
+    },
+    {
+      "name": "Kaju – Malai",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 300
+    },
+    {
+      "name": "Kaju – Veg",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 200
+    },
+    {
+      "name": "Kaju – Nargis Kofta",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 350
+    },
+    {
+      "name": "Corn – Corn Palak",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Corn – Corn Masala",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Mix – Mix Veg",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Mix – Mix Veg Dry",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 150
+    },
+    {
+      "name": "UNQ Special Veg",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 300
+    },
+    {
+      "name": "Bhindi – Bhindi Peanut Fry",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 140
+    },
+    {
+      "name": "Bhindi – Bhindi Masala",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Bhindi – Bhindi Do Pyaza",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Bhindi – Kurkure Bhindi",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 160
+    },
+    {
+      "name": "Aloo – Aloo Dam",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 160
+    },
+    {
+      "name": "Aloo – Aloo Matar",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 160
+    },
+    {
+      "name": "Aloo – Aloo Palak",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Aloo – Aloo Gobhi Matar Dry",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 160
+    },
+    {
+      "name": "Aloo – Jeera Aloo",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 120
+    },
+    {
+      "name": "Aloo – Bhujiya Aloo",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 120
+    },
+    {
+      "name": "Chana – Chana Masala",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 160
+    },
+    {
+      "name": "Sev – Sev Masala",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 150
+    },
+    {
+      "name": "Sev – Sev Tamatar",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 130
+    },
+    {
+      "name": "Seasonal – Lahsuni Palak",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Seasonal – Seasonal Veg/Bhaji",
+      "category": "Main (Curries)",
+      "menuSection": "Mains",
+      "price": 150
+    },
+    {
+      "name": "Daal – Daal Fry / Jeera",
+      "category": "Daal",
+      "menuSection": "Mains",
+      "price": 100
+    },
+    {
+      "name": "Daal – Daal Tadka",
+      "category": "Daal",
+      "menuSection": "Mains",
+      "price": 120
+    },
+    {
+      "name": "Daal – Dhaaba Daal",
+      "category": "Daal",
+      "menuSection": "Mains",
+      "price": 150
+    },
+    {
+      "name": "Daal – Daal Palak",
+      "category": "Daal",
+      "menuSection": "Mains",
+      "price": 140
+    },
+    {
+      "name": "Daal – Daal Makhani",
+      "category": "Daal",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Roti – Tandoori Roti",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 30
+    },
+    {
+      "name": "Roti – Butter Tandoori Roti",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 35
+    },
+    {
+      "name": "Roti – Tawa Roti",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 25
+    },
+    {
+      "name": "Roti – Butter Tawa Roti",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 30
+    },
+    {
+      "name": "Naan – Plain Naan",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 35
+    },
+    {
+      "name": "Naan – Butter Naan",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 45
+    },
+    {
+      "name": "Naan – Garlic Naan",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 60
+    },
+    {
+      "name": "Kulcha – Aloo Kulcha",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 50
+    },
+    {
+      "name": "Kulcha – Paneer Kulcha",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 70
+    },
+    {
+      "name": "Kulcha – Masala Kulcha",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 60
+    },
+    {
+      "name": "Paratha",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": "1 Pc"
+    },
+    {
+      "name": "Kulcha – Plain Paratha",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 40
+    },
+    {
+      "name": "Kulcha – Lachha Paratha",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 60
+    },
+    {
+      "name": "Kulcha – Aloo Paratha",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 60
+    },
+    {
+      "name": "Kulcha – Paneer Paratha",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 80
+    },
+    {
+      "name": "Kulcha – Methi Paratha",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 60
+    },
+    {
+      "name": "Kulcha – Cheese Paratha",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 100
+    },
+    {
+      "name": "Kulcha – Mix Veg Paratha",
+      "category": "Main (Breads)",
+      "menuSection": "Mains",
+      "price": 80
+    },
+    {
+      "name": "Rice – Steam Rice",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 100
+    },
+    {
+      "name": "Rice – Jeera Rice",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 120
+    },
+    {
+      "name": "Rice – Ghee Onion Rice",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 150
+    },
+    {
+      "name": "Rice – Lemon Rice",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 150
+    },
+    {
+      "name": "Rice – Tomato Onion Rice",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 140
+    },
+    {
+      "name": "Rice – Indian Masala Rice",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Rice – Curd Rice",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 150
+    },
+    {
+      "name": "Khichadi – Daal Khichadi",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 160
+    },
+    {
+      "name": "Khichadi – Palak Khichadi",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Pulav – Veg Pulav",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 160
+    },
+    {
+      "name": "Pulav – Matar Pulav",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 180
+    },
+    {
+      "name": "Biryani – Veg Biryani",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 200
+    },
+    {
+      "name": "Biryani – Paneer Biryani",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 220
+    },
+    {
+      "name": "Biryani – Paneer Tikka Biryani",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 250
+    },
+    {
+      "name": "Biryani – Chaap Biryani",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 250
+    },
+    {
+      "name": "Biryani – Mushroom Biryani",
+      "category": "Main (Rice)",
+      "menuSection": "Mains",
+      "price": 250
+    },
+    {
+      "name": "Thali – Regular",
+      "category": "Combos",
+      "menuSection": "Mains",
+      "price": 200
+    },
+    {
+      "name": "Thali – Special",
+      "category": "Combos",
+      "menuSection": "Mains",
+      "price": 300
+    },
+    {
+      "name": "Gulab Jamun – 2 pcs",
+      "category": "Dessert",
+      "menuSection": "Mains",
+      "price": 50
+    },
+    {
+      "name": "Gulab Jamun – 1 Pc With Ice Cream",
+      "category": "Dessert",
+      "menuSection": "Mains",
+      "price": 70
+    },
+    {
+      "name": "Ice Cream – Single Scoop",
+      "category": "Dessert",
+      "menuSection": "Mains",
+      "price": 40
+    },
+    {
+      "name": "Water Bottle 1L",
+      "category": "Beverages",
+      "menuSection": "Mains",
+      "price": 20
+    },
+    {
+      "name": "Live Counter – Momos",
+      "category": "Live Counters",
+      "menuSection": "Live Counters",
+      "price": null
+    },
+    {
+      "name": "Live Counter – Chaat",
+      "category": "Live Counters",
+      "menuSection": "Live Counters",
+      "price": null
+    },
+    {
+      "name": "Live Counter – Gupchup",
+      "category": "Live Counters",
+      "menuSection": "Live Counters",
+      "price": null
+    },
+    {
+      "name": "Live Counter – Bhel",
+      "category": "Live Counters",
+      "menuSection": "Live Counters",
+      "price": null
+    }
+  ],
+  "venuePage": {
+    "subtitle": "Two distinct venues  ·  Fully managed events  ·  Bilaspur",
+    "sections": [
+      {
+        "name": "Indoor Hall",
+        "instruction": "600 sq ft",
+        "chip": "Up to 40 guests",
+        "items": [
+          {
+            "name": "Kitty parties & small birthdays",
+            "note": null
+          },
+          {
+            "name": "Official meetings & seminars",
+            "note": null
+          },
+          {
+            "name": "Roka & intimate celebrations",
+            "note": null
+          },
+          {
+            "name": "Projector & screen",
+            "note": "On request"
+          }
+        ]
+      },
+      {
+        "name": "Outdoor Lawn",
+        "instruction": "1500 sq ft",
+        "chip": "Up to 100 guests",
+        "items": [
+          {
+            "name": "Grand anniversaries & Roka",
+            "note": null
+          },
+          {
+            "name": "Corporate events & galas",
+            "note": null
+          },
+          {
+            "name": "Large birthdays & cultural events",
+            "note": null
+          },
+          {
+            "name": "2 live cooking counters",
+            "note": "Pkg 8 & 9"
+          }
+        ]
+      },
+      {
+        "name": "Decoration",
+        "instruction": "On request",
+        "chip": "",
+        "items": [
+          {
+            "name": "Basic floral table setup",
+            "note": "Pkg 6+"
+          },
+          {
+            "name": "Balloon & themed decoration",
+            "note": "Extra cost"
+          },
+          {
+            "name": "Backdrop & lighting setup",
+            "note": "Extra cost"
+          },
+          {
+            "name": "Cake cutting arrangement",
+            "note": "On request"
+          }
+        ]
+      },
+      {
+        "name": "Event Types",
+        "instruction": "We host",
+        "chip": "",
+        "items": [
+          {
+            "name": "Birthdays & Anniversaries",
+            "note": null
+          },
+          {
+            "name": "Roka & Baby Showers",
+            "note": null
+          },
+          {
+            "name": "Corporate Meetings & Seminars",
+            "note": null
+          },
+          {
+            "name": "Sports Screenings & Movie Nights",
+            "note": "Hall"
+          },
+          {
+            "name": "Kitty Parties & Ladies Clubs",
+            "note": null
+          },
+          {
+            "name": "Pooja & Cultural Gatherings",
+            "note": "Lawn"
+          }
+        ]
+      }
+    ]
+  }
+}

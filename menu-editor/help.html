@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNQ Kitchen — Package Editor Manual</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:#f5f4f0;color:#1a1a1a;line-height:1.6;}
+
+/* ── Layout ── */
+.shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh;}
+
+/* ── Sidebar ── */
+.sidebar{background:#1a1a1a;color:#e8d98a;position:sticky;top:0;height:100vh;overflow-y:auto;padding:0;}
+.sidebar-logo{padding:20px 20px 14px;border-bottom:1px solid rgba(232,217,138,.15);}
+.sidebar-logo .unq{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;letter-spacing:3px;color:#e8d98a;}
+.sidebar-logo .sub{font-size:11px;color:#888;letter-spacing:1px;margin-top:2px;}
+.sidebar-logo .badge{display:inline-block;font-size:9px;background:rgba(232,217,138,.15);border:1px solid rgba(232,217,138,.25);border-radius:2px;padding:1px 6px;margin-top:6px;letter-spacing:1px;color:#a09060;}
+nav a{display:flex;align-items:center;gap:10px;padding:9px 20px;font-size:12.5px;color:#888;text-decoration:none;border-left:3px solid transparent;transition:all .15s;}
+nav a:hover{color:#e8d98a;background:rgba(232,217,138,.06);}
+nav a.active{color:#e8d98a;border-left-color:#e8d98a;background:rgba(232,217,138,.08);}
+nav a .icon{font-size:15px;width:18px;text-align:center;flex-shrink:0;}
+.nav-section{padding:14px 20px 4px;font-size:10px;font-weight:700;letter-spacing:2px;color:#555;text-transform:uppercase;}
+
+/* ── Content ── */
+.content{padding:40px 48px;max-width:860px;}
+.content h1{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#1a1a1a;margin-bottom:6px;}
+.content .lead{font-size:15px;color:#555;margin-bottom:32px;line-height:1.7;}
+.content h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;margin-top:44px;margin-bottom:14px;color:#1a1a1a;padding-bottom:8px;border-bottom:1px solid #e0d8c8;}
+.content h3{font-size:14px;font-weight:700;margin-top:22px;margin-bottom:8px;color:#333;letter-spacing:.3px;}
+.content p{font-size:13.5px;color:#444;margin-bottom:12px;line-height:1.75;}
+.content ul,.content ol{padding-left:20px;margin-bottom:12px;}
+.content li{font-size:13.5px;color:#444;margin-bottom:5px;line-height:1.7;}
+.content strong{color:#1a1a1a;}
+
+/* ── Section anchor scroll ── */
+section{scroll-margin-top:20px;}
+
+/* ── Callout boxes ── */
+.tip{background:#f0faf0;border-left:3px solid #27ae60;border-radius:3px;padding:10px 14px;margin:14px 0;font-size:13px;color:#1a4d2a;}
+.warn{background:#fff8e1;border-left:3px solid #e8a000;border-radius:3px;padding:10px 14px;margin:14px 0;font-size:13px;color:#5a3e00;}
+.info{background:#f0f4ff;border-left:3px solid #4a6cf7;border-radius:3px;padding:10px 14px;margin:14px 0;font-size:13px;color:#1a2a6a;}
+
+/* ── Key labels ── */
+kbd{display:inline-block;background:#f0ece0;border:1px solid #d0c8b0;border-radius:3px;padding:1px 6px;font-size:11px;font-family:monospace;color:#555;}
+.tag{display:inline-block;background:#1a1a1a;color:#e8d98a;border-radius:2px;padding:1px 7px;font-size:11px;font-weight:700;letter-spacing:.5px;vertical-align:middle;}
+.tag.green{background:#27ae60;}
+.tag.yellow{background:#e8a000;color:#fff;}
+.tag.red{background:#c0392b;color:#fff;}
+.tag.blue{background:#4a6cf7;}
+
+/* ── Step numbers ── */
+.steps{counter-reset:step;display:flex;flex-direction:column;gap:10px;margin:14px 0;}
+.step{display:flex;gap:14px;align-items:flex-start;}
+.step-num{counter-increment:step;content:counter(step);background:#1a1a1a;color:#e8d98a;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.step-num::before{content:counter(step);}
+.step-body{font-size:13.5px;color:#444;line-height:1.7;padding-top:2px;}
+
+/* ── Table ── */
+table.ref{border-collapse:collapse;width:100%;margin:12px 0;font-size:13px;}
+table.ref th{background:#1a1a1a;color:#e8d98a;padding:7px 12px;text-align:left;font-weight:600;}
+table.ref td{padding:7px 12px;border-bottom:1px solid #eee;vertical-align:top;}
+table.ref tr:hover td{background:#fdf8ee;}
+
+/* ── File tree ── */
+.filetree{background:#1a1a1a;color:#e8e8e8;border-radius:5px;padding:14px 18px;font-family:monospace;font-size:13px;line-height:2;margin:12px 0;}
+.filetree .dir{color:#e8d98a;}
+.filetree .file{color:#aaa;}
+.filetree .comment{color:#555;font-style:italic;}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-thumb{background:#333;border-radius:3px;}
+
+/* Print */
+@media print{.sidebar{display:none;}.shell{display:block;}.content{padding:20px;}}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+<!-- ── Sidebar navigation ── -->
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <div class="unq">UNQ</div>
+    <div class="sub">KITCHEN · PACKAGE EDITOR</div>
+    <div class="badge">USER MANUAL</div>
+  </div>
+  <nav>
+    <div class="nav-section">Getting Started</div>
+    <a href="#overview" class="active"><span class="icon">📋</span> Overview</a>
+    <a href="#workflow"><span class="icon">🔁</span> Edit → Publish workflow</a>
+    <a href="#files"><span class="icon">📁</span> Files in this folder</a>
+    <a href="#opening"><span class="icon">🚀</span> How to open</a>
+
+    <div class="nav-section">The Tabs</div>
+    <a href="#matrix"><span class="icon">⬜</span> Item Matrix</a>
+    <a href="#builder"><span class="icon">🧱</span> Package Builder</a>
+    <a href="#terms"><span class="icon">📜</span> Terms & Conditions</a>
+    <a href="#venue"><span class="icon">🏠</span> Venue & Services</a>
+    <a href="#design"><span class="icon">🎨</span> Design</a>
+
+    <div class="nav-section">Export & Data</div>
+    <a href="#export"><span class="icon">⬇️</span> Exporting</a>
+    <a href="#autosave"><span class="icon">💾</span> Auto-save</a>
+    <a href="#rebuild"><span class="icon">🔄</span> Rebuilding the editor</a>
+  </nav>
+</div>
+
+<!-- ── Main content ── -->
+<div class="content">
+
+  <!-- Overview -->
+  <section id="overview">
+    <h1>Package Editor Manual</h1>
+    <p class="lead">A no-code tool for managing UNQ Kitchen's event packages — edit items, sections, pricing, terms, the venue page, and the visual design — then export a ready-to-publish <code>package/index.html</code>.</p>
+  </section>
+
+  <!-- Workflow -->
+  <section id="workflow">
+    <h2>Edit → Publish workflow</h2>
+    <p>The editor and the live package page are two separate things. Edits you make in the editor <strong>do not automatically appear on the website</strong>. You must export and replace the file. Here is the complete flow from opening the editor to seeing changes live:</p>
+
+    <div style="margin:24px 0;display:flex;flex-direction:column;gap:0;">
+
+      <!-- Step 1 -->
+      <div style="display:flex;gap:0;align-items:stretch;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:48px;flex-shrink:0;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#1a1a1a;color:#e8d98a;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">1</div>
+          <div style="width:2px;background:#e0d8c8;flex:1;margin:4px 0;"></div>
+        </div>
+        <div style="padding:0 0 24px 16px;">
+          <div style="font-weight:700;font-size:13.5px;margin-bottom:4px;">Open the editor</div>
+          <p>Double-click <code>menu-editor/index.html</code>. It opens in your browser. All previous edits are restored automatically from browser storage.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="display:flex;gap:0;align-items:stretch;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:48px;flex-shrink:0;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#1a1a1a;color:#e8d98a;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">2</div>
+          <div style="width:2px;background:#e0d8c8;flex:1;margin:4px 0;"></div>
+        </div>
+        <div style="padding:0 0 24px 16px;">
+          <div style="font-weight:700;font-size:13.5px;margin-bottom:4px;">Make your edits</div>
+          <p>Use any tab — add items, update terms, rename sections, adjust the design. Every change is saved to browser storage as you type. Nothing is lost if you close the tab.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="display:flex;gap:0;align-items:stretch;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:48px;flex-shrink:0;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#1a1a1a;color:#e8d98a;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">3</div>
+          <div style="width:2px;background:#e0d8c8;flex:1;margin:4px 0;"></div>
+        </div>
+        <div style="padding:0 0 24px 16px;">
+          <div style="font-weight:700;font-size:13.5px;margin-bottom:4px;">Click Export Package Page</div>
+          <p>Two files download automatically to your <strong>Downloads</strong> folder:</p>
+          <ul style="margin-top:6px;">
+            <li><code>data.json</code> — updated source data</li>
+            <li><code>package-index.html</code> — the fully styled, ready-to-publish package page</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div style="display:flex;gap:0;align-items:stretch;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:48px;flex-shrink:0;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#1a1a1a;color:#e8d98a;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">4</div>
+          <div style="width:2px;background:#e0d8c8;flex:1;margin:4px 0;"></div>
+        </div>
+        <div style="padding:0 0 24px 16px;">
+          <div style="font-weight:700;font-size:13.5px;margin-bottom:4px;">Replace the files on disk</div>
+          <p>Copy both files from Downloads into the site folder:</p>
+          <div class="filetree" style="margin-top:8px;">
+            <span style="color:#e8d98a;">Downloads/</span><br>
+            &nbsp;&nbsp;data.json &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#555;">→ copy to →</span>&nbsp; <span style="color:#e8d98a;">unq-kitchen-site/menu-editor/data.json</span><br>
+            &nbsp;&nbsp;package-index.html &nbsp;<span style="color:#555;">→ rename &amp; copy to →</span>&nbsp; <span style="color:#e8d98a;">unq-kitchen-site/package/index.html</span>
+          </div>
+          <div class="warn" style="margin-top:10px;"><strong>Rename</strong> <code>package-index.html</code> to <code>index.html</code> before placing it in the <code>package/</code> folder. The site expects the file to be named <code>index.html</code>.</div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div style="display:flex;gap:0;align-items:stretch;">
+        <div style="display:flex;flex-direction:column;align-items:center;width:48px;flex-shrink:0;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#27ae60;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;">5</div>
+          <div style="width:2px;background:transparent;flex:1;"></div>
+        </div>
+        <div style="padding:0 0 0 16px;">
+          <div style="font-weight:700;font-size:13.5px;margin-bottom:4px;color:#27ae60;">Changes are live</div>
+          <p>Open <code>package/index.html</code> in your browser — you will see all your edits with the full original design intact. Push to GitHub to make it live on the website.</p>
+        </div>
+      </div>
+
+    </div><!-- end flow -->
+
+    <h3>What the exported file contains</h3>
+    <p>The exported <code>package-index.html</code> is a complete, self-contained HTML file. It includes:</p>
+    <ul>
+      <li>The full original CSS — all fonts (including the embedded BlippoMN font), colors, layout, print styles</li>
+      <li>Any design changes you made in the Design tab</li>
+      <li>All 9 package pages generated from your current data</li>
+      <li>The Venue &amp; Services (Book Your Space) page as the last page</li>
+      <li>Correct page numbering (e.g. "3 of 10") automatically calculated</li>
+    </ul>
+    <div class="tip">Open <code>package/index.html</code> in a browser and use <strong>File → Print → Save as PDF</strong> to generate the printable package brochure. All pages are already print-formatted.</div>
+
+    <h3>Quick reference — which file goes where</h3>
+    <table class="ref">
+      <tr><th>Downloaded file</th><th>Rename to</th><th>Place in</th><th>Purpose</th></tr>
+      <tr><td><code>data.json</code></td><td>Keep as-is</td><td><code>menu-editor/</code></td><td>Keeps editor data in sync with your edits</td></tr>
+      <tr><td><code>package-index.html</code></td><td><code>index.html</code></td><td><code>package/</code></td><td>The live package page visible on the website</td></tr>
+    </table>
+
+    <h3>What happens if I skip replacing <code>data.json</code>?</h3>
+    <p>The website still shows your changes (because <code>package/index.html</code> is updated). But the next time you open the editor, it loads from browser storage — which has your edits. However, if you ever clear browser storage or open the editor on a new device, it falls back to the <code>data.json</code> on disk, which would be outdated. Always replace both files.</p>
+
+    <h3>Making changes live on the website (GitHub Pages)</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num"></div><div class="step-body">Replace the files on disk as described above.</div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">Open a terminal in the <code>unq-kitchen-site</code> folder.</div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">Run: <code>git add package/index.html menu-editor/data.json</code></div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">Run: <code>git commit -m "Update packages"</code></div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">Run: <code>git push</code> — the site updates within a minute.</div></div>
+    </div>
+  </section>
+
+  <!-- Files -->
+  <section id="files">
+    <h2>Files in this folder</h2>
+    <div class="filetree">
+      <span class="dir">menu-editor/</span><br>
+      &nbsp;&nbsp;<span class="file">index.html</span> &nbsp;&nbsp;<span class="comment">← the editor (open this)</span><br>
+      &nbsp;&nbsp;<span class="file">data.json</span> &nbsp;&nbsp;&nbsp;<span class="comment">← all package content</span><br>
+      &nbsp;&nbsp;<span class="file">template.html</span> <span class="comment">← full CSS + page shell</span><br>
+      &nbsp;&nbsp;<span class="file">help.html</span> &nbsp;&nbsp;&nbsp;<span class="comment">← this manual</span>
+    </div>
+    <table class="ref">
+      <tr><th>File</th><th>What it contains</th><th>Do I edit it directly?</th></tr>
+      <tr><td><strong>index.html</strong></td><td>The editor application itself. Also embeds a copy of data.json and template.html so it works offline.</td><td>Only if you rebuild (see <a href="#rebuild">Rebuilding</a>)</td></tr>
+      <tr><td><strong>data.json</strong></td><td>All packages, items, terms, cancellation policy, master menu (233+ items), venue page content.</td><td>Only to reset or restore — the editor writes it on export</td></tr>
+      <tr><td><strong>template.html</strong></td><td>The full CSS (fonts, layout, colors, print styles) + structural HTML wrapper with <code>{{PAGES}}</code> and <code>{{VENUE_PAGE}}</code> placeholders.</td><td>Replace it with the one downloaded from the Design tab to update styles</td></tr>
+    </table>
+  </section>
+
+  <!-- Opening -->
+  <section id="opening">
+    <h2>How to open the editor</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num"></div><div class="step-body">Double-click <strong>index.html</strong> — it opens in your browser directly as a local file. No server or internet required.</div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">The editor loads with the last session's data automatically (saved in browser storage). First-ever open uses the bundled data.</div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">To load a fresh <strong>data.json</strong> (e.g. after another device exported one), use the <kbd>Import JSON</kbd> button in the top-right.</div></div>
+    </div>
+    <div class="tip">The editor works entirely offline. All edits are saved automatically to your browser's local storage — you never lose work by accidentally closing the tab.</div>
+  </section>
+
+  <!-- Item Matrix -->
+  <section id="matrix">
+    <h2>Item Matrix</h2>
+    <p>A full cross-reference of every item in the master menu against all packages. Use it to see what's in what, find gaps, and add or remove items with a single click.</p>
+
+    <h3>Reading the table</h3>
+    <table class="ref">
+      <tr><th>Cell appearance</th><th>Meaning</th></tr>
+      <tr><td>☑ Checked checkbox</td><td>Item is included in this package</td></tr>
+      <tr><td>☐ Empty checkbox</td><td>Item is not in this package</td></tr>
+      <tr><td style="background:#f0faf0;">☐ Green-tinted cell + <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#a0d8a0;vertical-align:middle;"></span></td><td>Item not in package but its price is a good fit for the package tier — suggested addition</td></tr>
+      <tr><td><span style="background:#ffeaa7;font-size:11px;padding:1px 5px;border-radius:2px;">unassigned</span></td><td>Item exists in master menu but is not in any package yet</td></tr>
+    </table>
+
+    <h3>Adding an item to a package</h3>
+    <p>Tick the checkbox in the cell where the item's row meets the package column. The item is immediately added to the first section of that package. You can then move it to the correct section in the <strong>Package Builder</strong> tab.</p>
+
+    <h3>Removing an item from a package</h3>
+    <p>Untick the checkbox. The item is removed from all sections of that package where it appeared.</p>
+
+    <h3>Filters</h3>
+    <ul>
+      <li><strong>Search box</strong> — filter rows by item name</li>
+      <li><strong>Category dropdown</strong> — show only items from one menu category (e.g. Hot Beverages, Snacks)</li>
+      <li><strong>Assignment filter</strong> — show All items, Unassigned only, or Assigned to ≥1 package</li>
+    </ul>
+
+    <div class="info">The matrix is derived entirely from the data — it always reflects what is currently saved. Any change in the Package Builder is instantly visible here too.</div>
+  </section>
+
+  <!-- Package Builder -->
+  <section id="builder">
+    <h2>Package Builder</h2>
+    <p>The main editing workspace. Three columns: Item Pool on the left, Sections in the middle, and a sidebar on the right.</p>
+
+    <h3>Package tabs</h3>
+    <p>Each package has its own tab at the top. Click a tab to switch packages. The <strong>+ New Package</strong> button at the end creates a blank package.</p>
+
+    <h3>Package info strip (top bar)</h3>
+    <p>Edit the package <strong>Name</strong>, <strong>Price</strong>, <strong>Description</strong>, and <strong>Ideal For</strong> text inline. Changes save automatically.</p>
+
+    <h3>Left panel — Item Pool</h3>
+    <p>Lists all 237+ master menu items grouped by category.</p>
+    <ul>
+      <li>Items already in this package are <em>dimmed</em> with a ✓ mark.</li>
+      <li>Use the <strong>search box</strong> or <strong>category dropdown</strong> to find items quickly.</li>
+      <li>Toggle between <strong>All Items</strong> and <strong>In Package</strong> to see only what's already been added.</li>
+    </ul>
+
+    <h3>Adding an item — drag from pool</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num"></div><div class="step-body">Find the item in the pool panel.</div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">Click and hold, then drag it to the target section's drop zone in the middle panel.</div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">The item appears as a chip in that section. Its display name defaults to the master menu name — click the name to edit it.</div></div>
+    </div>
+    <div class="tip">The <strong>display name</strong> (what prints on the package page) is separate from the <strong>master menu ref</strong> (used for pricing and matrix). For example, the display name can be "Veg Pakoda" while the master ref stays "Pakoda – Mix". The small grey hint below the name shows the master ref when it differs.</div>
+
+    <h3>Moving items between sections</h3>
+    <p>Drag an item chip from one section and drop it onto another section's drop zone. The item moves instantly.</p>
+
+    <h3>Removing an item</h3>
+    <p>Either click the <strong>×</strong> on the chip, or drag the chip down to the <strong>"Drop here to remove"</strong> zone at the bottom of the pool panel.</p>
+
+    <h3>Reordering sections</h3>
+    <p>Grab the <strong>⠿ drag handle</strong> on the left of a section header and drag it above or below another section.</p>
+
+    <h3>Editing a section</h3>
+    <ul>
+      <li>Click the section name to rename it.</li>
+      <li>Edit <strong>Instruction</strong> (e.g. "Choose any two") and <strong>Chip / Qty</strong> (e.g. "1 round") in the two fields below the header.</li>
+      <li>Click <strong>×</strong> on the section header to delete the entire section.</li>
+    </ul>
+
+    <h3>Item badges</h3>
+    <p>Each chip has a small <strong>badge</strong> field (shown in gold on the printed page — e.g. "Unlimited", "On request"). Click the badge area on the chip to edit or remove it.</p>
+
+    <h3>Right sidebar</h3>
+    <table class="ref">
+      <tr><th>Card</th><th>What you edit</th></tr>
+      <tr><td>Booking Details</td><td>Format, Min–Max guests, Advance payment. Add or remove rows freely.</td></tr>
+      <tr><td>Highlight Note</td><td>The small gold note at the bottom of the page (e.g. "Water Cane is complimentary").</td></tr>
+      <tr><td>Quick Stats</td><td>Read-only summary: section count, total items, unique items.</td></tr>
+      <tr><td>Price Analysis</td><td>Every item shown with its price as % of package price. See below.</td></tr>
+    </table>
+
+    <h3>Price Analysis</h3>
+    <p>Each item in the package is rated against the package price per person:</p>
+    <ul>
+      <li><span class="tag green">✓ ≤20%</span> — item price is well within the package tier</li>
+      <li><span class="tag yellow">~ 20–35%</span> — borderline, keep an eye on it</li>
+      <li><span class="tag red">⚠ &gt;35%</span> — item may be too expensive for this package tier</li>
+    </ul>
+    <p>For flagged items, <strong>swap chips</strong> appear showing alternative items from the same menu category that fit the price. Click a swap chip to replace the item instantly.</p>
+  </section>
+
+  <!-- Terms -->
+  <section id="terms">
+    <h2>Terms & Conditions</h2>
+    <p>Each package has its own set of terms and a cancellation policy. Switch packages using the tabs at the top.</p>
+
+    <h3>Terms bullets</h3>
+    <p>Each bullet is a separate editable text area. Click <strong>+ Add Term</strong> to add a new one, or click <strong>×</strong> to delete. The text supports HTML (e.g. wrap a word in <code>&lt;strong&gt;</code> for bold on the printed page).</p>
+
+    <h3>Cancellation policy</h3>
+    <p>Three columns: Condition (e.g. "More than 24 hrs"), Result (e.g. "Full Refund"). Add or remove rows. These appear in the printed cancellation box at the bottom of each package page.</p>
+  </section>
+
+  <!-- Venue -->
+  <section id="venue">
+    <h2>Venue & Services page</h2>
+    <p>This is the last page in the printed document — "Book Your Space". It lists the Indoor Hall, Outdoor Lawn, decoration options, and event types. It has the same section structure as packages but without a price.</p>
+
+    <h3>Editing</h3>
+    <ul>
+      <li>Edit the <strong>Page Subtitle</strong> at the top (currently "Two distinct venues · Fully managed events · Bilaspur").</li>
+      <li>Each venue/category is a <strong>Section</strong> — rename, edit the detail field (e.g. "600 sq ft"), and the capacity chip (e.g. "Up to 40 guests").</li>
+      <li>Items within each section are the features listed. Add, rename, remove, or add a badge (e.g. "On request", "Extra cost").</li>
+      <li>Use <strong>+ Add Section</strong> to add a new venue or category row.</li>
+    </ul>
+  </section>
+
+  <!-- Design -->
+  <section id="design">
+    <h2>Design tab</h2>
+    <p>Edit the visual appearance of the printed package pages — colors, fonts, spacing, layout — without touching any content.</p>
+
+    <h3>CSS editor</h3>
+    <p>The left panel shows the full CSS from <code>template.html</code>. Edit any rule and the live preview on the right updates within a second.</p>
+
+    <h3>Live preview</h3>
+    <p>The right panel shows a single package page rendered with your current CSS. Use the <strong>package selector</strong> dropdown to switch which package you're previewing.</p>
+
+    <h3>Saving design changes</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num"></div><div class="step-body">Edit the CSS in the left panel.</div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">Click <strong>Save Design</strong>. Two things happen: the CSS is saved to browser storage (instant, persists across sessions), and a new <code>template.html</code> file is downloaded.</div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">Replace <code>menu-editor/template.html</code> with the downloaded file. This makes the design change permanent — it will be in the editor next time you open it.</div></div>
+    </div>
+    <div class="warn">If you only rely on browser storage and clear your browser data, the CSS override is lost. Always replace <code>template.html</code> after important design changes.</div>
+
+    <h3>Reset button</h3>
+    <p>Discards any local CSS overrides and reloads the CSS from <code>template.html</code> (or the embedded copy if opened as a file). Use this to undo design experiments.</p>
+
+    <h3>Key CSS variables to look for</h3>
+    <table class="ref">
+      <tr><th>Variable / Selector</th><th>Controls</th></tr>
+      <tr><td><code>--gold-bright</code></td><td>Primary gold accent color</td></tr>
+      <tr><td><code>--ink</code></td><td>Main text color</td></tr>
+      <tr><td><code>--ink-soft</code></td><td>Secondary text</td></tr>
+      <tr><td><code>.pkg-price</code></td><td>The large price number on each page</td></tr>
+      <tr><td><code>.pkg-name</code></td><td>Package name styling</td></tr>
+      <tr><td><code>.section</code></td><td>Each row in the items table</td></tr>
+      <tr><td><code>@media print</code></td><td>Print-specific overrides</td></tr>
+    </table>
+  </section>
+
+  <!-- Export -->
+  <section id="export">
+    <h2>Exporting</h2>
+    <p>Click the <span class="tag">Export Package Page</span> button in the top-right. Two files download automatically:</p>
+    <table class="ref">
+      <tr><th>File downloaded</th><th>What to do with it</th></tr>
+      <tr><td><code>data.json</code></td><td>Replace <code>menu-editor/data.json</code> — keeps the source file in sync with your edits.</td></tr>
+      <tr><td><code>package-index.html</code></td><td>Rename to <code>index.html</code> and replace <code>package/index.html</code> in the main site folder — this is the live package page.</td></tr>
+    </table>
+    <div class="tip">Always replace both files. <code>data.json</code> is the source of truth; if you only replace the HTML and later export again, you'll start from the old data.</div>
+
+    <h3>What the export preserves</h3>
+    <ul>
+      <li>All original CSS and fonts (including the embedded BlippoMN font and print styles)</li>
+      <li>All design changes made in the Design tab</li>
+      <li>Page numbering (automatically updated based on number of packages)</li>
+      <li>The static "Book Your Space" page — now generated from your edits in the Venue tab</li>
+    </ul>
+  </section>
+
+  <!-- Auto-save -->
+  <section id="autosave">
+    <h2>Auto-save & data persistence</h2>
+    <p>Every change you make — adding an item, editing a term, reordering a section — is saved to your browser's local storage immediately. You can close the tab and re-open the editor; your work will still be there.</p>
+
+    <div class="warn">Local storage is browser-specific and device-specific. If you open the editor on a different computer, it will start from the bundled data. To carry your work across devices, export <code>data.json</code> and use <kbd>Import JSON</kbd> on the other device.</div>
+
+    <h3>Importing data from another device</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num"></div><div class="step-body">On the source device, click <span class="tag">Export Package Page</span> and save <code>data.json</code>.</div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">On the target device, open the editor and click <kbd>Import JSON</kbd> (top-right).</div></div>
+      <div class="step"><div class="step-num"></div><div class="step-body">Select the <code>data.json</code> file. The editor reloads with all your packages, items, and terms.</div></div>
+    </div>
+  </section>
+
+  <!-- Rebuild -->
+  <section id="rebuild">
+    <h2>Rebuilding the editor</h2>
+    <p>The editor embeds a copy of <code>data.json</code> and <code>template.html</code> inside <code>index.html</code> so it works as a local file. When you update either of those files on disk, the embedded copies inside the editor become stale.</p>
+    <p>To sync them, run the rebuild script from the <code>unq-kitchen-site</code> folder:</p>
+    <div class="filetree">python3 menu-editor/rebuild.py</div>
+    <p>This regenerates <code>index.html</code> with the latest <code>data.json</code> and <code>template.html</code> embedded inside. Run it any time you:</p>
+    <ul>
+      <li>Replace <code>template.html</code> after a Design save</li>
+      <li>Manually edit <code>data.json</code> outside the editor</li>
+      <li>Want to distribute the editor to someone else as a fresh standalone file</li>
+    </ul>
+    <div class="tip">For day-to-day use you don't need to rebuild. Local storage always has your latest edits. Rebuild is only needed to update the embedded starting-point data.</div>
+  </section>
+
+  <div style="margin-top:60px;padding-top:20px;border-top:1px solid #e0d8c8;font-size:12px;color:#aaa;">
+    UNQ Kitchen Package Editor &nbsp;·&nbsp; Bilaspur C.G. &nbsp;·&nbsp; Internal tool
+  </div>
+
+</div><!-- content -->
+</div><!-- shell -->
+
+<script>
+// Highlight active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px' });
+sections.forEach(s => obs.observe(s));
+
+// Smooth scroll
+document.querySelectorAll('nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
