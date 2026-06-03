@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UNQ Kitchen — Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{--olive:#7A8434;--olive-dark:#5C6330;--ink:#14160C;--gold:#c9a96a;--paper:#fff;--paper-2:#faf9f3;--line:rgba(122,132,52,.22);--muted:rgba(20,22,12,.55);--danger:#c0392b;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--paper-2);color:var(--ink);}
+header{display:flex;align-items:center;gap:16px;background:var(--ink);color:#f5f0e6;padding:10px 18px;position:sticky;top:0;z-index:10;}
+header .logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;letter-spacing:2px;color:var(--gold);}
+header .tabs{display:flex;gap:4px;margin-left:8px;}
+header .tabs button{background:transparent;border:1px solid rgba(245,240,230,.2);color:#cdc8bd;border-radius:7px;padding:6px 13px;font:inherit;font-size:13px;cursor:pointer;}
+header .tabs button.active{background:var(--olive);border-color:var(--olive);color:#fff;}
+header .tabs button:disabled{opacity:.5;cursor:not-allowed;}
+header .spacer{flex:1;}
+header #status{font-size:12.5px;color:#bdb7aa;}
+header #status.err{color:#f3a59a;}
+header #status.ok{color:#9ed8a0;}
+#save{background:var(--gold);color:#1a1a1a;border:none;border-radius:7px;padding:8px 16px;font:inherit;font-weight:700;font-size:13px;cursor:pointer;}
+#save:disabled{opacity:.45;cursor:not-allowed;}
+.layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 52px);}
+.side{background:#fff;border-right:1px solid var(--line);overflow-y:auto;padding:10px 0;}
+.side .grp{font-size:10.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:14px 16px 4px;}
+.side a{display:flex;justify-content:space-between;padding:7px 16px;font-size:13px;color:var(--ink);text-decoration:none;cursor:pointer;border-left:3px solid transparent;}
+.side a:hover{background:var(--paper-2);}
+.side a.active{border-left-color:var(--olive);background:rgba(122,132,52,.08);color:var(--olive-dark);font-weight:600;}
+.side a .n{color:var(--muted);font-size:11px;}
+.main{padding:20px 24px;overflow-y:auto;}
+.main h2{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--olive-dark);}
+.main .sub{font-size:12.5px;color:var(--muted);margin-bottom:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px;}
+.card .row1{display:flex;gap:10px;align-items:center;}
+.card input,.card textarea,.card select{font:inherit;border:1px solid var(--line);border-radius:6px;padding:7px 9px;background:var(--paper);}
+.card input:focus,.card textarea:focus,.card select:focus{outline:none;border-color:var(--olive);}
+.card .iname{font-size:15px;font-weight:600;flex:1;}
+.card textarea{width:100%;margin-top:8px;font-size:13px;resize:vertical;min-height:42px;}
+.card .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;align-items:center;}
+.card .meta label{font-size:12px;color:var(--muted);display:flex;gap:5px;align-items:center;}
+.card .img{flex:1;min-width:200px;font-size:12px;}
+.vtable{width:100%;border-collapse:collapse;margin-top:10px;}
+.vtable th{font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);text-align:left;padding:4px 6px;font-weight:600;}
+.vtable td{padding:3px 6px;}
+.vtable input.vn{width:140px;}
+.vtable input.vi{width:100%;}
+.vtable input.vp{width:74px;}
+.vtable .ving{width:46%;}
+.btn{border:1px solid var(--line);background:var(--paper-2);color:var(--olive-dark);border-radius:6px;padding:5px 10px;font:inherit;font-size:12px;cursor:pointer;}
+.btn:hover{background:#fff;}
+.btn.add{margin-top:10px;}
+.x{border:none;background:transparent;color:var(--danger);font-size:16px;cursor:pointer;line-height:1;padding:2px 6px;}
+.tag-cb{display:flex;gap:4px;align-items:center;font-size:12px;color:var(--muted);}
+.single-price{display:flex;gap:6px;align-items:center;margin-top:10px;font-size:13px;}
+.placeholder{max-width:640px;background:#fff;border:1px dashed var(--line);border-radius:10px;padding:28px;color:var(--muted);font-size:14px;line-height:1.6;}
+.placeholder h3{font-family:'Cormorant Garamond',serif;color:var(--olive-dark);font-size:20px;margin-bottom:8px;}
+.previews{margin-left:auto;display:flex;gap:8px;}
+.previews a{font-size:12px;color:#cdc8bd;text-decoration:none;border:1px solid rgba(245,240,230,.2);border-radius:6px;padding:5px 9px;}
+.previews a:hover{color:var(--gold);}
+.hidden{display:none;}
+</style>
+</head>
+<body>
+<header>
+  <span class="logo">UNQ</span>
+  <div class="tabs">
+    <button data-mode="catalog" class="active">L1 · Catalog</button>
+    <button data-mode="print">L2 · Print</button>
+    <button data-mode="digital">L3 · Digital</button>
+  </div>
+  <span class="spacer"></span>
+  <span id="status">Loading…</span>
+  <div class="previews">
+    <a href="/digital-menu/" target="_blank">Digital menu ↗</a>
+    <a href="/digital-package/" target="_blank">Digital pkg ↗</a>
+    <a href="/package/" target="_blank">Print pkg ↗</a>
+  </div>
+  <button id="save" disabled>Save &amp; rebuild</button>
+</header>
+
+<div id="catalog">
+  <div class="layout">
+    <div class="side" id="cats"></div>
+    <div class="main" id="items"></div>
+  </div>
+</div>
+
+<div id="print" class="hidden">
+  <div class="layout"><div class="side" id="pkgnav"></div><div class="main" id="pkgmain"></div></div>
+</div>
+<div id="digital" class="hidden">
+  <div class="main" id="digmain"></div>
+</div>
+
+<script>
+let DATA=null, curCat=null;
+const $=s=>document.querySelector(s);
+const byId=(arr,id)=>arr.find(x=>x.id===id);
+function status(t,cls){const s=$('#status');s.textContent=t;s.className=cls||'';}
+function setDirty(){$('#save').disabled=false;status('Unsaved changes');}
+function esc(s){return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function num(v){if(v==null||String(v).trim()==='')return null;const n=Number(v);return isNaN(n)?v:n;}
+
+async function load(){
+  try{
+    const r=await fetch('/api/data');const j=await r.json();
+    if(!j.ok){status('Load error: '+j.error,'err');return;}
+    DATA=j.data;
+    curCat=DATA.menu.categories[0] && DATA.menu.categories[0].id;
+    renderCats();renderItems();status('Loaded','ok');
+  }catch(e){status('Cannot reach helper app — run: python3 tools/serve.py','err');}
+}
+
+function renderCats(){
+  const groups=DATA.menu.groups, cats=DATA.menu.categories, items=DATA.menu.items;
+  let h='';
+  groups.forEach(g=>{
+    const gcats=cats.filter(c=>c.groupId===g.id);
+    if(!gcats.length)return;
+    h+='<div class="grp">'+esc(g.name)+'</div>';
+    gcats.forEach(c=>{
+      const n=items.filter(it=>it.categoryId===c.id).length;
+      h+='<a data-cat="'+c.id+'" class="'+(c.id===curCat?'active':'')+'">'+esc(c.name)+'<span class="n">'+n+'</span></a>';
+    });
+  });
+  $('#cats').innerHTML=h;
+}
+
+function renderItems(){
+  const cat=byId(DATA.menu.categories,curCat);
+  if(!cat){$('#items').innerHTML='';return;}
+  const list=DATA.menu.items.filter(it=>it.categoryId===curCat);
+  const catOpts=DATA.menu.categories.map(c=>'<option value="'+c.id+'">'+esc(c.name)+'</option>').join('');
+  let h='<h2>'+esc(cat.name)+'</h2><div class="sub">'+list.length+' item(s) · edits here flow to every output on Save</div>';
+  list.forEach(it=>{ h+=itemCard(it,catOpts); });
+  h+='<button class="btn add" data-act="add-item">+ Add item</button>';
+  $('#items').innerHTML=h;
+}
+
+function itemCard(it,catOpts){
+  const tags=it.tags||[];
+  let h='<div class="card" data-i="'+it.id+'">';
+  h+='<div class="row1"><input class="iname" data-f="name" value="'+esc(it.name)+'" placeholder="Item name">';
+  h+='<select data-f="categoryId" title="Move to category">'+catOpts.replace('value="'+it.categoryId+'"','value="'+it.categoryId+'" selected')+'</select>';
+  h+='<button class="x" data-act="del-item" title="Delete item">✕</button></div>';
+  h+='<textarea data-f="desc" placeholder="Description">'+esc(it.desc)+'</textarea>';
+  h+='<div class="meta"><input class="img" data-f="img" value="'+esc(it.img)+'" placeholder="image path (menu/assets/…)">';
+  h+='<label class="tag-cb"><input type="checkbox" data-f="tag-spicy" '+(tags.includes('spicy')?'checked':'')+'>🌶️ spicy</label>';
+  h+='<label class="tag-cb"><input type="checkbox" data-f="tag-sweet" '+(tags.includes('sweet')?'checked':'')+'>🍬 sweet</label>';
+  h+='<label class="tag-cb"><input type="checkbox" data-f="showOnDigital" '+(it.showOnDigital===false?'':'checked')+'>show on digital menu</label></div>';
+  if(it.variants && it.variants.length){
+    h+='<table class="vtable"><tr><th>Variant</th><th>Ingredients / note</th><th>Price</th><th></th></tr>';
+    it.variants.forEach(v=>{
+      h+='<tr data-v="'+v.id+'"><td><input class="vn" data-f="name" value="'+esc(v.name)+'"></td>';
+      h+='<td class="ving"><input class="vi" data-f="ing" value="'+esc(v.ing)+'"></td>';
+      h+='<td><input class="vp" data-f="price" value="'+esc(v.price)+'"></td>';
+      h+='<td><button class="x" data-act="del-variant">✕</button></td></tr>';
+    });
+    h+='</table>';
+  }else{
+    h+='<div class="single-price">Price ₹<input class="vp" data-f="price" value="'+esc(it.price)+'"> <span style="color:var(--muted);font-size:12px">(single price — or add variants)</span></div>';
+  }
+  h+='<button class="btn add" data-act="add-variant">+ Add variant</button>';
+  h+='</div>';
+  return h;
+}
+
+// ---- event delegation: edits ----
+document.addEventListener('input',e=>{
+  const t=e.target; const card=t.closest('.card'); if(!card)return;
+  const it=byId(DATA.menu.items,card.dataset.i); if(!it)return;
+  const f=t.dataset.f; if(!f)return;
+  const vrow=t.closest('tr[data-v]');
+  const obj=vrow?byId(it.variants,vrow.dataset.v):it;
+  if(!obj)return;
+  if(f==='price'){obj.price=num(t.value);}
+  else if(f==='name'||f==='ing'||f==='desc'||f==='img'){obj[f]=t.value;}
+  setDirty();
+});
+document.addEventListener('change',e=>{
+  const t=e.target; const card=t.closest('.card'); if(!card)return;
+  const it=byId(DATA.menu.items,card.dataset.i); if(!it)return;
+  const f=t.dataset.f;
+  if(f==='categoryId'){it.categoryId=t.value;setDirty();renderCats();renderItems();}
+  else if(f==='tag-spicy'||f==='tag-sweet'){
+    const tag=f.split('-')[1]; it.tags=it.tags||[];
+    if(t.checked){if(!it.tags.includes(tag))it.tags.push(tag);}else{it.tags=it.tags.filter(x=>x!==tag);}
+    setDirty();
+  }else if(f==='showOnDigital'){ it.showOnDigital=t.checked?undefined:false; if(it.showOnDigital===undefined)delete it.showOnDigital; setDirty(); }
+});
+// ---- event delegation: buttons ----
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-act]'); if(!b)return;
+  const act=b.dataset.act; const card=b.closest('.card');
+  if(act==='add-item'){
+    const id='item-'+Date.now().toString(36);
+    DATA.menu.items.push({id,categoryId:curCat,name:'New item',desc:'',img:'',tags:[],price:null,variants:[]});
+    setDirty();renderCats();renderItems();return;
+  }
+  if(!card)return;
+  const it=byId(DATA.menu.items,card.dataset.i); if(!it)return;
+  if(act==='del-item'){
+    if(confirm('Delete "'+it.name+'"?')){DATA.menu.items=DATA.menu.items.filter(x=>x.id!==it.id);setDirty();renderCats();renderItems();}
+  }else if(act==='add-variant'){
+    it.variants=it.variants||[];
+    it.variants.push({id:it.id+'-v'+Date.now().toString(36),name:'New variant',ing:'',price:it.price,tags:[]});
+    it.price=null; setDirty(); renderItems();
+  }else if(act==='del-variant'){
+    const vrow=b.closest('tr[data-v]'); it.variants=it.variants.filter(v=>v.id!==vrow.dataset.v); setDirty(); renderItems();
+  }
+});
+
+async function save(){
+  $('#save').disabled=true; status('Saving & rebuilding…');
+  try{
+    const r=await fetch('/api/data',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(DATA)});
+    const j=await r.json();
+    if(j.ok){status('Saved & rebuilt all outputs ✓','ok');}
+    else{status('Build failed: '+(j.error||j.build||'unknown'),'err');$('#save').disabled=false;}
+  }catch(e){status('Save failed: '+e.message,'err');$('#save').disabled=false;}
+}
+$('#save').addEventListener('click',save);
+
+// ===== L2: Print authoring (packages + venue) =====
+let curPkg=null;
+function catOptions(){
+  let o='<option value="">+ add item…</option>';
+  DATA.menu.items.forEach(it=>{
+    if(it.variants && it.variants.length){
+      it.variants.forEach(v=>{o+='<option value="'+it.id+'::'+v.id+'">'+esc(it.name+' – '+v.name)+'</option>';});
+    }else{o+='<option value="'+it.id+'::">'+esc(it.name)+'</option>';}
+  });
+  return o;
+}
+function nameFor(itemId,variantId){
+  const it=byId(DATA.menu.items,itemId); if(!it)return '';
+  if(variantId){const v=byId(it.variants||[],variantId);return it.name+' – '+(v?v.name:'');}
+  return it.name;
+}
+function renderPrint(){
+  if(!DATA)return;
+  if(curPkg===null)curPkg=(DATA.packages[0]&&DATA.packages[0].id)||'venue';
+  let h='<div class="grp">Packages</div>';
+  DATA.packages.forEach(p=>{h+='<a data-gopkg="'+p.id+'" class="'+(p.id===curPkg?'active':'')+'">'+esc(p.name)+'<span class="n">₹'+esc(p.price)+'</span></a>';});
+  h+='<a data-gopkg="__add" style="color:var(--olive);font-weight:600">+ Add package</a>';
+  h+='<div class="grp">Other</div><a data-gopkg="venue" class="'+(curPkg==='venue'?'active':'')+'">Venue page</a>';
+  $('#pkgnav').innerHTML=h;
+  $('#pkgmain').innerHTML = curPkg==='venue' ? venueEditor() : packageEditor(byId(DATA.packages,curPkg));
+}
+function packageEditor(p){
+  if(!p)return '<p>Select a package.</p>';
+  let h='<div data-pkg="'+p.id+'"><h2><input data-pf="name" value="'+esc(p.name)+'" style="font:inherit;font-size:24px;border:none;background:transparent;color:var(--olive-dark);width:70%"></h2>';
+  h+='<div class="sub">Edits here flow to the print package &amp; digital package on Save.</div>';
+  h+='<div class="card"><div class="meta"><label>Package #<input data-pf="number" value="'+esc(p.number)+'" style="width:50px"></label>';
+  h+='<label>Price ₹<input data-pf="price" value="'+esc(p.price)+'" style="width:70px"></label></div>';
+  h+='<textarea data-pf="description" placeholder="Description">'+esc(p.description)+'</textarea>';
+  h+='<input data-pf="idealValue" style="width:100%;margin-top:8px" placeholder="Ideal for (· separated)" value="'+esc(p.idealValue)+'">';
+  h+='<input data-pf="waterNote" style="width:100%;margin-top:8px" placeholder="Water / highlight note" value="'+esc(p.waterNote)+'"></div>';
+  (p.sections||[]).forEach((s,si)=>{
+    h+='<div class="card" data-sec="'+si+'"><div class="row1"><input data-sf="name" class="iname" value="'+esc(s.name)+'">';
+    h+='<select data-sf="choiceType">'+['','individual','party'].map(o=>'<option value="'+o+'"'+(o===(s.choiceType||'')?' selected':'')+'>'+(o||'fixed')+'</option>').join('')+'</select>';
+    h+='<button class="x" data-act2="del-sec" title="Delete section">✕</button></div>';
+    h+='<div class="meta"><input data-sf="instruction" style="flex:1" placeholder="instruction" value="'+esc(s.instruction)+'"><input data-sf="chip" style="flex:1" placeholder="chip / qty" value="'+esc(s.chip)+'"></div>';
+    (s.items||[]).forEach((it,ii)=>{
+      h+='<div class="meta" data-pi="'+ii+'"><input data-itf="displayName" style="flex:1" value="'+esc(it.displayName)+'"><input data-itf="note" style="width:130px" placeholder="badge / note" value="'+esc(it.note||it.badge||'')+'"><button class="x" data-act2="del-item">✕</button></div>';
+    });
+    h+='<select data-act2="add-item" style="margin-top:8px">'+catOptions()+'</select></div>';
+  });
+  h+='<button class="btn add" data-act2="add-sec">+ Add section</button>';
+  h+='<div class="card"><b style="font-size:13px">Booking</b>';
+  Object.keys(p.booking||{}).forEach(k=>{h+='<div class="meta brow"><input class="bk" value="'+esc(k)+'" style="width:130px"><input class="bv" value="'+esc(p.booking[k])+'" style="flex:1"><button class="x" data-act2="del-book">✕</button></div>';});
+  h+='<button class="btn add" data-act2="add-book">+ row</button></div>';
+  h+='<div class="card"><b style="font-size:13px">Terms</b>';
+  (p.terms||[]).forEach((tm,ti)=>{h+='<div class="meta"><input data-term="'+ti+'" style="flex:1" value="'+esc(tm)+'"><button class="x" data-act2="del-term">✕</button></div>';});
+  h+='<button class="btn add" data-act2="add-term">+ term</button></div>';
+  h+='<div class="card"><b style="font-size:13px">Cancellation</b>';
+  (p.cancellation||[]).forEach((c,ci)=>{h+='<div class="meta" data-cidx="'+ci+'"><input data-cf="when" style="flex:1" value="'+esc(c.when)+'"><input data-cf="result" style="width:140px" value="'+esc(c.result)+'"><button class="x" data-act2="del-cancel">✕</button></div>';});
+  h+='<button class="btn add" data-act2="add-cancel">+ row</button></div>';
+  h+='<button class="btn" data-act2="del-pkg" style="color:var(--danger);border-color:var(--danger)">Delete package</button></div>';
+  return h;
+}
+function venueEditor(){
+  const v=DATA.venuePage||(DATA.venuePage={subtitle:'',sections:[]}); v.sections=v.sections||[];
+  let h='<div data-venue="1"><h2>Venue page</h2><div class="sub">The last page of the print package.</div>';
+  h+='<div class="card"><input data-vf="subtitle" style="width:100%" value="'+esc(v.subtitle)+'" placeholder="subtitle"></div>';
+  v.sections.forEach((s,si)=>{
+    h+='<div class="card" data-vsec="'+si+'"><div class="row1"><input data-vsf="name" class="iname" value="'+esc(s.name)+'"><button class="x" data-act2="del-vsec">✕</button></div>';
+    h+='<div class="meta"><input data-vsf="instruction" style="flex:1" placeholder="detail (e.g. 600 sq ft)" value="'+esc(s.instruction)+'"><input data-vsf="chip" style="flex:1" placeholder="chip (e.g. Up to 40 guests)" value="'+esc(s.chip)+'"></div>';
+    (s.items||[]).forEach((it,ii)=>{h+='<div class="meta" data-vi="'+ii+'"><input data-vif="name" style="flex:1" value="'+esc(it.name)+'"><input data-vif="note" style="width:130px" placeholder="tag (optional)" value="'+esc(it.note||'')+'"><button class="x" data-act2="del-vitem">✕</button></div>';});
+    h+='<button class="btn add" data-act2="add-vitem">+ item</button></div>';
+  });
+  h+='<button class="btn add" data-act2="add-vsec">+ Add section</button></div>';
+  return h;
+}
+function recollectBooking(pe,p){const o={};pe.querySelectorAll('.brow').forEach(r=>{const k=r.querySelector('.bk').value.trim();if(k)o[k]=r.querySelector('.bv').value;});p.booking=o;}
+$('#pkgnav').addEventListener('click',e=>{const a=e.target.closest('[data-gopkg]');if(!a)return;const id=a.dataset.gopkg;
+  if(id==='__add'){const np={id:'pkg'+Date.now().toString(36),number:DATA.packages.length+1,name:'New Package',price:0,description:'',idealLabel:'Ideal For',idealValue:'',waterNote:'',sections:[],booking:{},terms:[],cancellation:[]};DATA.packages.push(np);curPkg=np.id;setDirty();}
+  else curPkg=id;
+  renderPrint();
+});
+$('#print').addEventListener('input',e=>{const t=e.target;const pe=t.closest('[data-pkg]');const ve=t.closest('[data-venue]');
+  if(pe){const p=byId(DATA.packages,pe.dataset.pkg);if(!p)return;
+    if(t.dataset.pf){p[t.dataset.pf]=(t.dataset.pf==='price'||t.dataset.pf==='number')?num(t.value):t.value;setDirty();return;}
+    const sc=t.closest('[data-sec]');
+    if(sc){const s=p.sections[+sc.dataset.sec];
+      if(t.dataset.sf){s[t.dataset.sf]=t.value;setDirty();return;}
+      const ir=t.closest('[data-pi]');
+      if(ir&&t.dataset.itf){s.items[+ir.dataset.pi][t.dataset.itf]=t.value;setDirty();return;}}
+    if(t.classList.contains('bk')||t.classList.contains('bv')){recollectBooking(pe,p);setDirty();return;}
+    if(t.dataset.term!=null){p.terms[+t.dataset.term]=t.value;setDirty();return;}
+    const cr=t.closest('[data-cidx]');
+    if(cr&&t.dataset.cf){p.cancellation[+cr.dataset.cidx][t.dataset.cf]=t.value;setDirty();return;}}
+  if(ve){const v=DATA.venuePage;
+    if(t.dataset.vf){v[t.dataset.vf]=t.value;setDirty();return;}
+    const sc=t.closest('[data-vsec]');
+    if(sc){const s=v.sections[+sc.dataset.vsec];
+      if(t.dataset.vsf){s[t.dataset.vsf]=t.value;setDirty();return;}
+      const ir=t.closest('[data-vi]');
+      if(ir&&t.dataset.vif){s.items[+ir.dataset.vi][t.dataset.vif]=t.value;setDirty();return;}}}
+});
+$('#print').addEventListener('change',e=>{const t=e.target;
+  if(t.dataset.act2==='add-item'&&t.value){const pe=t.closest('[data-pkg]');const sc=t.closest('[data-sec]');const p=byId(DATA.packages,pe.dataset.pkg);const s=p.sections[+sc.dataset.sec];const parts=t.value.split('::');s.items.push({refs:[{itemId:parts[0],variantId:parts[1]||null}],displayName:nameFor(parts[0],parts[1]||null),note:'',badge:''});setDirty();renderPrint();return;}
+  if(t.dataset.sf==='choiceType'){const pe=t.closest('[data-pkg]');const sc=t.closest('[data-sec]');byId(DATA.packages,pe.dataset.pkg).sections[+sc.dataset.sec].choiceType=t.value;setDirty();}
+});
+$('#print').addEventListener('click',e=>{const b=e.target.closest('[data-act2]');if(!b)return;const act=b.dataset.act2;const pe=b.closest('[data-pkg]');const ve=b.closest('[data-venue]');
+  if(pe){const p=byId(DATA.packages,pe.dataset.pkg);const sc=b.closest('[data-sec]');
+    if(act==='add-sec')p.sections.push({name:'New section',instruction:'',chip:'',choiceType:'',items:[]});
+    else if(act==='del-sec')p.sections.splice(+sc.dataset.sec,1);
+    else if(act==='del-item'){const ir=b.closest('[data-pi]');p.sections[+sc.dataset.sec].items.splice(+ir.dataset.pi,1);}
+    else if(act==='add-book'){p.booking=p.booking||{};let k='New',i=1;while(p.booking[k])k='New '+(++i);p.booking[k]='';}
+    else if(act==='del-book'){const k=b.closest('.brow').querySelector('.bk').value;delete p.booking[k];}
+    else if(act==='add-term'){p.terms=p.terms||[];p.terms.push('');}
+    else if(act==='del-term'){p.terms.splice(+b.closest('.meta').querySelector('[data-term]').dataset.term,1);}
+    else if(act==='add-cancel'){p.cancellation=p.cancellation||[];p.cancellation.push({when:'',result:''});}
+    else if(act==='del-cancel')p.cancellation.splice(+b.closest('[data-cidx]').dataset.cidx,1);
+    else if(act==='del-pkg'){if(!confirm('Delete package "'+p.name+'"?'))return;DATA.packages=DATA.packages.filter(x=>x.id!==p.id);curPkg=(DATA.packages[0]&&DATA.packages[0].id)||'venue';}
+    else return;
+    setDirty();renderPrint();return;}
+  if(ve){const v=DATA.venuePage;const sc=b.closest('[data-vsec]');
+    if(act==='add-vsec')v.sections.push({name:'New',instruction:'',chip:'',items:[]});
+    else if(act==='del-vsec')v.sections.splice(+sc.dataset.vsec,1);
+    else if(act==='add-vitem')v.sections[+sc.dataset.vsec].items.push({name:'',note:null});
+    else if(act==='del-vitem'){const ir=b.closest('[data-vi]');v.sections[+sc.dataset.vsec].items.splice(+ir.dataset.vi,1);}
+    else return;
+    setDirty();renderPrint();return;}
+});
+
+// ===== L3: Digital authoring =====
+function tog(grp,field,label,on){return '<label class="tag-cb" style="margin-right:16px"><input type="checkbox" data-tog="'+grp+'.'+field+'" '+(on?'checked':'')+'> '+label+'</label>';}
+function renderDigital(){
+  if(!DATA)return;
+  DATA.presentation=DATA.presentation||{};
+  const dm=DATA.presentation.digitalMenu=DATA.presentation.digitalMenu||{};
+  const dp=DATA.presentation.digitalPackage=DATA.presentation.digitalPackage||{};
+  const cats=DATA.menu.categories.filter(c=>c.id!=='live-counters');
+  let order=(dm.categoryOrder||[]).filter(id=>cats.find(c=>c.id===id));
+  cats.forEach(c=>{if(!order.includes(c.id))order.push(c.id);});
+  dm.categoryOrder=order; dm.hidden=dm.hidden||[];
+  let h='<h2>Digital menu</h2><div class="sub">Live page: edits apply on Save &amp; rebuild.</div>';
+  h+='<div class="card">'+tog('dm','search','Search bar',dm.search!==false)+tog('dm','showImages','Item images',dm.showImages!==false)+tog('dm','showIngredients','Ingredient lines',dm.showIngredients!==false)+'</div>';
+  h+='<div class="card"><b style="font-size:13px">Category order &amp; visibility</b>';
+  order.forEach(cid=>{const c=cats.find(x=>x.id===cid);if(!c)return;
+    h+='<div class="meta" data-cat="'+cid+'"><span style="flex:1">'+esc(c.name)+'</span><button class="btn" data-dact="up">↑</button><button class="btn" data-dact="down">↓</button><label class="tag-cb"><input type="checkbox" data-dact="hide" '+(dm.hidden.includes(cid)?'checked':'')+'> hide</label></div>';
+  });
+  h+='</div>';
+  h+='<h2 style="margin-top:24px">Digital package</h2><div class="sub">Show or hide blocks on the digital package page.</div>';
+  h+='<div class="card">'+tog('dp','showBooking','Booking details',dp.showBooking!==false)+tog('dp','showTerms','Terms',dp.showTerms!==false)+tog('dp','showCancellation','Cancellation',dp.showCancellation!==false)+'</div>';
+  $('#digmain').innerHTML=h;
+}
+$('#digital').addEventListener('change',e=>{const t=e.target;
+  if(t.dataset.tog){const parts=t.dataset.tog.split('.');const o=parts[0]==='dm'?DATA.presentation.digitalMenu:DATA.presentation.digitalPackage;o[parts[1]]=t.checked;setDirty();return;}
+  if(t.dataset.dact==='hide'){const cid=t.closest('[data-cat]').dataset.cat;const hid=DATA.presentation.digitalMenu.hidden;const i=hid.indexOf(cid);if(t.checked){if(i<0)hid.push(cid);}else if(i>=0)hid.splice(i,1);setDirty();return;}
+});
+$('#digital').addEventListener('click',e=>{const b=e.target.closest('[data-dact]');if(!b||b.dataset.dact==='hide')return;
+  const cid=b.closest('[data-cat]').dataset.cat;const ord=DATA.presentation.digitalMenu.categoryOrder;const i=ord.indexOf(cid);const j=b.dataset.dact==='up'?i-1:i+1;
+  if(j>=0&&j<ord.length){const tmp=ord[i];ord[i]=ord[j];ord[j]=tmp;setDirty();renderDigital();}
+});
+
+// ---- tabs ----
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{
+  if(b.disabled)return;
+  document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  ['catalog','print','digital'].forEach(m=>$('#'+m).classList.toggle('hidden',m!==b.dataset.mode));
+  if(b.dataset.mode==='print')renderPrint();
+  if(b.dataset.mode==='digital')renderDigital();
+}));
+
+$('#cats').addEventListener('click',e=>{const a=e.target.closest('[data-cat]');if(!a)return;curCat=a.dataset.cat;renderCats();renderItems();});
+
+load();
+</script>
+</body>
+</html>

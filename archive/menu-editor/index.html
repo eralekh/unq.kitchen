@@ -212,6 +212,40 @@ table.matrix td.check-cell{text-align:center;padding:4px 6px;min-width:80px;}
 @media(max-width:900px){
   .editor-layout{grid-template-columns:1fr;}
 }
+
+/* ── Menu Items tab ── */
+.mi-toolbar{display:flex;gap:10px;margin-bottom:14px;align-items:center;flex-wrap:wrap;}
+.mi-toolbar input,.mi-toolbar select{padding:6px 10px;border:1px solid #ccc;border-radius:4px;font-size:13px;}
+.mi-toolbar input{width:220px;}
+.mi-count{font-size:12px;color:#888;margin-left:4px;}
+table.mi-table{border-collapse:collapse;width:100%;background:#fff;font-size:13px;border-radius:6px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.1);}
+table.mi-table th{background:#1a1a1a;color:#e8d98a;padding:9px 12px;text-align:left;white-space:nowrap;font-size:12px;letter-spacing:.5px;}
+table.mi-table td{padding:7px 12px;border-bottom:1px solid #f0f0f0;vertical-align:middle;}
+table.mi-table tr:hover td{background:#fdf8ee;}
+table.mi-table tr.mi-editing td{background:#fffbec;}
+table.mi-table tr.mi-new-row td{background:#f0faf0;}
+.mi-cell-name{min-width:200px;font-weight:500;}
+.mi-cell-cat,.mi-cell-sec{min-width:130px;color:#555;}
+.mi-cell-price{min-width:80px;color:#333;font-weight:600;}
+.mi-cell-actions{min-width:100px;text-align:right;white-space:nowrap;}
+.mi-input{width:100%;padding:5px 7px;border:1px solid #e8d98a;border-radius:3px;font-size:13px;font-family:inherit;background:#fff;}
+.mi-input:focus{outline:none;border-color:#c9a800;}
+.mi-input-price{width:80px;}
+.mi-btn{padding:3px 10px;border-radius:3px;border:none;cursor:pointer;font-size:12px;font-weight:600;}
+.mi-btn-edit{background:#e8d98a;color:#1a1a1a;}
+.mi-btn-edit:hover{background:#f0e89a;}
+.mi-btn-save{background:#27ae60;color:#fff;}
+.mi-btn-save:hover{background:#2ecc71;}
+.mi-btn-cancel{background:#eee;color:#555;}
+.mi-btn-cancel:hover{background:#ddd;}
+.mi-btn-del{background:none;border:none;color:#ccc;cursor:pointer;font-size:16px;padding:0 4px;line-height:1;}
+.mi-btn-del:hover{color:#c0392b;}
+.mi-pkg-refs{font-size:10px;color:#aaa;display:block;margin-top:2px;}
+.mi-add-row{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:10px;border:2px dashed #ccc;border-radius:5px;background:none;cursor:pointer;color:#888;font-size:13px;margin-top:8px;}
+.mi-add-row:hover{border-color:#e8d98a;color:#666;}
+.mi-section-header td{background:#f8f5e8;font-weight:700;font-size:11px;color:#8a7a3a;padding:5px 12px;letter-spacing:1px;text-transform:uppercase;}
+.mi-del-warning{background:#fff0ee;border:1px solid #ffcdd2;border-radius:4px;padding:10px 14px;font-size:12px;color:#721c24;margin-bottom:12px;}
+.mi-del-warning strong{font-weight:700;}
 </style>
 </head>
 <body>
@@ -226,6 +260,7 @@ table.matrix td.check-cell{text-align:center;padding:4px 6px;min-width:80px;}
     <button onclick="switchTab('terms')">Terms & Conditions</button>
     <button onclick="switchTab('venue')">Venue & Services</button>
     <button onclick="switchTab('design')">Design</button>
+    <button onclick="switchTab('menuitems')">Menu Items</button>
   </nav>
   <div class="topbar-right">
     <span class="save-indicator" id="saveInd">✓ Saved</span>
@@ -317,6 +352,21 @@ table.matrix td.check-cell{text-align:center;padding:4px 6px;min-width:80px;}
 
 <input type="file" id="importFile" accept="application/json,.json,text/plain" style="display:none" onchange="handleImport(event)">
 <div class="toast" id="toast"></div>
+
+<div id="panel-menuitems" class="panel">
+  <div class="mi-toolbar">
+    <input type="text" id="miSearch" placeholder="Search items…" oninput="renderMenuItems()">
+    <select id="miCatFilter" onchange="renderMenuItems()">
+      <option value="">All categories</option>
+    </select>
+    <select id="miSecFilter" onchange="renderMenuItems()">
+      <option value="">All sections</option>
+    </select>
+    <span class="mi-count" id="miCount"></span>
+    <button class="btn btn-gold btn-sm" style="margin-left:auto" onclick="startAddMenuItem()">+ Add Item</button>
+  </div>
+  <div id="miTableWrap"></div>
+</div>
 
 <script>
 // ═══════════════════════════════════════════════════════════
@@ -424,6 +474,7 @@ function switchTab(tab) {
   event.target.classList.add('active');
   if (tab === 'design') initDesignTab();
   if (tab === 'venue') initVenueTab();
+  if (tab === 'menuitems') { initMenuItemsFilters(); renderMenuItems(); }
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -1865,6 +1916,246 @@ function showToast(msg, duration = 2500) {
 // ═══════════════════════════════════════════════════════════
 // Always use loadData — it handles embedded fallback + localStorage + optional HTTP fetch
 loadData();
+
+// ═══════════════════════════════════════════════════════════════
+// MENU ITEMS EDITOR
+// ═══════════════════════════════════════════════════════════════
+
+let MI_EDITING = null; // index of item being edited, or null
+let MI_ADDING  = false; // true when the add-row is showing
+
+function initMenuItemsFilters() {
+  const cats = [...new Set(DATA.masterMenu.map(m => m.category).filter(Boolean))].sort();
+  const secs = [...new Set(DATA.masterMenu.map(m => m.menuSection).filter(Boolean))].sort();
+  const catSel = document.getElementById('miCatFilter');
+  const secSel = document.getElementById('miSecFilter');
+  // rebuild (keep selected value if possible)
+  const prevCat = catSel.value, prevSec = secSel.value;
+  catSel.innerHTML = '<option value="">All categories</option>';
+  secSel.innerHTML = '<option value="">All sections</option>';
+  cats.forEach(c => { const o=document.createElement('option'); o.value=c; o.textContent=c; catSel.appendChild(o); });
+  secs.forEach(s => { const o=document.createElement('option'); o.value=s; o.textContent=s; secSel.appendChild(o); });
+  if (prevCat) catSel.value = prevCat;
+  if (prevSec) secSel.value = prevSec;
+}
+
+function getItemPackageRefs(itemName) {
+  // Returns list of package names that reference this item
+  const refs = [];
+  DATA.packages.forEach(pkg => {
+    pkg.sections.forEach(sec => {
+      sec.items.forEach(it => {
+        if (it.masterMenuRefs && it.masterMenuRefs.includes(itemName)) {
+          if (!refs.includes(pkg.name)) refs.push(pkg.name);
+        }
+      });
+    });
+  });
+  return refs;
+}
+
+function renderMenuItems() {
+  const search  = (document.getElementById('miSearch').value || '').toLowerCase();
+  const catF    = document.getElementById('miCatFilter').value;
+  const secF    = document.getElementById('miSecFilter').value;
+
+  let items = DATA.masterMenu.map((item, idx) => ({ item, idx }));
+  if (search) items = items.filter(({item}) => item.name.toLowerCase().includes(search) || (item.category||'').toLowerCase().includes(search));
+  if (catF)   items = items.filter(({item}) => item.category === catF);
+  if (secF)   items = items.filter(({item}) => item.menuSection === secF);
+
+  document.getElementById('miCount').textContent = `${items.length} of ${DATA.masterMenu.length} items`;
+
+  const allCats = [...new Set(DATA.masterMenu.map(m => m.category).filter(Boolean))].sort();
+  const allSecs = [...new Set(DATA.masterMenu.map(m => m.menuSection).filter(Boolean))].sort();
+
+  const catOptions = allCats.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
+  const secOptions = allSecs.map(s => `<option value="${esc(s)}">${esc(s)}</option>`).join('');
+
+  let html = `<table class="mi-table">
+    <thead><tr>
+      <th class="mi-cell-name">Name</th>
+      <th class="mi-cell-cat">Category</th>
+      <th class="mi-cell-sec">Menu Section</th>
+      <th class="mi-cell-price">Price (₹)</th>
+      <th class="mi-cell-actions">Actions</th>
+    </tr></thead><tbody>`;
+
+  // Group by category for section headers
+  let lastCat = null;
+  items.forEach(({item, idx}) => {
+    const isEditing = (MI_EDITING === idx);
+    const pkgRefs   = getItemPackageRefs(item.name);
+
+    if (!search && !catF && item.category !== lastCat) {
+      lastCat = item.category;
+      html += `<tr class="mi-section-header"><td colspan="5">${esc(item.category || 'Uncategorised')}</td></tr>`;
+    }
+
+    if (isEditing) {
+      html += `<tr class="mi-editing" id="mi-row-${idx}">
+        <td><input class="mi-input" id="mi-edit-name" value="${esc(item.name)}" placeholder="Item name"></td>
+        <td><input class="mi-input" id="mi-edit-cat" value="${esc(item.category||'')}" list="mi-cat-list" placeholder="Category"></input></td>
+        <td><input class="mi-input" id="mi-edit-sec" value="${esc(item.menuSection||'')}" list="mi-sec-list" placeholder="Section"></td>
+        <td><input class="mi-input mi-input-price" id="mi-edit-price" type="number" min="0" step="1" value="${item.price||0}"></td>
+        <td style="text-align:right">
+          <button class="mi-btn mi-btn-save" onclick="saveEditMenuItem(${idx})">✓ Save</button>
+          <button class="mi-btn mi-btn-cancel" style="margin-left:4px" onclick="cancelEditMenuItem()">✕</button>
+        </td>
+      </tr>`;
+    } else {
+      html += `<tr id="mi-row-${idx}">
+        <td class="mi-cell-name">${esc(item.name)}
+          ${pkgRefs.length ? `<span class="mi-pkg-refs">used in: ${pkgRefs.map(esc).join(', ')}</span>` : ''}
+        </td>
+        <td class="mi-cell-cat">${esc(item.category||'')}</td>
+        <td class="mi-cell-sec">${esc(item.menuSection||'')}</td>
+        <td class="mi-cell-price">₹${item.price||0}</td>
+        <td class="mi-cell-actions">
+          <button class="mi-btn mi-btn-edit" onclick="startEditMenuItem(${idx})">Edit</button>
+          <button class="mi-btn-del" title="Delete" onclick="confirmDeleteMenuItem(${idx})">×</button>
+        </td>
+      </tr>`;
+    }
+  });
+
+  // Add-row at bottom
+  if (MI_ADDING) {
+    html += `<tr class="mi-new-row" id="mi-add-row">
+      <td><input class="mi-input" id="mi-new-name" placeholder="Item name" autofocus></td>
+      <td><input class="mi-input" id="mi-new-cat" placeholder="Category" list="mi-cat-list"></td>
+      <td><input class="mi-input" id="mi-new-sec" placeholder="Section" list="mi-sec-list"></td>
+      <td><input class="mi-input mi-input-price" id="mi-new-price" type="number" min="0" step="1" placeholder="0"></td>
+      <td style="text-align:right">
+        <button class="mi-btn mi-btn-save" onclick="saveNewMenuItem()">✓ Add</button>
+        <button class="mi-btn mi-btn-cancel" style="margin-left:4px" onclick="cancelAddMenuItem()">✕</button>
+      </td>
+    </tr>`;
+  }
+
+  html += `</tbody></table>
+  <datalist id="mi-cat-list">${catOptions}</datalist>
+  <datalist id="mi-sec-list">${secOptions}</datalist>`;
+
+  if (!MI_ADDING) {
+    html += `<button class="mi-add-row" onclick="startAddMenuItem()">+ Add New Item</button>`;
+  }
+
+  document.getElementById('miTableWrap').innerHTML = html;
+
+  // Focus new-row name if just opened
+  if (MI_ADDING) {
+    const inp = document.getElementById('mi-new-name');
+    if (inp) { inp.focus(); }
+  }
+  if (MI_EDITING !== null) {
+    const inp = document.getElementById('mi-edit-name');
+    if (inp) inp.focus();
+  }
+}
+
+function startEditMenuItem(idx) {
+  MI_EDITING = idx;
+  MI_ADDING  = false;
+  renderMenuItems();
+}
+
+function cancelEditMenuItem() {
+  MI_EDITING = null;
+  renderMenuItems();
+}
+
+function saveEditMenuItem(idx) {
+  const name  = document.getElementById('mi-edit-name').value.trim();
+  const cat   = document.getElementById('mi-edit-cat').value.trim();
+  const sec   = document.getElementById('mi-edit-sec').value.trim();
+  const price = parseFloat(document.getElementById('mi-edit-price').value) || 0;
+  if (!name) { showToast('Name cannot be empty.'); return; }
+
+  const oldName = DATA.masterMenu[idx].name;
+  // Update any package refs if name changed
+  if (oldName !== name) {
+    DATA.packages.forEach(pkg => {
+      pkg.sections.forEach(sec => {
+        sec.items.forEach(it => {
+          if (it.masterMenuRefs) {
+            it.masterMenuRefs = it.masterMenuRefs.map(r => r === oldName ? name : r);
+          }
+        });
+      });
+    });
+  }
+
+  DATA.masterMenu[idx] = { name, category: cat, menuSection: sec, price };
+  MI_EDITING = null;
+  saveToLocalStorage();
+  initMenuItemsFilters();
+  renderMenuItems();
+  showToast('Item updated.');
+}
+
+function startAddMenuItem() {
+  MI_ADDING  = true;
+  MI_EDITING = null;
+  renderMenuItems();
+  // scroll to bottom of table
+  const wrap = document.getElementById('miTableWrap');
+  if (wrap) wrap.scrollTop = wrap.scrollHeight;
+}
+
+function cancelAddMenuItem() {
+  MI_ADDING = false;
+  renderMenuItems();
+}
+
+function saveNewMenuItem() {
+  const name  = document.getElementById('mi-new-name').value.trim();
+  const cat   = document.getElementById('mi-new-cat').value.trim();
+  const sec   = document.getElementById('mi-new-sec').value.trim();
+  const price = parseFloat(document.getElementById('mi-new-price').value) || 0;
+  if (!name) { showToast('Name cannot be empty.'); return; }
+
+  DATA.masterMenu.push({ name, category: cat, menuSection: sec, price });
+  MI_ADDING = false;
+  saveToLocalStorage();
+  initMenuItemsFilters();
+  renderMenuItems();
+  showToast(`"${name}" added.`);
+}
+
+function confirmDeleteMenuItem(idx) {
+  const item    = DATA.masterMenu[idx];
+  const pkgRefs = getItemPackageRefs(item.name);
+
+  let msg = `Delete "${item.name}"?`;
+  if (pkgRefs.length) {
+    msg = `"${item.name}" is used in: ${pkgRefs.join(', ')}.\n\nDeleting it will remove it from those packages too. Continue?`;
+  }
+  if (!confirm(msg)) return;
+
+  // Remove from packages
+  DATA.packages.forEach(pkg => {
+    pkg.sections.forEach(sec => {
+      sec.items = sec.items.filter(it =>
+        !(it.masterMenuRefs && it.masterMenuRefs.includes(item.name) && it.masterMenuRefs.length === 1)
+      );
+      // If refs array has other refs, just remove this one
+      sec.items.forEach(it => {
+        if (it.masterMenuRefs) {
+          it.masterMenuRefs = it.masterMenuRefs.filter(r => r !== item.name);
+        }
+      });
+    });
+  });
+
+  DATA.masterMenu.splice(idx, 1);
+  if (MI_EDITING === idx) MI_EDITING = null;
+  saveToLocalStorage();
+  initMenuItemsFilters();
+  renderMenuItems();
+  showToast(`"${item.name}" deleted.`);
+}
+
 </script>
 </body>
 </html>
