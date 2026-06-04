@@ -387,39 +387,88 @@ def _catprice(d):
             idx[(_n(it['name']), _n(it['name']))] = it.get('price')
     return idx
 
-def gen_print_menu(d):
-    src = os.path.join(ROOT, 'tools', 'template-print-menu.html')
-    if not os.path.exists(src):
-        return None, 0, 0
-    tmpl = open(src, encoding='utf-8').read()
-    idx = _catprice(d)
-    starts = [m.start() for m in re.finditer(r'<div class="menu-item">', tmpl)]
-    if not starts:
-        return None, 0, 0
-    synced = [0]
-    out = tmpl[:starts[0]]
-    for k, s in enumerate(starts):
-        e = starts[k + 1] if k + 1 < len(starts) else len(tmpl)
-        chunk = tmpl[s:e]
-        nm = re.search(r'item-name">(.*?)</h3>', chunk, re.S) or re.search(r'item-name">([^<]+)', chunk)
-        iname = _n(_txt(nm.group(1))) if nm else ''
-        def repl(mrow):
-            row = mrow.group(0)
-            vn = re.search(r'v-name">(.*?)</span>', row, re.S)
-            if not vn:
-                return row
-            key = (iname, _n(_txt(vn.group(1))))
-            if key in idx and idx[key] is not None:
-                row = re.sub(r'(v-price">)(.*?)(</span>)',
-                             lambda z: z.group(1) + '&#8377;' + str(idx[key]) + z.group(3),
-                             row, count=1, flags=re.S)
-                synced[0] += 1
+def _patch_card_prices(card, idx, counter):
+    nm = re.search(r'item-name">(.*?)</h3>', card, re.S) or re.search(r'item-name">([^<]+)', card)
+    iname = _n(_txt(nm.group(1))) if nm else ''
+    def repl(mrow):
+        row = mrow.group(0)
+        vn = re.search(r'v-name">(.*?)</span>', row, re.S)
+        if not vn:
             return row
-        chunk = re.sub(r'<div class="variant-row">.*?</div>', repl, chunk, flags=re.S)
-        out += chunk
+        key = (iname, _n(_txt(vn.group(1))))
+        if key not in idx or idx[key] is None:
+            return row
+        newp = idx[key]
+        def setp(z):
+            cur = z.group(2)
+            digits = re.findall(r'\d+', re.sub(r'&#\d+;|&#x[0-9a-fA-F]+;', '', cur))
+            curval = int(''.join(digits)) if digits else None
+            if curval == newp:          # already correct -> leave byte-for-byte untouched
+                return z.group(0)
+            prefix = '&#8377;' if '&#8377;' in cur else ('&#x20B9;' if '20B9' in cur.upper() else '₹')
+            counter[0] += 1
+            return z.group(1) + prefix + str(newp) + z.group(3)
+        return re.sub(r'(v-price">)(.*?)(</span>)', setp, row, count=1, flags=re.S)
+    return re.sub(r'<div class="variant-row">.*?</div>', repl, card, flags=re.S)
+
+def _esc_html(s):
+    return ('' if s is None else str(s)).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+
+def _badges(tags):
+    b = ''
+    if tags and 'spicy' in tags: b += '<span class="chilli-badge" aria-label="spicy">🌶️</span>'
+    if tags and 'sweet' in tags: b += '<span class="sweet-badge" aria-label="mildly sweet">🍬</span>'
+    return b
+
+def _print_card(it):
+    if not it:
+        return ''
+    shape = it.get('printShape', 'shape-bowl')
+    src = re.sub(r'^menu/', '', it.get('img', '') or '')
+    rows = ''
+    if it.get('variants'):
+        for v in it['variants']:
+            rows += ('<div class="variant-row"><span class="v-name">' + _esc_html(v['name']) + _badges(v.get('tags')) +
+                     '</span><span class="v-ing">' + _esc_html(v.get('ing', '')) +
+                     '</span><span class="v-price">₹' + str(v.get('price', '')) + '</span></div>')
+    elif it.get('price') is not None:
+        rows += ('<div class="variant-row"><span class="v-name">' + _esc_html(it['name']) +
+                 '</span><span class="v-ing"></span><span class="v-price">₹' + str(it['price']) + '</span></div>')
+    return ('<div class="menu-item"><div class="item-image"><img class="food-img ' + shape + '" src="' + src +
+            '" alt="' + _esc_html(it['name']) + '" loading="lazy" referrerpolicy="no-referrer"></div>'
+            '<div class="item-content"><div class="item-name-row"><h3 class="item-name">' + _esc_html(it['name']) +
+            '</h3><div class="item-name-rule"></div></div><div class="item-description">' + _esc_html(it.get('desc', '')) +
+            '</div><div class="variant-table">' + rows + '</div></div></div>')
+
+def gen_print_menu(d):
+    lf = os.path.join(ROOT, 'tools', 'print-layout.json')
+    if not os.path.exists(lf):
+        return None, 0, 0
+    L = json.load(open(lf, encoding='utf-8'))
+    idx = _catprice(d)
+    items_by_id = {it['id']: it for it in d['menu']['items']}
+    synced = [0]
+    out = L['head']
+    joiners = L.get('joiners', [])
+    for k, p in enumerate(L['pages']):
+        if p['kind'] == 'raw':
+            out += p['html']
+        else:
+            parts = []
+            for b in p['blocks']:
+                if b['t'] != 'item':
+                    parts.append(b['html'])
+                elif b.get('gen'):
+                    parts.append(_print_card(items_by_id.get(b.get('id'))))
+                else:
+                    parts.append(_patch_card_prices(b['html'], idx, synced))
+            out += p['open'] + ''.join(parts) + p['close']
+        if k < len(joiners):
+            out += joiners[k]
+    out += L['tail']
     path = os.path.join(ROOT, 'menu', 'index.html')
     open(path, 'w', encoding='utf-8').write(out)
-    return path, len(starts), synced[0]
+    return path, len(L['pages']), synced[0]
 
 if __name__ == '__main__':
     d = load()
@@ -431,4 +480,4 @@ if __name__ == '__main__':
     print(f'digital pkg   -> {os.path.relpath(pp, ROOT)}  ({npk} packages)')
     print(f'print pkg     -> {os.path.relpath(rp, ROOT)}  ({tot} pages)')
     if mm2:
-        print(f'print menu    -> {os.path.relpath(mm2, ROOT)}  ({npg} items, {nsy} prices synced)')
+        print(f'print menu    -> {os.path.relpath(mm2, ROOT)}  ({npg} pages, {nsy} prices synced)')

@@ -12,6 +12,7 @@ import http.server, socketserver, json, os, subprocess, sys, webbrowser, shutil
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, 'data', 'data.json')
+LAYOUT = os.path.join(ROOT, 'tools', 'print-layout.json')
 PORT = int(sys.argv[sys.argv.index('--port') + 1]) if '--port' in sys.argv else 8765
 OPEN = '--no-open' not in sys.argv
 
@@ -30,10 +31,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_GET(self):
-        if self.path.split('?')[0] == '/api/data':
+        p = self.path.split('?')[0]
+        if p in ('/api/data', '/api/layout'):
+            target = DATA if p == '/api/data' else LAYOUT
+            key = 'data' if p == '/api/data' else 'layout'
             try:
-                with open(DATA, encoding='utf-8') as f:
-                    self._json(200, {'ok': True, 'data': json.load(f)})
+                with open(target, encoding='utf-8') as f:
+                    self._json(200, {'ok': True, key: json.load(f)})
             except Exception as e:
                 self._json(500, {'ok': False, 'error': str(e)})
             return
@@ -42,21 +46,23 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return super().do_GET()
 
     def do_POST(self):
-        if self.path.split('?')[0] != '/api/data':
+        p = self.path.split('?')[0]
+        if p not in ('/api/data', '/api/layout'):
             self._json(404, {'ok': False, 'error': 'not found'})
             return
         length = int(self.headers.get('Content-Length', 0))
         raw = self.rfile.read(length)
         try:
-            data = json.loads(raw)
+            payload = json.loads(raw)
         except Exception as e:
             self._json(400, {'ok': False, 'error': 'invalid JSON: ' + str(e)})
             return
+        target = DATA if p == '/api/data' else LAYOUT
         try:
-            if os.path.exists(DATA):
-                shutil.copy(DATA, DATA[:-5] + '.bak.json')
-            with open(DATA, 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
+            if os.path.exists(target):
+                shutil.copy(target, target[:-5] + '.bak.json')
+            with open(target, 'w', encoding='utf-8') as f:
+                json.dump(payload, f, ensure_ascii=False, indent=2)
             r = subprocess.run([sys.executable, os.path.join(ROOT, 'tools', 'build.py')],
                                capture_output=True, text=True, timeout=60)
             self._json(200 if r.returncode == 0 else 500,
