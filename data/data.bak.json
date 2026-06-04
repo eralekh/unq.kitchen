@@ -5128,7 +5128,7 @@
     "printMenu": {},
     "printPackage": {},
     "digitalMenu": {
-      "search": false,
+      "search": true,
       "showImages": true,
       "showIngredients": true,
       "categoryOrder": [
@@ -5143,9 +5143,7 @@
         "hot-beverages",
         "cold-beverages"
       ],
-      "hidden": [
-        "cold-beverages"
-      ]
+      "hidden": []
     },
     "digitalPackage": {
       "showBooking": true,
