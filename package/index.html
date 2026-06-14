@@ -393,12 +393,33 @@ body.layout-b .sec-head-b .sec-name-b {
   flex-shrink:0;
 }
 body.layout-b .sec-head-b .sec-banner-b {
-  font-family:'Cormorant Garamond','Georgia',serif;
-  font-size:13px;
-  font-style:italic;
-  font-weight:500;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
+}
+.inst-chip-b {
+  font-family:'Inter',Arial,sans-serif;
+  font-size:12.5px;
+  font-weight:800;
+  letter-spacing:.03em;
   color:#ffffff;
-  text-align:right;
+  background:#5C6330;
+  border-radius:20px;
+  padding:4px 12px;
+  white-space:nowrap;
+}
+.qty-badge-b {
+  font-family:'Inter',Arial,sans-serif;
+  font-size:12.5px;
+  font-weight:800;
+  letter-spacing:.03em;
+  color:#ffffff;
+  background:#5C6330;
+  border-radius:20px;
+  padding:4px 12px;
+  white-space:nowrap;
 }
 /* Chip container — wraps to new row automatically */
 body.layout-b .sec-chips {
@@ -486,12 +507,11 @@ body.layout-c .sec-head-b .sec-name-b {
   flex-shrink:0;
 }
 body.layout-c .sec-head-b .sec-banner-b {
-  font-family:'Cormorant Garamond','Georgia',serif;
-  font-size:13px;
-  font-style:italic;
-  font-weight:500;
-  color:#ffffff;
-  text-align:right;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
 }
 body.layout-c .sec-chips {
   display:flex;
@@ -900,10 +920,10 @@ body.layout-c .ideal-text {
         <div class="col-items th">Items</div>
       </div>
     <div class="section choice-individual">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b">Any 1  ·  No Refill</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (On Arrival)</span><span class="qty-badge-b">No Refill</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
-        <div class="sec-banner">Any 1  ·  No Refill</div>
+        <div class="sec-banner">Any 1 (On Arrival)  ·  No Refill</div>
         <div class="item-name">Masala Tea</div>
         <div class="item-name">Soft Drink</div>
       </div>
@@ -913,10 +933,10 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section choice-party">
-      <div class="sec-head-b"><span class="sec-name-b">Starter</span><span class="sec-banner-b">Any 1  ·  Refill Once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Starter</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (Prebook)</span><span class="qty-badge-b">One  Refill</span></span></div>
       <div class="col-cat"><div class="sec-name">Starter</div></div>
       <div class="col-items">
-        <div class="sec-banner">Any 1  ·  Refill Once</div>
+        <div class="sec-banner">Any 1 (Prebook)  ·  One  Refill</div>
         <div class="item-name">French Fries</div>
         <div class="item-name">Onion Pakoda</div>
       </div>
@@ -926,10 +946,10 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section choice-party">
-      <div class="sec-head-b"><span class="sec-name-b">Meal</span><span class="sec-banner-b">Any 1  ·  No Refill</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Meal</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (Prebook)</span><span class="qty-badge-b">No Refill</span></span></div>
       <div class="col-cat"><div class="sec-name">Meal</div></div>
       <div class="col-items">
-        <div class="sec-banner">Any 1  ·  No Refill</div>
+        <div class="sec-banner">Any 1 (Prebook)  ·  No Refill</div>
         <div class="item-name">Veg Sandwich</div>
         <div class="item-name">Steamed Veg Momo</div>
       </div>
@@ -984,7 +1004,7 @@ body.layout-c .ideal-text {
         <div class="col-items th">Items</div>
       </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b">On arrival  ·  1 per person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">On arrival</span><span class="qty-badge-b">1 per person</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">On arrival  ·  1 per person</div>
@@ -995,7 +1015,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Snacks</span><span class="sec-banner-b">Choose any two  ·  Repeatable x1</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Snacks</span><span class="sec-banner-b"><span class="inst-chip-b">Choose any two</span><span class="qty-badge-b">Repeatable x1</span></span></div>
       <div class="col-cat"><div class="sec-name">Snacks</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose any two  ·  Repeatable x1</div>
@@ -1012,7 +1032,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Main</span><span class="sec-banner-b">Choose one  ·  1 plate</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Main</span><span class="sec-banner-b"><span class="inst-chip-b">Choose one</span><span class="qty-badge-b">1 plate</span></span></div>
       <div class="col-cat"><div class="sec-name">Main</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  1 plate</div>
@@ -1023,7 +1043,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">To Close</span><span class="sec-banner-b">1 per person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">To Close</span><span class="sec-banner-b"><span class="qty-badge-b">1 per person</span></span></div>
       <div class="col-cat"><div class="sec-name">To Close</div></div>
       <div class="col-items">
         <div class="sec-banner">1 per person</div>
@@ -1079,7 +1099,7 @@ body.layout-c .ideal-text {
         <div class="col-items th">Items</div>
       </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b">On arrival  ·  1 per person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">On arrival</span><span class="qty-badge-b">1 per person</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">On arrival  ·  1 per person</div>
@@ -1090,7 +1110,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b">Choose any two  ·  Repeatable x1-2</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b"><span class="inst-chip-b">Choose any two</span><span class="qty-badge-b">Repeatable x1-2</span></span></div>
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose any two  ·  Repeatable x1-2</div>
@@ -1107,7 +1127,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Main</span><span class="sec-banner-b">Choose one  ·  1 plate</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Main</span><span class="sec-banner-b"><span class="inst-chip-b">Choose one</span><span class="qty-badge-b">1 plate</span></span></div>
       <div class="col-cat"><div class="sec-name">Main</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  1 plate</div>
@@ -1122,7 +1142,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Sides</span><span class="sec-banner-b">Included  ·  Served once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Sides</span><span class="sec-banner-b"><span class="inst-chip-b">Included</span><span class="qty-badge-b">Served once</span></span></div>
       <div class="col-cat"><div class="sec-name">Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Included  ·  Served once</div>
@@ -1135,7 +1155,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b">2 pcs / person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b"><span class="qty-badge-b">2 pcs / person</span></span></div>
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">2 pcs / person</div>
@@ -1146,7 +1166,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">To Close</span><span class="sec-banner-b">1 per person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">To Close</span><span class="sec-banner-b"><span class="qty-badge-b">1 per person</span></span></div>
       <div class="col-cat"><div class="sec-name">To Close</div></div>
       <div class="col-items">
         <div class="sec-banner">1 per person</div>
@@ -1202,7 +1222,7 @@ body.layout-c .ideal-text {
         <div class="col-items th">Items</div>
       </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b">On arrival  ·  1 per person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">On arrival</span><span class="qty-badge-b">1 per person</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">On arrival  ·  1 per person</div>
@@ -1213,7 +1233,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b">Two items, repeatable  ·  Repeatable x1-2</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b"><span class="inst-chip-b">Two items, repeatable</span><span class="qty-badge-b">Repeatable x1-2</span></span></div>
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Two items, repeatable  ·  Repeatable x1-2</div>
@@ -1230,7 +1250,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Live Counter</span><span class="sec-banner-b">Choose one  ·  Unlimited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Live Counter</span><span class="sec-banner-b"><span class="inst-chip-b">Choose one</span><span class="qty-badge-b">Unlimited</span></span></div>
       <div class="col-cat"><div class="sec-name">Live Counter</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  Unlimited</div>
@@ -1243,7 +1263,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Main</span><span class="sec-banner-b">Choose one  ·  1 plate</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Main</span><span class="sec-banner-b"><span class="inst-chip-b">Choose one</span><span class="qty-badge-b">1 plate</span></span></div>
       <div class="col-cat"><div class="sec-name">Main</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  1 plate</div>
@@ -1258,7 +1278,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Sides</span><span class="sec-banner-b">Included  ·  Served once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Sides</span><span class="sec-banner-b"><span class="inst-chip-b">Included</span><span class="qty-badge-b">Served once</span></span></div>
       <div class="col-cat"><div class="sec-name">Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Included  ·  Served once</div>
@@ -1271,7 +1291,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b">At close</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b"><span class="qty-badge-b">At close</span></span></div>
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">At close</div>
@@ -1284,7 +1304,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">To Close</span><span class="sec-banner-b">1 per person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">To Close</span><span class="sec-banner-b"><span class="qty-badge-b">1 per person</span></span></div>
       <div class="col-cat"><div class="sec-name">To Close</div></div>
       <div class="col-items">
         <div class="sec-banner">1 per person</div>
@@ -1340,7 +1360,7 @@ body.layout-c .ideal-text {
         <div class="col-items th">Items</div>
       </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b">On arrival  ·  1 per person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">On arrival</span><span class="qty-badge-b">1 per person</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">On arrival  ·  1 per person</div>
@@ -1351,7 +1371,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Soup</span><span class="sec-banner-b">Choose one  ·  Served once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Soup</span><span class="sec-banner-b"><span class="inst-chip-b">Choose one</span><span class="qty-badge-b">Served once</span></span></div>
       <div class="col-cat"><div class="sec-name">Soup</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  Served once</div>
@@ -1362,7 +1382,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b">Pre-portioned  ·  ~3 pcs / person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b"><span class="inst-chip-b">Pre-portioned</span><span class="qty-badge-b">~3 pcs / person</span></span></div>
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Pre-portioned  ·  ~3 pcs / person</div>
@@ -1375,7 +1395,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Main Course</span><span class="sec-banner-b">Choose two sabzis  ·  Limited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Main Course</span><span class="sec-banner-b"><span class="inst-chip-b">Choose two sabzis</span><span class="qty-badge-b">Limited</span></span></div>
       <div class="col-cat"><div class="sec-name">Main Course</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose two sabzis  ·  Limited</div>
@@ -1394,7 +1414,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Breads</span><span class="sec-banner-b">Tandoor throughout  ·  Unlimited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Breads</span><span class="sec-banner-b"><span class="inst-chip-b">Tandoor throughout</span><span class="qty-badge-b">Unlimited</span></span></div>
       <div class="col-cat"><div class="sec-name">Breads</div></div>
       <div class="col-items">
         <div class="sec-banner">Tandoor throughout  ·  Unlimited</div>
@@ -1407,7 +1427,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Rice & Sides</span><span class="sec-banner-b">Served once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Rice & Sides</span><span class="sec-banner-b"><span class="qty-badge-b">Served once</span></span></div>
       <div class="col-cat"><div class="sec-name">Rice & Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Served once</div>
@@ -1422,7 +1442,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b">Unlimited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b"><span class="qty-badge-b">Unlimited</span></span></div>
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">Unlimited</div>
@@ -1478,7 +1498,7 @@ body.layout-c .ideal-text {
         <div class="col-items th">Items</div>
       </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b">On arrival  ·  1 per person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">On arrival</span><span class="qty-badge-b">1 per person</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">On arrival  ·  1 per person</div>
@@ -1489,7 +1509,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Soup</span><span class="sec-banner-b">Choose one  ·  Served once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Soup</span><span class="sec-banner-b"><span class="inst-chip-b">Choose one</span><span class="qty-badge-b">Served once</span></span></div>
       <div class="col-cat"><div class="sec-name">Soup</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  Served once</div>
@@ -1500,7 +1520,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b">Limited quantity  ·  Limited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b"><span class="inst-chip-b">Limited quantity</span><span class="qty-badge-b">Limited</span></span></div>
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Limited quantity  ·  Limited</div>
@@ -1513,7 +1533,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Live Counter</span><span class="sec-banner-b">Choose one  ·  Unlimited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Live Counter</span><span class="sec-banner-b"><span class="inst-chip-b">Choose one</span><span class="qty-badge-b">Unlimited</span></span></div>
       <div class="col-cat"><div class="sec-name">Live Counter</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  Unlimited</div>
@@ -1526,7 +1546,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Main Course</span><span class="sec-banner-b">Three sabzis  ·  Limited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Main Course</span><span class="sec-banner-b"><span class="inst-chip-b">Three sabzis</span><span class="qty-badge-b">Limited</span></span></div>
       <div class="col-cat"><div class="sec-name">Main Course</div></div>
       <div class="col-items">
         <div class="sec-banner">Three sabzis  ·  Limited</div>
@@ -1541,7 +1561,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Breads</span><span class="sec-banner-b">Unlimited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Breads</span><span class="sec-banner-b"><span class="qty-badge-b">Unlimited</span></span></div>
       <div class="col-cat"><div class="sec-name">Breads</div></div>
       <div class="col-items">
         <div class="sec-banner">Unlimited</div>
@@ -1554,7 +1574,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Rice & Sides</span><span class="sec-banner-b">Served once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Rice & Sides</span><span class="sec-banner-b"><span class="qty-badge-b">Served once</span></span></div>
       <div class="col-cat"><div class="sec-name">Rice & Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Served once</div>
@@ -1571,7 +1591,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b">See below</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b"><span class="qty-badge-b">See below</span></span></div>
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">See below</div>
@@ -1629,7 +1649,7 @@ body.layout-c .ideal-text {
         <div class="col-items th">Items</div>
       </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b">On arrival  ·  1 per person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">On arrival</span><span class="qty-badge-b">1 per person</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">On arrival  ·  1 per person</div>
@@ -1640,7 +1660,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Soup</span><span class="sec-banner-b">Both served  ·  Served once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Soup</span><span class="sec-banner-b"><span class="inst-chip-b">Both served</span><span class="qty-badge-b">Served once</span></span></div>
       <div class="col-cat"><div class="sec-name">Soup</div></div>
       <div class="col-items">
         <div class="sec-banner">Both served  ·  Served once</div>
@@ -1653,7 +1673,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b">Three items  ·  Limited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b"><span class="inst-chip-b">Three items</span><span class="qty-badge-b">Limited</span></span></div>
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Three items  ·  Limited</div>
@@ -1668,7 +1688,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Live Counter</span><span class="sec-banner-b">Choose one  ·  Unlimited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Live Counter</span><span class="sec-banner-b"><span class="inst-chip-b">Choose one</span><span class="qty-badge-b">Unlimited</span></span></div>
       <div class="col-cat"><div class="sec-name">Live Counter</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  Unlimited</div>
@@ -1683,7 +1703,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Main Course</span><span class="sec-banner-b">Four sabzis  ·  Limited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Main Course</span><span class="sec-banner-b"><span class="inst-chip-b">Four sabzis</span><span class="qty-badge-b">Limited</span></span></div>
       <div class="col-cat"><div class="sec-name">Main Course</div></div>
       <div class="col-items">
         <div class="sec-banner">Four sabzis  ·  Limited</div>
@@ -1702,7 +1722,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Breads</span><span class="sec-banner-b">Unlimited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Breads</span><span class="sec-banner-b"><span class="qty-badge-b">Unlimited</span></span></div>
       <div class="col-cat"><div class="sec-name">Breads</div></div>
       <div class="col-items">
         <div class="sec-banner">Unlimited</div>
@@ -1717,7 +1737,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Rice & Sides</span><span class="sec-banner-b">Served once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Rice & Sides</span><span class="sec-banner-b"><span class="qty-badge-b">Served once</span></span></div>
       <div class="col-cat"><div class="sec-name">Rice & Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Served once</div>
@@ -1736,7 +1756,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b">See below</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b"><span class="qty-badge-b">See below</span></span></div>
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">See below</div>
@@ -1796,7 +1816,7 @@ body.layout-c .ideal-text {
         <div class="col-items th">Items</div>
       </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b">On arrival  ·  1 per person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">On arrival</span><span class="qty-badge-b">1 per person</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">On arrival  ·  1 per person</div>
@@ -1807,7 +1827,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Soup</span><span class="sec-banner-b">Both served  ·  Served once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Soup</span><span class="sec-banner-b"><span class="inst-chip-b">Both served</span><span class="qty-badge-b">Served once</span></span></div>
       <div class="col-cat"><div class="sec-name">Soup</div></div>
       <div class="col-items">
         <div class="sec-banner">Both served  ·  Served once</div>
@@ -1820,7 +1840,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b">Four items  ·  Limited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b"><span class="inst-chip-b">Four items</span><span class="qty-badge-b">Limited</span></span></div>
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Four items  ·  Limited</div>
@@ -1837,7 +1857,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Live Counters</span><span class="sec-banner-b">Both simultaneously  ·  Unlimited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Live Counters</span><span class="sec-banner-b"><span class="inst-chip-b">Both simultaneously</span><span class="qty-badge-b">Unlimited</span></span></div>
       <div class="col-cat"><div class="sec-name">Live Counters</div></div>
       <div class="col-items">
         <div class="sec-banner">Both simultaneously  ·  Unlimited</div>
@@ -1850,7 +1870,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Main Course</span><span class="sec-banner-b">Five sabzis  ·  Limited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Main Course</span><span class="sec-banner-b"><span class="inst-chip-b">Five sabzis</span><span class="qty-badge-b">Limited</span></span></div>
       <div class="col-cat"><div class="sec-name">Main Course</div></div>
       <div class="col-items">
         <div class="sec-banner">Five sabzis  ·  Limited</div>
@@ -1873,7 +1893,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Breads</span><span class="sec-banner-b">Unlimited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Breads</span><span class="sec-banner-b"><span class="qty-badge-b">Unlimited</span></span></div>
       <div class="col-cat"><div class="sec-name">Breads</div></div>
       <div class="col-items">
         <div class="sec-banner">Unlimited</div>
@@ -1888,7 +1908,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Rice & Sides</span><span class="sec-banner-b">Served once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Rice & Sides</span><span class="sec-banner-b"><span class="qty-badge-b">Served once</span></span></div>
       <div class="col-cat"><div class="sec-name">Rice & Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Served once</div>
@@ -1909,7 +1929,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b">See below</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b"><span class="qty-badge-b">See below</span></span></div>
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">See below</div>
@@ -1969,7 +1989,7 @@ body.layout-c .ideal-text {
         <div class="col-items th">Items</div>
       </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b">On arrival  ·  1 per person</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">On arrival</span><span class="qty-badge-b">1 per person</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">On arrival  ·  1 per person</div>
@@ -1982,7 +2002,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Soup</span><span class="sec-banner-b">Served at table  ·  Table service</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Soup</span><span class="sec-banner-b"><span class="inst-chip-b">Served at table</span><span class="qty-badge-b">Table service</span></span></div>
       <div class="col-cat"><div class="sec-name">Soup</div></div>
       <div class="col-items">
         <div class="sec-banner">Served at table  ·  Table service</div>
@@ -1995,7 +2015,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b">Four items  ·  Limited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Starters</span><span class="sec-banner-b"><span class="inst-chip-b">Four items</span><span class="qty-badge-b">Limited</span></span></div>
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Four items  ·  Limited</div>
@@ -2012,7 +2032,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Live Counters</span><span class="sec-banner-b">Both simultaneously  ·  Unlimited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Live Counters</span><span class="sec-banner-b"><span class="inst-chip-b">Both simultaneously</span><span class="qty-badge-b">Unlimited</span></span></div>
       <div class="col-cat"><div class="sec-name">Live Counters</div></div>
       <div class="col-items">
         <div class="sec-banner">Both simultaneously  ·  Unlimited</div>
@@ -2029,7 +2049,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Main Course</span><span class="sec-banner-b">Five premium sabzis  ·  Limited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Main Course</span><span class="sec-banner-b"><span class="inst-chip-b">Five premium sabzis</span><span class="qty-badge-b">Limited</span></span></div>
       <div class="col-cat"><div class="sec-name">Main Course</div></div>
       <div class="col-items">
         <div class="sec-banner">Five premium sabzis  ·  Limited</div>
@@ -2052,7 +2072,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Breads</span><span class="sec-banner-b">Four varieties  ·  Unlimited</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Breads</span><span class="sec-banner-b"><span class="inst-chip-b">Four varieties</span><span class="qty-badge-b">Unlimited</span></span></div>
       <div class="col-cat"><div class="sec-name">Breads</div></div>
       <div class="col-items">
         <div class="sec-banner">Four varieties  ·  Unlimited</div>
@@ -2069,7 +2089,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Rice & Sides</span><span class="sec-banner-b">Served once</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Rice & Sides</span><span class="sec-banner-b"><span class="qty-badge-b">Served once</span></span></div>
       <div class="col-cat"><div class="sec-name">Rice & Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Served once</div>
@@ -2090,7 +2110,7 @@ body.layout-c .ideal-text {
       </div>
     </div>
     <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b">Dessert station  ·  See below</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Dessert</span><span class="sec-banner-b"><span class="inst-chip-b">Dessert station</span><span class="qty-badge-b">See below</span></span></div>
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">Dessert station  ·  See below</div>

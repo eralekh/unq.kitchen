@@ -2382,7 +2382,7 @@
       "sections": [
         {
           "name": "Welcome",
-          "instruction": "On arrival",
+          "instruction": "Any 1",
           "chip": "No Refill",
           "items": [
             {
@@ -2415,7 +2415,7 @@
         {
           "name": "Starter",
           "instruction": "Any 1",
-          "chip": "Refill Once",
+          "chip": "1  Refill",
           "items": [
             {
               "refs": [

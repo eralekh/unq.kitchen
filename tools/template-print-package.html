@@ -393,12 +393,33 @@ body.layout-b .sec-head-b .sec-name-b {
   flex-shrink:0;
 }
 body.layout-b .sec-head-b .sec-banner-b {
-  font-family:'Cormorant Garamond','Georgia',serif;
-  font-size:13px;
-  font-style:italic;
-  font-weight:500;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
+}
+.inst-chip-b {
+  font-family:'Inter',Arial,sans-serif;
+  font-size:12.5px;
+  font-weight:800;
+  letter-spacing:.03em;
   color:#ffffff;
-  text-align:right;
+  background:#5C6330;
+  border-radius:20px;
+  padding:4px 12px;
+  white-space:nowrap;
+}
+.qty-badge-b {
+  font-family:'Inter',Arial,sans-serif;
+  font-size:12.5px;
+  font-weight:800;
+  letter-spacing:.03em;
+  color:#ffffff;
+  background:#5C6330;
+  border-radius:20px;
+  padding:4px 12px;
+  white-space:nowrap;
 }
 /* Chip container — wraps to new row automatically */
 body.layout-b .sec-chips {
@@ -486,12 +507,11 @@ body.layout-c .sec-head-b .sec-name-b {
   flex-shrink:0;
 }
 body.layout-c .sec-head-b .sec-banner-b {
-  font-family:'Cormorant Garamond','Georgia',serif;
-  font-size:13px;
-  font-style:italic;
-  font-weight:500;
-  color:#ffffff;
-  text-align:right;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
 }
 body.layout-c .sec-chips {
   display:flex;

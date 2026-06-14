@@ -121,10 +121,10 @@ main{max-width:760px;margin:0 auto;padding:0 14px;}
 .ideal{display:inline-block;margin-top:10px;font-size:.74rem;background:rgba(122,132,52,.08);border:1px solid var(--line);border-radius:8px;padding:6px 10px;color:var(--olive-dark);}
 .ideal b{color:var(--ink);}
 .sec{margin-top:18px;}
-.sec-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
-.sec-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);}
-.sec-chip{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--olive);background:rgba(201,169,106,.16);border-radius:6px;padding:3px 8px;}
-.sec-inst{font-size:.82rem;color:rgba(20,22,12,.75);font-style:italic;margin-top:2px;}
+.sec-h{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.sec-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-right:2px;}
+.sec-chip{font-size:.82rem;font-weight:800;letter-spacing:.03em;color:#fff;background:#7A8434;border-radius:20px;padding:4px 13px;}
+.sec-inst{font-size:.82rem;font-weight:800;letter-spacing:.03em;color:#fff;background:#7A8434;border-radius:20px;padding:4px 13px;}
 .items{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
 .chip{font-size:.84rem;background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:7px 11px;}
 .chip .badge{display:inline-block;margin-left:6px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);}
@@ -184,8 +184,9 @@ function renderPkg(p,i){
   if(p.idealValue) h+='<div class="ideal"><b>'+esc(p.idealLabel||'Ideal For')+':</b> '+esc(p.idealValue)+'</div>';
   (p.sections||[]).forEach(sec=>{
     h+='<div class="sec"><div class="sec-h"><span class="sec-name">'+esc(sec.name)+'</span>'+
+       (sec.instruction?'<span class="sec-inst">'+esc(sec.instruction)+'</span>':'')+
        (sec.chip?'<span class="sec-chip">'+esc(sec.chip)+'</span>':'')+'</div>'+
-       (sec.instruction?'<div class="sec-inst">'+esc(sec.instruction)+'</div>':'')+'<div class="items">';
+       '<div class="items">';
     (sec.items||[]).forEach(it=>{
       h+='<div class="chip">'+esc(it.displayName||'')+
          (it.badge?'<span class="badge">'+esc(it.badge)+'</span>':'')+
@@ -241,9 +242,14 @@ def _pkg_page(p, n, total):
     for s in p.get('sections', []):
         ct = s.get('choiceType') or ''
         cls = 'section' + (f' choice-{ct}' if ct else '')
-        banner = t(s.get('instruction'))
+        banner_text = t(s.get('instruction'))
         if s.get('chip'):
-            banner = (banner + '  ·  ' if banner else '') + t(s.get('chip'))
+            banner_text = (banner_text + '  ·  ' if banner_text else '') + t(s.get('chip'))
+        banner_chips = ''
+        if s.get('instruction'):
+            banner_chips += f'<span class="inst-chip-b">{t(s.get("instruction"))}</span>'
+        if s.get('chip'):
+            banner_chips += f'<span class="qty-badge-b">{t(s.get("chip"))}</span>'
         def exc(it):
             tag = it.get('note') or it.get('badge')
             return f'<span class="item-exc-tag">{t(tag)}</span>' if tag else ''
@@ -260,10 +266,10 @@ def _pkg_page(p, n, total):
                               for it in s.get('items', []))
         secs.append(
 f'''    <div class="{cls}">
-      <div class="sec-head-b"><span class="sec-name-b">{t(s.get("name"))}</span><span class="sec-banner-b">{banner}</span></div>
+      <div class="sec-head-b"><span class="sec-name-b">{t(s.get("name"))}</span><span class="sec-banner-b">{banner_chips}</span></div>
       <div class="col-cat"><div class="sec-name">{t(s.get("name"))}</div></div>
       <div class="col-items">
-        <div class="sec-banner">{banner}</div>
+        <div class="sec-banner">{banner_text}</div>
 {items}
       </div>
       <div class="sec-chips">
