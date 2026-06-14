@@ -2382,8 +2382,8 @@
       "sections": [
         {
           "name": "Welcome",
-          "instruction": "Each guest picks 1 on the day",
-          "chip": "1 per person",
+          "instruction": "Any 1",
+          "chip": "No Refill",
           "items": [
             {
               "refs": [
@@ -2413,9 +2413,9 @@
           "servingRefill": ""
         },
         {
-          "name": "Snack 1",
-          "instruction": "Choose 1 at booking",
-          "chip": "1 round for the table · refill once",
+          "name": "Starter",
+          "instruction": "Any 1",
+          "chip": "Refill Once",
           "items": [
             {
               "refs": [
@@ -2445,9 +2445,9 @@
           "servingRefill": "refill once"
         },
         {
-          "name": "Snack 2",
-          "instruction": "Choose 1 at booking",
-          "chip": "1 round for the table · refill once",
+          "name": "Meal",
+          "instruction": "Any 1",
+          "chip": "No Refill",
           "items": [
             {
               "refs": [
@@ -2533,7 +2533,8 @@
             }
           ],
           "servingQty": "1",
-          "servingRefill": ""
+          "servingRefill": "",
+          "choiceType": ""
         },
         {
           "name": "Snacks",
