@@ -123,8 +123,8 @@ main{max-width:760px;margin:0 auto;padding:0 14px;}
 .sec{margin-top:18px;}
 .sec-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
 .sec-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);}
-.sec-chip{font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--olive);background:rgba(201,169,106,.16);border-radius:6px;padding:3px 8px;}
-.sec-inst{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:2px;}
+.sec-chip{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--olive);background:rgba(201,169,106,.16);border-radius:6px;padding:3px 8px;}
+.sec-inst{font-size:.82rem;color:rgba(20,22,12,.75);font-style:italic;margin-top:2px;}
 .items{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
 .chip{font-size:.84rem;background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:7px 11px;}
 .chip .badge{display:inline-block;margin-left:6px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);}
