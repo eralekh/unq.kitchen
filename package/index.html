@@ -385,9 +385,9 @@ body.layout-b .sec-head-b {
   gap:10px;
 }
 body.layout-b .sec-head-b .sec-name-b {
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:1px;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:1.5px;
   color:#ffffff;
   text-transform:uppercase;
   flex-shrink:0;
@@ -401,24 +401,26 @@ body.layout-b .sec-head-b .sec-banner-b {
 }
 .inst-chip-b {
   font-family:'Inter',Arial,sans-serif;
-  font-size:12.5px;
-  font-weight:800;
-  letter-spacing:.03em;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.02em;
   color:#ffffff;
-  background:#5C6330;
+  background:rgba(255,255,255,0.16);
+  border:1px solid rgba(255,255,255,0.4);
   border-radius:20px;
-  padding:4px 12px;
+  padding:3px 10px;
   white-space:nowrap;
 }
 .qty-badge-b {
   font-family:'Inter',Arial,sans-serif;
-  font-size:12.5px;
-  font-weight:800;
-  letter-spacing:.03em;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.02em;
   color:#ffffff;
-  background:#5C6330;
+  background:rgba(255,255,255,0.16);
+  border:1px solid rgba(255,255,255,0.4);
   border-radius:20px;
-  padding:4px 12px;
+  padding:3px 10px;
   white-space:nowrap;
 }
 /* Chip container — wraps to new row automatically */
@@ -432,7 +434,7 @@ body.layout-b .sec-chips {
 body.layout-b .chip-fixed {
   font-family:'Cormorant Garamond','Georgia',serif;
   font-size:13px;
-  color:var(--ink-soft);
+  color:var(--ink);
   font-weight:600;
   background:#ffffff;
   border:1.5px solid var(--gold-dim);
@@ -445,7 +447,7 @@ body.layout-b .chip-fixed {
 body.layout-b .chip-choice {
   font-family:'Cormorant Garamond','Georgia',serif;
   font-size:13px;
-  color:var(--ink-soft);
+  color:var(--ink);
   font-weight:600;
   background:#ffffff;
   border:1.5px solid var(--gold);
@@ -499,9 +501,9 @@ body.layout-c .sec-head-b {
   gap:10px;
 }
 body.layout-c .sec-head-b .sec-name-b {
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:1px;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:1.5px;
   color:#ffffff;
   text-transform:uppercase;
   flex-shrink:0;
@@ -522,7 +524,7 @@ body.layout-c .sec-chips {
 body.layout-c .chip-fixed {
   font-family:'Cormorant Garamond','Georgia',serif;
   font-size:13px;
-  color:var(--ink-soft);
+  color:var(--ink);
   font-weight:600;
   background:#ffffff;
   border:1.5px solid var(--gold-dim);
@@ -534,7 +536,7 @@ body.layout-c .chip-fixed {
 body.layout-c .chip-choice {
   font-family:'Cormorant Garamond','Georgia',serif;
   font-size:13px;
-  color:var(--ink-soft);
+  color:var(--ink);
   font-weight:600;
   background:#ffffff;
   border:1.5px solid var(--gold);
@@ -924,12 +926,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">Any 1 (On Arrival)  ·  No Refill</div>
-        <div class="item-name">Masala Tea</div>
-        <div class="item-name">Soft Drink</div>
+        <div class="item-name">Tea – Masala</div>
+        <div class="item-name">Soft Drink – Regular</div>
       </div>
       <div class="sec-chips">
-        <span class="chip-choice"><span class="chip-check"></span>Masala Tea</span>
-        <span class="chip-choice"><span class="chip-check"></span>Soft Drink</span>
+        <span class="chip-choice"><span class="chip-check"></span>Tea – Masala</span>
+        <span class="chip-choice"><span class="chip-check"></span>Soft Drink – Regular</span>
       </div>
     </div>
     <div class="section choice-party">
@@ -937,25 +939,23 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Starter</div></div>
       <div class="col-items">
         <div class="sec-banner">Any 1 (Prebook)  ·  One  Refill</div>
-        <div class="item-name">French Fries</div>
-        <div class="item-name">Onion Pakoda</div>
+        <div class="item-name">French Fries – Classic</div>
+        <div class="item-name">Pakoda – Onion</div>
       </div>
       <div class="sec-chips">
-        <span class="chip-choice"><span class="chip-check"></span>French Fries</span>
-        <span class="chip-choice"><span class="chip-check"></span>Onion Pakoda</span>
+        <span class="chip-choice"><span class="chip-check"></span>French Fries – Classic</span>
+        <span class="chip-choice"><span class="chip-check"></span>Pakoda – Onion</span>
       </div>
     </div>
-    <div class="section choice-party">
-      <div class="sec-head-b"><span class="sec-name-b">Meal</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (Prebook)</span><span class="qty-badge-b">No Refill</span></span></div>
-      <div class="col-cat"><div class="sec-name">Meal</div></div>
+    <div class="section">
+      <div class="sec-head-b"><span class="sec-name-b">Main</span><span class="sec-banner-b"><span class="qty-badge-b">No Refill</span></span></div>
+      <div class="col-cat"><div class="sec-name">Main</div></div>
       <div class="col-items">
-        <div class="sec-banner">Any 1 (Prebook)  ·  No Refill</div>
-        <div class="item-name">Veg Sandwich</div>
-        <div class="item-name">Steamed Veg Momo</div>
+        <div class="sec-banner">No Refill</div>
+        <div class="item-name">Grilled Sandwich – Veg</div>
       </div>
       <div class="sec-chips">
-        <span class="chip-choice"><span class="chip-check"></span>Veg Sandwich</span>
-        <span class="chip-choice"><span class="chip-check"></span>Steamed Veg Momo</span>
+        <span class="chip-fixed">Grilled Sandwich – Veg</span>
       </div>
     </div>
     </div>
@@ -1003,54 +1003,82 @@ body.layout-c .ideal-text {
         <div class="col-cat th">Category</div>
         <div class="col-items th">Items</div>
       </div>
-    <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">On arrival</span><span class="qty-badge-b">1 per person</span></span></div>
+    <div class="section choice-individual">
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (On Arrival)</span><span class="qty-badge-b">No Refill</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
-        <div class="sec-banner">On arrival  ·  1 per person</div>
-        <div class="item-name">Lassi / Mocktail</div>
+        <div class="sec-banner">Any 1 (On Arrival)  ·  No Refill</div>
+        <div class="item-name">Tea – Masala</div>
+        <div class="item-name">Tea – Black</div>
+        <div class="item-name">Tea – Lemon</div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Lassi / Mocktail</span>
+        <span class="chip-choice"><span class="chip-check"></span>Tea – Masala</span>
+        <span class="chip-choice"><span class="chip-check"></span>Tea – Black</span>
+        <span class="chip-choice"><span class="chip-check"></span>Tea – Lemon</span>
       </div>
     </div>
-    <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Snacks</span><span class="sec-banner-b"><span class="inst-chip-b">Choose any two</span><span class="qty-badge-b">Repeatable x1</span></span></div>
-      <div class="col-cat"><div class="sec-name">Snacks</div></div>
+    <div class="section choice-party">
+      <div class="sec-head-b"><span class="sec-name-b">Starter</span><span class="sec-banner-b"><span class="inst-chip-b">Any 2 (Prebook)</span><span class="qty-badge-b">One  Refill</span></span></div>
+      <div class="col-cat"><div class="sec-name">Starter</div></div>
       <div class="col-items">
-        <div class="sec-banner">Choose any two  ·  Repeatable x1</div>
-        <div class="item-name">Veg Pakoda</div>
-        <div class="item-name">Steamed Momo</div>
-        <div class="item-name">French Fries</div>
-        <div class="item-name">Veg Nuggets</div>
+        <div class="sec-banner">Any 2 (Prebook)  ·  One  Refill</div>
+        <div class="item-name">Pakoda – Gobhi</div>
+        <div class="item-name">Pakoda – Onion</div>
+        <div class="item-name">Pakoda – Potato</div>
+        <div class="item-name">Momo – Steamed Veg</div>
+        <div class="item-name">French Fries – Classic</div>
+        <div class="item-name">French Fries – Peri-Peri</div>
+        <div class="item-name">Nuggets – Veg</div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Veg Pakoda</span>
-        <span class="chip-fixed">Steamed Momo</span>
-        <span class="chip-fixed">French Fries</span>
-        <span class="chip-fixed">Veg Nuggets</span>
+        <span class="chip-choice"><span class="chip-check"></span>Pakoda – Gobhi</span>
+        <span class="chip-choice"><span class="chip-check"></span>Pakoda – Onion</span>
+        <span class="chip-choice"><span class="chip-check"></span>Pakoda – Potato</span>
+        <span class="chip-choice"><span class="chip-check"></span>Momo – Steamed Veg</span>
+        <span class="chip-choice"><span class="chip-check"></span>French Fries – Classic</span>
+        <span class="chip-choice"><span class="chip-check"></span>French Fries – Peri-Peri</span>
+        <span class="chip-choice"><span class="chip-check"></span>Nuggets – Veg</span>
       </div>
     </div>
-    <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Main</span><span class="sec-banner-b"><span class="inst-chip-b">Choose one</span><span class="qty-badge-b">1 plate</span></span></div>
+    <div class="section choice-party">
+      <div class="sec-head-b"><span class="sec-name-b">Main</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (Prebook)</span><span class="qty-badge-b">No Refill</span></span></div>
       <div class="col-cat"><div class="sec-name">Main</div></div>
       <div class="col-items">
-        <div class="sec-banner">Choose one  ·  1 plate</div>
-        <div class="item-name">Chhole Bhature / Veg Noodles</div>
+        <div class="sec-banner">Any 1 (Prebook)  ·  No Refill</div>
+        <div class="item-name">Grilled Sandwich – Veg</div>
+        <div class="item-name">Grilled Sandwich – Veg Club</div>
+        <div class="item-name">Grilled Sandwich – Cheese Corn</div>
+        <div class="item-name">Grilled Sandwich – Bombay</div>
+        <div class="item-name">North Indian Breakfast – Chhole Bhature</div>
+        <div class="item-name">Noodles – Chilli Garlic Burnt</div>
+        <div class="item-name">Noodles – Schezwan</div>
+        <div class="item-name">Noodles – Hakka</div>
+        <div class="item-name">Noodles – Chowmein</div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Chhole Bhature / Veg Noodles</span>
+        <span class="chip-choice"><span class="chip-check"></span>Grilled Sandwich – Veg</span>
+        <span class="chip-choice"><span class="chip-check"></span>Grilled Sandwich – Veg Club</span>
+        <span class="chip-choice"><span class="chip-check"></span>Grilled Sandwich – Cheese Corn</span>
+        <span class="chip-choice"><span class="chip-check"></span>Grilled Sandwich – Bombay</span>
+        <span class="chip-choice"><span class="chip-check"></span>North Indian Breakfast – Chhole Bhature</span>
+        <span class="chip-choice"><span class="chip-check"></span>Noodles – Chilli Garlic Burnt</span>
+        <span class="chip-choice"><span class="chip-check"></span>Noodles – Schezwan</span>
+        <span class="chip-choice"><span class="chip-check"></span>Noodles – Hakka</span>
+        <span class="chip-choice"><span class="chip-check"></span>Noodles – Chowmein</span>
       </div>
     </div>
-    <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">To Close</span><span class="sec-banner-b"><span class="qty-badge-b">1 per person</span></span></div>
+    <div class="section choice-individual">
+      <div class="sec-head-b"><span class="sec-name-b">To Close</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (On Arrival)</span><span class="qty-badge-b">No Refill</span></span></div>
       <div class="col-cat"><div class="sec-name">To Close</div></div>
       <div class="col-items">
-        <div class="sec-banner">1 per person</div>
-        <div class="item-name">Tea / Coffee</div>
+        <div class="sec-banner">Any 1 (On Arrival)  ·  No Refill</div>
+        <div class="item-name">Soft Drink – Regular</div>
+        <div class="item-name">Soft Drink – Masala / Flavoured</div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Tea / Coffee</span>
+        <span class="chip-choice"><span class="chip-check"></span>Soft Drink – Regular</span>
+        <span class="chip-choice"><span class="chip-check"></span>Soft Drink – Masala / Flavoured</span>
       </div>
     </div>
     </div>

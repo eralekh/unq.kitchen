@@ -122,9 +122,9 @@ main{max-width:760px;margin:0 auto;padding:0 14px;}
 .ideal b{color:var(--ink);}
 .sec{margin-top:18px;}
 .sec-h{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
-.sec-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-right:2px;}
-.sec-chip{font-size:.82rem;font-weight:800;letter-spacing:.03em;color:#fff;background:#7A8434;border-radius:20px;padding:4px 13px;}
-.sec-inst{font-size:.82rem;font-weight:800;letter-spacing:.03em;color:#fff;background:#7A8434;border-radius:20px;padding:4px 13px;}
+.sec-name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--ink);margin-right:4px;}
+.sec-chip{font-size:.74rem;font-weight:600;letter-spacing:.02em;color:#5C6330;background:rgba(122,132,52,.08);border:1px solid rgba(122,132,52,.25);border-radius:20px;padding:3px 11px;}
+.sec-inst{font-size:.74rem;font-weight:600;letter-spacing:.02em;color:#5C6330;background:rgba(122,132,52,.08);border:1px solid rgba(122,132,52,.25);border-radius:20px;padding:3px 11px;}
 .items{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
 .chip{font-size:.84rem;background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:7px 11px;}
 .chip .badge{display:inline-block;margin-left:6px;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);}

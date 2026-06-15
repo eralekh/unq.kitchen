@@ -2382,7 +2382,7 @@
       "sections": [
         {
           "name": "Welcome",
-          "instruction": "Any 1",
+          "instruction": "Any 1 (On Arrival)",
           "chip": "No Refill",
           "items": [
             {
@@ -2392,8 +2392,8 @@
                   "variantId": "tea-masala"
                 }
               ],
-              "displayName": "Masala Tea",
-              "note": null,
+              "displayName": "Tea – Masala",
+              "note": "",
               "badge": ""
             },
             {
@@ -2403,8 +2403,8 @@
                   "variantId": "soft-drink-regular"
                 }
               ],
-              "displayName": "Soft Drink",
-              "note": null,
+              "displayName": "Soft Drink – Regular",
+              "note": "",
               "badge": ""
             }
           ],
@@ -2414,8 +2414,8 @@
         },
         {
           "name": "Starter",
-          "instruction": "Any 1",
-          "chip": "1  Refill",
+          "instruction": "Any 1 (Prebook)",
+          "chip": "One  Refill",
           "items": [
             {
               "refs": [
@@ -2424,8 +2424,8 @@
                   "variantId": "french-fries-classic"
                 }
               ],
-              "displayName": "French Fries",
-              "note": null,
+              "displayName": "French Fries – Classic",
+              "note": "",
               "badge": ""
             },
             {
@@ -2435,8 +2435,8 @@
                   "variantId": "pakoda-onion"
                 }
               ],
-              "displayName": "Onion Pakoda",
-              "note": null,
+              "displayName": "Pakoda – Onion",
+              "note": "",
               "badge": ""
             }
           ],
@@ -2445,8 +2445,8 @@
           "servingRefill": "refill once"
         },
         {
-          "name": "Meal",
-          "instruction": "Any 1",
+          "name": "Main",
+          "instruction": "",
           "chip": "No Refill",
           "items": [
             {
@@ -2456,23 +2456,12 @@
                   "variantId": "grilled-sandwich-veg"
                 }
               ],
-              "displayName": "Veg Sandwich",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "momo",
-                  "variantId": "momo-steamed-veg"
-                }
-              ],
-              "displayName": "Steamed Veg Momo",
-              "note": null,
+              "displayName": "Grilled Sandwich – Veg",
+              "note": "",
               "badge": ""
             }
           ],
-          "choiceType": "party",
+          "choiceType": "",
           "servingQty": "1 round for the table",
           "servingRefill": "refill once"
         }
@@ -2513,43 +2502,94 @@
       "sections": [
         {
           "name": "Welcome",
-          "instruction": "On arrival",
-          "chip": "1 per person",
+          "instruction": "Any 1 (On Arrival)",
+          "chip": "No Refill",
           "items": [
             {
               "refs": [
                 {
-                  "itemId": "lassi",
-                  "variantId": "lassi-punjabi-lassi"
-                },
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-mint-mojito"
+                  "itemId": "tea",
+                  "variantId": "tea-masala"
                 }
               ],
-              "displayName": "Lassi / Mocktail",
-              "note": null,
+              "displayName": "Tea – Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tea",
+                  "variantId": "tea-regular"
+                }
+              ],
+              "displayName": "Tea – Regular",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tea",
+                  "variantId": "tea-black"
+                }
+              ],
+              "displayName": "Tea – Black",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tea",
+                  "variantId": "tea-lemon"
+                }
+              ],
+              "displayName": "Tea – Lemon",
+              "note": "",
               "badge": ""
             }
           ],
           "servingQty": "1",
           "servingRefill": "",
-          "choiceType": ""
+          "choiceType": "individual"
         },
         {
-          "name": "Snacks",
-          "instruction": "Choose any two",
-          "chip": "Repeatable x1",
+          "name": "Starter",
+          "instruction": "Any 2 (Prebook)",
+          "chip": "One  Refill",
           "items": [
             {
               "refs": [
                 {
                   "itemId": "pakoda",
-                  "variantId": "pakoda-mix"
+                  "variantId": "pakoda-gobhi"
                 }
               ],
-              "displayName": "Veg Pakoda",
-              "note": null,
+              "displayName": "Pakoda – Gobhi",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-onion"
+                }
+              ],
+              "displayName": "Pakoda – Onion",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-potato"
+                }
+              ],
+              "displayName": "Pakoda – Potato",
+              "note": "",
               "badge": ""
             },
             {
@@ -2559,8 +2599,8 @@
                   "variantId": "momo-steamed-veg"
                 }
               ],
-              "displayName": "Steamed Momo",
-              "note": null,
+              "displayName": "Momo – Steamed Veg",
+              "note": "",
               "badge": ""
             },
             {
@@ -2570,8 +2610,19 @@
                   "variantId": "french-fries-classic"
                 }
               ],
-              "displayName": "French Fries",
-              "note": null,
+              "displayName": "French Fries – Classic",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "french-fries",
+                  "variantId": "french-fries-peri-peri"
+                }
+              ],
+              "displayName": "French Fries – Peri-Peri",
+              "note": "",
               "badge": ""
             },
             {
@@ -2581,61 +2632,155 @@
                   "variantId": "nuggets-veg"
                 }
               ],
-              "displayName": "Veg Nuggets",
-              "note": null,
+              "displayName": "Nuggets – Veg",
+              "note": "",
               "badge": ""
             }
           ],
           "servingQty": "1",
-          "servingRefill": "Refill once"
+          "servingRefill": "Refill once",
+          "choiceType": "party"
         },
         {
           "name": "Main",
-          "instruction": "Choose one",
-          "chip": "1 plate",
+          "instruction": "Any 1 (Prebook)",
+          "chip": "No Refill",
           "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-veg"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Veg",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-veg-club"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Veg Club",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-cheese-corn"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Cheese Corn",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-bombay"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Bombay",
+              "note": "",
+              "badge": ""
+            },
             {
               "refs": [
                 {
                   "itemId": "north-indian-breakfast",
                   "variantId": "north-indian-breakfast-chhole-bhature"
-                },
+                }
+              ],
+              "displayName": "North Indian Breakfast – Chhole Bhature",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "noodles",
+                  "variantId": "noodles-chilli-garlic-burnt"
+                }
+              ],
+              "displayName": "Noodles – Chilli Garlic Burnt",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "noodles",
+                  "variantId": "noodles-schezwan"
+                }
+              ],
+              "displayName": "Noodles – Schezwan",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "noodles",
+                  "variantId": "noodles-hakka"
+                }
+              ],
+              "displayName": "Noodles – Hakka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
                 {
                   "itemId": "noodles",
                   "variantId": "noodles-chowmein"
                 }
               ],
-              "displayName": "Chhole Bhature / Veg Noodles",
-              "note": null,
+              "displayName": "Noodles – Chowmein",
+              "note": "",
               "badge": ""
             }
           ],
           "servingQty": "1 plate",
-          "servingRefill": ""
+          "servingRefill": "",
+          "choiceType": "party"
         },
         {
           "name": "To Close",
-          "instruction": "",
-          "chip": "1 per person",
+          "instruction": "Any 1 (On Arrival)",
+          "chip": "No Refill",
           "items": [
             {
               "refs": [
                 {
-                  "itemId": "tea",
-                  "variantId": "tea-regular"
-                },
-                {
-                  "itemId": "coffee",
-                  "variantId": "coffee-instant"
+                  "itemId": "soft-drink",
+                  "variantId": "soft-drink-regular"
                 }
               ],
-              "displayName": "Tea / Coffee",
-              "note": null,
+              "displayName": "Soft Drink – Regular",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soft-drink",
+                  "variantId": "soft-drink-masala-flavoured"
+                }
+              ],
+              "displayName": "Soft Drink – Masala / Flavoured",
+              "note": "",
               "badge": ""
             }
           ],
           "servingQty": "1",
-          "servingRefill": ""
+          "servingRefill": "",
+          "choiceType": "individual"
         }
       ],
       "booking": {
