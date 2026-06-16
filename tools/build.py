@@ -25,6 +25,67 @@ def with_tags(name, tags):
 def safe(payload):
     return json.dumps(payload, ensure_ascii=False).replace('</', '<\\/')
 
+# ---- package display names: derive from catalog instead of hand-typed strings ----
+def _build_catalog_index(d):
+    """itemId -> {'item': item, 'variants': {variantId: variant}}"""
+    idx = {}
+    for it in d['menu']['items']:
+        idx[it['id']] = {'item': it, 'variants': {v['id']: v for v in it.get('variants', [])}}
+    return idx
+
+def _ref_names(ref, catalog):
+    entry = catalog.get(ref.get('itemId'))
+    if not entry:
+        return None
+    item_name = entry['item'].get('name')
+    variant = entry['variants'].get(ref.get('variantId'))
+    variant_name = variant.get('name') if variant else None
+    return item_name, variant_name
+
+def group_section_items(items, catalog):
+    """Turn a section's `items` list into render units, deriving names from
+    the catalog instead of relying on hand-typed `displayName`.
+
+    Consecutive items that are single-ref variants of the SAME catalog item
+    (e.g. Tea – Masala, Tea – Black, Tea – Lemon) are collapsed into one
+    'group' unit: a label (the item name, e.g. "Tea") plus one option per
+    variant (e.g. "Masala", "Black", "Lemon") — each option becomes its own
+    selectable checkbox/chip, but the item name is shown only once.
+
+    Returns a list of:
+      {'kind':'single', 'name':..., 'note':..., 'badge':...}
+      {'kind':'group', 'label':..., 'options':[{'name':...,'note':...,'badge':...}, ...]}
+
+    Multi-ref combo items (e.g. "Tea / Coffee") keep their curated
+    `displayName` as-is, since that phrasing is hand-picked, not derivable."""
+    out = []
+    i, n = 0, len(items)
+    while i < n:
+        it = items[i]
+        refs = it.get('refs') or []
+        names = _ref_names(refs[0], catalog) if len(refs) == 1 else None
+        if names and names[1]:
+            item_name, variant_name = names
+            group = [{'name': variant_name, 'note': it.get('note'), 'badge': it.get('badge')}]
+            j = i + 1
+            while j < n:
+                refs2 = items[j].get('refs') or []
+                names2 = _ref_names(refs2[0], catalog) if len(refs2) == 1 else None
+                if names2 and names2[1] and refs2[0].get('itemId') == refs[0].get('itemId'):
+                    group.append({'name': names2[1], 'note': items[j].get('note'), 'badge': items[j].get('badge')})
+                    j += 1
+                    continue
+                break
+            out.append({'kind': 'group', 'label': item_name, 'options': group})
+            i = j
+            continue
+        if names:
+            out.append({'kind': 'single', 'name': names[0], 'note': it.get('note'), 'badge': it.get('badge')})
+        else:
+            out.append({'kind': 'single', 'name': it.get('displayName') or '', 'note': it.get('note'), 'badge': it.get('badge')})
+        i += 1
+    return out
+
 # ---- v2 -> digital-menu SECTIONS shape ----
 def v2_to_sections(d, img_prefix='../', settings=None):
     s = settings or {}
@@ -187,8 +248,15 @@ function renderPkg(p,i){
        (sec.instruction?'<span class="sec-inst">'+esc(sec.instruction)+'</span>':'')+
        (sec.chip?'<span class="sec-chip">'+esc(sec.chip)+'</span>':'')+'</div>'+
        '<div class="items">';
-    (sec.items||[]).forEach(it=>{
-      h+='<div class="chip">'+esc(it.displayName||'')+
+    (sec.renderItems||[]).forEach(it=>{
+      if(it.kind==='group'){
+        const opts=it.options.map(o=>esc(o.name)+
+          (o.badge?'<span class="badge">'+esc(o.badge)+'</span>':'')+
+          (o.note?'<span class="note">'+esc(o.note)+'</span>':'')).join(' / ');
+        h+='<div class="chip"><b>'+esc(it.label)+'</b> – '+opts+'</div>';
+        return;
+      }
+      h+='<div class="chip">'+esc(it.name||'')+
          (it.badge?'<span class="badge">'+esc(it.badge)+'</span>':'')+
          (it.note?'<span class="note">'+esc(it.note)+'</span>':'')+'</div>';
     });
@@ -221,7 +289,12 @@ blocks.forEach(b=>obs.observe(b));
 
 def gen_digital_package(d):
     sett = (d.get('presentation') or {}).get('digitalPackage') or {}
-    html = PKG_TEMPLATE.replace('__DATA_JSON__', safe({'packages': d['packages']})).replace('__SET__', safe(sett))
+    catalog = _build_catalog_index(d)
+    packages = json.loads(json.dumps(d['packages']))  # cheap deep copy
+    for p in packages:
+        for s in p.get('sections', []):
+            s['renderItems'] = group_section_items(s.get('items', []), catalog)
+    html = PKG_TEMPLATE.replace('__DATA_JSON__', safe({'packages': packages})).replace('__SET__', safe(sett))
     os.makedirs(os.path.join(ROOT, 'digital-package'), exist_ok=True)
     path = os.path.join(ROOT, 'digital-package', 'index.html')
     open(path, 'w', encoding='utf-8').write(html)
@@ -235,7 +308,7 @@ REFUND_CLASS = {'full refund': 'refund-full', '50% refund': 'refund-half', 'no r
 def refund_cls(r):
     return REFUND_CLASS.get((r or '').strip().lower(), 'refund-full')
 
-def _pkg_page(p, n, total):
+def _pkg_page(p, n, total, catalog):
     ideals = ''.join(f'<span class="ideal-tag">{t(x).strip()}</span>'
                      for x in t(p.get('idealValue')).split('·') if x.strip())
     secs = []
@@ -256,14 +329,23 @@ def _pkg_page(p, n, total):
         def chipbadge(it):
             tag = it.get('note') or it.get('badge')
             return f'<span class="chip-badge">{t(tag)}</span>' if tag else ''
-        items = '\n'.join('        <div class="item-name">' + t(it.get('displayName')) + exc(it) + '</div>'
-                          for it in s.get('items', []))
-        if ct in ('individual', 'party'):
-            chips = '\n'.join('        <span class="chip-choice"><span class="chip-check"></span>' +
-                              t(it.get('displayName')) + chipbadge(it) + '</span>' for it in s.get('items', []))
-        else:
-            chips = '\n'.join('        <span class="chip-fixed">' + t(it.get('displayName')) + chipbadge(it) + '</span>'
-                              for it in s.get('items', []))
+        rendered = group_section_items(s.get('items', []), catalog)
+        item_lines, chip_lines = [], []
+        for r in rendered:
+            if r['kind'] == 'group':
+                opts = ''.join(f'<span class="item-group-opt">{t(o["name"])}{exc(o)}</span>' for o in r['options'])
+                item_lines.append(f'        <div class="item-name item-group"><span class="item-group-label">{t(r["label"])}</span>{opts}</div>')
+                copts = ''.join(f'<span class="chip-group-opt"><span class="chip-check"></span>{t(o["name"])}{chipbadge(o)}</span>' for o in r['options'])
+                chip_lines.append(f'        <span class="chip-group"><span class="chip-group-label">{t(r["label"])}</span>{copts}</span>')
+            else:
+                item_lines.append('        <div class="item-name">' + t(r['name']) + exc(r) + '</div>')
+                if ct in ('individual', 'party'):
+                    chip_lines.append('        <span class="chip-choice"><span class="chip-check"></span>' +
+                                       t(r['name']) + chipbadge(r) + '</span>')
+                else:
+                    chip_lines.append('        <span class="chip-fixed">' + t(r['name']) + chipbadge(r) + '</span>')
+        items = '\n'.join(item_lines)
+        chips = '\n'.join(chip_lines)
         secs.append(
 f'''    <div class="{cls}">
       <div class="sec-head-b"><span class="sec-name-b">{t(s.get("name"))}</span><span class="sec-banner-b">{banner_chips}</span></div>
@@ -368,7 +450,8 @@ f'''    <div class="section">
 def gen_print_package(d, preview=True):
     tmpl = open(os.path.join(ROOT, 'tools', 'template-print-package.html'), encoding='utf-8').read()
     total = len(d['packages']) + 1
-    pages = '\n'.join(_pkg_page(p, p.get('number'), total) for p in d['packages'])
+    catalog = _build_catalog_index(d)
+    pages = '\n'.join(_pkg_page(p, p.get('number'), total, catalog) for p in d['packages'])
     venue = _venue_page(d.get('venuePage', {}), total)
     html = tmpl.replace('{{PAGES}}', pages).replace('{{VENUE_PAGE}}', venue)
     name = 'index.generated.html' if preview else 'index.html'

@@ -477,6 +477,36 @@ body.layout-b .chip-badge {
   border-radius:1px;
   margin-left:2px;
 }
+/* Grouped variants — one chip, item name once + a checkbox per variant */
+body.layout-b .chip-group {
+  font-family:'Cormorant Garamond','Georgia',serif;
+  font-size:13px;
+  color:var(--ink);
+  font-weight:600;
+  background:#ffffff;
+  border:1.5px solid var(--gold);
+  border-radius:4px;
+  padding:3px 10px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+body.layout-b .chip-group-label {
+  font-weight:800;
+  font-size:10.5px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  color:#ffffff;
+  background:var(--gold);
+  padding:2px 6px;
+  border-radius:2px;
+  line-height:1.4;
+}
+body.layout-b .chip-group-opt {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+}
 
 /* LAYOUT C */
 body.layout-c .table-header { display:none; }
@@ -565,6 +595,35 @@ body.layout-c .chip-badge {
   border-radius:1px;
   margin-left:2px;
 }
+body.layout-c .chip-group {
+  font-family:'Cormorant Garamond','Georgia',serif;
+  font-size:13px;
+  color:var(--ink);
+  font-weight:600;
+  background:#ffffff;
+  border:1.5px solid var(--gold);
+  border-radius:4px;
+  padding:3px 10px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+body.layout-c .chip-group-label {
+  font-weight:800;
+  font-size:10.5px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  color:#ffffff;
+  background:var(--gold);
+  padding:2px 6px;
+  border-radius:2px;
+  line-height:1.4;
+}
+body.layout-c .chip-group-opt {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+}
 body.layout-c .pkg-title-row {
   flex-direction:column;
   align-items:center;
@@ -607,6 +666,179 @@ body.layout-c .ideal-text {
   color:var(--ink-soft);
 }
 
+/* ============================================================
+   TEMPLATE SWITCHER  (screen only — hidden when printing)
+   ============================================================ */
+.tmpl-switch {
+  position:fixed; top:14px; right:14px; z-index:50;
+  display:flex; align-items:center; gap:4px;
+  background:#fff; border:1px solid var(--gold-dim);
+  border-radius:24px; padding:6px 8px;
+  box-shadow:0 6px 20px rgba(0,0,0,.12);
+  font-family:'Inter',Arial,sans-serif;
+}
+.tmpl-switch .ts-label {
+  font-size:10px; font-weight:700; letter-spacing:1px;
+  text-transform:uppercase; color:var(--gold-bright);
+  margin:0 4px;
+}
+.tmpl-switch button {
+  font-family:'Inter',Arial,sans-serif; font-size:12px; font-weight:500;
+  color:var(--ink-soft); background:none; border:1px solid transparent;
+  border-radius:16px; padding:4px 12px; cursor:pointer;
+}
+.tmpl-switch button:hover { background:rgba(122,132,52,.08); }
+.tmpl-switch button.active { background:var(--gold); color:#fff; }
+@media print { .no-print { display:none !important; } }
+
+/* ============================================================
+   ADDITIONAL TEMPLATES — all reuse the layout-b structure
+   (course cards · header bar · instruction/refill · item chips).
+   To add another template:
+     1. copy one block below, rename .layout-X
+     2. add a <button data-tmpl="layout-X"> in the switcher
+     3. add 'layout-X' to the `allowed` array in the script
+   ============================================================ */
+
+/* ---- TEMPLATE: BOLD — solid olive headers (like Classic) but
+        cleaner item chips: no inner olive label block ---- */
+body.layout-bold .table-header,
+body.layout-bold .col-cat,
+body.layout-bold .col-items,
+body.layout-bold .sec-banner { display:none; }
+body.layout-bold .section {
+  border:0.5px solid var(--gold-dim); border-radius:4px;
+  margin-bottom:6px; overflow:hidden; flex-direction:column;
+}
+body.layout-bold .sec-head-b {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; background:#7A8434; padding:6px 12px;
+}
+body.layout-bold .sec-head-b .sec-name-b {
+  font-size:13px; font-weight:800; letter-spacing:1.2px;
+  color:#fff; text-transform:uppercase; flex-shrink:0;
+}
+body.layout-bold .sec-head-b .sec-banner-b {
+  display:flex; flex-wrap:wrap; align-items:center;
+  justify-content:flex-end; gap:6px;
+}
+body.layout-bold .inst-chip-b,
+body.layout-bold .qty-badge-b {
+  font-family:'Inter',Arial,sans-serif; font-size:10px; font-weight:600;
+  color:#fff; background:rgba(255,255,255,.14);
+  border:none; border-radius:20px; padding:3px 9px; white-space:nowrap;
+}
+body.layout-bold .sec-chips { display:flex; flex-wrap:wrap; gap:6px; padding:7px 12px; }
+body.layout-bold .chip-group,
+body.layout-bold .chip-choice,
+body.layout-bold .chip-fixed {
+  font-family:'Cormorant Garamond','Georgia',serif; font-size:15px; color:var(--ink);
+  background:#fff; border:1px solid var(--gold-dim); border-radius:6px;
+  padding:5px 11px; display:inline-flex; align-items:center; gap:8px;
+}
+body.layout-bold .chip-group-label { font-weight:700; color:var(--ink); background:none; padding:0; }
+body.layout-bold .chip-group-label::after { content:' —'; color:var(--gold-bright); margin-left:1px; }
+body.layout-bold .chip-group-opt { display:inline-flex; align-items:center; gap:5px; font-size:14px; }
+body.layout-bold .chip-check { width:9px; height:9px; border:1.5px solid var(--gold-dim); border-radius:2px; flex-shrink:0; display:inline-block; }
+body.layout-bold .chip-badge { font-size:7px; font-family:'Inter',Arial,sans-serif; font-weight:700; color:var(--ink-mute); background:rgba(122,132,52,.12); border:0.5px solid var(--gold-dim); padding:0 3px; border-radius:1px; margin-left:3px; }
+
+/* ---- TEMPLATE: LIGHTENED (Option A) — tinted header w/ dark text,
+        italic instruction, serif label + dash, roomier ---- */
+body.layout-lite .table-header,
+body.layout-lite .col-cat,
+body.layout-lite .col-items,
+body.layout-lite .sec-banner { display:none; }
+body.layout-lite .section {
+  border:0.5px solid var(--gold-dim); border-radius:4px;
+  margin-bottom:7px; overflow:hidden; flex-direction:column;
+}
+body.layout-lite .sec-head-b {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; background:rgba(122,132,52,.14);
+  border-bottom:1px solid var(--gold-faint); padding:7px 12px;
+}
+body.layout-lite .sec-head-b .sec-name-b {
+  font-family:'Inter',Arial,sans-serif; font-size:12px; font-weight:700;
+  letter-spacing:1px; color:var(--gold-bright); text-transform:uppercase; flex-shrink:0;
+}
+body.layout-lite .sec-head-b .sec-banner-b {
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px;
+}
+body.layout-lite .inst-chip-b {
+  font-family:'Cormorant Garamond','Georgia',serif; font-style:italic;
+  font-size:13px; font-weight:600; color:var(--ink-soft);
+  background:none; border:none; padding:0;
+}
+body.layout-lite .qty-badge-b {
+  font-family:'Inter',Arial,sans-serif; font-size:9px; font-weight:600;
+  letter-spacing:.4px; text-transform:uppercase; color:var(--gold-bright);
+  background:none; border:1px solid var(--gold-dim); border-radius:20px; padding:2px 8px;
+}
+body.layout-lite .sec-chips { display:flex; flex-wrap:wrap; gap:6px 8px; padding:8px 12px; }
+body.layout-lite .chip-group,
+body.layout-lite .chip-choice {
+  font-family:'Cormorant Garamond','Georgia',serif; font-size:15px; color:var(--ink);
+  background:#fff; border:1px solid var(--gold-dim); border-radius:6px;
+  padding:5px 11px; display:inline-flex; align-items:center; gap:9px;
+}
+body.layout-lite .chip-fixed {
+  font-family:'Cormorant Garamond','Georgia',serif; font-size:15px; color:var(--ink);
+  background:rgba(122,132,52,.06); border:1px solid var(--gold-faint); border-radius:6px;
+  padding:5px 11px; display:inline-flex; align-items:center;
+}
+body.layout-lite .chip-group-label { font-weight:700; color:var(--ink); background:none; padding:0; }
+body.layout-lite .chip-group-label::after { content:' —'; color:var(--gold-bright); margin-left:1px; }
+body.layout-lite .chip-group-opt { display:inline-flex; align-items:center; gap:5px; font-size:14px; }
+body.layout-lite .chip-check { width:9px; height:9px; border:1.5px solid var(--gold-dim); border-radius:2px; flex-shrink:0; display:inline-block; }
+body.layout-lite .chip-badge { font-size:7px; font-family:'Inter',Arial,sans-serif; font-weight:700; color:var(--ink-mute); background:rgba(122,132,52,.12); border:0.5px solid var(--gold-dim); padding:0 3px; border-radius:1px; margin-left:3px; }
+
+/* ---- TEMPLATE: OUTLINED & AIRY (Option B) — outlined header,
+        serif course name, items one-per-line inside the card ---- */
+body.layout-airy .table-header,
+body.layout-airy .col-cat,
+body.layout-airy .col-items,
+body.layout-airy .sec-banner { display:none; }
+body.layout-airy .section {
+  border:0.5px solid var(--gold-dim); border-radius:6px;
+  margin-bottom:7px; overflow:hidden; flex-direction:column;
+}
+body.layout-airy .sec-head-b {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; background:#fff; border-bottom:1px solid var(--gold-dim);
+  border-left:3px solid var(--gold); padding:7px 12px;
+}
+body.layout-airy .sec-head-b .sec-name-b {
+  font-family:'Cormorant Garamond','Georgia',serif; font-size:17px; font-weight:600;
+  color:var(--ink); letter-spacing:.3px; text-transform:none; flex-shrink:0;
+}
+body.layout-airy .sec-head-b .sec-banner-b {
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px;
+}
+body.layout-airy .inst-chip-b {
+  font-size:9px; font-weight:600; letter-spacing:.4px; text-transform:uppercase;
+  color:var(--gold-bright); background:rgba(122,132,52,.10);
+  border:none; border-radius:4px; padding:3px 8px;
+}
+body.layout-airy .qty-badge-b {
+  font-size:9px; font-weight:600; letter-spacing:.4px; text-transform:uppercase;
+  color:var(--ink-mute); background:none; border:none; padding:0;
+}
+body.layout-airy .sec-chips { display:flex; flex-direction:column; gap:0; padding:2px 12px 6px; }
+body.layout-airy .chip-group,
+body.layout-airy .chip-choice,
+body.layout-airy .chip-fixed {
+  font-family:'Cormorant Garamond','Georgia',serif; font-size:15px; color:var(--ink);
+  background:none; border:none; border-bottom:1px dotted var(--gold-dim);
+  border-radius:0; padding:7px 0; display:flex; align-items:center; gap:10px; width:100%;
+}
+body.layout-airy .section .chip-group:last-child,
+body.layout-airy .section .chip-choice:last-child,
+body.layout-airy .section .chip-fixed:last-child { border-bottom:none; }
+body.layout-airy .chip-group-label { font-weight:700; min-width:104px; color:var(--ink); background:none; padding:0; }
+body.layout-airy .chip-group-opt { display:inline-flex; align-items:center; gap:5px; font-size:14px; color:var(--ink-soft); }
+body.layout-airy .chip-check { width:9px; height:9px; border:1.5px solid var(--gold); border-radius:2px; flex-shrink:0; display:inline-block; }
+body.layout-airy .chip-badge { font-size:7px; font-family:'Inter',Arial,sans-serif; font-weight:700; color:var(--ink-mute); background:rgba(122,132,52,.12); border:0.5px solid var(--gold-dim); padding:0 3px; border-radius:1px; margin-left:6px; }
+
 
 /* Choice type indicators — □ checkbox for both individual and party (Layout A) */
 .choice-individual .item-name::before,
@@ -628,6 +860,32 @@ body.layout-c .ideal-text {
 
 .item-name:last-child {
   grid-column:1/-1;
+}
+
+/* Grouped variants — one label (e.g. "Tea") with a □ checkbox per variant
+   (e.g. "Masala", "Black", "Lemon"), instead of repeating the item name */
+.item-group {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:4px 10px;
+}
+.choice-individual .item-group::before,
+.choice-party .item-group::before {
+  content:none;
+}
+.item-group-label {
+  font-weight:700;
+}
+.item-group-label::after {
+  content:' –';
+  margin-right:2px;
+  color:var(--gold-bright);
+}
+.item-group-opt::before {
+  content:'□ ';
+  font-size:9px;
+  color:var(--gold-bright);
 }
 
 .item-exc-tag {
@@ -902,6 +1160,13 @@ body.layout-c .ideal-text {
 </style>
 </head>
 <body class="layout-b">
+<div class="tmpl-switch no-print">
+  <span class="ts-label">Template</span>
+  <button data-tmpl="layout-b">Classic</button>
+  <button data-tmpl="layout-bold">Bold</button>
+  <button data-tmpl="layout-lite">Lightened</button>
+  <button data-tmpl="layout-airy">Outlined</button>
+</div>
 <!-- GENERATED BY UNQ PACKAGE EDITOR -->
 <div class="page">
   <div class="frame"><span class="fc tl"></span><span class="fc tr"></span><span class="fc bl"></span><span class="fc br"></span></div>
@@ -926,25 +1191,25 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">Any 1 (On Arrival)  ·  No Refill</div>
-        <div class="item-name">Tea – Masala</div>
-        <div class="item-name">Soft Drink – Regular</div>
+        <div class="item-name item-group"><span class="item-group-label">Tea</span><span class="item-group-opt">Regular</span><span class="item-group-opt">Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Soft Drink</span><span class="item-group-opt">Regular</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-choice"><span class="chip-check"></span>Tea – Masala</span>
-        <span class="chip-choice"><span class="chip-check"></span>Soft Drink – Regular</span>
+        <span class="chip-group"><span class="chip-group-label">Tea</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span><span class="chip-group-opt"><span class="chip-check"></span>Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Soft Drink</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span></span>
       </div>
     </div>
     <div class="section choice-party">
-      <div class="sec-head-b"><span class="sec-name-b">Starter</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (Prebook)</span><span class="qty-badge-b">One  Refill</span></span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Starter</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (Prebook)</span><span class="qty-badge-b">No Refill</span></span></div>
       <div class="col-cat"><div class="sec-name">Starter</div></div>
       <div class="col-items">
-        <div class="sec-banner">Any 1 (Prebook)  ·  One  Refill</div>
-        <div class="item-name">French Fries – Classic</div>
-        <div class="item-name">Pakoda – Onion</div>
+        <div class="sec-banner">Any 1 (Prebook)  ·  No Refill</div>
+        <div class="item-name item-group"><span class="item-group-label">French Fries</span><span class="item-group-opt">Classic<span class="item-exc-tag">12 Pcs</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">Pakoda</span><span class="item-group-opt">Onion<span class="item-exc-tag">8 Pcs</span></span><span class="item-group-opt">Potato<span class="item-exc-tag">8 Pcs</span></span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-choice"><span class="chip-check"></span>French Fries – Classic</span>
-        <span class="chip-choice"><span class="chip-check"></span>Pakoda – Onion</span>
+        <span class="chip-group"><span class="chip-group-label">French Fries</span><span class="chip-group-opt"><span class="chip-check"></span>Classic<span class="chip-badge">12 Pcs</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Onion<span class="chip-badge">8 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Potato<span class="chip-badge">8 Pcs</span></span></span>
       </div>
     </div>
     <div class="section">
@@ -952,14 +1217,14 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Main</div></div>
       <div class="col-items">
         <div class="sec-banner">No Refill</div>
-        <div class="item-name">Grilled Sandwich – Veg</div>
+        <div class="item-name item-group"><span class="item-group-label">Grilled Sandwich</span><span class="item-group-opt">Veg<span class="item-exc-tag">1 Pc</span></span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Grilled Sandwich – Veg</span>
+        <span class="chip-group"><span class="chip-group-label">Grilled Sandwich</span><span class="chip-group-opt"><span class="chip-check"></span>Veg<span class="chip-badge">1 Pc</span></span></span>
       </div>
     </div>
     </div>
-    <div class="water-note">&#9670; &nbsp;<strong>Note:</strong> Complimentary RO water available. Packaged water charged extra.</div>
+    <div class="water-note">&#9670; &nbsp;<strong>Note:</strong> Complimentary RO water available. Packaged water charged extra</div>
     <div class="booking-strip">
       <div class="book-item"><div class="book-label">Format</div><div class="book-value">Table service, seated</div></div>
       <div class="book-item"><div class="book-label">Min – Max</div><div class="book-value">8 – 30 Persons</div></div>
@@ -1004,41 +1269,31 @@ body.layout-c .ideal-text {
         <div class="col-items th">Items</div>
       </div>
     <div class="section choice-individual">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (On Arrival)</span><span class="qty-badge-b">No Refill</span></span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (On Arrival)</span><span class="qty-badge-b">One Refill</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
-        <div class="sec-banner">Any 1 (On Arrival)  ·  No Refill</div>
-        <div class="item-name">Tea – Masala</div>
-        <div class="item-name">Tea – Black</div>
-        <div class="item-name">Tea – Lemon</div>
+        <div class="sec-banner">Any 1 (On Arrival)  ·  One Refill</div>
+        <div class="item-name item-group"><span class="item-group-label">Tea</span><span class="item-group-opt">Regular</span><span class="item-group-opt">Masala</span><span class="item-group-opt">Black</span><span class="item-group-opt">Lemon</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-choice"><span class="chip-check"></span>Tea – Masala</span>
-        <span class="chip-choice"><span class="chip-check"></span>Tea – Black</span>
-        <span class="chip-choice"><span class="chip-check"></span>Tea – Lemon</span>
+        <span class="chip-group"><span class="chip-group-label">Tea</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span><span class="chip-group-opt"><span class="chip-check"></span>Masala</span><span class="chip-group-opt"><span class="chip-check"></span>Black</span><span class="chip-group-opt"><span class="chip-check"></span>Lemon</span></span>
       </div>
     </div>
     <div class="section choice-party">
-      <div class="sec-head-b"><span class="sec-name-b">Starter</span><span class="sec-banner-b"><span class="inst-chip-b">Any 2 (Prebook)</span><span class="qty-badge-b">One  Refill</span></span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Starter</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (Prebook)</span><span class="qty-badge-b">One  Refill</span></span></div>
       <div class="col-cat"><div class="sec-name">Starter</div></div>
       <div class="col-items">
-        <div class="sec-banner">Any 2 (Prebook)  ·  One  Refill</div>
-        <div class="item-name">Pakoda – Gobhi</div>
-        <div class="item-name">Pakoda – Onion</div>
-        <div class="item-name">Pakoda – Potato</div>
-        <div class="item-name">Momo – Steamed Veg</div>
-        <div class="item-name">French Fries – Classic</div>
-        <div class="item-name">French Fries – Peri-Peri</div>
-        <div class="item-name">Nuggets – Veg</div>
+        <div class="sec-banner">Any 1 (Prebook)  ·  One  Refill</div>
+        <div class="item-name item-group"><span class="item-group-label">Pakoda</span><span class="item-group-opt">Gobhi<span class="item-exc-tag">8 Pcs</span></span><span class="item-group-opt">Onion<span class="item-exc-tag">8 Pcs</span></span><span class="item-group-opt">Potato<span class="item-exc-tag">8 Pcs</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">Momo</span><span class="item-group-opt">Steamed Veg<span class="item-exc-tag">5 Pcs</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">French Fries</span><span class="item-group-opt">Classic<span class="item-exc-tag">12 Pcs</span></span><span class="item-group-opt">Peri-Peri<span class="item-exc-tag">12 Pcs</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">Nuggets</span><span class="item-group-opt">Veg<span class="item-exc-tag">5 Pcs</span></span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-choice"><span class="chip-check"></span>Pakoda – Gobhi</span>
-        <span class="chip-choice"><span class="chip-check"></span>Pakoda – Onion</span>
-        <span class="chip-choice"><span class="chip-check"></span>Pakoda – Potato</span>
-        <span class="chip-choice"><span class="chip-check"></span>Momo – Steamed Veg</span>
-        <span class="chip-choice"><span class="chip-check"></span>French Fries – Classic</span>
-        <span class="chip-choice"><span class="chip-check"></span>French Fries – Peri-Peri</span>
-        <span class="chip-choice"><span class="chip-check"></span>Nuggets – Veg</span>
+        <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Gobhi<span class="chip-badge">8 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Onion<span class="chip-badge">8 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Potato<span class="chip-badge">8 Pcs</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">Momo</span><span class="chip-group-opt"><span class="chip-check"></span>Steamed Veg<span class="chip-badge">5 Pcs</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">French Fries</span><span class="chip-group-opt"><span class="chip-check"></span>Classic<span class="chip-badge">12 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Peri-Peri<span class="chip-badge">12 Pcs</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">Nuggets</span><span class="chip-group-opt"><span class="chip-check"></span>Veg<span class="chip-badge">5 Pcs</span></span></span>
       </div>
     </div>
     <div class="section choice-party">
@@ -1046,26 +1301,14 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Main</div></div>
       <div class="col-items">
         <div class="sec-banner">Any 1 (Prebook)  ·  No Refill</div>
-        <div class="item-name">Grilled Sandwich – Veg</div>
-        <div class="item-name">Grilled Sandwich – Veg Club</div>
-        <div class="item-name">Grilled Sandwich – Cheese Corn</div>
-        <div class="item-name">Grilled Sandwich – Bombay</div>
-        <div class="item-name">North Indian Breakfast – Chhole Bhature</div>
-        <div class="item-name">Noodles – Chilli Garlic Burnt</div>
-        <div class="item-name">Noodles – Schezwan</div>
-        <div class="item-name">Noodles – Hakka</div>
-        <div class="item-name">Noodles – Chowmein</div>
+        <div class="item-name item-group"><span class="item-group-label">Grilled Sandwich</span><span class="item-group-opt">Veg<span class="item-exc-tag">1 Pc</span></span><span class="item-group-opt">Veg Club<span class="item-exc-tag">1 Pc</span></span><span class="item-group-opt">Cheese Corn<span class="item-exc-tag">1 Pc</span></span><span class="item-group-opt">Bombay<span class="item-exc-tag">1 Pc</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">North Indian Breakfast</span><span class="item-group-opt">Chhole Bhature<span class="item-exc-tag">2 Pcs</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">Noodles</span><span class="item-group-opt">Chilli Garlic Burnt<span class="item-exc-tag">1 Portion</span></span><span class="item-group-opt">Schezwan<span class="item-exc-tag">1 Portion</span></span><span class="item-group-opt">Hakka<span class="item-exc-tag">1 Portion</span></span><span class="item-group-opt">Chowmein<span class="item-exc-tag">1 Portion</span></span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-choice"><span class="chip-check"></span>Grilled Sandwich – Veg</span>
-        <span class="chip-choice"><span class="chip-check"></span>Grilled Sandwich – Veg Club</span>
-        <span class="chip-choice"><span class="chip-check"></span>Grilled Sandwich – Cheese Corn</span>
-        <span class="chip-choice"><span class="chip-check"></span>Grilled Sandwich – Bombay</span>
-        <span class="chip-choice"><span class="chip-check"></span>North Indian Breakfast – Chhole Bhature</span>
-        <span class="chip-choice"><span class="chip-check"></span>Noodles – Chilli Garlic Burnt</span>
-        <span class="chip-choice"><span class="chip-check"></span>Noodles – Schezwan</span>
-        <span class="chip-choice"><span class="chip-check"></span>Noodles – Hakka</span>
-        <span class="chip-choice"><span class="chip-check"></span>Noodles – Chowmein</span>
+        <span class="chip-group"><span class="chip-group-label">Grilled Sandwich</span><span class="chip-group-opt"><span class="chip-check"></span>Veg<span class="chip-badge">1 Pc</span></span><span class="chip-group-opt"><span class="chip-check"></span>Veg Club<span class="chip-badge">1 Pc</span></span><span class="chip-group-opt"><span class="chip-check"></span>Cheese Corn<span class="chip-badge">1 Pc</span></span><span class="chip-group-opt"><span class="chip-check"></span>Bombay<span class="chip-badge">1 Pc</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">North Indian Breakfast</span><span class="chip-group-opt"><span class="chip-check"></span>Chhole Bhature<span class="chip-badge">2 Pcs</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">Noodles</span><span class="chip-group-opt"><span class="chip-check"></span>Chilli Garlic Burnt<span class="chip-badge">1 Portion</span></span><span class="chip-group-opt"><span class="chip-check"></span>Schezwan<span class="chip-badge">1 Portion</span></span><span class="chip-group-opt"><span class="chip-check"></span>Hakka<span class="chip-badge">1 Portion</span></span><span class="chip-group-opt"><span class="chip-check"></span>Chowmein<span class="chip-badge">1 Portion</span></span></span>
       </div>
     </div>
     <div class="section choice-individual">
@@ -1073,12 +1316,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">To Close</div></div>
       <div class="col-items">
         <div class="sec-banner">Any 1 (On Arrival)  ·  No Refill</div>
-        <div class="item-name">Soft Drink – Regular</div>
-        <div class="item-name">Soft Drink – Masala / Flavoured</div>
+        <div class="item-name item-group"><span class="item-group-label">Soft Drink</span><span class="item-group-opt">Regular</span><span class="item-group-opt">Masala / Flavoured</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-choice"><span class="chip-check"></span>Soft Drink – Regular</span>
-        <span class="chip-choice"><span class="chip-check"></span>Soft Drink – Masala / Flavoured</span>
+        <span class="chip-group"><span class="chip-group-label">Soft Drink</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span><span class="chip-group-opt"><span class="chip-check"></span>Masala / Flavoured</span></span>
       </div>
     </div>
     </div>
@@ -1142,16 +1383,16 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose any two  ·  Repeatable x1-2</div>
-        <div class="item-name">Veg Pakoda</div>
-        <div class="item-name">Steamed Momo</div>
-        <div class="item-name">French Fries</div>
-        <div class="item-name">Veg Nuggets</div>
+        <div class="item-name item-group"><span class="item-group-label">Pakoda</span><span class="item-group-opt">Mix</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Momo</span><span class="item-group-opt">Steamed Veg</span></div>
+        <div class="item-name item-group"><span class="item-group-label">French Fries</span><span class="item-group-opt">Classic</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Nuggets</span><span class="item-group-opt">Veg</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Veg Pakoda</span>
-        <span class="chip-fixed">Steamed Momo</span>
-        <span class="chip-fixed">French Fries</span>
-        <span class="chip-fixed">Veg Nuggets</span>
+        <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Mix</span></span>
+        <span class="chip-group"><span class="chip-group-label">Momo</span><span class="chip-group-opt"><span class="chip-check"></span>Steamed Veg</span></span>
+        <span class="chip-group"><span class="chip-group-label">French Fries</span><span class="chip-group-opt"><span class="chip-check"></span>Classic</span></span>
+        <span class="chip-group"><span class="chip-group-label">Nuggets</span><span class="chip-group-opt"><span class="chip-check"></span>Veg</span></span>
       </div>
     </div>
     <div class="section">
@@ -1159,14 +1400,14 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Main</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  1 plate</div>
-        <div class="item-name">Chhole Bhature</div>
-        <div class="item-name">Veg Hakka Noodles</div>
-        <div class="item-name">Veg Fried Rice</div>
+        <div class="item-name item-group"><span class="item-group-label">North Indian Breakfast</span><span class="item-group-opt">Chhole Bhature</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Noodles</span><span class="item-group-opt">Hakka</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Fried Rice</span><span class="item-group-opt">Veg Fried Rice</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Chhole Bhature</span>
-        <span class="chip-fixed">Veg Hakka Noodles</span>
-        <span class="chip-fixed">Veg Fried Rice</span>
+        <span class="chip-group"><span class="chip-group-label">North Indian Breakfast</span><span class="chip-group-opt"><span class="chip-check"></span>Chhole Bhature</span></span>
+        <span class="chip-group"><span class="chip-group-label">Noodles</span><span class="chip-group-opt"><span class="chip-check"></span>Hakka</span></span>
+        <span class="chip-group"><span class="chip-group-label">Fried Rice</span><span class="chip-group-opt"><span class="chip-check"></span>Veg Fried Rice</span></span>
       </div>
     </div>
     <div class="section">
@@ -1174,12 +1415,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Included  ·  Served once</div>
-        <div class="item-name">Raita</div>
-        <div class="item-name">Papad</div>
+        <div class="item-name item-group"><span class="item-group-label">Accompaniments</span><span class="item-group-opt">Mix Raita</span><span class="item-group-opt">Masala Papad</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Raita</span>
-        <span class="chip-fixed">Papad</span>
+        <span class="chip-group"><span class="chip-group-label">Accompaniments</span><span class="chip-group-opt"><span class="chip-check"></span>Mix Raita</span><span class="chip-group-opt"><span class="chip-check"></span>Masala Papad</span></span>
       </div>
     </div>
     <div class="section">
@@ -1187,10 +1426,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">2 pcs / person</div>
-        <div class="item-name">Gulab Jamun</div>
+        <div class="item-name item-group"><span class="item-group-label">Gulab Jamun</span><span class="item-group-opt">2 Pcs</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Gulab Jamun</span>
+        <span class="chip-group"><span class="chip-group-label">Gulab Jamun</span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs</span></span>
       </div>
     </div>
     <div class="section">
@@ -1254,10 +1493,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">On arrival  ·  1 per person</div>
-        <div class="item-name">Mocktail</div>
+        <div class="item-name item-group"><span class="item-group-label">Mocktails</span><span class="item-group-opt">Mint Mojito</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Mocktail</span>
+        <span class="chip-group"><span class="chip-group-label">Mocktails</span><span class="chip-group-opt"><span class="chip-check"></span>Mint Mojito</span></span>
       </div>
     </div>
     <div class="section">
@@ -1265,16 +1504,14 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Two items, repeatable  ·  Repeatable x1-2</div>
-        <div class="item-name">Paneer Tikka</div>
-        <div class="item-name">Chaap Tikka</div>
-        <div class="item-name">Steamed Momo</div>
-        <div class="item-name">Chinese Starter</div>
+        <div class="item-name item-group"><span class="item-group-label">Tandoor Starter</span><span class="item-group-opt">Paneer Tikka</span><span class="item-group-opt">Soya Chaap Tikka</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Momo</span><span class="item-group-opt">Steamed Veg</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Chinese Starter</span><span class="item-group-opt">Veg Manchurian</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Paneer Tikka</span>
-        <span class="chip-fixed">Chaap Tikka</span>
-        <span class="chip-fixed">Steamed Momo</span>
-        <span class="chip-fixed">Chinese Starter</span>
+        <span class="chip-group"><span class="chip-group-label">Tandoor Starter</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer Tikka</span><span class="chip-group-opt"><span class="chip-check"></span>Soya Chaap Tikka</span></span>
+        <span class="chip-group"><span class="chip-group-label">Momo</span><span class="chip-group-opt"><span class="chip-check"></span>Steamed Veg</span></span>
+        <span class="chip-group"><span class="chip-group-label">Chinese Starter</span><span class="chip-group-opt"><span class="chip-check"></span>Veg Manchurian</span></span>
       </div>
     </div>
     <div class="section">
@@ -1282,12 +1519,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Live Counter</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  Unlimited</div>
-        <div class="item-name">Live Counter – Gupchup</div>
-        <div class="item-name">Live Counter – Bhel</div>
+        <div class="item-name item-group"><span class="item-group-label">Live Counter</span><span class="item-group-opt">Gupchup</span><span class="item-group-opt">Bhel</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Live Counter – Gupchup</span>
-        <span class="chip-fixed">Live Counter – Bhel</span>
+        <span class="chip-group"><span class="chip-group-label">Live Counter</span><span class="chip-group-opt"><span class="chip-check"></span>Gupchup</span><span class="chip-group-opt"><span class="chip-check"></span>Bhel</span></span>
       </div>
     </div>
     <div class="section">
@@ -1295,14 +1530,14 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Main</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  1 plate</div>
-        <div class="item-name">Chhole Bhature</div>
-        <div class="item-name">Schezwan Noodles</div>
-        <div class="item-name">Paneer Fried Rice</div>
+        <div class="item-name item-group"><span class="item-group-label">North Indian Breakfast</span><span class="item-group-opt">Chhole Bhature</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Noodles</span><span class="item-group-opt">Schezwan</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Fried Rice</span><span class="item-group-opt">Paneer Fried Rice</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Chhole Bhature</span>
-        <span class="chip-fixed">Schezwan Noodles</span>
-        <span class="chip-fixed">Paneer Fried Rice</span>
+        <span class="chip-group"><span class="chip-group-label">North Indian Breakfast</span><span class="chip-group-opt"><span class="chip-check"></span>Chhole Bhature</span></span>
+        <span class="chip-group"><span class="chip-group-label">Noodles</span><span class="chip-group-opt"><span class="chip-check"></span>Schezwan</span></span>
+        <span class="chip-group"><span class="chip-group-label">Fried Rice</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer Fried Rice</span></span>
       </div>
     </div>
     <div class="section">
@@ -1310,12 +1545,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Included  ·  Served once</div>
-        <div class="item-name">Raita</div>
-        <div class="item-name">Papad</div>
+        <div class="item-name item-group"><span class="item-group-label">Accompaniments</span><span class="item-group-opt">Mix Raita</span><span class="item-group-opt">Masala Papad</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Raita</span>
-        <span class="chip-fixed">Papad</span>
+        <span class="chip-group"><span class="chip-group-label">Accompaniments</span><span class="chip-group-opt"><span class="chip-check"></span>Mix Raita</span><span class="chip-group-opt"><span class="chip-check"></span>Masala Papad</span></span>
       </div>
     </div>
     <div class="section">
@@ -1323,12 +1556,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">At close</div>
-        <div class="item-name">Gulab Jamun</div>
-        <div class="item-name">Kheer</div>
+        <div class="item-name item-group"><span class="item-group-label">Gulab Jamun</span><span class="item-group-opt">2 Pcs</span><span class="item-group-opt">2 Pcs</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Gulab Jamun</span>
-        <span class="chip-fixed">Kheer</span>
+        <span class="chip-group"><span class="chip-group-label">Gulab Jamun</span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs</span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs</span></span>
       </div>
     </div>
     <div class="section">
@@ -1414,12 +1645,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Pre-portioned  ·  ~3 pcs / person</div>
-        <div class="item-name">Veg Pakoda</div>
-        <div class="item-name">Steamed Momo</div>
+        <div class="item-name item-group"><span class="item-group-label">Pakoda</span><span class="item-group-opt">Mix</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Momo</span><span class="item-group-opt">Steamed Veg</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Veg Pakoda</span>
-        <span class="chip-fixed">Steamed Momo</span>
+        <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Mix</span></span>
+        <span class="chip-group"><span class="chip-group-label">Momo</span><span class="chip-group-opt"><span class="chip-check"></span>Steamed Veg</span></span>
       </div>
     </div>
     <div class="section">
@@ -1427,18 +1658,18 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Main Course</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose two sabzis  ·  Limited</div>
-        <div class="item-name">Aloo Jeera</div>
-        <div class="item-name">Bhindi Masala</div>
-        <div class="item-name">Chana Masala</div>
-        <div class="item-name">Seasonal Veg</div>
-        <div class="item-name">Dal Tadka</div>
+        <div class="item-name item-group"><span class="item-group-label">Aloo</span><span class="item-group-opt">Jeera Aloo</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Bhindi</span><span class="item-group-opt">Bhindi Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Chana</span><span class="item-group-opt">Chana Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Seasonal</span><span class="item-group-opt">Seasonal Veg/Bhaji</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Daal</span><span class="item-group-opt">Daal Tadka</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Aloo Jeera</span>
-        <span class="chip-fixed">Bhindi Masala</span>
-        <span class="chip-fixed">Chana Masala</span>
-        <span class="chip-fixed">Seasonal Veg</span>
-        <span class="chip-fixed">Dal Tadka</span>
+        <span class="chip-group"><span class="chip-group-label">Aloo</span><span class="chip-group-opt"><span class="chip-check"></span>Jeera Aloo</span></span>
+        <span class="chip-group"><span class="chip-group-label">Bhindi</span><span class="chip-group-opt"><span class="chip-check"></span>Bhindi Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Chana</span><span class="chip-group-opt"><span class="chip-check"></span>Chana Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Seasonal</span><span class="chip-group-opt"><span class="chip-check"></span>Seasonal Veg/Bhaji</span></span>
+        <span class="chip-group"><span class="chip-group-label">Daal</span><span class="chip-group-opt"><span class="chip-check"></span>Daal Tadka</span></span>
       </div>
     </div>
     <div class="section">
@@ -1446,12 +1677,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Breads</div></div>
       <div class="col-items">
         <div class="sec-banner">Tandoor throughout  ·  Unlimited</div>
-        <div class="item-name">Roti</div>
-        <div class="item-name">Naan</div>
+        <div class="item-name item-group"><span class="item-group-label">Roti</span><span class="item-group-opt">Tawa Roti</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Naan</span><span class="item-group-opt">Plain Naan</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Roti</span>
-        <span class="chip-fixed">Naan</span>
+        <span class="chip-group"><span class="chip-group-label">Roti</span><span class="chip-group-opt"><span class="chip-check"></span>Tawa Roti</span></span>
+        <span class="chip-group"><span class="chip-group-label">Naan</span><span class="chip-group-opt"><span class="chip-check"></span>Plain Naan</span></span>
       </div>
     </div>
     <div class="section">
@@ -1459,14 +1690,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Rice & Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Served once</div>
-        <div class="item-name">Jeera Rice</div>
-        <div class="item-name">Raita</div>
-        <div class="item-name">Papad</div>
+        <div class="item-name item-group"><span class="item-group-label">Rice</span><span class="item-group-opt">Jeera Rice</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Accompaniments</span><span class="item-group-opt">Mix Raita</span><span class="item-group-opt">Masala Papad</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Jeera Rice</span>
-        <span class="chip-fixed">Raita</span>
-        <span class="chip-fixed">Papad</span>
+        <span class="chip-group"><span class="chip-group-label">Rice</span><span class="chip-group-opt"><span class="chip-check"></span>Jeera Rice</span></span>
+        <span class="chip-group"><span class="chip-group-label">Accompaniments</span><span class="chip-group-opt"><span class="chip-check"></span>Mix Raita</span><span class="chip-group-opt"><span class="chip-check"></span>Masala Papad</span></span>
       </div>
     </div>
     <div class="section">
@@ -1474,10 +1703,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">Unlimited</div>
-        <div class="item-name">Gulab Jamun</div>
+        <div class="item-name item-group"><span class="item-group-label">Gulab Jamun</span><span class="item-group-opt">2 Pcs</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Gulab Jamun</span>
+        <span class="chip-group"><span class="chip-group-label">Gulab Jamun</span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs</span></span>
       </div>
     </div>
     </div>
@@ -1530,10 +1759,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
         <div class="sec-banner">On arrival  ·  1 per person</div>
-        <div class="item-name">Mocktail</div>
+        <div class="item-name item-group"><span class="item-group-label">Mocktails</span><span class="item-group-opt">Mint Mojito</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Mocktail</span>
+        <span class="chip-group"><span class="chip-group-label">Mocktails</span><span class="chip-group-opt"><span class="chip-check"></span>Mint Mojito</span></span>
       </div>
     </div>
     <div class="section">
@@ -1552,12 +1781,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Limited quantity  ·  Limited</div>
-        <div class="item-name">Paneer Tikka</div>
-        <div class="item-name">Chaap Tikka</div>
+        <div class="item-name item-group"><span class="item-group-label">Tandoor Starter</span><span class="item-group-opt">Paneer Tikka</span><span class="item-group-opt">Soya Chaap Tikka</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Paneer Tikka</span>
-        <span class="chip-fixed">Chaap Tikka</span>
+        <span class="chip-group"><span class="chip-group-label">Tandoor Starter</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer Tikka</span><span class="chip-group-opt"><span class="chip-check"></span>Soya Chaap Tikka</span></span>
       </div>
     </div>
     <div class="section">
@@ -1565,12 +1792,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Live Counter</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  Unlimited</div>
-        <div class="item-name">Live Counter – Chaat</div>
-        <div class="item-name">Live Counter – Gupchup</div>
+        <div class="item-name item-group"><span class="item-group-label">Live Counter</span><span class="item-group-opt">Chaat</span><span class="item-group-opt">Gupchup</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Live Counter – Chaat</span>
-        <span class="chip-fixed">Live Counter – Gupchup</span>
+        <span class="chip-group"><span class="chip-group-label">Live Counter</span><span class="chip-group-opt"><span class="chip-check"></span>Chaat</span><span class="chip-group-opt"><span class="chip-check"></span>Gupchup</span></span>
       </div>
     </div>
     <div class="section">
@@ -1578,14 +1803,14 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Main Course</div></div>
       <div class="col-items">
         <div class="sec-banner">Three sabzis  ·  Limited</div>
-        <div class="item-name">Paneer or Chaap — 1 premium</div>
-        <div class="item-name">2 Regular Sabzis</div>
-        <div class="item-name">Dal Makhani</div>
+        <div class="item-name item-group"><span class="item-group-label">Paneer</span><span class="item-group-opt">UNQ Special Paneer</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Seasonal</span><span class="item-group-opt">Seasonal Veg/Bhaji</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Daal</span><span class="item-group-opt">Daal Makhani</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Paneer or Chaap — 1 premium</span>
-        <span class="chip-fixed">2 Regular Sabzis</span>
-        <span class="chip-fixed">Dal Makhani</span>
+        <span class="chip-group"><span class="chip-group-label">Paneer</span><span class="chip-group-opt"><span class="chip-check"></span>UNQ Special Paneer</span></span>
+        <span class="chip-group"><span class="chip-group-label">Seasonal</span><span class="chip-group-opt"><span class="chip-check"></span>Seasonal Veg/Bhaji</span></span>
+        <span class="chip-group"><span class="chip-group-label">Daal</span><span class="chip-group-opt"><span class="chip-check"></span>Daal Makhani</span></span>
       </div>
     </div>
     <div class="section">
@@ -1593,12 +1818,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Breads</div></div>
       <div class="col-items">
         <div class="sec-banner">Unlimited</div>
-        <div class="item-name">Roti</div>
-        <div class="item-name">Naan</div>
+        <div class="item-name item-group"><span class="item-group-label">Roti</span><span class="item-group-opt">Tandoori Roti</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Naan</span><span class="item-group-opt">Butter Naan</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Roti</span>
-        <span class="chip-fixed">Naan</span>
+        <span class="chip-group"><span class="chip-group-label">Roti</span><span class="chip-group-opt"><span class="chip-check"></span>Tandoori Roti</span></span>
+        <span class="chip-group"><span class="chip-group-label">Naan</span><span class="chip-group-opt"><span class="chip-check"></span>Butter Naan</span></span>
       </div>
     </div>
     <div class="section">
@@ -1607,15 +1832,11 @@ body.layout-c .ideal-text {
       <div class="col-items">
         <div class="sec-banner">Served once</div>
         <div class="item-name">Biryani / Pulav</div>
-        <div class="item-name">Raita</div>
-        <div class="item-name">Salad</div>
-        <div class="item-name">Papad + Pickle</div>
+        <div class="item-name item-group"><span class="item-group-label">Accompaniments</span><span class="item-group-opt">Mix Raita</span><span class="item-group-opt">Garden Green Salad</span><span class="item-group-opt">Masala Papad</span></div>
       </div>
       <div class="sec-chips">
         <span class="chip-fixed">Biryani / Pulav</span>
-        <span class="chip-fixed">Raita</span>
-        <span class="chip-fixed">Salad</span>
-        <span class="chip-fixed">Papad + Pickle</span>
+        <span class="chip-group"><span class="chip-group-label">Accompaniments</span><span class="chip-group-opt"><span class="chip-check"></span>Mix Raita</span><span class="chip-group-opt"><span class="chip-check"></span>Garden Green Salad</span><span class="chip-group-opt"><span class="chip-check"></span>Masala Papad</span></span>
       </div>
     </div>
     <div class="section">
@@ -1623,12 +1844,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">See below</div>
-        <div class="item-name">Gulab Jamun<span class="item-exc-tag">Unlimited</span></div>
-        <div class="item-name">Kheer<span class="item-exc-tag">Limited</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Gulab Jamun</span><span class="item-group-opt">2 Pcs<span class="item-exc-tag">Unlimited</span></span><span class="item-group-opt">2 Pcs<span class="item-exc-tag">Limited</span></span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Gulab Jamun<span class="chip-badge">Unlimited</span></span>
-        <span class="chip-fixed">Kheer<span class="chip-badge">Limited</span></span>
+        <span class="chip-group"><span class="chip-group-label">Gulab Jamun</span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs<span class="chip-badge">Unlimited</span></span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs<span class="chip-badge">Limited</span></span></span>
       </div>
     </div>
     </div>
@@ -1692,12 +1911,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Soup</div></div>
       <div class="col-items">
         <div class="sec-banner">Both served  ·  Served once</div>
-        <div class="item-name">Tomato Soup</div>
-        <div class="item-name">Hot & Sour</div>
+        <div class="item-name item-group"><span class="item-group-label">Soup</span><span class="item-group-opt">Cream of Tomato</span><span class="item-group-opt">Hot & Sour</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Tomato Soup</span>
-        <span class="chip-fixed">Hot & Sour</span>
+        <span class="chip-group"><span class="chip-group-label">Soup</span><span class="chip-group-opt"><span class="chip-check"></span>Cream of Tomato</span><span class="chip-group-opt"><span class="chip-check"></span>Hot & Sour</span></span>
       </div>
     </div>
     <div class="section">
@@ -1705,14 +1922,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Three items  ·  Limited</div>
-        <div class="item-name">Paneer Tikka</div>
-        <div class="item-name">Chaap Tikka</div>
-        <div class="item-name">Chinese Starter</div>
+        <div class="item-name item-group"><span class="item-group-label">Tandoor Starter</span><span class="item-group-opt">Paneer Tikka</span><span class="item-group-opt">Soya Malai Chaap Tikka</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Chinese Starter</span><span class="item-group-opt">Paneer Chilli</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Paneer Tikka</span>
-        <span class="chip-fixed">Chaap Tikka</span>
-        <span class="chip-fixed">Chinese Starter</span>
+        <span class="chip-group"><span class="chip-group-label">Tandoor Starter</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer Tikka</span><span class="chip-group-opt"><span class="chip-check"></span>Soya Malai Chaap Tikka</span></span>
+        <span class="chip-group"><span class="chip-group-label">Chinese Starter</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer Chilli</span></span>
       </div>
     </div>
     <div class="section">
@@ -1720,14 +1935,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Live Counter</div></div>
       <div class="col-items">
         <div class="sec-banner">Choose one  ·  Unlimited</div>
-        <div class="item-name">Live Counter – Chaat</div>
-        <div class="item-name">Live Counter – Gupchup</div>
-        <div class="item-name">Live Counter – Bhel</div>
+        <div class="item-name item-group"><span class="item-group-label">Live Counter</span><span class="item-group-opt">Chaat</span><span class="item-group-opt">Gupchup</span><span class="item-group-opt">Bhel</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Live Counter – Chaat</span>
-        <span class="chip-fixed">Live Counter – Gupchup</span>
-        <span class="chip-fixed">Live Counter – Bhel</span>
+        <span class="chip-group"><span class="chip-group-label">Live Counter</span><span class="chip-group-opt"><span class="chip-check"></span>Chaat</span><span class="chip-group-opt"><span class="chip-check"></span>Gupchup</span><span class="chip-group-opt"><span class="chip-check"></span>Bhel</span></span>
       </div>
     </div>
     <div class="section">
@@ -1735,18 +1946,16 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Main Course</div></div>
       <div class="col-items">
         <div class="sec-banner">Four sabzis  ·  Limited</div>
-        <div class="item-name">Kaju Masala</div>
-        <div class="item-name">Paneer Gravy</div>
-        <div class="item-name">2 Regular Sabzis</div>
-        <div class="item-name">Dal Makhani</div>
-        <div class="item-name">Dal Tadka</div>
+        <div class="item-name item-group"><span class="item-group-label">Kaju</span><span class="item-group-opt">Kaju Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Paneer</span><span class="item-group-opt">Paneer Butter Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Seasonal</span><span class="item-group-opt">Seasonal Veg/Bhaji</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Daal</span><span class="item-group-opt">Daal Makhani</span><span class="item-group-opt">Daal Tadka</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Kaju Masala</span>
-        <span class="chip-fixed">Paneer Gravy</span>
-        <span class="chip-fixed">2 Regular Sabzis</span>
-        <span class="chip-fixed">Dal Makhani</span>
-        <span class="chip-fixed">Dal Tadka</span>
+        <span class="chip-group"><span class="chip-group-label">Kaju</span><span class="chip-group-opt"><span class="chip-check"></span>Kaju Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Paneer</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer Butter Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Seasonal</span><span class="chip-group-opt"><span class="chip-check"></span>Seasonal Veg/Bhaji</span></span>
+        <span class="chip-group"><span class="chip-group-label">Daal</span><span class="chip-group-opt"><span class="chip-check"></span>Daal Makhani</span><span class="chip-group-opt"><span class="chip-check"></span>Daal Tadka</span></span>
       </div>
     </div>
     <div class="section">
@@ -1754,14 +1963,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Breads</div></div>
       <div class="col-items">
         <div class="sec-banner">Unlimited</div>
-        <div class="item-name">Roti</div>
-        <div class="item-name">Naan</div>
-        <div class="item-name">Garlic Naan</div>
+        <div class="item-name item-group"><span class="item-group-label">Roti</span><span class="item-group-opt">Tandoori Roti</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Naan</span><span class="item-group-opt">Butter Naan</span><span class="item-group-opt">Garlic Naan</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Roti</span>
-        <span class="chip-fixed">Naan</span>
-        <span class="chip-fixed">Garlic Naan</span>
+        <span class="chip-group"><span class="chip-group-label">Roti</span><span class="chip-group-opt"><span class="chip-check"></span>Tandoori Roti</span></span>
+        <span class="chip-group"><span class="chip-group-label">Naan</span><span class="chip-group-opt"><span class="chip-check"></span>Butter Naan</span><span class="chip-group-opt"><span class="chip-check"></span>Garlic Naan</span></span>
       </div>
     </div>
     <div class="section">
@@ -1769,16 +1976,16 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Rice & Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Served once</div>
-        <div class="item-name">Veg Biryani</div>
-        <div class="item-name">Jeera Rice</div>
-        <div class="item-name">Salad Bar</div>
+        <div class="item-name item-group"><span class="item-group-label">Biryani</span><span class="item-group-opt">Veg Biryani</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Rice</span><span class="item-group-opt">Jeera Rice</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Accompaniments</span><span class="item-group-opt">UNQ Special Salad</span></div>
         <div class="item-name">Raita + Papad</div>
         <div class="item-name">2 Chutneys</div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Veg Biryani</span>
-        <span class="chip-fixed">Jeera Rice</span>
-        <span class="chip-fixed">Salad Bar</span>
+        <span class="chip-group"><span class="chip-group-label">Biryani</span><span class="chip-group-opt"><span class="chip-check"></span>Veg Biryani</span></span>
+        <span class="chip-group"><span class="chip-group-label">Rice</span><span class="chip-group-opt"><span class="chip-check"></span>Jeera Rice</span></span>
+        <span class="chip-group"><span class="chip-group-label">Accompaniments</span><span class="chip-group-opt"><span class="chip-check"></span>UNQ Special Salad</span></span>
         <span class="chip-fixed">Raita + Papad</span>
         <span class="chip-fixed">2 Chutneys</span>
       </div>
@@ -1788,14 +1995,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">See below</div>
-        <div class="item-name">Gulab Jamun<span class="item-exc-tag">Unlimited</span></div>
-        <div class="item-name">Kheer<span class="item-exc-tag">Limited</span></div>
-        <div class="item-name">Seasonal Sweet<span class="item-exc-tag">1 serving</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Gulab Jamun</span><span class="item-group-opt">2 Pcs<span class="item-exc-tag">Unlimited</span></span><span class="item-group-opt">2 Pcs<span class="item-exc-tag">Limited</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">Ice Cream</span><span class="item-group-opt">Single Scoop<span class="item-exc-tag">1 serving</span></span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Gulab Jamun<span class="chip-badge">Unlimited</span></span>
-        <span class="chip-fixed">Kheer<span class="chip-badge">Limited</span></span>
-        <span class="chip-fixed">Seasonal Sweet<span class="chip-badge">1 serving</span></span>
+        <span class="chip-group"><span class="chip-group-label">Gulab Jamun</span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs<span class="chip-badge">Unlimited</span></span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs<span class="chip-badge">Limited</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">Ice Cream</span><span class="chip-group-opt"><span class="chip-check"></span>Single Scoop<span class="chip-badge">1 serving</span></span></span>
       </div>
     </div>
     </div>
@@ -1859,12 +2064,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Soup</div></div>
       <div class="col-items">
         <div class="sec-banner">Both served  ·  Served once</div>
-        <div class="item-name">Tomato Soup</div>
-        <div class="item-name">Hot & Sour</div>
+        <div class="item-name item-group"><span class="item-group-label">Soup</span><span class="item-group-opt">Cream of Tomato</span><span class="item-group-opt">Hot & Sour</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Tomato Soup</span>
-        <span class="chip-fixed">Hot & Sour</span>
+        <span class="chip-group"><span class="chip-group-label">Soup</span><span class="chip-group-opt"><span class="chip-check"></span>Cream of Tomato</span><span class="chip-group-opt"><span class="chip-check"></span>Hot & Sour</span></span>
       </div>
     </div>
     <div class="section">
@@ -1872,16 +2075,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Four items  ·  Limited</div>
-        <div class="item-name">Paneer Tikka</div>
-        <div class="item-name">Chaap Tikka</div>
-        <div class="item-name">Mushroom Starter</div>
-        <div class="item-name">Chinese Starter</div>
+        <div class="item-name item-group"><span class="item-group-label">Tandoor Starter</span><span class="item-group-opt">Paneer Tikka</span><span class="item-group-opt">Soya Malai Chaap Tikka</span><span class="item-group-opt">Mushroom Tikka</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Chinese Starter</span><span class="item-group-opt">Paneer Chilli</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Paneer Tikka</span>
-        <span class="chip-fixed">Chaap Tikka</span>
-        <span class="chip-fixed">Mushroom Starter</span>
-        <span class="chip-fixed">Chinese Starter</span>
+        <span class="chip-group"><span class="chip-group-label">Tandoor Starter</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer Tikka</span><span class="chip-group-opt"><span class="chip-check"></span>Soya Malai Chaap Tikka</span><span class="chip-group-opt"><span class="chip-check"></span>Mushroom Tikka</span></span>
+        <span class="chip-group"><span class="chip-group-label">Chinese Starter</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer Chilli</span></span>
       </div>
     </div>
     <div class="section">
@@ -1889,12 +2088,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Live Counters</div></div>
       <div class="col-items">
         <div class="sec-banner">Both simultaneously  ·  Unlimited</div>
-        <div class="item-name">Live Counter – Momos</div>
-        <div class="item-name">Live Counter – Chaat</div>
+        <div class="item-name item-group"><span class="item-group-label">Live Counter</span><span class="item-group-opt">Momos</span><span class="item-group-opt">Chaat</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Live Counter – Momos</span>
-        <span class="chip-fixed">Live Counter – Chaat</span>
+        <span class="chip-group"><span class="chip-group-label">Live Counter</span><span class="chip-group-opt"><span class="chip-check"></span>Momos</span><span class="chip-group-opt"><span class="chip-check"></span>Chaat</span></span>
       </div>
     </div>
     <div class="section">
@@ -1902,22 +2099,20 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Main Course</div></div>
       <div class="col-items">
         <div class="sec-banner">Five sabzis  ·  Limited</div>
-        <div class="item-name">Kaju Masala</div>
-        <div class="item-name">Paneer Lababdar</div>
-        <div class="item-name">Chaap Masala</div>
-        <div class="item-name">Mushroom Masala</div>
-        <div class="item-name">Seasonal Sabzi</div>
-        <div class="item-name">Dal Makhani</div>
-        <div class="item-name">Dal Tadka</div>
+        <div class="item-name item-group"><span class="item-group-label">Kaju</span><span class="item-group-opt">Kaju Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Paneer</span><span class="item-group-opt">Paneer Butter Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Chaap</span><span class="item-group-opt">Chaap Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Mushroom</span><span class="item-group-opt">Mushroom Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Seasonal</span><span class="item-group-opt">Seasonal Veg/Bhaji</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Daal</span><span class="item-group-opt">Daal Makhani</span><span class="item-group-opt">Daal Tadka</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Kaju Masala</span>
-        <span class="chip-fixed">Paneer Lababdar</span>
-        <span class="chip-fixed">Chaap Masala</span>
-        <span class="chip-fixed">Mushroom Masala</span>
-        <span class="chip-fixed">Seasonal Sabzi</span>
-        <span class="chip-fixed">Dal Makhani</span>
-        <span class="chip-fixed">Dal Tadka</span>
+        <span class="chip-group"><span class="chip-group-label">Kaju</span><span class="chip-group-opt"><span class="chip-check"></span>Kaju Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Paneer</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer Butter Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Chaap</span><span class="chip-group-opt"><span class="chip-check"></span>Chaap Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Mushroom</span><span class="chip-group-opt"><span class="chip-check"></span>Mushroom Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Seasonal</span><span class="chip-group-opt"><span class="chip-check"></span>Seasonal Veg/Bhaji</span></span>
+        <span class="chip-group"><span class="chip-group-label">Daal</span><span class="chip-group-opt"><span class="chip-check"></span>Daal Makhani</span><span class="chip-group-opt"><span class="chip-check"></span>Daal Tadka</span></span>
       </div>
     </div>
     <div class="section">
@@ -1925,14 +2120,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Breads</div></div>
       <div class="col-items">
         <div class="sec-banner">Unlimited</div>
-        <div class="item-name">Roti</div>
-        <div class="item-name">Naan</div>
-        <div class="item-name">Garlic Naan</div>
+        <div class="item-name item-group"><span class="item-group-label">Roti</span><span class="item-group-opt">Tandoori Roti</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Naan</span><span class="item-group-opt">Butter Naan</span><span class="item-group-opt">Garlic Naan</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Roti</span>
-        <span class="chip-fixed">Naan</span>
-        <span class="chip-fixed">Garlic Naan</span>
+        <span class="chip-group"><span class="chip-group-label">Roti</span><span class="chip-group-opt"><span class="chip-check"></span>Tandoori Roti</span></span>
+        <span class="chip-group"><span class="chip-group-label">Naan</span><span class="chip-group-opt"><span class="chip-check"></span>Butter Naan</span><span class="chip-group-opt"><span class="chip-check"></span>Garlic Naan</span></span>
       </div>
     </div>
     <div class="section">
@@ -1940,18 +2133,18 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Rice & Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Served once</div>
-        <div class="item-name">Veg Biryani</div>
-        <div class="item-name">Pulav</div>
-        <div class="item-name">Jeera Rice</div>
-        <div class="item-name">Full Salad Bar</div>
+        <div class="item-name item-group"><span class="item-group-label">Biryani</span><span class="item-group-opt">Veg Biryani</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Pulav</span><span class="item-group-opt">Veg Pulav</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Rice</span><span class="item-group-opt">Jeera Rice</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Accompaniments</span><span class="item-group-opt">UNQ Special Salad</span></div>
         <div class="item-name">Raita + Papad</div>
         <div class="item-name">Chutney Bar (3 options)</div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Veg Biryani</span>
-        <span class="chip-fixed">Pulav</span>
-        <span class="chip-fixed">Jeera Rice</span>
-        <span class="chip-fixed">Full Salad Bar</span>
+        <span class="chip-group"><span class="chip-group-label">Biryani</span><span class="chip-group-opt"><span class="chip-check"></span>Veg Biryani</span></span>
+        <span class="chip-group"><span class="chip-group-label">Pulav</span><span class="chip-group-opt"><span class="chip-check"></span>Veg Pulav</span></span>
+        <span class="chip-group"><span class="chip-group-label">Rice</span><span class="chip-group-opt"><span class="chip-check"></span>Jeera Rice</span></span>
+        <span class="chip-group"><span class="chip-group-label">Accompaniments</span><span class="chip-group-opt"><span class="chip-check"></span>UNQ Special Salad</span></span>
         <span class="chip-fixed">Raita + Papad</span>
         <span class="chip-fixed">Chutney Bar (3 options)</span>
       </div>
@@ -1961,14 +2154,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">See below</div>
-        <div class="item-name">Gulab Jamun<span class="item-exc-tag">Unlimited</span></div>
-        <div class="item-name">Kheer<span class="item-exc-tag">Limited</span></div>
-        <div class="item-name">Rasmalai<span class="item-exc-tag">1 serving</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Gulab Jamun</span><span class="item-group-opt">2 Pcs<span class="item-exc-tag">Unlimited</span></span><span class="item-group-opt">2 Pcs<span class="item-exc-tag">Limited</span></span><span class="item-group-opt">1 Pc With Ice Cream<span class="item-exc-tag">1 serving</span></span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Gulab Jamun<span class="chip-badge">Unlimited</span></span>
-        <span class="chip-fixed">Kheer<span class="chip-badge">Limited</span></span>
-        <span class="chip-fixed">Rasmalai<span class="chip-badge">1 serving</span></span>
+        <span class="chip-group"><span class="chip-group-label">Gulab Jamun</span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs<span class="chip-badge">Unlimited</span></span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs<span class="chip-badge">Limited</span></span><span class="chip-group-opt"><span class="chip-check"></span>1 Pc With Ice Cream<span class="chip-badge">1 serving</span></span></span>
       </div>
     </div>
     </div>
@@ -2034,12 +2223,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Soup</div></div>
       <div class="col-items">
         <div class="sec-banner">Served at table  ·  Table service</div>
-        <div class="item-name">Tomato Soup</div>
-        <div class="item-name">Hot & Sour</div>
+        <div class="item-name item-group"><span class="item-group-label">Soup</span><span class="item-group-opt">Cream of Tomato</span><span class="item-group-opt">Hot & Sour</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Tomato Soup</span>
-        <span class="chip-fixed">Hot & Sour</span>
+        <span class="chip-group"><span class="chip-group-label">Soup</span><span class="chip-group-opt"><span class="chip-check"></span>Cream of Tomato</span><span class="chip-group-opt"><span class="chip-check"></span>Hot & Sour</span></span>
       </div>
     </div>
     <div class="section">
@@ -2047,16 +2234,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Starters</div></div>
       <div class="col-items">
         <div class="sec-banner">Four items  ·  Limited</div>
-        <div class="item-name">Paneer Tikka</div>
-        <div class="item-name">Chaap Tikka</div>
-        <div class="item-name">Mushroom Starter</div>
-        <div class="item-name">Chinese Starter</div>
+        <div class="item-name item-group"><span class="item-group-label">Tandoor Starter</span><span class="item-group-opt">Flavours of Paneer Tikka</span><span class="item-group-opt">Soya Malai Chaap Tikka</span><span class="item-group-opt">Mushroom Tikka</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Chinese Starter</span><span class="item-group-opt">Paneer Chilli</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Paneer Tikka</span>
-        <span class="chip-fixed">Chaap Tikka</span>
-        <span class="chip-fixed">Mushroom Starter</span>
-        <span class="chip-fixed">Chinese Starter</span>
+        <span class="chip-group"><span class="chip-group-label">Tandoor Starter</span><span class="chip-group-opt"><span class="chip-check"></span>Flavours of Paneer Tikka</span><span class="chip-group-opt"><span class="chip-check"></span>Soya Malai Chaap Tikka</span><span class="chip-group-opt"><span class="chip-check"></span>Mushroom Tikka</span></span>
+        <span class="chip-group"><span class="chip-group-label">Chinese Starter</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer Chilli</span></span>
       </div>
     </div>
     <div class="section">
@@ -2064,16 +2247,10 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Live Counters</div></div>
       <div class="col-items">
         <div class="sec-banner">Both simultaneously  ·  Unlimited</div>
-        <div class="item-name">Live Counter – Momos</div>
-        <div class="item-name">Live Counter – Chaat</div>
-        <div class="item-name">Live Counter – Gupchup</div>
-        <div class="item-name">Live Counter – Bhel</div>
+        <div class="item-name item-group"><span class="item-group-label">Live Counter</span><span class="item-group-opt">Momos</span><span class="item-group-opt">Chaat</span><span class="item-group-opt">Gupchup</span><span class="item-group-opt">Bhel</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Live Counter – Momos</span>
-        <span class="chip-fixed">Live Counter – Chaat</span>
-        <span class="chip-fixed">Live Counter – Gupchup</span>
-        <span class="chip-fixed">Live Counter – Bhel</span>
+        <span class="chip-group"><span class="chip-group-label">Live Counter</span><span class="chip-group-opt"><span class="chip-check"></span>Momos</span><span class="chip-group-opt"><span class="chip-check"></span>Chaat</span><span class="chip-group-opt"><span class="chip-check"></span>Gupchup</span><span class="chip-group-opt"><span class="chip-check"></span>Bhel</span></span>
       </div>
     </div>
     <div class="section">
@@ -2081,22 +2258,20 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Main Course</div></div>
       <div class="col-items">
         <div class="sec-banner">Five premium sabzis  ·  Limited</div>
-        <div class="item-name">Kaju Masala</div>
-        <div class="item-name">Paneer Lababdar</div>
-        <div class="item-name">Chaap Masala</div>
-        <div class="item-name">Mushroom Masala</div>
-        <div class="item-name">Premium Seasonal</div>
-        <div class="item-name">Dal Makhani</div>
-        <div class="item-name">Dal Tadka</div>
+        <div class="item-name item-group"><span class="item-group-label">Kaju</span><span class="item-group-opt">Kaju Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Paneer</span><span class="item-group-opt">Paneer Butter Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Chaap</span><span class="item-group-opt">Chaap Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Mushroom</span><span class="item-group-opt">Mushroom Masala</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Seasonal</span><span class="item-group-opt">Seasonal Veg/Bhaji</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Daal</span><span class="item-group-opt">Daal Makhani</span><span class="item-group-opt">Daal Tadka</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Kaju Masala</span>
-        <span class="chip-fixed">Paneer Lababdar</span>
-        <span class="chip-fixed">Chaap Masala</span>
-        <span class="chip-fixed">Mushroom Masala</span>
-        <span class="chip-fixed">Premium Seasonal</span>
-        <span class="chip-fixed">Dal Makhani</span>
-        <span class="chip-fixed">Dal Tadka</span>
+        <span class="chip-group"><span class="chip-group-label">Kaju</span><span class="chip-group-opt"><span class="chip-check"></span>Kaju Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Paneer</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer Butter Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Chaap</span><span class="chip-group-opt"><span class="chip-check"></span>Chaap Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Mushroom</span><span class="chip-group-opt"><span class="chip-check"></span>Mushroom Masala</span></span>
+        <span class="chip-group"><span class="chip-group-label">Seasonal</span><span class="chip-group-opt"><span class="chip-check"></span>Seasonal Veg/Bhaji</span></span>
+        <span class="chip-group"><span class="chip-group-label">Daal</span><span class="chip-group-opt"><span class="chip-check"></span>Daal Makhani</span><span class="chip-group-opt"><span class="chip-check"></span>Daal Tadka</span></span>
       </div>
     </div>
     <div class="section">
@@ -2104,16 +2279,14 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Breads</div></div>
       <div class="col-items">
         <div class="sec-banner">Four varieties  ·  Unlimited</div>
-        <div class="item-name">Roti</div>
-        <div class="item-name">Naan</div>
-        <div class="item-name">Garlic Naan</div>
-        <div class="item-name">Kulcha</div>
+        <div class="item-name item-group"><span class="item-group-label">Roti</span><span class="item-group-opt">Tandoori Roti</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Naan</span><span class="item-group-opt">Butter Naan</span><span class="item-group-opt">Garlic Naan</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Kulcha</span><span class="item-group-opt">Aloo Kulcha</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Roti</span>
-        <span class="chip-fixed">Naan</span>
-        <span class="chip-fixed">Garlic Naan</span>
-        <span class="chip-fixed">Kulcha</span>
+        <span class="chip-group"><span class="chip-group-label">Roti</span><span class="chip-group-opt"><span class="chip-check"></span>Tandoori Roti</span></span>
+        <span class="chip-group"><span class="chip-group-label">Naan</span><span class="chip-group-opt"><span class="chip-check"></span>Butter Naan</span><span class="chip-group-opt"><span class="chip-check"></span>Garlic Naan</span></span>
+        <span class="chip-group"><span class="chip-group-label">Kulcha</span><span class="chip-group-opt"><span class="chip-check"></span>Aloo Kulcha</span></span>
       </div>
     </div>
     <div class="section">
@@ -2121,18 +2294,18 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Rice & Sides</div></div>
       <div class="col-items">
         <div class="sec-banner">Served once</div>
-        <div class="item-name">Veg Biryani</div>
-        <div class="item-name">Pulav</div>
-        <div class="item-name">Saffron Rice</div>
-        <div class="item-name">Full Salad Bar</div>
+        <div class="item-name item-group"><span class="item-group-label">Biryani</span><span class="item-group-opt">Veg Biryani</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Pulav</span><span class="item-group-opt">Veg Pulav</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Rice</span><span class="item-group-opt">Jeera Rice</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Accompaniments</span><span class="item-group-opt">UNQ Special Salad</span></div>
         <div class="item-name">Raita + Papad</div>
         <div class="item-name">Full Chutney Bar</div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Veg Biryani</span>
-        <span class="chip-fixed">Pulav</span>
-        <span class="chip-fixed">Saffron Rice</span>
-        <span class="chip-fixed">Full Salad Bar</span>
+        <span class="chip-group"><span class="chip-group-label">Biryani</span><span class="chip-group-opt"><span class="chip-check"></span>Veg Biryani</span></span>
+        <span class="chip-group"><span class="chip-group-label">Pulav</span><span class="chip-group-opt"><span class="chip-check"></span>Veg Pulav</span></span>
+        <span class="chip-group"><span class="chip-group-label">Rice</span><span class="chip-group-opt"><span class="chip-check"></span>Jeera Rice</span></span>
+        <span class="chip-group"><span class="chip-group-label">Accompaniments</span><span class="chip-group-opt"><span class="chip-check"></span>UNQ Special Salad</span></span>
         <span class="chip-fixed">Raita + Papad</span>
         <span class="chip-fixed">Full Chutney Bar</span>
       </div>
@@ -2142,16 +2315,12 @@ body.layout-c .ideal-text {
       <div class="col-cat"><div class="sec-name">Dessert</div></div>
       <div class="col-items">
         <div class="sec-banner">Dessert station  ·  See below</div>
-        <div class="item-name">Gulab Jamun<span class="item-exc-tag">Unlimited</span></div>
-        <div class="item-name">Kheer<span class="item-exc-tag">Limited</span></div>
-        <div class="item-name">Rasmalai<span class="item-exc-tag">1 serving</span></div>
-        <div class="item-name">Ice Cream<span class="item-exc-tag">1 scoop</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Gulab Jamun</span><span class="item-group-opt">2 Pcs<span class="item-exc-tag">Unlimited</span></span><span class="item-group-opt">2 Pcs<span class="item-exc-tag">Limited</span></span><span class="item-group-opt">1 Pc With Ice Cream<span class="item-exc-tag">1 serving</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">Ice Cream</span><span class="item-group-opt">Single Scoop<span class="item-exc-tag">1 scoop</span></span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-fixed">Gulab Jamun<span class="chip-badge">Unlimited</span></span>
-        <span class="chip-fixed">Kheer<span class="chip-badge">Limited</span></span>
-        <span class="chip-fixed">Rasmalai<span class="chip-badge">1 serving</span></span>
-        <span class="chip-fixed">Ice Cream<span class="chip-badge">1 scoop</span></span>
+        <span class="chip-group"><span class="chip-group-label">Gulab Jamun</span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs<span class="chip-badge">Unlimited</span></span><span class="chip-group-opt"><span class="chip-check"></span>2 Pcs<span class="chip-badge">Limited</span></span><span class="chip-group-opt"><span class="chip-check"></span>1 Pc With Ice Cream<span class="chip-badge">1 serving</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">Ice Cream</span><span class="chip-group-opt"><span class="chip-check"></span>Single Scoop<span class="chip-badge">1 scoop</span></span></span>
       </div>
     </div>
     </div>
@@ -2250,5 +2419,28 @@ body.layout-c .ideal-text {
   </div>
   <div class="page-num">10 of 10</div>
 </div>
+<script>
+(function(){
+  var KEY='unqPkgTemplate';
+  var allowed=['layout-b','layout-bold','layout-lite','layout-airy'];
+  var sw=document.querySelector('.tmpl-switch');
+  function apply(t){
+    if(allowed.indexOf(t)<0)t='layout-b';
+    document.body.className=t;
+    var btns=sw.querySelectorAll('button[data-tmpl]');
+    for(var i=0;i<btns.length;i++){
+      btns[i].classList.toggle('active',btns[i].getAttribute('data-tmpl')===t);
+    }
+    try{localStorage.setItem(KEY,t);}catch(e){}
+  }
+  var saved='layout-b';
+  try{saved=localStorage.getItem(KEY)||'layout-b';}catch(e){}
+  apply(saved);
+  sw.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-tmpl]');
+    if(b)apply(b.getAttribute('data-tmpl'));
+  });
+})();
+</script>
 </body>
 </html>

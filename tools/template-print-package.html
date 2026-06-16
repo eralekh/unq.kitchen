@@ -477,6 +477,36 @@ body.layout-b .chip-badge {
   border-radius:1px;
   margin-left:2px;
 }
+/* Grouped variants — one chip, item name once + a checkbox per variant */
+body.layout-b .chip-group {
+  font-family:'Cormorant Garamond','Georgia',serif;
+  font-size:13px;
+  color:var(--ink);
+  font-weight:600;
+  background:#ffffff;
+  border:1.5px solid var(--gold);
+  border-radius:4px;
+  padding:3px 10px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+body.layout-b .chip-group-label {
+  font-weight:800;
+  font-size:10.5px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  color:#ffffff;
+  background:var(--gold);
+  padding:2px 6px;
+  border-radius:2px;
+  line-height:1.4;
+}
+body.layout-b .chip-group-opt {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+}
 
 /* LAYOUT C */
 body.layout-c .table-header { display:none; }
@@ -565,6 +595,35 @@ body.layout-c .chip-badge {
   border-radius:1px;
   margin-left:2px;
 }
+body.layout-c .chip-group {
+  font-family:'Cormorant Garamond','Georgia',serif;
+  font-size:13px;
+  color:var(--ink);
+  font-weight:600;
+  background:#ffffff;
+  border:1.5px solid var(--gold);
+  border-radius:4px;
+  padding:3px 10px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+body.layout-c .chip-group-label {
+  font-weight:800;
+  font-size:10.5px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  color:#ffffff;
+  background:var(--gold);
+  padding:2px 6px;
+  border-radius:2px;
+  line-height:1.4;
+}
+body.layout-c .chip-group-opt {
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+}
 body.layout-c .pkg-title-row {
   flex-direction:column;
   align-items:center;
@@ -607,6 +666,179 @@ body.layout-c .ideal-text {
   color:var(--ink-soft);
 }
 
+/* ============================================================
+   TEMPLATE SWITCHER  (screen only — hidden when printing)
+   ============================================================ */
+.tmpl-switch {
+  position:fixed; top:14px; right:14px; z-index:50;
+  display:flex; align-items:center; gap:4px;
+  background:#fff; border:1px solid var(--gold-dim);
+  border-radius:24px; padding:6px 8px;
+  box-shadow:0 6px 20px rgba(0,0,0,.12);
+  font-family:'Inter',Arial,sans-serif;
+}
+.tmpl-switch .ts-label {
+  font-size:10px; font-weight:700; letter-spacing:1px;
+  text-transform:uppercase; color:var(--gold-bright);
+  margin:0 4px;
+}
+.tmpl-switch button {
+  font-family:'Inter',Arial,sans-serif; font-size:12px; font-weight:500;
+  color:var(--ink-soft); background:none; border:1px solid transparent;
+  border-radius:16px; padding:4px 12px; cursor:pointer;
+}
+.tmpl-switch button:hover { background:rgba(122,132,52,.08); }
+.tmpl-switch button.active { background:var(--gold); color:#fff; }
+@media print { .no-print { display:none !important; } }
+
+/* ============================================================
+   ADDITIONAL TEMPLATES — all reuse the layout-b structure
+   (course cards · header bar · instruction/refill · item chips).
+   To add another template:
+     1. copy one block below, rename .layout-X
+     2. add a <button data-tmpl="layout-X"> in the switcher
+     3. add 'layout-X' to the `allowed` array in the script
+   ============================================================ */
+
+/* ---- TEMPLATE: BOLD — solid olive headers (like Classic) but
+        cleaner item chips: no inner olive label block ---- */
+body.layout-bold .table-header,
+body.layout-bold .col-cat,
+body.layout-bold .col-items,
+body.layout-bold .sec-banner { display:none; }
+body.layout-bold .section {
+  border:0.5px solid var(--gold-dim); border-radius:4px;
+  margin-bottom:6px; overflow:hidden; flex-direction:column;
+}
+body.layout-bold .sec-head-b {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; background:#7A8434; padding:6px 12px;
+}
+body.layout-bold .sec-head-b .sec-name-b {
+  font-size:13px; font-weight:800; letter-spacing:1.2px;
+  color:#fff; text-transform:uppercase; flex-shrink:0;
+}
+body.layout-bold .sec-head-b .sec-banner-b {
+  display:flex; flex-wrap:wrap; align-items:center;
+  justify-content:flex-end; gap:6px;
+}
+body.layout-bold .inst-chip-b,
+body.layout-bold .qty-badge-b {
+  font-family:'Inter',Arial,sans-serif; font-size:10px; font-weight:600;
+  color:#fff; background:rgba(255,255,255,.14);
+  border:none; border-radius:20px; padding:3px 9px; white-space:nowrap;
+}
+body.layout-bold .sec-chips { display:flex; flex-wrap:wrap; gap:6px; padding:7px 12px; }
+body.layout-bold .chip-group,
+body.layout-bold .chip-choice,
+body.layout-bold .chip-fixed {
+  font-family:'Cormorant Garamond','Georgia',serif; font-size:15px; color:var(--ink);
+  background:#fff; border:1px solid var(--gold-dim); border-radius:6px;
+  padding:5px 11px; display:inline-flex; align-items:center; gap:8px;
+}
+body.layout-bold .chip-group-label { font-weight:700; color:var(--ink); background:none; padding:0; }
+body.layout-bold .chip-group-label::after { content:' —'; color:var(--gold-bright); margin-left:1px; }
+body.layout-bold .chip-group-opt { display:inline-flex; align-items:center; gap:5px; font-size:14px; }
+body.layout-bold .chip-check { width:9px; height:9px; border:1.5px solid var(--gold-dim); border-radius:2px; flex-shrink:0; display:inline-block; }
+body.layout-bold .chip-badge { font-size:7px; font-family:'Inter',Arial,sans-serif; font-weight:700; color:var(--ink-mute); background:rgba(122,132,52,.12); border:0.5px solid var(--gold-dim); padding:0 3px; border-radius:1px; margin-left:3px; }
+
+/* ---- TEMPLATE: LIGHTENED (Option A) — tinted header w/ dark text,
+        italic instruction, serif label + dash, roomier ---- */
+body.layout-lite .table-header,
+body.layout-lite .col-cat,
+body.layout-lite .col-items,
+body.layout-lite .sec-banner { display:none; }
+body.layout-lite .section {
+  border:0.5px solid var(--gold-dim); border-radius:4px;
+  margin-bottom:7px; overflow:hidden; flex-direction:column;
+}
+body.layout-lite .sec-head-b {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; background:rgba(122,132,52,.14);
+  border-bottom:1px solid var(--gold-faint); padding:7px 12px;
+}
+body.layout-lite .sec-head-b .sec-name-b {
+  font-family:'Inter',Arial,sans-serif; font-size:12px; font-weight:700;
+  letter-spacing:1px; color:var(--gold-bright); text-transform:uppercase; flex-shrink:0;
+}
+body.layout-lite .sec-head-b .sec-banner-b {
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px;
+}
+body.layout-lite .inst-chip-b {
+  font-family:'Cormorant Garamond','Georgia',serif; font-style:italic;
+  font-size:13px; font-weight:600; color:var(--ink-soft);
+  background:none; border:none; padding:0;
+}
+body.layout-lite .qty-badge-b {
+  font-family:'Inter',Arial,sans-serif; font-size:9px; font-weight:600;
+  letter-spacing:.4px; text-transform:uppercase; color:var(--gold-bright);
+  background:none; border:1px solid var(--gold-dim); border-radius:20px; padding:2px 8px;
+}
+body.layout-lite .sec-chips { display:flex; flex-wrap:wrap; gap:6px 8px; padding:8px 12px; }
+body.layout-lite .chip-group,
+body.layout-lite .chip-choice {
+  font-family:'Cormorant Garamond','Georgia',serif; font-size:15px; color:var(--ink);
+  background:#fff; border:1px solid var(--gold-dim); border-radius:6px;
+  padding:5px 11px; display:inline-flex; align-items:center; gap:9px;
+}
+body.layout-lite .chip-fixed {
+  font-family:'Cormorant Garamond','Georgia',serif; font-size:15px; color:var(--ink);
+  background:rgba(122,132,52,.06); border:1px solid var(--gold-faint); border-radius:6px;
+  padding:5px 11px; display:inline-flex; align-items:center;
+}
+body.layout-lite .chip-group-label { font-weight:700; color:var(--ink); background:none; padding:0; }
+body.layout-lite .chip-group-label::after { content:' —'; color:var(--gold-bright); margin-left:1px; }
+body.layout-lite .chip-group-opt { display:inline-flex; align-items:center; gap:5px; font-size:14px; }
+body.layout-lite .chip-check { width:9px; height:9px; border:1.5px solid var(--gold-dim); border-radius:2px; flex-shrink:0; display:inline-block; }
+body.layout-lite .chip-badge { font-size:7px; font-family:'Inter',Arial,sans-serif; font-weight:700; color:var(--ink-mute); background:rgba(122,132,52,.12); border:0.5px solid var(--gold-dim); padding:0 3px; border-radius:1px; margin-left:3px; }
+
+/* ---- TEMPLATE: OUTLINED & AIRY (Option B) — outlined header,
+        serif course name, items one-per-line inside the card ---- */
+body.layout-airy .table-header,
+body.layout-airy .col-cat,
+body.layout-airy .col-items,
+body.layout-airy .sec-banner { display:none; }
+body.layout-airy .section {
+  border:0.5px solid var(--gold-dim); border-radius:6px;
+  margin-bottom:7px; overflow:hidden; flex-direction:column;
+}
+body.layout-airy .sec-head-b {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; background:#fff; border-bottom:1px solid var(--gold-dim);
+  border-left:3px solid var(--gold); padding:7px 12px;
+}
+body.layout-airy .sec-head-b .sec-name-b {
+  font-family:'Cormorant Garamond','Georgia',serif; font-size:17px; font-weight:600;
+  color:var(--ink); letter-spacing:.3px; text-transform:none; flex-shrink:0;
+}
+body.layout-airy .sec-head-b .sec-banner-b {
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px;
+}
+body.layout-airy .inst-chip-b {
+  font-size:9px; font-weight:600; letter-spacing:.4px; text-transform:uppercase;
+  color:var(--gold-bright); background:rgba(122,132,52,.10);
+  border:none; border-radius:4px; padding:3px 8px;
+}
+body.layout-airy .qty-badge-b {
+  font-size:9px; font-weight:600; letter-spacing:.4px; text-transform:uppercase;
+  color:var(--ink-mute); background:none; border:none; padding:0;
+}
+body.layout-airy .sec-chips { display:flex; flex-direction:column; gap:0; padding:2px 12px 6px; }
+body.layout-airy .chip-group,
+body.layout-airy .chip-choice,
+body.layout-airy .chip-fixed {
+  font-family:'Cormorant Garamond','Georgia',serif; font-size:15px; color:var(--ink);
+  background:none; border:none; border-bottom:1px dotted var(--gold-dim);
+  border-radius:0; padding:7px 0; display:flex; align-items:center; gap:10px; width:100%;
+}
+body.layout-airy .section .chip-group:last-child,
+body.layout-airy .section .chip-choice:last-child,
+body.layout-airy .section .chip-fixed:last-child { border-bottom:none; }
+body.layout-airy .chip-group-label { font-weight:700; min-width:104px; color:var(--ink); background:none; padding:0; }
+body.layout-airy .chip-group-opt { display:inline-flex; align-items:center; gap:5px; font-size:14px; color:var(--ink-soft); }
+body.layout-airy .chip-check { width:9px; height:9px; border:1.5px solid var(--gold); border-radius:2px; flex-shrink:0; display:inline-block; }
+body.layout-airy .chip-badge { font-size:7px; font-family:'Inter',Arial,sans-serif; font-weight:700; color:var(--ink-mute); background:rgba(122,132,52,.12); border:0.5px solid var(--gold-dim); padding:0 3px; border-radius:1px; margin-left:6px; }
+
 
 /* Choice type indicators — □ checkbox for both individual and party (Layout A) */
 .choice-individual .item-name::before,
@@ -628,6 +860,32 @@ body.layout-c .ideal-text {
 
 .item-name:last-child {
   grid-column:1/-1;
+}
+
+/* Grouped variants — one label (e.g. "Tea") with a □ checkbox per variant
+   (e.g. "Masala", "Black", "Lemon"), instead of repeating the item name */
+.item-group {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:4px 10px;
+}
+.choice-individual .item-group::before,
+.choice-party .item-group::before {
+  content:none;
+}
+.item-group-label {
+  font-weight:700;
+}
+.item-group-label::after {
+  content:' –';
+  margin-right:2px;
+  color:var(--gold-bright);
+}
+.item-group-opt::before {
+  content:'□ ';
+  font-size:9px;
+  color:var(--gold-bright);
 }
 
 .item-exc-tag {
@@ -902,8 +1160,38 @@ body.layout-c .ideal-text {
 </style>
 </head>
 <body class="layout-b">
+<div class="tmpl-switch no-print">
+  <span class="ts-label">Template</span>
+  <button data-tmpl="layout-b">Classic</button>
+  <button data-tmpl="layout-bold">Bold</button>
+  <button data-tmpl="layout-lite">Lightened</button>
+  <button data-tmpl="layout-airy">Outlined</button>
+</div>
 <!-- GENERATED BY UNQ PACKAGE EDITOR -->
 {{PAGES}}
 {{VENUE_PAGE}}
+<script>
+(function(){
+  var KEY='unqPkgTemplate';
+  var allowed=['layout-b','layout-bold','layout-lite','layout-airy'];
+  var sw=document.querySelector('.tmpl-switch');
+  function apply(t){
+    if(allowed.indexOf(t)<0)t='layout-b';
+    document.body.className=t;
+    var btns=sw.querySelectorAll('button[data-tmpl]');
+    for(var i=0;i<btns.length;i++){
+      btns[i].classList.toggle('active',btns[i].getAttribute('data-tmpl')===t);
+    }
+    try{localStorage.setItem(KEY,t);}catch(e){}
+  }
+  var saved='layout-b';
+  try{saved=localStorage.getItem(KEY)||'layout-b';}catch(e){}
+  apply(saved);
+  sw.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-tmpl]');
+    if(b)apply(b.getAttribute('data-tmpl'));
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNQ Kitchen — Package Readability Tweaks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14160C; --ink-soft:#3D4422; --ink-mute:#5E6438;
+  --gold:#7A8434; --gold-bright:#5C6330;
+  --gold-dim:rgba(122,132,52,0.30); --gold-faint:rgba(122,132,52,0.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',Arial,sans-serif;background:#e8e6de;color:var(--ink);padding:36px 20px 80px;-webkit-font-smoothing:antialiased;}
+.intro{max-width:1240px;margin:0 auto 30px;}
+.intro .lab{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-bright);}
+.intro h1{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;margin-top:4px;}
+.intro p{font-size:13.5px;color:var(--ink-mute);max-width:820px;margin-top:8px;line-height:1.6;}
+
+.grid{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;max-width:1240px;margin:0 auto;align-items:flex-start;}
+.col{flex:0 0 372px;max-width:372px;}
+.col-head{margin-bottom:12px;min-height:72px;}
+.col-head .name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;}
+.col-head .name.rec::after{content:'Recommended';font-family:'Inter';font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--gold);padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle;}
+.col-head .blurb{font-size:12px;color:var(--ink-mute);margin-top:4px;line-height:1.45;}
+
+/* ===== shared page shell ===== */
+.page{background:#fff;border:1px solid var(--gold-dim);border-radius:3px;padding:22px 20px 16px;box-shadow:0 12px 40px rgba(0,0,0,.09);display:flex;flex-direction:column;}
+.unq-logo{font-family:'Cormorant Garamond',serif;font-weight:700;letter-spacing:.18em;}
+
+/* hero (shared) */
+.pkg-hero{display:flex;flex-direction:column;align-items:center;text-align:center;padding:4px 0;border-bottom:1px solid var(--gold-faint);margin-bottom:8px;}
+.pkg-number{font-size:10px;font-weight:600;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}
+.pkg-title-row{display:flex;align-items:baseline;gap:8px;justify-content:center;flex-wrap:wrap;}
+.pkg-name{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500;letter-spacing:.5px;line-height:1;}
+.pkg-at{font-size:18px;font-weight:300;color:var(--ink-mute);}
+.pkg-price{font-size:40px;font-weight:300;letter-spacing:-1px;line-height:1;display:flex;align-items:baseline;gap:3px;}
+.per-person{font-size:10px;font-weight:500;color:var(--ink-mute);letter-spacing:.5px;align-self:flex-end;margin-bottom:5px;}
+.pkg-desc{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--ink-mute);margin-top:4px;}
+.ideal-row{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:8px 0;}
+.ideal-tag{font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;color:var(--ink-soft);border:.5px solid var(--gold-dim);border-radius:12px;padding:2px 10px;background:rgba(122,132,52,.06);}
+
+/* sections (shared scaffold — identical structure across all 3) */
+.section{border:.5px solid var(--gold-dim);border-radius:4px;margin-bottom:5px;overflow:hidden;}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 10px;}
+.sec-name{flex-shrink:0;}
+.sec-rule{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:6px;}
+.sec-chips{display:flex;flex-wrap:wrap;gap:5px;padding:6px 10px;}
+.chip-group{display:inline-flex;align-items:center;gap:8px;}
+.chip-group-opt{display:inline-flex;align-items:center;gap:5px;}
+.chip-check{width:8px;height:8px;border:1.5px solid var(--gold);border-radius:1px;flex-shrink:0;display:inline-block;}
+
+/* footer cluster (shared) */
+.water-note{font-size:10px;color:var(--ink-soft);padding:5px 10px;background:rgba(122,132,52,.08);border-left:3px solid var(--gold);border-radius:0 2px 2px 0;margin:6px 0;line-height:1.5;}
+.water-note strong{color:var(--ink);font-weight:700;}
+.booking-strip{display:flex;background:var(--gold-faint);border:1px solid var(--gold-dim);border-radius:2px;margin-bottom:5px;}
+.book-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 8px;border-right:1px solid var(--gold-dim);flex:1;}
+.book-item:last-child{border-right:none;}
+.book-label{font-size:8px;font-weight:700;letter-spacing:1.2px;color:#5a5a20;text-transform:uppercase;}
+.book-value{font-size:12px;font-weight:500;text-align:center;line-height:1.25;}
+.booking-note{border:1px solid var(--gold-dim);border-left:3px solid var(--gold);background:rgba(122,132,52,.06);border-radius:0 3px 3px 0;padding:7px 11px;}
+.note-title{font-size:8px;font-weight:700;letter-spacing:2px;color:#5a5a20;text-transform:uppercase;margin-bottom:4px;}
+.note-list{list-style:none;display:flex;flex-direction:column;gap:2px;}
+.note-list li{font-size:9.5px;color:var(--ink-soft);line-height:1.45;padding-left:11px;position:relative;}
+.note-list li::before{content:"";position:absolute;left:0;top:5px;width:4px;height:4px;background:var(--gold);transform:rotate(45deg);opacity:.8;}
+.cancel-boxes{display:flex;gap:6px;margin-top:7px;}
+.cancel-box{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;border:1px solid var(--gold-dim);border-radius:3px;padding:5px 4px;background:rgba(122,132,52,.04);text-align:center;}
+.cancel-when{font-size:8px;font-weight:600;color:#5a5a20;text-transform:uppercase;letter-spacing:.4px;}
+.cancel-result{font-size:11px;font-weight:700;}
+.refund-full{color:#2E7D32;} .refund-half{color:#E65100;} .refund-none{color:#B71C1C;}
+.page-footer{display:flex;align-items:center;gap:10px;margin-top:8px;}
+.footer-rule{flex:1;height:1px;background:var(--gold-dim);}
+.footer-text{font-size:7px;font-weight:500;letter-spacing:2px;color:var(--ink-mute);text-transform:uppercase;}
+
+/* ============================================================
+   COLUMN 1 — CURRENT (faithful reproduction of layout-b)
+   ============================================================ */
+.v0 .sec-head{background:#7A8434;}
+.v0 .sec-name{font-size:13px;font-weight:800;letter-spacing:1.5px;color:#fff;text-transform:uppercase;}
+.v0 .inst-chip,.v0 .qty-badge{font-size:10px;font-weight:600;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:3px 9px;white-space:nowrap;}
+.v0 .chip-group{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;background:#fff;border:1.5px solid var(--gold);border-radius:4px;padding:3px 9px;}
+.v0 .chip-group-label{font-weight:800;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#fff;background:var(--gold);padding:2px 6px;border-radius:2px;}
+.v0 .chip-group-label::after{content:'';}
+
+/* ============================================================
+   COLUMN 2 — OPTION A · Lightened (recommended)
+   same cards/header/chips, but: tinted header w/ dark text,
+   plain-text rule, item label as serif + dash (no solid block),
+   roomier padding
+   ============================================================ */
+.v1 .section{margin-bottom:7px;border-color:var(--gold-dim);}
+.v1 .sec-head{background:rgba(122,132,52,.14);border-bottom:1px solid var(--gold-faint);padding:7px 12px;}
+.v1 .sec-name{font-family:'Inter';font-size:12px;font-weight:700;letter-spacing:1px;color:var(--gold-bright);text-transform:uppercase;}
+.v1 .inst-chip{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12.5px;font-weight:600;color:var(--ink-soft);}
+.v1 .qty-badge{font-size:9px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--gold-bright);border:1px solid var(--gold-dim);border-radius:20px;padding:2px 8px;}
+.v1 .sec-chips{gap:6px 8px;padding:8px 12px;}
+.v1 .chip-group{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--gold-dim);border-radius:6px;padding:5px 11px;gap:9px;}
+.v1 .chip-group-label{font-weight:700;color:var(--ink);}
+.v1 .chip-group-label::after{content:' —';color:var(--gold-bright);margin-left:1px;}
+.v1 .chip-group-opt{font-size:14px;}
+.v1 .chip-check{width:9px;height:9px;border-color:var(--gold-dim);border-radius:2px;}
+
+/* ============================================================
+   COLUMN 3 — OPTION B · Outlined & airy
+   same structure, header outlined (not filled), item rows
+   stack one-per-line inside the card for max scanability
+   ============================================================ */
+.v2 .section{margin-bottom:7px;}
+.v2 .sec-head{background:#fff;border-bottom:1px solid var(--gold-dim);border-left:3px solid var(--gold);padding:7px 12px;}
+.v2 .sec-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--ink);letter-spacing:.3px;}
+.v2 .inst-chip{font-size:9px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--gold-bright);background:rgba(122,132,52,.10);border-radius:4px;padding:3px 8px;}
+.v2 .qty-badge{font-size:9px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--ink-mute);}
+.v2 .sec-chips{flex-direction:column;gap:0;padding:2px 12px 6px;}
+.v2 .chip-group{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink);padding:7px 0;gap:10px;border-bottom:1px dotted var(--gold-dim);width:100%;}
+.v2 .section .chip-group:last-child{border-bottom:none;}
+.v2 .chip-group-label{font-weight:700;min-width:96px;color:var(--ink);}
+.v2 .chip-group-opt{font-size:14px;color:var(--ink-soft);}
+.v2 .chip-check{width:9px;height:9px;border-radius:2px;}
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <div class="lab">UNQ Kitchen · Event Packages — Package 1, “Quick Gather”</div>
+  <h1>Same structure, tuned for readability</h1>
+  <p>The leftmost page reproduces your current package design exactly. The two options keep the identical layout — hero, course cards, a header bar per course with its instruction/refill on the right, item chips with selectable options, and the same booking + terms footer. Only the visual weight changes: lighter headers with darker text, item names as a simple serif label instead of a solid olive block, and a touch more spacing so it breathes.</p>
+</div>
+
+<div class="grid">
+
+  <!-- ===================== CURRENT ===================== -->
+  <div class="col">
+    <div class="col-head">
+      <div class="name">Current</div>
+      <div class="blurb">Your existing page — solid olive header bars, white pills, and an olive label block inside every item chip.</div>
+    </div>
+    <div class="page v0">
+      <div class="pkg-hero">
+        <div class="pkg-number"><span class="unq-logo">UNQ</span>’s Package 1</div>
+        <div class="pkg-title-row"><span class="pkg-name">Quick Gather</span><span class="pkg-at">@</span><span class="pkg-price">₹199<span class="per-person">/ Person</span></span></div>
+        <div class="pkg-desc">A light, unhurried gathering over good tea and warm bites</div>
+      </div>
+      <div class="ideal-row"><span class="ideal-tag">Office meetings</span><span class="ideal-tag">Informal get-togethers</span><span class="ideal-tag">Team lunches</span><span class="ideal-tag">Brief socials</span></div>
+
+      <div class="section">
+        <div class="sec-head"><span class="sec-name">Welcome</span><span class="sec-rule"><span class="inst-chip">Any 1 (On Arrival)</span><span class="qty-badge">No Refill</span></span></div>
+        <div class="sec-chips">
+          <span class="chip-group"><span class="chip-group-label">Tea</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span><span class="chip-group-opt"><span class="chip-check"></span>Masala</span></span>
+          <span class="chip-group"><span class="chip-group-label">Soft Drink</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span></span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="sec-head"><span class="sec-name">Starter</span><span class="sec-rule"><span class="inst-chip">Any 1 (Prebook)</span><span class="qty-badge">One Refill</span></span></div>
+        <div class="sec-chips">
+          <span class="chip-group"><span class="chip-group-label">French Fries</span><span class="chip-group-opt"><span class="chip-check"></span>Classic</span></span>
+          <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Onion</span><span class="chip-group-opt"><span class="chip-check"></span>Potato</span></span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="sec-head"><span class="sec-name">Main</span><span class="sec-rule"><span class="qty-badge">No Refill</span></span></div>
+        <div class="sec-chips">
+          <span class="chip-group"><span class="chip-group-label">Grilled Sandwich</span><span class="chip-group-opt"><span class="chip-check"></span>Veg</span></span>
+        </div>
+      </div>
+
+      <div class="water-note">&#9670; &nbsp;<strong>Note:</strong> Complimentary RO water available. Packaged water charged extra</div>
+      <div class="booking-strip">
+        <div class="book-item"><div class="book-label">Format</div><div class="book-value">Table service, seated</div></div>
+        <div class="book-item"><div class="book-label">Min – Max</div><div class="book-value">8 – 30 Persons</div></div>
+        <div class="book-item"><div class="book-label">Advance</div><div class="book-value">50% to confirm</div></div>
+      </div>
+      <div class="booking-note">
+        <div class="note-title">Terms &amp; Conditions</div>
+        <ul class="note-list"><li>Prebook starter items at least 24 hrs in advance.</li><li>Final headcount confirmed one day prior.</li></ul>
+        <div class="cancel-boxes">
+          <div class="cancel-box"><div class="cancel-when">More than 24 hrs</div><div class="cancel-result refund-full">Full Refund</div></div>
+          <div class="cancel-box"><div class="cancel-when">Within 24 hrs</div><div class="cancel-result refund-half">50% Refund</div></div>
+          <div class="cancel-box"><div class="cancel-when">Same Day</div><div class="cancel-result refund-none">No Refund</div></div>
+        </div>
+      </div>
+      <div class="page-footer"><div class="footer-rule"></div><div class="footer-text">UNQ Kitchen · Bilaspur</div><div class="footer-rule"></div></div>
+    </div>
+  </div>
+
+  <!-- ===================== OPTION A ===================== -->
+  <div class="col">
+    <div class="col-head">
+      <div class="name rec">Option A · Lightened</div>
+      <div class="blurb">Header bar tinted with dark text, instruction in italic, and item names as a clean serif label + dash — no solid block. Roomier.</div>
+    </div>
+    <div class="page v1">
+      <div class="pkg-hero">
+        <div class="pkg-number"><span class="unq-logo">UNQ</span>’s Package 1</div>
+        <div class="pkg-title-row"><span class="pkg-name">Quick Gather</span><span class="pkg-at">@</span><span class="pkg-price">₹199<span class="per-person">/ Person</span></span></div>
+        <div class="pkg-desc">A light, unhurried gathering over good tea and warm bites</div>
+      </div>
+      <div class="ideal-row"><span class="ideal-tag">Office meetings</span><span class="ideal-tag">Informal get-togethers</span><span class="ideal-tag">Team lunches</span><span class="ideal-tag">Brief socials</span></div>
+
+      <div class="section">
+        <div class="sec-head"><span class="sec-name">Welcome</span><span class="sec-rule"><span class="inst-chip">Any 1, on arrival</span><span class="qty-badge">No Refill</span></span></div>
+        <div class="sec-chips">
+          <span class="chip-group"><span class="chip-group-label">Tea</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span><span class="chip-group-opt"><span class="chip-check"></span>Masala</span></span>
+          <span class="chip-group"><span class="chip-group-label">Soft Drink</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span></span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="sec-head"><span class="sec-name">Starter</span><span class="sec-rule"><span class="inst-chip">Any 1, prebook</span><span class="qty-badge">One Refill</span></span></div>
+        <div class="sec-chips">
+          <span class="chip-group"><span class="chip-group-label">French Fries</span><span class="chip-group-opt"><span class="chip-check"></span>Classic</span></span>
+          <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Onion</span><span class="chip-group-opt"><span class="chip-check"></span>Potato</span></span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="sec-head"><span class="sec-name">Main</span><span class="sec-rule"><span class="qty-badge">No Refill</span></span></div>
+        <div class="sec-chips">
+          <span class="chip-group"><span class="chip-group-label">Grilled Sandwich</span><span class="chip-group-opt"><span class="chip-check"></span>Veg</span></span>
+        </div>
+      </div>
+
+      <div class="water-note">&#9670; &nbsp;<strong>Note:</strong> Complimentary RO water available. Packaged water charged extra</div>
+      <div class="booking-strip">
+        <div class="book-item"><div class="book-label">Format</div><div class="book-value">Table service, seated</div></div>
+        <div class="book-item"><div class="book-label">Min – Max</div><div class="book-value">8 – 30 Persons</div></div>
+        <div class="book-item"><div class="book-label">Advance</div><div class="book-value">50% to confirm</div></div>
+      </div>
+      <div class="booking-note">
+        <div class="note-title">Terms &amp; Conditions</div>
+        <ul class="note-list"><li>Prebook starter items at least 24 hrs in advance.</li><li>Final headcount confirmed one day prior.</li></ul>
+        <div class="cancel-boxes">
+          <div class="cancel-box"><div class="cancel-when">More than 24 hrs</div><div class="cancel-result refund-full">Full Refund</div></div>
+          <div class="cancel-box"><div class="cancel-when">Within 24 hrs</div><div class="cancel-result refund-half">50% Refund</div></div>
+          <div class="cancel-box"><div class="cancel-when">Same Day</div><div class="cancel-result refund-none">No Refund</div></div>
+        </div>
+      </div>
+      <div class="page-footer"><div class="footer-rule"></div><div class="footer-text">UNQ Kitchen · Bilaspur</div><div class="footer-rule"></div></div>
+    </div>
+  </div>
+
+  <!-- ===================== OPTION B ===================== -->
+  <div class="col">
+    <div class="col-head">
+      <div class="name">Option B · Outlined &amp; airy</div>
+      <div class="blurb">Header outlined instead of filled, course name in serif, and items listed one-per-line inside the card for the easiest scan.</div>
+    </div>
+    <div class="page v2">
+      <div class="pkg-hero">
+        <div class="pkg-number"><span class="unq-logo">UNQ</span>’s Package 1</div>
+        <div class="pkg-title-row"><span class="pkg-name">Quick Gather</span><span class="pkg-at">@</span><span class="pkg-price">₹199<span class="per-person">/ Person</span></span></div>
+        <div class="pkg-desc">A light, unhurried gathering over good tea and warm bites</div>
+      </div>
+      <div class="ideal-row"><span class="ideal-tag">Office meetings</span><span class="ideal-tag">Informal get-togethers</span><span class="ideal-tag">Team lunches</span><span class="ideal-tag">Brief socials</span></div>
+
+      <div class="section">
+        <div class="sec-head"><span class="sec-name">Welcome</span><span class="sec-rule"><span class="inst-chip">Any 1, on arrival</span><span class="qty-badge">No Refill</span></span></div>
+        <div class="sec-chips">
+          <span class="chip-group"><span class="chip-group-label">Tea</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span><span class="chip-group-opt"><span class="chip-check"></span>Masala</span></span>
+          <span class="chip-group"><span class="chip-group-label">Soft Drink</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span></span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="sec-head"><span class="sec-name">Starter</span><span class="sec-rule"><span class="inst-chip">Any 1, prebook</span><span class="qty-badge">One Refill</span></span></div>
+        <div class="sec-chips">
+          <span class="chip-group"><span class="chip-group-label">French Fries</span><span class="chip-group-opt"><span class="chip-check"></span>Classic</span></span>
+          <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Onion</span><span class="chip-group-opt"><span class="chip-check"></span>Potato</span></span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="sec-head"><span class="sec-name">Main</span><span class="sec-rule"><span class="qty-badge">No Refill</span></span></div>
+        <div class="sec-chips">
+          <span class="chip-group"><span class="chip-group-label">Grilled Sandwich</span><span class="chip-group-opt"><span class="chip-check"></span>Veg</span></span>
+        </div>
+      </div>
+
+      <div class="water-note">&#9670; &nbsp;<strong>Note:</strong> Complimentary RO water available. Packaged water charged extra</div>
+      <div class="booking-strip">
+        <div class="book-item"><div class="book-label">Format</div><div class="book-value">Table service, seated</div></div>
+        <div class="book-item"><div class="book-label">Min – Max</div><div class="book-value">8 – 30 Persons</div></div>
+        <div class="book-item"><div class="book-label">Advance</div><div class="book-value">50% to confirm</div></div>
+      </div>
+      <div class="booking-note">
+        <div class="note-title">Terms &amp; Conditions</div>
+        <ul class="note-list"><li>Prebook starter items at least 24 hrs in advance.</li><li>Final headcount confirmed one day prior.</li></ul>
+        <div class="cancel-boxes">
+          <div class="cancel-box"><div class="cancel-when">More than 24 hrs</div><div class="cancel-result refund-full">Full Refund</div></div>
+          <div class="cancel-box"><div class="cancel-when">Within 24 hrs</div><div class="cancel-result refund-half">50% Refund</div></div>
+          <div class="cancel-box"><div class="cancel-when">Same Day</div><div class="cancel-result refund-none">No Refund</div></div>
+        </div>
+      </div>
+      <div class="page-footer"><div class="footer-rule"></div><div class="footer-text">UNQ Kitchen · Bilaspur</div><div class="footer-rule"></div></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

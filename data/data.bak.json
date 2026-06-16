@@ -2378,13 +2378,24 @@
       "description": "A light, unhurried gathering over good tea and warm bites",
       "idealLabel": "Ideal For",
       "idealValue": "Office meetings · Informal get-togethers · Team lunches · Brief socials",
-      "waterNote": "Complimentary RO water available. Packaged water charged extra.",
+      "waterNote": "Complimentary RO water available. Packaged water charged extra",
       "sections": [
         {
           "name": "Welcome",
           "instruction": "Any 1 (On Arrival)",
           "chip": "No Refill",
           "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "tea",
+                  "variantId": "tea-regular"
+                }
+              ],
+              "displayName": "Tea – Regular",
+              "note": "",
+              "badge": ""
+            },
             {
               "refs": [
                 {
@@ -2415,7 +2426,7 @@
         {
           "name": "Starter",
           "instruction": "Any 1 (Prebook)",
-          "chip": "One  Refill",
+          "chip": "No Refill",
           "items": [
             {
               "refs": [
@@ -2425,7 +2436,7 @@
                 }
               ],
               "displayName": "French Fries – Classic",
-              "note": "",
+              "note": "10 Pcs",
               "badge": ""
             },
             {
@@ -2436,7 +2447,18 @@
                 }
               ],
               "displayName": "Pakoda – Onion",
-              "note": "",
+              "note": "8 Pcs",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-potato"
+                }
+              ],
+              "displayName": "Pakoda – Potato",
+              "note": "8 Pcs",
               "badge": ""
             }
           ],
@@ -2457,7 +2479,7 @@
                 }
               ],
               "displayName": "Grilled Sandwich – Veg",
-              "note": "",
+              "note": "1 Pc",
               "badge": ""
             }
           ],
@@ -2503,19 +2525,8 @@
         {
           "name": "Welcome",
           "instruction": "Any 1 (On Arrival)",
-          "chip": "No Refill",
+          "chip": "One Refill",
           "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "tea",
-                  "variantId": "tea-masala"
-                }
-              ],
-              "displayName": "Tea – Masala",
-              "note": "",
-              "badge": ""
-            },
             {
               "refs": [
                 {
@@ -2524,6 +2535,17 @@
                 }
               ],
               "displayName": "Tea – Regular",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tea",
+                  "variantId": "tea-masala"
+                }
+              ],
+              "displayName": "Tea – Masala",
               "note": "",
               "badge": ""
             },
