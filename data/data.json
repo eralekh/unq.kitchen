@@ -2389,17 +2389,6 @@
               "refs": [
                 {
                   "itemId": "tea",
-                  "variantId": "tea-regular"
-                }
-              ],
-              "displayName": "Tea – Regular",
-              "note": "",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "tea",
                   "variantId": "tea-masala"
                 }
               ],
@@ -2417,6 +2406,28 @@
               "displayName": "Soft Drink – Regular",
               "note": "",
               "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tea",
+                  "variantId": "tea-black"
+                }
+              ],
+              "displayName": "Tea – Black",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tea",
+                  "variantId": "tea-lemon"
+                }
+              ],
+              "displayName": "Tea – Lemon",
+              "note": "",
+              "badge": ""
             }
           ],
           "choiceType": "individual",
@@ -2424,7 +2435,7 @@
           "servingRefill": ""
         },
         {
-          "name": "Starter",
+          "name": "Snacks",
           "instruction": "Any 1 (Prebook)",
           "chip": "No Refill",
           "items": [
@@ -2531,17 +2542,6 @@
               "refs": [
                 {
                   "itemId": "tea",
-                  "variantId": "tea-regular"
-                }
-              ],
-              "displayName": "Tea – Regular",
-              "note": "",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "tea",
                   "variantId": "tea-masala"
                 }
               ],
@@ -2570,6 +2570,39 @@
               "displayName": "Tea – Lemon",
               "note": "",
               "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "coffee",
+                  "variantId": "coffee-instant"
+                }
+              ],
+              "displayName": "Coffee – Instant",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "coffee",
+                  "variantId": "coffee-filter-coffee"
+                }
+              ],
+              "displayName": "Coffee – Filter Coffee",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "coffee",
+                  "variantId": "coffee-black"
+                }
+              ],
+              "displayName": "Coffee – Black",
+              "note": "",
+              "badge": ""
             }
           ],
           "servingQty": "1",
@@ -2577,7 +2610,7 @@
           "choiceType": "individual"
         },
         {
-          "name": "Starter",
+          "name": "Snacks",
           "instruction": "Any 1 (Prebook)",
           "chip": "One  Refill",
           "items": [
@@ -2959,37 +2992,6 @@
           "servingRefill": ""
         },
         {
-          "name": "Sides",
-          "instruction": "Included",
-          "chip": "Served once",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-mix-raita"
-                }
-              ],
-              "displayName": "Raita",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-masala-papad"
-                }
-              ],
-              "displayName": "Papad",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Served once",
-          "servingRefill": ""
-        },
-        {
           "name": "Dessert",
           "instruction": "",
           "chip": "2 pcs / person",
@@ -3215,37 +3217,6 @@
           "servingRefill": ""
         },
         {
-          "name": "Sides",
-          "instruction": "Included",
-          "chip": "Served once",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-mix-raita"
-                }
-              ],
-              "displayName": "Raita",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-masala-papad"
-                }
-              ],
-              "displayName": "Papad",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Served once",
-          "servingRefill": ""
-        },
-        {
           "name": "Dessert",
           "instruction": "",
           "chip": "At close",
@@ -3415,7 +3386,7 @@
           "servingRefill": ""
         },
         {
-          "name": "Main Course",
+          "name": "Main",
           "instruction": "Choose two sabzis",
           "chip": "Limited",
           "items": [
@@ -3713,7 +3684,7 @@
           "servingRefill": ""
         },
         {
-          "name": "Main Course",
+          "name": "Main",
           "instruction": "Three sabzis",
           "chip": "Limited",
           "items": [
@@ -4048,7 +4019,7 @@
           "servingRefill": ""
         },
         {
-          "name": "Main Course",
+          "name": "Main",
           "instruction": "Four sabzis",
           "chip": "Limited",
           "items": [
@@ -4406,7 +4377,7 @@
           "servingRefill": ""
         },
         {
-          "name": "Live Counters",
+          "name": "Live Counter",
           "instruction": "Both simultaneously",
           "chip": "Unlimited",
           "items": [
@@ -4437,7 +4408,7 @@
           "servingRefill": ""
         },
         {
-          "name": "Main Course",
+          "name": "Main",
           "instruction": "Five sabzis",
           "chip": "Limited",
           "items": [
@@ -4843,7 +4814,7 @@
           "servingRefill": ""
         },
         {
-          "name": "Live Counters",
+          "name": "Live Counter",
           "instruction": "Both simultaneously",
           "chip": "Unlimited",
           "items": [
@@ -4896,7 +4867,7 @@
           "servingRefill": ""
         },
         {
-          "name": "Main Course",
+          "name": "Main",
           "instruction": "Five premium sabzis",
           "chip": "Limited",
           "items": [
