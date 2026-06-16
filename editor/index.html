@@ -94,6 +94,12 @@ header #status.ok{color:#9ed8a0;}
 .cov-popover button:hover{background:rgba(122,132,52,.1);}
 .cov-popover button.cov-pop-active{background:rgba(122,132,52,.18);font-weight:600;color:var(--olive-dark);}
 .cov-popover .cov-pop-empty{padding:6px 8px;color:var(--muted);font-style:italic;}
+/* price range filter */
+.cov-price-filter{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:12px;color:var(--muted);}
+.cov-price-filter input{font:inherit;font-size:12px;border:1px solid var(--line);border-radius:6px;padding:4px 8px;background:var(--paper);width:80px;}
+.cov-price-filter input:focus{outline:none;border-color:var(--olive);}
+.cov-price-filter .clr-btn{font:inherit;font-size:11px;background:transparent;border:1px solid var(--line);border-radius:6px;padding:3px 8px;cursor:pointer;color:var(--muted);}
+.cov-price-filter .clr-btn:hover{color:var(--danger);border-color:var(--danger);}
 /* compare sections */
 .cmp-bar{display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap;}
 .cmp-bar label{font-size:13px;color:var(--muted);}
@@ -180,6 +186,25 @@ header #status.ok{color:#9ed8a0;}
 /* move buttons in section header */
 .mv-sec{border:none;background:none;color:var(--muted);font-size:13px;cursor:pointer;padding:3px 4px;line-height:1;flex-shrink:0;}
 .mv-sec:hover{color:var(--ink);}
+/* sub-group and pool panels */
+.sg-pool-panels{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;}
+.sg-panel,.pool-panel{flex:1;min-width:200px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--paper-2);}
+.panel-head{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);}
+.panel-head .btn-xs{font:inherit;font-size:11px;background:var(--olive);color:#fff;border:none;border-radius:5px;padding:2px 9px;cursor:pointer;margin-left:auto;}
+.sg-row,.pool-row{display:flex;align-items:center;gap:4px;padding:3px 0;border-bottom:1px solid rgba(122,132,52,.07);}
+.sg-row:last-of-type,.pool-row:last-of-type{border-bottom:none;}
+.sg-row .mv,.pool-row .mv{border:none;background:none;color:var(--muted);font-size:11px;cursor:pointer;padding:1px 3px;line-height:1;}
+.sg-row .mv:hover,.pool-row .mv:hover{color:var(--ink);}
+.sg-lbl,.pool-lbl{flex:1;font:inherit;font-size:12px;border:1px solid transparent;border-radius:5px;padding:3px 6px;background:transparent;}
+.sg-lbl:hover,.pool-lbl:hover,.pool-maxpick:hover,.pool-inst-inp:hover{border-color:var(--line);background:var(--paper);}
+.sg-lbl:focus,.pool-lbl:focus,.pool-maxpick:focus,.pool-inst-inp:focus{outline:none;border-color:var(--olive);background:var(--paper);}
+.pool-maxpick{width:44px;font:inherit;font-size:12px;border:1px solid transparent;border-radius:5px;padding:3px 4px;background:transparent;text-align:center;}
+.pool-inst-inp{width:130px;font:inherit;font-size:12px;border:1px solid transparent;border-radius:5px;padding:3px 6px;background:transparent;color:var(--muted);}
+.pool-inst-inp:focus{color:var(--ink);}
+/* subgroup/pool dropdowns on item rows */
+.item-row select.isg,.item-row select.ipool{font:inherit;font-size:11px;border:1px solid transparent;border-radius:5px;padding:2px 4px;background:transparent;color:var(--muted);cursor:pointer;max-width:96px;}
+.item-row select.isg:hover,.item-row select.ipool:hover{border-color:var(--line);background:var(--paper);}
+.item-row select.isg:focus,.item-row select.ipool:focus{outline:none;border-color:var(--olive);background:var(--paper);color:var(--ink);}
 /* template library */
 .tmpl-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;}
 .tmpl-card .row1{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
@@ -577,12 +602,45 @@ function packageEditor(p){
     h+='<input class="sf-chip" data-sf="chip" placeholder="Chip / qty" value="'+esc(chip)+'">';
     h+='<select data-sf="choiceType">'+['','individual','party'].map(o=>'<option value="'+o+'"'+(o===ctype?' selected':'')+'>'+(o||'fixed')+'</option>').join('')+'</select>';
     h+='</div>';
+    // --- sub-group and pool panels ---
+    const sgs=s.subgroups||[]; const pls=s.pools||[];
+    h+='<div class="sg-pool-panels">';
+    h+='<div class="sg-panel">';
+    h+='<div class="panel-head">Sub-groups <button class="btn-xs" data-act2="add-sg">+ Add</button></div>';
+    sgs.forEach((sg,sgi)=>{
+      h+='<div class="sg-row" data-sgi="'+sgi+'">';
+      h+='<button class="mv" data-act2="sg-up" title="Move up">↑</button>';
+      h+='<button class="mv" data-act2="sg-down" title="Move down">↓</button>';
+      h+='<input class="sg-lbl" data-sgf="label" placeholder="Sub-group name" value="'+esc(sg.label||'')+'">';
+      h+='<button class="x" data-act2="del-sg">✕</button>';
+      h+='</div>';
+    });
+    h+='</div>';
+    h+='<div class="pool-panel">';
+    h+='<div class="panel-head">Pools <button class="btn-xs" data-act2="add-pool">+ Add</button></div>';
+    pls.forEach((pl,pli)=>{
+      h+='<div class="pool-row" data-pli="'+pli+'">';
+      h+='<button class="mv" data-act2="pool-up" title="Move up">↑</button>';
+      h+='<button class="mv" data-act2="pool-down" title="Move down">↓</button>';
+      h+='<input class="pool-lbl" data-plf="label" placeholder="Pool name" value="'+esc(pl.label||'')+'">';
+      h+='<input class="pool-maxpick" type="number" data-plf="maxPick" min="1" title="Max picks from this pool" value="'+(pl.maxPick!=null?pl.maxPick:1)+'">';
+      h+='<input class="pool-inst-inp" data-plf="instruction" placeholder="Instruction text" value="'+esc(pl.instruction||'')+'">';
+      h+='<button class="x" data-act2="del-pool">✕</button>';
+      h+='</div>';
+    });
+    h+='</div>';
+    h+='</div>'; // sg-pool-panels
+    // --- item rows ---
+    const mkSgOpts=sv=>'<option value="">—</option>'+sgs.map(sg=>'<option value="'+esc(sg.id)+'"'+(sg.id===sv?' selected':'')+'>'+esc(sg.label||sg.id)+'</option>').join('');
+    const mkPlOpts=pv=>'<option value="">—</option>'+pls.map(pl=>'<option value="'+esc(pl.id)+'"'+(pl.id===pv?' selected':'')+'>'+esc(pl.label||pl.id)+'</option>').join('');
     (s.items||[]).forEach((it,ii)=>{
       h+='<div class="item-row" data-pi="'+ii+'">';
       h+='<button class="mv" data-act2="item-up" title="Move up">↑</button>';
       h+='<button class="mv" data-act2="item-down" title="Move down">↓</button>';
       h+='<input class="idn" data-itf="displayName" value="'+esc(it.displayName)+'" placeholder="Item name">';
       h+='<input class="inote" data-itf="note" placeholder="badge / note" value="'+esc(it.note||it.badge||'')+'">';
+      if(sgs.length) h+='<select class="isg" data-itf="subgroup">'+mkSgOpts(it.subgroup||'')+'</select>';
+      if(pls.length) h+='<select class="ipool" data-itf="poolId">'+mkPlOpts(it.poolId||'')+'</select>';
       h+='<button class="x" data-act2="del-item">✕</button>';
       h+='</div>';
     });
@@ -626,9 +684,11 @@ $('#pkgnav').addEventListener('click',e=>{const a=e.target.closest('[data-gopkg]
 // ===== Coverage map =====
 let covActiveCats=new Set();
 let covActiveItems=new Set();
+let covActivePackages=new Set(); // selected packages for expand filter
 let covCollapsed=new Set();      // collapsed item ids
 let covCollapsedCats=new Set();  // collapsed category ids
 let covSectionFilter=null;       // null = all sections, string = filter by section name
+let covPriceMin=null, covPriceMax=null; // price range filter (null = no bound)
 
 function renderCoverage(){
   const pkgs=DATA.packages;
@@ -666,8 +726,17 @@ function renderCoverage(){
     });
   });
 
-  let h='<div class="cov-hd"><h2>Coverage map</h2><div class="cov-toolbar"><button class="btn" data-covact="expand-all">Expand all</button><button class="btn" data-covact="collapse-all">Collapse all</button></div></div>';
+  let h='<div class="cov-hd"><h2>Coverage map</h2><div class="cov-toolbar"><button class="btn" data-covact="expand-all">Expand'+(covActivePackages.size?' selected':'all')+'</button><button class="btn" data-covact="collapse-all">Collapse all</button></div></div>';
   h+='<div class="sub">Click a cell to assign a section; "— None —" to remove. Click ▼/▶ on a section or item row to collapse it.</div>';
+
+  // Row 0: package chips (multi-select — controls which packages "Expand" targets)
+  h+='<div class="cov-chips tmpl-chips">';
+  h+='<span class="tc-label">Expand for:</span>';
+  DATA.packages.forEach(pkg=>{
+    const active=covActivePackages.has(pkg.id)?' active':'';
+    h+='<button type="button" class="tc tc-sm'+active+'" data-pkgchip="'+esc(pkg.id)+'">'+esc(pkg.name)+'</button>';
+  });
+  h+='</div>';
 
   // Row 1: category chips
   h+='<div class="cov-chips tmpl-chips">';
@@ -710,8 +779,27 @@ function renderCoverage(){
     h+='</div>';
   }
 
+  // Row 4: price range filter
+  const priceActive=covPriceMin!==null||covPriceMax!==null;
+  h+='<div class="cov-price-filter">';
+  h+='<span>Price ₹</span>';
+  h+='<input type="number" id="cov-price-min" min="0" placeholder="min" value="'+(covPriceMin!=null?covPriceMin:'')+'">';
+  h+='<span>—</span>';
+  h+='<input type="number" id="cov-price-max" min="0" placeholder="max" value="'+(covPriceMax!=null?covPriceMax:'')+'">';
+  if(priceActive)h+='<button class="clr-btn" id="cov-price-clr">Clear</button>';
+  h+='</div>';
+
+  // helper: does a price pass the current range filter?
+  function priceInRange(p){
+    if(!priceActive)return true;
+    if(p==null||p==='')return false;
+    const n=Number(p); if(isNaN(n))return false;
+    if(covPriceMin!==null&&n<covPriceMin)return false;
+    if(covPriceMax!==null&&n>covPriceMax)return false;
+    return true;
+  }
+
   // Table
-  const cols=pkgs.length+1;
   h+='<div class="cov-wrap"><table class="cov-table"><thead><tr><th>Item</th>';
   pkgs.forEach(p=>{h+='<th class="pkg" data-gopkg2="'+p.id+'" title="Jump to '+esc(p.name)+'">'+esc(p.name.length>12?p.name.slice(0,11)+'…':p.name)+'<span class="cov-pkg-price">₹'+esc(p.price)+'</span></th>';});
   h+='</tr></thead><tbody>';
@@ -723,6 +811,13 @@ function renderCoverage(){
     gcats.forEach(cat=>{
       let catItems=allItems.filter(it=>it.categoryId===cat.id);
       if(covActiveItems.size)catItems=catItems.filter(it=>covActiveItems.has(it.id));
+      // price filter: keep items that have at least one price in range
+      if(priceActive){
+        catItems=catItems.filter(it=>{
+          if(it.variants&&it.variants.length)return it.variants.some(v=>priceInRange(v.price));
+          return priceInRange(it.price);
+        });
+      }
       if(!catItems.length)return;
       const catCollapsed=covCollapsedCats.has(cat.id);
       const counts=catCovCounts[cat.id]||[];
@@ -732,15 +827,18 @@ function renderCoverage(){
       if(!catCollapsed)catItems.forEach(it=>{
         const collapsed=covCollapsed.has(it.id);
         if(it.variants&&it.variants.length){
+          // only show variants that pass price filter
+          const visVariants=priceActive?it.variants.filter(v=>priceInRange(v.price)):it.variants;
+          if(!visVariants.length)return;
           const itCounts=pkgs.map((_,pi)=>{
-            if(covBadge[pi].has(it.id+'::'))return it.variants.length;
-            return it.variants.filter(v=>covBadge[pi].has(it.id+'::'+v.id)).length;
+            if(covBadge[pi].has(it.id+'::'))return visVariants.length;
+            return visVariants.filter(v=>covBadge[pi].has(it.id+'::'+v.id)).length;
           });
           h+='<tr class="it-hdr" data-itid="'+esc(it.id)+'"><td><span class="it-toggle">'+(collapsed?'▶':'▼')+'</span>'+esc(it.name)+'</td>';
           pkgs.forEach((_,pi)=>{const n=itCounts[pi];h+='<td class="grp-pkg-cell">'+(n?'<span class="cov-grp-badge it-badge">'+n+'</span>':'')+'</td>';});
           h+='</tr>';
           if(!collapsed){
-            it.variants.forEach(v=>{
+            visVariants.forEach(v=>{
               const key=it.id+'::'+v.id;
               const vp=v.price!=null?'₹'+v.price:'—';
               h+='<tr class="var-row"><td class="var-name">'+esc(v.name)+'<span class="cov-item-price">'+vp+'</span></td>';
@@ -755,6 +853,7 @@ function renderCoverage(){
             });
           }
         }else{
+          if(!priceInRange(it.price))return;
           const key=it.id+'::';
           const ip=it.price!=null?'₹'+it.price:'—';
           h+='<tr><td>'+esc(it.name)+'<span class="cov-item-price">'+ip+'</span></td>';
@@ -779,6 +878,25 @@ function renderCoverage(){
       if(b.dataset.covact==='collapse-all'){
         DATA.menu.categories.forEach(c=>covCollapsedCats.add(c.id));
         DATA.menu.items.filter(it=>it.variants&&it.variants.length).forEach(it=>covCollapsed.add(it.id));
+      }else if(covActivePackages.size){
+        // Expand only groups/items that have coverage in the selected packages
+        DATA.menu.categories.forEach(c=>covCollapsedCats.add(c.id));
+        DATA.menu.items.filter(it=>it.variants&&it.variants.length).forEach(it=>covCollapsed.add(it.id));
+        const selPkgs=DATA.packages.filter(p=>covActivePackages.has(p.id));
+        const inclItems=new Set(), inclCats=new Set();
+        selPkgs.forEach(p=>{
+          (p.sections||[]).forEach(sec=>{
+            (sec.items||[]).forEach(si=>{
+              (si.refs||[]).forEach(r=>{
+                inclItems.add(r.itemId);
+                const item=byId(DATA.menu.items,r.itemId);
+                if(item)inclCats.add(item.categoryId);
+              });
+            });
+          });
+        });
+        inclCats.forEach(id=>covCollapsedCats.delete(id));
+        inclItems.forEach(id=>covCollapsed.delete(id));
       }else{
         covCollapsedCats.clear();
         covCollapsed.clear();
@@ -818,6 +936,31 @@ function renderCoverage(){
       renderCoverage();
     });
   });
+  // package chip toggle (multi-select; controls which packages "Expand" targets)
+  $('#pkgmain').querySelectorAll('[data-pkgchip]').forEach(b=>{
+    b.addEventListener('click',()=>{
+      const id=b.dataset.pkgchip;
+      if(covActivePackages.has(id))covActivePackages.delete(id);else covActivePackages.add(id);
+      renderCoverage();
+    });
+  });
+  // price range inputs
+  let _priceDebounce=null;
+  const _applyPrice=()=>{
+    const minEl=$('#pkgmain').querySelector('#cov-price-min');
+    const maxEl=$('#pkgmain').querySelector('#cov-price-max');
+    const mn=minEl&&minEl.value!==''?Number(minEl.value):null;
+    const mx=maxEl&&maxEl.value!==''?Number(maxEl.value):null;
+    covPriceMin=(mn!=null&&!isNaN(mn))?mn:null;
+    covPriceMax=(mx!=null&&!isNaN(mx))?mx:null;
+    renderCoverage();
+  };
+  ['#cov-price-min','#cov-price-max'].forEach(sel=>{
+    const el=$('#pkgmain').querySelector(sel);
+    if(el)el.addEventListener('input',()=>{clearTimeout(_priceDebounce);_priceDebounce=setTimeout(_applyPrice,400);});
+  });
+  const clrBtn=$('#pkgmain').querySelector('#cov-price-clr');
+  if(clrBtn)clrBtn.addEventListener('click',()=>{covPriceMin=null;covPriceMax=null;renderCoverage();});
   // item header row → collapse / expand
   $('#pkgmain').querySelectorAll('.it-hdr').forEach(tr=>{
     tr.addEventListener('click',()=>{
@@ -981,6 +1124,10 @@ $('#print').addEventListener('input',e=>{const t=e.target;
     const sc=t.closest('[data-sec]');
     if(sc){const s=p.sections[+sc.dataset.sec];
       if(t.dataset.sf){s[t.dataset.sf]=t.value;setDirty();return;}
+      const sgr=t.closest('[data-sgi]');
+      if(sgr&&t.dataset.sgf){s.subgroups=s.subgroups||[];s.subgroups[+sgr.dataset.sgi][t.dataset.sgf]=t.value;setDirty();return;}
+      const plr=t.closest('[data-pli]');
+      if(plr&&t.dataset.plf){s.pools=s.pools||[];const f=t.dataset.plf;s.pools[+plr.dataset.pli][f]=(f==='maxPick')?(parseInt(t.value)||1):t.value;setDirty();return;}
       const ir=t.closest('[data-pi]');
       if(ir&&t.dataset.itf){s.items[+ir.dataset.pi][t.dataset.itf]=t.value;setDirty();return;}}
     if(t.classList.contains('bk')||t.classList.contains('bv')){recollectBooking(pe,p);setDirty();return;}
@@ -996,7 +1143,12 @@ $('#print').addEventListener('input',e=>{const t=e.target;
       if(ir&&t.dataset.vif){s.items[+ir.dataset.vi][t.dataset.vif]=t.value;setDirty();return;}}}
 });
 $('#print').addEventListener('change',e=>{const t=e.target;
-  if(t.dataset.sf==='choiceType'){const pe=t.closest('[data-pkg]');const sc=t.closest('[data-sec]');byId(DATA.packages,pe.dataset.pkg).sections[+sc.dataset.sec].choiceType=t.value;setDirty();}
+  if(t.dataset.sf==='choiceType'){const pe=t.closest('[data-pkg]');const sc=t.closest('[data-sec]');byId(DATA.packages,pe.dataset.pkg).sections[+sc.dataset.sec].choiceType=t.value;setDirty();return;}
+  // subgroup / pool selects on item rows
+  if(t.dataset.itf==='subgroup'||t.dataset.itf==='poolId'){
+    const pe=t.closest('[data-pkg]');const sc=t.closest('[data-sec]');const ir=t.closest('[data-pi]');
+    if(pe&&sc&&ir){const p=byId(DATA.packages,pe.dataset.pkg);const s=p.sections[+sc.dataset.sec];const val=t.value||null;s.items[+ir.dataset.pi][t.dataset.itf]=val;setDirty();}
+  }
 });
 $('#print').addEventListener('click',e=>{const b=e.target.closest('[data-act2]');if(!b)return;const act=b.dataset.act2;const pe=b.closest('[data-pkg]');const ve=b.closest('[data-venue]');
   if(pe){const p=byId(DATA.packages,pe.dataset.pkg);const sc=b.closest('[data-sec]');
@@ -1010,6 +1162,14 @@ $('#print').addEventListener('click',e=>{const b=e.target.closest('[data-act2]')
     else if(act==='item-up'){if(sc){const ir=b.closest('[data-pi]');const sec=p.sections[+sc.dataset.sec];const ii=+ir.dataset.pi;if(ii>0){const t=sec.items[ii];sec.items[ii]=sec.items[ii-1];sec.items[ii-1]=t;}}}
     else if(act==='item-down'){if(sc){const ir=b.closest('[data-pi]');const sec=p.sections[+sc.dataset.sec];const ii=+ir.dataset.pi;if(ii<sec.items.length-1){const t=sec.items[ii];sec.items[ii]=sec.items[ii+1];sec.items[ii+1]=t;}}}
     else if(act==='open-picker'){if(sc&&p){openPicker(p,+sc.dataset.sec,renderPrint);return;}}
+    else if(act==='add-sg'){if(sc){const s=p.sections[+sc.dataset.sec];s.subgroups=s.subgroups||[];s.subgroups.push({id:'sg-'+Date.now().toString(36),label:'',});}}
+    else if(act==='del-sg'){if(sc){const s=p.sections[+sc.dataset.sec];const sgi=+b.closest('[data-sgi]').dataset.sgi;s.subgroups.splice(sgi,1);}}
+    else if(act==='sg-up'){if(sc){const s=p.sections[+sc.dataset.sec];const sgi=+b.closest('[data-sgi]').dataset.sgi;if(sgi>0){const tmp=s.subgroups[sgi];s.subgroups[sgi]=s.subgroups[sgi-1];s.subgroups[sgi-1]=tmp;}}}
+    else if(act==='sg-down'){if(sc){const s=p.sections[+sc.dataset.sec];const sgi=+b.closest('[data-sgi]').dataset.sgi;if(sgi<s.subgroups.length-1){const tmp=s.subgroups[sgi];s.subgroups[sgi]=s.subgroups[sgi+1];s.subgroups[sgi+1]=tmp;}}}
+    else if(act==='add-pool'){if(sc){const s=p.sections[+sc.dataset.sec];s.pools=s.pools||[];s.pools.push({id:'pl-'+Date.now().toString(36),label:'',maxPick:1,instruction:''});}}
+    else if(act==='del-pool'){if(sc){const s=p.sections[+sc.dataset.sec];const pli=+b.closest('[data-pli]').dataset.pli;s.pools.splice(pli,1);}}
+    else if(act==='pool-up'){if(sc){const s=p.sections[+sc.dataset.sec];const pli=+b.closest('[data-pli]').dataset.pli;if(pli>0){const tmp=s.pools[pli];s.pools[pli]=s.pools[pli-1];s.pools[pli-1]=tmp;}}}
+    else if(act==='pool-down'){if(sc){const s=p.sections[+sc.dataset.sec];const pli=+b.closest('[data-pli]').dataset.pli;if(pli<s.pools.length-1){const tmp=s.pools[pli];s.pools[pli]=s.pools[pli+1];s.pools[pli+1]=tmp;}}}
     else if(act==='add-book'){p.booking=p.booking||{};let k='New',i=1;while(p.booking[k])k='New '+(++i);p.booking[k]='';}
     else if(act==='del-book'){const k=b.closest('.brow').querySelector('.bk').value;delete p.booking[k];}
     else if(act==='add-term'){p.terms=p.terms||[];p.terms.push('');}

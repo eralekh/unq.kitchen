@@ -2382,8 +2382,8 @@
       "sections": [
         {
           "name": "Welcome",
-          "instruction": "Any 1 (On Arrival)",
-          "chip": "No Refill",
+          "instruction": "",
+          "chip": "1 Beverage",
           "items": [
             {
               "refs": [
@@ -2394,18 +2394,20 @@
               ],
               "displayName": "Tea – Regular",
               "note": "",
-              "badge": ""
+              "badge": "",
+              "subgroup": "sg-mqg64azp"
             },
             {
               "refs": [
                 {
-                  "itemId": "tea",
-                  "variantId": "tea-masala"
+                  "itemId": "coffee",
+                  "variantId": "coffee-instant"
                 }
               ],
-              "displayName": "Tea – Masala",
+              "displayName": "Coffee – Instant",
               "note": "",
-              "badge": ""
+              "badge": "",
+              "subgroup": "sg-mqg64azp"
             },
             {
               "refs": [
@@ -2416,29 +2418,25 @@
               ],
               "displayName": "Soft Drink – Regular",
               "note": "",
-              "badge": ""
+              "badge": "",
+              "subgroup": "sg-mqg64azp"
             }
           ],
           "choiceType": "individual",
           "servingQty": "1 per person",
-          "servingRefill": ""
+          "servingRefill": "",
+          "subgroups": [
+            {
+              "id": "sg-mqg64azp",
+              "label": "Choose one bevarage (On arrival, No Refill)"
+            }
+          ]
         },
         {
-          "name": "Starters",
-          "instruction": "Any 1 (Prebook)",
-          "chip": "No Refill",
+          "name": "Snacks",
+          "instruction": "",
+          "chip": "2 Snacks",
           "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "french-fries",
-                  "variantId": "french-fries-classic"
-                }
-              ],
-              "displayName": "French Fries – Classic",
-              "note": "12 Pcs",
-              "badge": ""
-            },
             {
               "refs": [
                 {
@@ -2447,8 +2445,10 @@
                 }
               ],
               "displayName": "Pakoda – Onion",
-              "note": "8 Pcs",
-              "badge": ""
+              "note": "6 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg5xrwr",
+              "poolId": "pl-mqg5vnhu"
             },
             {
               "refs": [
@@ -2458,19 +2458,36 @@
                 }
               ],
               "displayName": "Pakoda – Potato",
-              "note": "8 Pcs",
-              "badge": ""
-            }
-          ],
-          "choiceType": "party",
-          "servingQty": "1 round for the table",
-          "servingRefill": "refill once"
-        },
-        {
-          "name": "Main",
-          "instruction": "",
-          "chip": "No Refill",
-          "items": [
+              "note": "6 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg5xrwr",
+              "poolId": "pl-mqg5v37s"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-gobhi"
+                }
+              ],
+              "displayName": "Pakoda – Gobhi",
+              "note": "6 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg5xrwr"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "french-fries",
+                  "variantId": "french-fries-classic"
+                }
+              ],
+              "displayName": "French Fries – Classic",
+              "note": "10 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg5xrwr",
+              "poolId": "pl-mqg5v37s"
+            },
             {
               "refs": [
                 {
@@ -2480,12 +2497,49 @@
               ],
               "displayName": "Grilled Sandwich – Veg",
               "note": "1 Pc",
-              "badge": ""
+              "badge": "",
+              "subgroup": "sg-mqg5yc51",
+              "poolId": "pl-mqg5v37s"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-cheese-corn"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Cheese Corn",
+              "note": "1 Pc",
+              "badge": "",
+              "subgroup": "sg-mqg5yc51"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pizza",
+                  "variantId": "pizza-garlic-bread"
+                }
+              ],
+              "displayName": "Pizza – Garlic Bread",
+              "note": "1 Pc",
+              "badge": "",
+              "subgroup": "sg-mqg5yc51"
             }
           ],
-          "choiceType": "",
+          "choiceType": "party",
           "servingQty": "1 round for the table",
-          "servingRefill": "refill once"
+          "servingRefill": "refill once",
+          "subgroups": [
+            {
+              "id": "sg-mqg5xrwr",
+              "label": "Choose First Snack (Prebook, One Refill)"
+            },
+            {
+              "id": "sg-mqg5yc51",
+              "label": "Choose Second Snack (Prebook, No Refill)"
+            }
+          ],
+          "pools": []
         }
       ],
       "booking": {
@@ -2517,27 +2571,16 @@
       "number": 2,
       "name": "Chai & Bites Plus",
       "price": 249,
-      "description": "Warm snacks, a hearty main and good company",
+      "description": "Warm snacks, a hearty filling bite and good company",
       "idealLabel": "Ideal For",
       "idealValue": "Kitty parties · Ladies clubs · Evening socials · Small celebrations",
-      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "waterNote": "Complimentary RO water available. Packaged water charged extra",
       "sections": [
         {
           "name": "Welcome",
           "instruction": "Any 1 (On Arrival)",
-          "chip": "One Refill",
+          "chip": "1 Beverage",
           "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "tea",
-                  "variantId": "tea-regular"
-                }
-              ],
-              "displayName": "Tea – Regular",
-              "note": "",
-              "badge": ""
-            },
             {
               "refs": [
                 {
@@ -2547,7 +2590,8 @@
               ],
               "displayName": "Tea – Masala",
               "note": "",
-              "badge": ""
+              "badge": "",
+              "subgroup": "sg-mqg8yku8"
             },
             {
               "refs": [
@@ -2558,7 +2602,8 @@
               ],
               "displayName": "Tea – Black",
               "note": "",
-              "badge": ""
+              "badge": "",
+              "subgroup": "sg-mqg8yku8"
             },
             {
               "refs": [
@@ -2569,214 +2614,45 @@
               ],
               "displayName": "Tea – Lemon",
               "note": "",
-              "badge": ""
-            }
-          ],
-          "servingQty": "1",
-          "servingRefill": "",
-          "choiceType": "individual"
-        },
-        {
-          "name": "Starters",
-          "instruction": "Any 1 (Prebook)",
-          "chip": "One  Refill",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "pakoda",
-                  "variantId": "pakoda-gobhi"
-                }
-              ],
-              "displayName": "Pakoda – Gobhi",
-              "note": "8 Pcs",
-              "badge": ""
+              "badge": "",
+              "subgroup": "sg-mqg8yku8"
             },
             {
               "refs": [
                 {
-                  "itemId": "pakoda",
-                  "variantId": "pakoda-onion"
+                  "itemId": "coffee",
+                  "variantId": "coffee-instant"
                 }
               ],
-              "displayName": "Pakoda – Onion",
-              "note": "8 Pcs",
-              "badge": ""
+              "displayName": "Coffee – Instant",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqg8yku8"
             },
             {
               "refs": [
                 {
-                  "itemId": "pakoda",
-                  "variantId": "pakoda-potato"
+                  "itemId": "coffee",
+                  "variantId": "coffee-filter-coffee"
                 }
               ],
-              "displayName": "Pakoda – Potato",
-              "note": "8 Pcs",
-              "badge": ""
+              "displayName": "Coffee – Filter Coffee",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqg8yku8"
             },
             {
               "refs": [
                 {
-                  "itemId": "momo",
-                  "variantId": "momo-steamed-veg"
+                  "itemId": "coffee",
+                  "variantId": "coffee-black"
                 }
               ],
-              "displayName": "Momo – Steamed Veg",
-              "note": "5 Pcs",
-              "badge": ""
+              "displayName": "Coffee – Black",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqg8yku8"
             },
-            {
-              "refs": [
-                {
-                  "itemId": "french-fries",
-                  "variantId": "french-fries-classic"
-                }
-              ],
-              "displayName": "French Fries – Classic",
-              "note": "12 Pcs",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "french-fries",
-                  "variantId": "french-fries-peri-peri"
-                }
-              ],
-              "displayName": "French Fries – Peri-Peri",
-              "note": "12 Pcs",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "nuggets",
-                  "variantId": "nuggets-veg"
-                }
-              ],
-              "displayName": "Nuggets – Veg",
-              "note": "5 Pcs",
-              "badge": ""
-            }
-          ],
-          "servingQty": "1",
-          "servingRefill": "Refill once",
-          "choiceType": "party"
-        },
-        {
-          "name": "Main",
-          "instruction": "Any 1 (Prebook)",
-          "chip": "No Refill",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "grilled-sandwich",
-                  "variantId": "grilled-sandwich-veg"
-                }
-              ],
-              "displayName": "Grilled Sandwich – Veg",
-              "note": "1 Pc",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "grilled-sandwich",
-                  "variantId": "grilled-sandwich-veg-club"
-                }
-              ],
-              "displayName": "Grilled Sandwich – Veg Club",
-              "note": "1 Pc",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "grilled-sandwich",
-                  "variantId": "grilled-sandwich-cheese-corn"
-                }
-              ],
-              "displayName": "Grilled Sandwich – Cheese Corn",
-              "note": "1 Pc",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "grilled-sandwich",
-                  "variantId": "grilled-sandwich-bombay"
-                }
-              ],
-              "displayName": "Grilled Sandwich – Bombay",
-              "note": "1 Pc",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "north-indian-breakfast",
-                  "variantId": "north-indian-breakfast-chhole-bhature"
-                }
-              ],
-              "displayName": "North Indian Breakfast – Chhole Bhature",
-              "note": "2 Pcs",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "noodles",
-                  "variantId": "noodles-chilli-garlic-burnt"
-                }
-              ],
-              "displayName": "Noodles – Chilli Garlic Burnt",
-              "note": "1 Portion",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "noodles",
-                  "variantId": "noodles-schezwan"
-                }
-              ],
-              "displayName": "Noodles – Schezwan",
-              "note": "1 Portion",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "noodles",
-                  "variantId": "noodles-hakka"
-                }
-              ],
-              "displayName": "Noodles – Hakka",
-              "note": "1 Portion",
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "noodles",
-                  "variantId": "noodles-chowmein"
-                }
-              ],
-              "displayName": "Noodles – Chowmein",
-              "note": "1 Portion",
-              "badge": ""
-            }
-          ],
-          "servingQty": "1 plate",
-          "servingRefill": "",
-          "choiceType": "party"
-        },
-        {
-          "name": "To Close",
-          "instruction": "Any 1 (On Arrival)",
-          "chip": "No Refill",
-          "items": [
             {
               "refs": [
                 {
@@ -2786,7 +2662,8 @@
               ],
               "displayName": "Soft Drink – Regular",
               "note": "",
-              "badge": ""
+              "badge": "",
+              "subgroup": "sg-mqg8yku8"
             },
             {
               "refs": [
@@ -2797,12 +2674,235 @@
               ],
               "displayName": "Soft Drink – Masala / Flavoured",
               "note": "",
-              "badge": ""
+              "badge": "",
+              "subgroup": "sg-mqg8yku8"
             }
           ],
           "servingQty": "1",
           "servingRefill": "",
-          "choiceType": "individual"
+          "choiceType": "individual",
+          "subgroups": [
+            {
+              "id": "sg-mqg8yku8",
+              "label": "Choose one bevarage (On arrival, No Refill)"
+            }
+          ]
+        },
+        {
+          "name": "Snacks",
+          "instruction": "Any 1 (Prebook)",
+          "chip": "3 Snacks",
+          "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-gobhi"
+                }
+              ],
+              "displayName": "Pakoda – Gobhi",
+              "note": "6 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg8zog6"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-onion"
+                }
+              ],
+              "displayName": "Pakoda – Onion",
+              "note": "6 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg8zog6"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-potato"
+                }
+              ],
+              "displayName": "Pakoda – Potato",
+              "note": "6 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg8zog6"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-mix"
+                }
+              ],
+              "displayName": "Pakoda – Mix",
+              "note": "6 pcs",
+              "badge": "",
+              "subgroup": "sg-mqg8zog6"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "french-fries",
+                  "variantId": "french-fries-classic"
+                }
+              ],
+              "displayName": "French Fries – Classic",
+              "note": "10 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg8zog6"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "french-fries",
+                  "variantId": "french-fries-peri-peri"
+                }
+              ],
+              "displayName": "French Fries – Peri-Peri",
+              "note": "10 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg8zog6"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "momo",
+                  "variantId": "momo-steamed-veg"
+                }
+              ],
+              "displayName": "Momo – Steamed Veg",
+              "note": "3 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg8zq8j"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "momo",
+                  "variantId": "momo-peri-peri-fried"
+                }
+              ],
+              "displayName": "Momo – Peri-Peri Fried",
+              "note": "3 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg8zq8j"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "momo",
+                  "variantId": "momo-fried-momos"
+                }
+              ],
+              "displayName": "Momo – Fried Momos",
+              "note": "3 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg8zq8j"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "nuggets",
+                  "variantId": "nuggets-veg"
+                }
+              ],
+              "displayName": "Nuggets – Veg",
+              "note": "3 Pcs",
+              "badge": "",
+              "subgroup": "sg-mqg8zq8j"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pizza",
+                  "variantId": "pizza-garlic-bread"
+                }
+              ],
+              "displayName": "Pizza – Garlic Bread",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqg9006v"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-veg"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Veg",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqg9006v"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-veg-club"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Veg Club",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqg9006v"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-cheese-corn"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Cheese Corn",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqg9006v"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-bombay"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Bombay",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqg9006v"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-paneer"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Paneer",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqg9006v"
+            }
+          ],
+          "servingQty": "1",
+          "servingRefill": "Refill once",
+          "choiceType": "party",
+          "subgroups": [
+            {
+              "id": "sg-mqg8zog6",
+              "label": "Choose First Snack (Prebook, One Refill)"
+            },
+            {
+              "id": "sg-mqg8zq8j",
+              "label": "Choose Second Snack (Prebook, One Refill)"
+            },
+            {
+              "id": "sg-mqg9006v",
+              "label": "Choose Third Snack (Prebook, No Refill)"
+            }
+          ]
         }
       ],
       "booking": {

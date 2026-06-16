@@ -86,6 +86,63 @@ def group_section_items(items, catalog):
         i += 1
     return out
 
+def section_render_blocks(section, catalog):
+    """Partition a section's items into render blocks grouped by subgroup and pool.
+
+    Returns a list of blocks:
+      { 'subgroupLabel': str|None, 'items': [...renderItems], 'pools': [...poolBlocks] }
+    Each poolBlock:
+      { 'label': str, 'instruction': str, 'items': [...renderItems] }
+    Items with no subgroup tag end up in the first (ungrouped) block.
+    """
+    subgroups  = section.get('subgroups') or []
+    pools_def  = section.get('pools') or []
+    pools_map  = {p['id']: p for p in pools_def}
+    pool_order = [p['id'] for p in pools_def]
+
+    # bucket by subgroup id (None = no subgroup)
+    buckets  = {}
+    sg_order = [None] + [sg['id'] for sg in subgroups]
+
+    for it in section.get('items', []):
+        sg  = it.get('subgroup') or None
+        pid = it.get('poolId')   or None
+        if sg not in buckets:
+            buckets[sg] = {'non_pool': [], 'pools': {}}
+        if pid:
+            buckets[sg]['pools'].setdefault(pid, []).append(it)
+        else:
+            buckets[sg]['non_pool'].append(it)
+
+    result = []
+    for sg_id in sg_order:
+        if sg_id not in buckets:
+            continue
+        bucket   = buckets[sg_id]
+        sg_label = None
+        if sg_id:
+            sg_info  = next((sg for sg in subgroups if sg['id'] == sg_id), None)
+            sg_label = sg_info['label'] if sg_info else sg_id
+
+        non_pool = group_section_items(bucket['non_pool'], catalog)
+
+        seen, pool_blocks = set(), []
+        for pid in pool_order + list(bucket['pools'].keys()):
+            if pid in seen or pid not in bucket['pools']:
+                continue
+            seen.add(pid)
+            pdef = pools_map.get(pid, {})
+            pool_blocks.append({
+                'label':       pdef.get('label', ''),
+                'instruction': pdef.get('instruction', ''),
+                'items':       group_section_items(bucket['pools'][pid], catalog)
+            })
+
+        if non_pool or pool_blocks:
+            result.append({'subgroupLabel': sg_label, 'items': non_pool, 'pools': pool_blocks})
+
+    return result
+
 # ---- v2 -> digital-menu SECTIONS shape ----
 def v2_to_sections(d, img_prefix='../', settings=None):
     s = settings or {}
@@ -194,6 +251,10 @@ main{max-width:760px;margin:0 auto;padding:0 14px;}
 .grid .k{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
 .grid .v{font-size:.9rem;font-weight:600;color:var(--ink);}
 .note-gold{margin-top:12px;font-size:.8rem;color:var(--olive-dark);background:rgba(201,169,106,.12);border-left:3px solid var(--gold);border-radius:4px;padding:8px 12px;}
+.sg-label{font-weight:700;font-size:.82rem;color:var(--ink);width:100%;padding-bottom:3px;margin:10px 0 4px;border-bottom:1px solid var(--line);}
+.pool-block{width:100%;margin-top:10px;background:rgba(122,132,52,.05);border:1px solid var(--line);border-radius:8px;padding:8px 10px;}
+.pool-inst{font-size:.74rem;font-weight:600;color:var(--olive-dark);margin-bottom:6px;}
+.pool-items{display:flex;flex-wrap:wrap;gap:8px;}
 .block-h{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:18px 0 6px;}
 .terms{list-style:none;display:flex;flex-direction:column;gap:5px;}
 .terms li{position:relative;padding-left:16px;font-size:.8rem;color:var(--muted);}
@@ -237,6 +298,13 @@ pkgs.forEach((p,i)=>{
   nav.appendChild(b);
 });
 pkgs.forEach((p,i)=>root.appendChild(renderPkg(p,i)));
+function renderChip(it){
+  if(it.kind==='group'){
+    const opts=it.options.map(o=>esc(o.name)+(o.badge?'<span class="badge">'+esc(o.badge)+'</span>':'')+(o.note?'<span class="note">'+esc(o.note)+'</span>':'')).join(' / ');
+    return '<div class="chip"><b>'+esc(it.label)+'</b> – '+opts+'</div>';
+  }
+  return '<div class="chip">'+esc(it.name||'')+(it.badge?'<span class="badge">'+esc(it.badge)+'</span>':'')+(it.note?'<span class="note">'+esc(it.note)+'</span>':'')+'</div>';
+}
 function renderPkg(p,i){
   const s=document.createElement('section'); s.className='pkg'; s.id='pkg-'+i;
   let h='<div class="pkg-head"><div><div class="pkg-name">'+esc(p.name)+'</div>'+
@@ -248,17 +316,17 @@ function renderPkg(p,i){
        (sec.instruction?'<span class="sec-inst">'+esc(sec.instruction)+'</span>':'')+
        (sec.chip?'<span class="sec-chip">'+esc(sec.chip)+'</span>':'')+'</div>'+
        '<div class="items">';
-    (sec.renderItems||[]).forEach(it=>{
-      if(it.kind==='group'){
-        const opts=it.options.map(o=>esc(o.name)+
-          (o.badge?'<span class="badge">'+esc(o.badge)+'</span>':'')+
-          (o.note?'<span class="note">'+esc(o.note)+'</span>':'')).join(' / ');
-        h+='<div class="chip"><b>'+esc(it.label)+'</b> – '+opts+'</div>';
-        return;
-      }
-      h+='<div class="chip">'+esc(it.name||'')+
-         (it.badge?'<span class="badge">'+esc(it.badge)+'</span>':'')+
-         (it.note?'<span class="note">'+esc(it.note)+'</span>':'')+'</div>';
+    const blocks=sec.renderBlocks||(sec.renderItems?[{subgroupLabel:null,items:sec.renderItems,pools:[]}]:[]);
+    blocks.forEach(blk=>{
+      if(blk.subgroupLabel) h+='<div class="sg-label">'+esc(blk.subgroupLabel)+'</div>';
+      blk.items.forEach(it=>{ h+=renderChip(it); });
+      (blk.pools||[]).forEach(pool=>{
+        h+='<div class="pool-block">';
+        if(pool.instruction) h+='<div class="pool-inst">'+esc(pool.instruction)+'</div>';
+        h+='<div class="pool-items">';
+        pool.items.forEach(it=>{ h+=renderChip(it); });
+        h+='</div></div>';
+      });
     });
     h+='</div></div>';
   });
@@ -293,7 +361,7 @@ def gen_digital_package(d):
     packages = json.loads(json.dumps(d['packages']))  # cheap deep copy
     for p in packages:
         for s in p.get('sections', []):
-            s['renderItems'] = group_section_items(s.get('items', []), catalog)
+            s['renderBlocks'] = section_render_blocks(s, catalog)
     html = PKG_TEMPLATE.replace('__DATA_JSON__', safe({'packages': packages})).replace('__SET__', safe(sett))
     os.makedirs(os.path.join(ROOT, 'digital-package'), exist_ok=True)
     path = os.path.join(ROOT, 'digital-package', 'index.html')
@@ -307,6 +375,32 @@ def t(s):
 REFUND_CLASS = {'full refund': 'refund-full', '50% refund': 'refund-half', 'no refund': 'refund-none'}
 def refund_cls(r):
     return REFUND_CLASS.get((r or '').strip().lower(), 'refund-full')
+
+def _exc(it):
+    tag = it.get('note') or it.get('badge')
+    return f'<span class="item-exc-tag">{t(tag)}</span>' if tag else ''
+
+def _chipbadge(it):
+    tag = it.get('note') or it.get('badge')
+    return f'<span class="chip-badge">{t(tag)}</span>' if tag else ''
+
+def _render_print_items(render_items, ct):
+    """Turn a list of render-items into (item_lines, chip_lines) for the print package."""
+    il, cl = [], []
+    for r in render_items:
+        if r['kind'] == 'group':
+            opts  = ''.join(f'<span class="item-group-opt">{t(o["name"])}{_exc(o)}</span>' for o in r['options'])
+            il.append(f'        <div class="item-name item-group"><span class="item-group-label">{t(r["label"])}</span>{opts}</div>')
+            copts = ''.join(f'<span class="chip-group-opt"><span class="chip-check"></span>{t(o["name"])}{_chipbadge(o)}</span>' for o in r['options'])
+            cl.append(f'        <span class="chip-group"><span class="chip-group-label">{t(r["label"])}</span>{copts}</span>')
+        else:
+            il.append('        <div class="item-name">' + t(r['name']) + _exc(r) + '</div>')
+            if ct in ('individual', 'party'):
+                cl.append('        <span class="chip-choice"><span class="chip-check"></span>' +
+                           t(r['name']) + _chipbadge(r) + '</span>')
+            else:
+                cl.append('        <span class="chip-fixed">' + t(r['name']) + _chipbadge(r) + '</span>')
+    return il, cl
 
 def _pkg_page(p, n, total, catalog):
     ideals = ''.join(f'<span class="ideal-tag">{t(x).strip()}</span>'
@@ -323,27 +417,21 @@ def _pkg_page(p, n, total, catalog):
             banner_chips += f'<span class="inst-chip-b">{t(s.get("instruction"))}</span>'
         if s.get('chip'):
             banner_chips += f'<span class="qty-badge-b">{t(s.get("chip"))}</span>'
-        def exc(it):
-            tag = it.get('note') or it.get('badge')
-            return f'<span class="item-exc-tag">{t(tag)}</span>' if tag else ''
-        def chipbadge(it):
-            tag = it.get('note') or it.get('badge')
-            return f'<span class="chip-badge">{t(tag)}</span>' if tag else ''
-        rendered = group_section_items(s.get('items', []), catalog)
+        blocks = section_render_blocks(s, catalog)
         item_lines, chip_lines = [], []
-        for r in rendered:
-            if r['kind'] == 'group':
-                opts = ''.join(f'<span class="item-group-opt">{t(o["name"])}{exc(o)}</span>' for o in r['options'])
-                item_lines.append(f'        <div class="item-name item-group"><span class="item-group-label">{t(r["label"])}</span>{opts}</div>')
-                copts = ''.join(f'<span class="chip-group-opt"><span class="chip-check"></span>{t(o["name"])}{chipbadge(o)}</span>' for o in r['options'])
-                chip_lines.append(f'        <span class="chip-group"><span class="chip-group-label">{t(r["label"])}</span>{copts}</span>')
-            else:
-                item_lines.append('        <div class="item-name">' + t(r['name']) + exc(r) + '</div>')
-                if ct in ('individual', 'party'):
-                    chip_lines.append('        <span class="chip-choice"><span class="chip-check"></span>' +
-                                       t(r['name']) + chipbadge(r) + '</span>')
-                else:
-                    chip_lines.append('        <span class="chip-fixed">' + t(r['name']) + chipbadge(r) + '</span>')
+        for blk in blocks:
+            if blk['subgroupLabel']:
+                lbl = f'        <div class="sg-label-p">{t(blk["subgroupLabel"])}</div>'
+                item_lines.append(lbl)
+                chip_lines.append(lbl)
+            il, cl = _render_print_items(blk['items'], ct)
+            item_lines.extend(il); chip_lines.extend(cl)
+            for pool in blk.get('pools', []):
+                if pool['instruction']:
+                    inst = f'        <div class="pool-inst-p">{t(pool["instruction"])}</div>'
+                    item_lines.append(inst); chip_lines.append(inst)
+                il, cl = _render_print_items(pool['items'], ct)
+                item_lines.extend(il); chip_lines.extend(cl)
         items = '\n'.join(item_lines)
         chips = '\n'.join(chip_lines)
         secs.append(

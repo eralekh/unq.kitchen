@@ -900,6 +900,28 @@ body.layout-airy .chip-badge { font-size:7px; font-family:'Inter',Arial,sans-ser
   vertical-align:middle;
 }
 
+/* Sub-group label inside a section (col-items + sec-chips) */
+.sg-label-p {
+  font-family:'Cormorant Garamond','Georgia',serif;
+  font-weight:700;
+  font-size:13px;
+  color:var(--ink);
+  width:100%;
+  padding:3px 0 2px;
+  margin-top:4px;
+  border-bottom:1px solid var(--gold-dim);
+}
+
+/* Pool instruction line inside a section */
+.pool-inst-p {
+  font-size:9px;
+  font-weight:600;
+  font-style:italic;
+  color:var(--olive);
+  width:100%;
+  margin:4px 0 2px;
+}
+
 .chip {
   font-size:7.5px;
   font-weight:600;
@@ -1187,41 +1209,46 @@ body.layout-airy .chip-badge { font-size:7px; font-family:'Inter',Arial,sans-ser
         <div class="col-items th">Items</div>
       </div>
     <div class="section choice-individual">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (On Arrival)</span><span class="qty-badge-b">No Refill</span></span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="qty-badge-b">1 Beverage</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
-        <div class="sec-banner">Any 1 (On Arrival)  ·  No Refill</div>
-        <div class="item-name item-group"><span class="item-group-label">Tea</span><span class="item-group-opt">Masala</span></div>
+        <div class="sec-banner">1 Beverage</div>
+        <div class="sg-label-p">Choose one bevarage (On arrival, No Refill)</div>
+        <div class="item-name item-group"><span class="item-group-label">Tea</span><span class="item-group-opt">Regular</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Coffee</span><span class="item-group-opt">Instant</span></div>
         <div class="item-name item-group"><span class="item-group-label">Soft Drink</span><span class="item-group-opt">Regular</span></div>
-        <div class="item-name item-group"><span class="item-group-label">Tea</span><span class="item-group-opt">Black</span><span class="item-group-opt">Lemon</span></div>
       </div>
       <div class="sec-chips">
-        <span class="chip-group"><span class="chip-group-label">Tea</span><span class="chip-group-opt"><span class="chip-check"></span>Masala</span></span>
+        <div class="sg-label-p">Choose one bevarage (On arrival, No Refill)</div>
+        <span class="chip-group"><span class="chip-group-label">Tea</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span></span>
+        <span class="chip-group"><span class="chip-group-label">Coffee</span><span class="chip-group-opt"><span class="chip-check"></span>Instant</span></span>
         <span class="chip-group"><span class="chip-group-label">Soft Drink</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span></span>
-        <span class="chip-group"><span class="chip-group-label">Tea</span><span class="chip-group-opt"><span class="chip-check"></span>Black</span><span class="chip-group-opt"><span class="chip-check"></span>Lemon</span></span>
       </div>
     </div>
     <div class="section choice-party">
-      <div class="sec-head-b"><span class="sec-name-b">Snacks</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (Prebook)</span><span class="qty-badge-b">No Refill</span></span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Snacks</span><span class="sec-banner-b"><span class="qty-badge-b">2 Snacks</span></span></div>
       <div class="col-cat"><div class="sec-name">Snacks</div></div>
       <div class="col-items">
-        <div class="sec-banner">Any 1 (Prebook)  ·  No Refill</div>
-        <div class="item-name item-group"><span class="item-group-label">French Fries</span><span class="item-group-opt">Classic<span class="item-exc-tag">12 Pcs</span></span></div>
-        <div class="item-name item-group"><span class="item-group-label">Pakoda</span><span class="item-group-opt">Onion<span class="item-exc-tag">8 Pcs</span></span><span class="item-group-opt">Potato<span class="item-exc-tag">8 Pcs</span></span></div>
-      </div>
-      <div class="sec-chips">
-        <span class="chip-group"><span class="chip-group-label">French Fries</span><span class="chip-group-opt"><span class="chip-check"></span>Classic<span class="chip-badge">12 Pcs</span></span></span>
-        <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Onion<span class="chip-badge">8 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Potato<span class="chip-badge">8 Pcs</span></span></span>
-      </div>
-    </div>
-    <div class="section">
-      <div class="sec-head-b"><span class="sec-name-b">Main</span><span class="sec-banner-b"><span class="qty-badge-b">No Refill</span></span></div>
-      <div class="col-cat"><div class="sec-name">Main</div></div>
-      <div class="col-items">
-        <div class="sec-banner">No Refill</div>
+        <div class="sec-banner">2 Snacks</div>
+        <div class="sg-label-p">Choose First Snack (Prebook, One Refill)</div>
+        <div class="item-name item-group"><span class="item-group-label">Pakoda</span><span class="item-group-opt">Gobhi<span class="item-exc-tag">6 Pcs</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">Pakoda</span><span class="item-group-opt">Onion<span class="item-exc-tag">6 Pcs</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">Pakoda</span><span class="item-group-opt">Potato<span class="item-exc-tag">6 Pcs</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">French Fries</span><span class="item-group-opt">Classic<span class="item-exc-tag">10 Pcs</span></span></div>
+        <div class="sg-label-p">Choose Second Snack (Prebook, No Refill)</div>
+        <div class="item-name item-group"><span class="item-group-label">Grilled Sandwich</span><span class="item-group-opt">Cheese Corn<span class="item-exc-tag">1 Pc</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">Pizza</span><span class="item-group-opt">Garlic Bread<span class="item-exc-tag">1 Pc</span></span></div>
         <div class="item-name item-group"><span class="item-group-label">Grilled Sandwich</span><span class="item-group-opt">Veg<span class="item-exc-tag">1 Pc</span></span></div>
       </div>
       <div class="sec-chips">
+        <div class="sg-label-p">Choose First Snack (Prebook, One Refill)</div>
+        <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Gobhi<span class="chip-badge">6 Pcs</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Onion<span class="chip-badge">6 Pcs</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Potato<span class="chip-badge">6 Pcs</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">French Fries</span><span class="chip-group-opt"><span class="chip-check"></span>Classic<span class="chip-badge">10 Pcs</span></span></span>
+        <div class="sg-label-p">Choose Second Snack (Prebook, No Refill)</div>
+        <span class="chip-group"><span class="chip-group-label">Grilled Sandwich</span><span class="chip-group-opt"><span class="chip-check"></span>Cheese Corn<span class="chip-badge">1 Pc</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">Pizza</span><span class="chip-group-opt"><span class="chip-check"></span>Garlic Bread<span class="chip-badge">1 Pc</span></span></span>
         <span class="chip-group"><span class="chip-group-label">Grilled Sandwich</span><span class="chip-group-opt"><span class="chip-check"></span>Veg<span class="chip-badge">1 Pc</span></span></span>
       </div>
     </div>
@@ -1262,7 +1289,7 @@ body.layout-airy .chip-badge { font-size:7px; font-family:'Inter',Arial,sans-ser
         <span class="pkg-at">@</span>
         <span class="pkg-price">&#x20B9;249<span class="per-person">/ Person</span></span>
       </div>
-      <div class="pkg-desc">Warm snacks, a hearty main and good company</div>
+      <div class="pkg-desc">Warm snacks, a hearty filling bite and good company</div>
     </div>
     <div class="ideal-row"><span class="ideal-tag">Kitty parties</span><span class="ideal-tag">Ladies clubs</span><span class="ideal-tag">Evening socials</span><span class="ideal-tag">Small celebrations</span></div>
     <div class="pkg-table">
@@ -1271,63 +1298,51 @@ body.layout-airy .chip-badge { font-size:7px; font-family:'Inter',Arial,sans-ser
         <div class="col-items th">Items</div>
       </div>
     <div class="section choice-individual">
-      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (On Arrival)</span><span class="qty-badge-b">One Refill</span></span></div>
+      <div class="sec-head-b"><span class="sec-name-b">Welcome</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (On Arrival)</span><span class="qty-badge-b">1 Beverage</span></span></div>
       <div class="col-cat"><div class="sec-name">Welcome</div></div>
       <div class="col-items">
-        <div class="sec-banner">Any 1 (On Arrival)  ·  One Refill</div>
+        <div class="sec-banner">Any 1 (On Arrival)  ·  1 Beverage</div>
+        <div class="sg-label-p">Choose one bevarage (On arrival, No Refill)</div>
         <div class="item-name item-group"><span class="item-group-label">Tea</span><span class="item-group-opt">Masala</span><span class="item-group-opt">Black</span><span class="item-group-opt">Lemon</span></div>
         <div class="item-name item-group"><span class="item-group-label">Coffee</span><span class="item-group-opt">Instant</span><span class="item-group-opt">Filter Coffee</span><span class="item-group-opt">Black</span></div>
-      </div>
-      <div class="sec-chips">
-        <span class="chip-group"><span class="chip-group-label">Tea</span><span class="chip-group-opt"><span class="chip-check"></span>Masala</span><span class="chip-group-opt"><span class="chip-check"></span>Black</span><span class="chip-group-opt"><span class="chip-check"></span>Lemon</span></span>
-        <span class="chip-group"><span class="chip-group-label">Coffee</span><span class="chip-group-opt"><span class="chip-check"></span>Instant</span><span class="chip-group-opt"><span class="chip-check"></span>Filter Coffee</span><span class="chip-group-opt"><span class="chip-check"></span>Black</span></span>
-      </div>
-    </div>
-    <div class="section choice-party">
-      <div class="sec-head-b"><span class="sec-name-b">Snacks</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (Prebook)</span><span class="qty-badge-b">One  Refill</span></span></div>
-      <div class="col-cat"><div class="sec-name">Snacks</div></div>
-      <div class="col-items">
-        <div class="sec-banner">Any 1 (Prebook)  ·  One  Refill</div>
-        <div class="item-name item-group"><span class="item-group-label">Pakoda</span><span class="item-group-opt">Gobhi<span class="item-exc-tag">8 Pcs</span></span><span class="item-group-opt">Onion<span class="item-exc-tag">8 Pcs</span></span><span class="item-group-opt">Potato<span class="item-exc-tag">8 Pcs</span></span></div>
-        <div class="item-name item-group"><span class="item-group-label">Momo</span><span class="item-group-opt">Steamed Veg<span class="item-exc-tag">5 Pcs</span></span></div>
-        <div class="item-name item-group"><span class="item-group-label">French Fries</span><span class="item-group-opt">Classic<span class="item-exc-tag">12 Pcs</span></span><span class="item-group-opt">Peri-Peri<span class="item-exc-tag">12 Pcs</span></span></div>
-        <div class="item-name item-group"><span class="item-group-label">Nuggets</span><span class="item-group-opt">Veg<span class="item-exc-tag">5 Pcs</span></span></div>
-      </div>
-      <div class="sec-chips">
-        <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Gobhi<span class="chip-badge">8 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Onion<span class="chip-badge">8 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Potato<span class="chip-badge">8 Pcs</span></span></span>
-        <span class="chip-group"><span class="chip-group-label">Momo</span><span class="chip-group-opt"><span class="chip-check"></span>Steamed Veg<span class="chip-badge">5 Pcs</span></span></span>
-        <span class="chip-group"><span class="chip-group-label">French Fries</span><span class="chip-group-opt"><span class="chip-check"></span>Classic<span class="chip-badge">12 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Peri-Peri<span class="chip-badge">12 Pcs</span></span></span>
-        <span class="chip-group"><span class="chip-group-label">Nuggets</span><span class="chip-group-opt"><span class="chip-check"></span>Veg<span class="chip-badge">5 Pcs</span></span></span>
-      </div>
-    </div>
-    <div class="section choice-party">
-      <div class="sec-head-b"><span class="sec-name-b">Main</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (Prebook)</span><span class="qty-badge-b">No Refill</span></span></div>
-      <div class="col-cat"><div class="sec-name">Main</div></div>
-      <div class="col-items">
-        <div class="sec-banner">Any 1 (Prebook)  ·  No Refill</div>
-        <div class="item-name item-group"><span class="item-group-label">Grilled Sandwich</span><span class="item-group-opt">Veg<span class="item-exc-tag">1 Pc</span></span><span class="item-group-opt">Veg Club<span class="item-exc-tag">1 Pc</span></span><span class="item-group-opt">Cheese Corn<span class="item-exc-tag">1 Pc</span></span><span class="item-group-opt">Bombay<span class="item-exc-tag">1 Pc</span></span></div>
-        <div class="item-name item-group"><span class="item-group-label">North Indian Breakfast</span><span class="item-group-opt">Chhole Bhature<span class="item-exc-tag">2 Pcs</span></span></div>
-        <div class="item-name item-group"><span class="item-group-label">Noodles</span><span class="item-group-opt">Chilli Garlic Burnt<span class="item-exc-tag">1 Portion</span></span><span class="item-group-opt">Schezwan<span class="item-exc-tag">1 Portion</span></span><span class="item-group-opt">Hakka<span class="item-exc-tag">1 Portion</span></span><span class="item-group-opt">Chowmein<span class="item-exc-tag">1 Portion</span></span></div>
-      </div>
-      <div class="sec-chips">
-        <span class="chip-group"><span class="chip-group-label">Grilled Sandwich</span><span class="chip-group-opt"><span class="chip-check"></span>Veg<span class="chip-badge">1 Pc</span></span><span class="chip-group-opt"><span class="chip-check"></span>Veg Club<span class="chip-badge">1 Pc</span></span><span class="chip-group-opt"><span class="chip-check"></span>Cheese Corn<span class="chip-badge">1 Pc</span></span><span class="chip-group-opt"><span class="chip-check"></span>Bombay<span class="chip-badge">1 Pc</span></span></span>
-        <span class="chip-group"><span class="chip-group-label">North Indian Breakfast</span><span class="chip-group-opt"><span class="chip-check"></span>Chhole Bhature<span class="chip-badge">2 Pcs</span></span></span>
-        <span class="chip-group"><span class="chip-group-label">Noodles</span><span class="chip-group-opt"><span class="chip-check"></span>Chilli Garlic Burnt<span class="chip-badge">1 Portion</span></span><span class="chip-group-opt"><span class="chip-check"></span>Schezwan<span class="chip-badge">1 Portion</span></span><span class="chip-group-opt"><span class="chip-check"></span>Hakka<span class="chip-badge">1 Portion</span></span><span class="chip-group-opt"><span class="chip-check"></span>Chowmein<span class="chip-badge">1 Portion</span></span></span>
-      </div>
-    </div>
-    <div class="section choice-individual">
-      <div class="sec-head-b"><span class="sec-name-b">To Close</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (On Arrival)</span><span class="qty-badge-b">No Refill</span></span></div>
-      <div class="col-cat"><div class="sec-name">To Close</div></div>
-      <div class="col-items">
-        <div class="sec-banner">Any 1 (On Arrival)  ·  No Refill</div>
         <div class="item-name item-group"><span class="item-group-label">Soft Drink</span><span class="item-group-opt">Regular</span><span class="item-group-opt">Masala / Flavoured</span></div>
       </div>
       <div class="sec-chips">
+        <div class="sg-label-p">Choose one bevarage (On arrival, No Refill)</div>
+        <span class="chip-group"><span class="chip-group-label">Tea</span><span class="chip-group-opt"><span class="chip-check"></span>Masala</span><span class="chip-group-opt"><span class="chip-check"></span>Black</span><span class="chip-group-opt"><span class="chip-check"></span>Lemon</span></span>
+        <span class="chip-group"><span class="chip-group-label">Coffee</span><span class="chip-group-opt"><span class="chip-check"></span>Instant</span><span class="chip-group-opt"><span class="chip-check"></span>Filter Coffee</span><span class="chip-group-opt"><span class="chip-check"></span>Black</span></span>
         <span class="chip-group"><span class="chip-group-label">Soft Drink</span><span class="chip-group-opt"><span class="chip-check"></span>Regular</span><span class="chip-group-opt"><span class="chip-check"></span>Masala / Flavoured</span></span>
       </div>
     </div>
+    <div class="section choice-party">
+      <div class="sec-head-b"><span class="sec-name-b">Snacks</span><span class="sec-banner-b"><span class="inst-chip-b">Any 1 (Prebook)</span><span class="qty-badge-b">3 Snacks</span></span></div>
+      <div class="col-cat"><div class="sec-name">Snacks</div></div>
+      <div class="col-items">
+        <div class="sec-banner">Any 1 (Prebook)  ·  3 Snacks</div>
+        <div class="sg-label-p">Choose First Snack (Prebook, One Refill)</div>
+        <div class="item-name item-group"><span class="item-group-label">Pakoda</span><span class="item-group-opt">Gobhi<span class="item-exc-tag">6 Pcs</span></span><span class="item-group-opt">Onion<span class="item-exc-tag">6 Pcs</span></span><span class="item-group-opt">Potato<span class="item-exc-tag">6 Pcs</span></span><span class="item-group-opt">Mix<span class="item-exc-tag">6 pcs</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">French Fries</span><span class="item-group-opt">Classic<span class="item-exc-tag">10 Pcs</span></span><span class="item-group-opt">Peri-Peri<span class="item-exc-tag">10 Pcs</span></span></div>
+        <div class="sg-label-p">Choose Second Snack (Prebook, No Refill)</div>
+        <div class="item-name item-group"><span class="item-group-label">Momo</span><span class="item-group-opt">Steamed Veg<span class="item-exc-tag">3 Pcs</span></span><span class="item-group-opt">Peri-Peri Fried<span class="item-exc-tag">3 Pcs</span></span><span class="item-group-opt">Fried Momos<span class="item-exc-tag">3 Pcs</span></span></div>
+        <div class="item-name item-group"><span class="item-group-label">Nuggets</span><span class="item-group-opt">Veg<span class="item-exc-tag">3 Pcs</span></span></div>
+        <div class="sg-label-p">Choose Third Snack (Prebook, No Refill)</div>
+        <div class="item-name item-group"><span class="item-group-label">Pizza</span><span class="item-group-opt">Garlic Bread</span></div>
+        <div class="item-name item-group"><span class="item-group-label">Grilled Sandwich</span><span class="item-group-opt">Veg</span><span class="item-group-opt">Veg Club</span><span class="item-group-opt">Cheese Corn</span><span class="item-group-opt">Bombay</span><span class="item-group-opt">Paneer</span></div>
+      </div>
+      <div class="sec-chips">
+        <div class="sg-label-p">Choose First Snack (Prebook, One Refill)</div>
+        <span class="chip-group"><span class="chip-group-label">Pakoda</span><span class="chip-group-opt"><span class="chip-check"></span>Gobhi<span class="chip-badge">6 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Onion<span class="chip-badge">6 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Potato<span class="chip-badge">6 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Mix<span class="chip-badge">6 pcs</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">French Fries</span><span class="chip-group-opt"><span class="chip-check"></span>Classic<span class="chip-badge">10 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Peri-Peri<span class="chip-badge">10 Pcs</span></span></span>
+        <div class="sg-label-p">Choose Second Snack (Prebook, No Refill)</div>
+        <span class="chip-group"><span class="chip-group-label">Momo</span><span class="chip-group-opt"><span class="chip-check"></span>Steamed Veg<span class="chip-badge">3 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Peri-Peri Fried<span class="chip-badge">3 Pcs</span></span><span class="chip-group-opt"><span class="chip-check"></span>Fried Momos<span class="chip-badge">3 Pcs</span></span></span>
+        <span class="chip-group"><span class="chip-group-label">Nuggets</span><span class="chip-group-opt"><span class="chip-check"></span>Veg<span class="chip-badge">3 Pcs</span></span></span>
+        <div class="sg-label-p">Choose Third Snack (Prebook, No Refill)</div>
+        <span class="chip-group"><span class="chip-group-label">Pizza</span><span class="chip-group-opt"><span class="chip-check"></span>Garlic Bread</span></span>
+        <span class="chip-group"><span class="chip-group-label">Grilled Sandwich</span><span class="chip-group-opt"><span class="chip-check"></span>Veg</span><span class="chip-group-opt"><span class="chip-check"></span>Veg Club</span><span class="chip-group-opt"><span class="chip-check"></span>Cheese Corn</span><span class="chip-group-opt"><span class="chip-check"></span>Bombay</span><span class="chip-group-opt"><span class="chip-check"></span>Paneer</span></span>
+      </div>
     </div>
-    <div class="water-note">&#9670; &nbsp;<strong>Note:</strong> Water Caneis complimentary. Additional water bottles will be charged separately.</div>
+    </div>
+    <div class="water-note">&#9670; &nbsp;<strong>Note:</strong> Complimentary RO water available. Packaged water charged extra</div>
     <div class="booking-strip">
       <div class="book-item"><div class="book-label">Format</div><div class="book-value">Table service, seated</div></div>
       <div class="book-item"><div class="book-label">Min – Max</div><div class="book-value">8 – 20 Persons</div></div>
