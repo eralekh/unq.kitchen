@@ -2578,7 +2578,7 @@
       "sections": [
         {
           "name": "Welcome",
-          "instruction": "Any 1 (On Arrival)",
+          "instruction": "",
           "chip": "1 Beverage",
           "items": [
             {
@@ -2676,6 +2676,17 @@
               "note": "",
               "badge": "",
               "subgroup": "sg-mqg8yku8"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mocktails",
+                  "variantId": "mocktails-lemonade"
+                }
+              ],
+              "displayName": "Mocktails – Lemonade",
+              "note": "",
+              "badge": ""
             }
           ],
           "servingQty": "1",
@@ -2690,7 +2701,7 @@
         },
         {
           "name": "Snacks",
-          "instruction": "Any 1 (Prebook)",
+          "instruction": "",
           "chip": "3 Snacks",
           "items": [
             {
@@ -2896,7 +2907,7 @@
             },
             {
               "id": "sg-mqg8zq8j",
-              "label": "Choose Second Snack (Prebook, One Refill)"
+              "label": "Choose Second Snack (Prebook, No Refill)"
             },
             {
               "id": "sg-mqg9006v",
@@ -2937,36 +2948,125 @@
       "description": "The perfect kitty party — starters that keep coming back",
       "idealLabel": "Ideal For",
       "idealValue": "Kitty parties · Birthday lunches · Casual celebrations",
-      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "waterNote": "Complimentary RO water available. Packaged water charged extra",
       "sections": [
         {
           "name": "Welcome",
-          "instruction": "On arrival",
-          "chip": "1 per person",
+          "instruction": "",
+          "chip": "1 Beverage",
           "items": [
             {
               "refs": [
                 {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-mint-mojito"
-                },
+                  "itemId": "tea",
+                  "variantId": "tea-masala"
+                }
+              ],
+              "displayName": "Tea – Masala",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhl6hez"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tea",
+                  "variantId": "tea-lemon"
+                }
+              ],
+              "displayName": "Tea – Lemon",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhl6hez"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "coffee",
+                  "variantId": "coffee-instant"
+                }
+              ],
+              "displayName": "Coffee – Instant",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhl6hez"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soft-drink",
+                  "variantId": "soft-drink-regular"
+                }
+              ],
+              "displayName": "Soft Drink – Regular",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhl6hez"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soft-drink",
+                  "variantId": "soft-drink-masala-flavoured"
+                }
+              ],
+              "displayName": "Soft Drink – Masala / Flavoured",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhl6hez"
+            },
+            {
+              "refs": [
                 {
                   "itemId": "lassi",
                   "variantId": "lassi-punjabi-lassi"
                 }
               ],
-              "displayName": "Mocktail / Lassi",
-              "note": null,
-              "badge": ""
+              "displayName": "Lassi – Punjabi Lassi",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhl6hez"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mocktails",
+                  "variantId": "mocktails-lemonade"
+                }
+              ],
+              "displayName": "Mocktails – Lemonade",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhl6hez"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mocktails",
+                  "variantId": "mocktails-ice-tea"
+                }
+              ],
+              "displayName": "Mocktails – Ice Tea",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhl6hez"
             }
           ],
           "servingQty": "1",
-          "servingRefill": ""
+          "servingRefill": "",
+          "subgroups": [
+            {
+              "id": "sg-mqhl6hez",
+              "label": "Choose one bevarage (On arrival, No Refill)"
+            }
+          ],
+          "choiceType": "individual"
         },
         {
-          "name": "Starters",
-          "instruction": "Choose any two",
-          "chip": "Repeatable x1-2",
+          "name": "Snacks",
+          "instruction": "",
+          "chip": "1 Snack",
+          "choiceType": "party",
           "items": [
             {
               "refs": [
@@ -2975,20 +3075,10 @@
                   "variantId": "pakoda-mix"
                 }
               ],
-              "displayName": "Veg Pakoda",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "momo",
-                  "variantId": "momo-steamed-veg"
-                }
-              ],
-              "displayName": "Steamed Momo",
-              "note": null,
-              "badge": ""
+              "displayName": "Pakoda – Mix",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmcpvx"
             },
             {
               "refs": [
@@ -2997,30 +3087,288 @@
                   "variantId": "french-fries-classic"
                 }
               ],
-              "displayName": "French Fries",
-              "note": null,
-              "badge": ""
+              "displayName": "French Fries – Classic",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmcpvx"
             },
             {
               "refs": [
                 {
-                  "itemId": "nuggets",
-                  "variantId": "nuggets-veg"
+                  "itemId": "french-fries",
+                  "variantId": "french-fries-peri-peri"
                 }
               ],
-              "displayName": "Veg Nuggets",
-              "note": null,
-              "badge": ""
+              "displayName": "French Fries – Peri-Peri",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmcpvx"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "momo",
+                  "variantId": "momo-steamed-veg"
+                }
+              ],
+              "displayName": "Momo – Steamed Veg",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmhymq"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "momo",
+                  "variantId": "momo-fried-momos"
+                }
+              ],
+              "displayName": "Momo – Fried Momos",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmhymq"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-veg"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Veg",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmhymq"
+            }
+          ],
+          "subgroups": [
+            {
+              "id": "sg-mqhmcpvx",
+              "label": "Choose First Snack (Prebook, One Refill)"
+            },
+            {
+              "id": "sg-mqhmhymq",
+              "label": "Choose Second Snack (Prebook, No Refill)"
+            }
+          ]
+        },
+        {
+          "name": "Starters",
+          "instruction": "",
+          "chip": "1 Soup, 1 Starter",
+          "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-veg-clear"
+                }
+              ],
+              "displayName": "Soup – Veg Clear",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhnclm1"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-manchow"
+                }
+              ],
+              "displayName": "Soup – Manchow",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhnclm1"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-hot-sour"
+                }
+              ],
+              "displayName": "Soup – Hot & Sour",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhnclm1"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-lemon-coriander"
+                }
+              ],
+              "displayName": "Soup – Lemon Coriander",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhnclm1"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-roast"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Roast",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmfwcn"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-crispy-corn"
+                }
+              ],
+              "displayName": "Chinese Starter – Crispy Corn",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmfwcn"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chinese-bhel"
+                }
+              ],
+              "displayName": "Chinese Starter – Chinese Bhel",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmfwcn"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chana-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Chana Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmfwcn"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-veg-manchurian"
+                }
+              ],
+              "displayName": "Chinese Starter – Veg Manchurian",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmfwcn"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-gobhi-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Gobhi Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmfwcn"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmfwcn"
             }
           ],
           "servingQty": "1",
-          "servingRefill": "Refill twice"
+          "servingRefill": "Refill twice",
+          "subgroups": [
+            {
+              "id": "sg-mqhnclm1",
+              "label": "Choose Soup (Prebook, No Refill)"
+            },
+            {
+              "id": "sg-mqhmfwcn",
+              "label": "Choose Starter (Prebook, One Refill)"
+            }
+          ],
+          "choiceType": "party"
         },
         {
           "name": "Main",
-          "instruction": "Choose one",
-          "chip": "1 plate",
+          "instruction": "",
+          "chip": "1 Main",
           "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "dosa",
+                  "variantId": "dosa-plain-dosa"
+                }
+              ],
+              "displayName": "Dosa – Plain Dosa",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhopvns"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "dosa",
+                  "variantId": "dosa-classic-masala"
+                }
+              ],
+              "displayName": "Dosa – Classic Masala",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhopvns"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "dosa",
+                  "variantId": "dosa-onion-masala"
+                }
+              ],
+              "displayName": "Dosa – Onion Masala",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhopvns"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "uttapam",
+                  "variantId": "uttapam-plain"
+                }
+              ],
+              "displayName": "Uttapam – Plain",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhopvns"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "uttapam",
+                  "variantId": "uttapam-veg-uttapam"
+                }
+              ],
+              "displayName": "Uttapam – Veg Uttapam",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhopvns"
+            },
             {
               "refs": [
                 {
@@ -3028,9 +3376,34 @@
                   "variantId": "north-indian-breakfast-chhole-bhature"
                 }
               ],
-              "displayName": "Chhole Bhature",
-              "note": null,
-              "badge": ""
+              "displayName": "North Indian Breakfast – Chhole Bhature",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhopvns"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "north-indian-breakfast",
+                  "variantId": "north-indian-breakfast-poori-sabji"
+                }
+              ],
+              "displayName": "North Indian Breakfast – Poori Sabji",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhopvns"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "noodles",
+                  "variantId": "noodles-chowmein"
+                }
+              ],
+              "displayName": "Noodles – Chowmein",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhopvns"
             },
             {
               "refs": [
@@ -3039,9 +3412,10 @@
                   "variantId": "noodles-hakka"
                 }
               ],
-              "displayName": "Veg Hakka Noodles",
-              "note": null,
-              "badge": ""
+              "displayName": "Noodles – Hakka",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhopvns"
             },
             {
               "refs": [
@@ -3050,57 +3424,60 @@
                   "variantId": "fried-rice-veg-fried-rice"
                 }
               ],
-              "displayName": "Veg Fried Rice",
-              "note": null,
-              "badge": ""
+              "displayName": "Fried Rice – Veg Fried Rice",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhopvns"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "fried-rice",
+                  "variantId": "fried-rice-schezwan"
+                }
+              ],
+              "displayName": "Fried Rice – Schezwan",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhopvns"
             }
           ],
           "servingQty": "1 plate",
-          "servingRefill": ""
+          "servingRefill": "",
+          "subgroups": [
+            {
+              "id": "sg-mqhopvns",
+              "label": "Choose Main (Prebook, No Refill)"
+            }
+          ],
+          "choiceType": "party"
         },
         {
           "name": "Dessert",
           "instruction": "",
-          "chip": "2 pcs / person",
+          "chip": "1 Dessert",
           "items": [
             {
               "refs": [
                 {
-                  "itemId": "gulab-jamun",
-                  "variantId": "gulab-jamun-2-pcs"
+                  "itemId": "ice-cream",
+                  "variantId": "ice-cream-single-scoop"
                 }
               ],
-              "displayName": "Gulab Jamun",
-              "note": null,
+              "displayName": "Ice Cream – Single Scoop",
+              "note": "",
               "badge": ""
             }
           ],
           "servingQty": "2",
-          "servingRefill": ""
-        },
-        {
-          "name": "To Close",
-          "instruction": "",
-          "chip": "1 per person",
-          "items": [
+          "servingRefill": "",
+          "choiceType": "party",
+          "subgroups": [
             {
-              "refs": [
-                {
-                  "itemId": "tea",
-                  "variantId": "tea-regular"
-                },
-                {
-                  "itemId": "coffee",
-                  "variantId": "coffee-instant"
-                }
-              ],
-              "displayName": "Tea / Coffee",
-              "note": null,
-              "badge": ""
+              "id": "sg-mqhouglk",
+              "label": "Choose Dessert (Prebook, No Refill)"
             }
-          ],
-          "servingQty": "1",
-          "servingRefill": ""
+          ]
         }
       ],
       "booking": {
@@ -3139,50 +3516,157 @@
       "sections": [
         {
           "name": "Welcome",
-          "instruction": "On arrival",
-          "chip": "1 per person",
+          "instruction": "",
+          "chip": "1 Beverage",
           "items": [
             {
               "refs": [
                 {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-mint-mojito"
+                  "itemId": "tea",
+                  "variantId": "tea-masala"
                 }
               ],
-              "displayName": "Mocktail",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "1",
-          "servingRefill": ""
-        },
-        {
-          "name": "Starters",
-          "instruction": "Two items, repeatable",
-          "chip": "Repeatable x1-2",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "tandoor-starter",
-                  "variantId": "tandoor-starter-paneer-tikka"
-                }
-              ],
-              "displayName": "Paneer Tikka",
-              "note": null,
-              "badge": ""
+              "displayName": "Tea – Masala",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmnvvf"
             },
             {
               "refs": [
                 {
-                  "itemId": "tandoor-starter",
-                  "variantId": "tandoor-starter-soya-chaap-tikka"
+                  "itemId": "tea",
+                  "variantId": "tea-lemon"
                 }
               ],
-              "displayName": "Chaap Tikka",
-              "note": null,
-              "badge": ""
+              "displayName": "Tea – Lemon",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmnvvf"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "coffee",
+                  "variantId": "coffee-instant"
+                }
+              ],
+              "displayName": "Coffee – Instant",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmnvvf"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soft-drink",
+                  "variantId": "soft-drink-regular"
+                }
+              ],
+              "displayName": "Soft Drink – Regular",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmnvvf"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soft-drink",
+                  "variantId": "soft-drink-masala-flavoured"
+                }
+              ],
+              "displayName": "Soft Drink – Masala / Flavoured",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmnvvf"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "lassi",
+                  "variantId": "lassi-punjabi-lassi"
+                }
+              ],
+              "displayName": "Lassi – Punjabi Lassi",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmnvvf"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mocktails",
+                  "variantId": "mocktails-lemonade"
+                }
+              ],
+              "displayName": "Mocktails – Lemonade",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmnvvf"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mocktails",
+                  "variantId": "mocktails-ice-tea"
+                }
+              ],
+              "displayName": "Mocktails – Ice Tea",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmnvvf"
+            }
+          ],
+          "servingQty": "1",
+          "servingRefill": "",
+          "subgroups": [
+            {
+              "id": "sg-mqhmnvvf",
+              "label": "Choose one bevarage (On arrival, No Refill)"
+            }
+          ],
+          "choiceType": "individual"
+        },
+        {
+          "name": "Snacks",
+          "instruction": "",
+          "chip": "1 Snack",
+          "choiceType": "party",
+          "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-mix"
+                }
+              ],
+              "displayName": "Pakoda – Mix",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmqblq"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "french-fries",
+                  "variantId": "french-fries-classic"
+                }
+              ],
+              "displayName": "French Fries – Classic",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmqblq"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "french-fries",
+                  "variantId": "french-fries-peri-peri"
+                }
+              ],
+              "displayName": "French Fries – Peri-Peri",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmqblq"
             },
             {
               "refs": [
@@ -3191,61 +3675,352 @@
                   "variantId": "momo-steamed-veg"
                 }
               ],
-              "displayName": "Steamed Momo",
-              "note": null,
-              "badge": ""
+              "displayName": "Momo – Steamed Veg",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmqitx"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "momo",
+                  "variantId": "momo-fried-momos"
+                }
+              ],
+              "displayName": "Momo – Fried Momos",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmqitx"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "grilled-sandwich",
+                  "variantId": "grilled-sandwich-veg"
+                }
+              ],
+              "displayName": "Grilled Sandwich – Veg",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmqitx"
+            }
+          ],
+          "subgroups": [
+            {
+              "id": "sg-mqhmqblq",
+              "label": "Choose First Snack (Prebook, One Refill)"
+            },
+            {
+              "id": "sg-mqhmqitx",
+              "label": "Choose Second Snack (Prebook, No Refill)"
+            }
+          ]
+        },
+        {
+          "name": "Starters",
+          "instruction": "",
+          "chip": "1 Soup, 2 Starter",
+          "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-manchow"
+                }
+              ],
+              "displayName": "Soup – Manchow",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmuhk9"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-lemon-coriander"
+                }
+              ],
+              "displayName": "Soup – Lemon Coriander",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmuhk9"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-hot-sour"
+                }
+              ],
+              "displayName": "Soup – Hot & Sour",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmuhk9"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-veg-clear"
+                }
+              ],
+              "displayName": "Soup – Veg Clear",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmuhk9"
             },
             {
               "refs": [
                 {
                   "itemId": "chinese-starter",
-                  "variantId": "chinese-starter-veg-manchurian"
+                  "variantId": "chinese-starter-corn-roast"
                 }
               ],
-              "displayName": "Chinese Starter",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "1",
-          "servingRefill": "Refill twice"
-        },
-        {
-          "name": "Live Counter",
-          "instruction": "Choose one",
-          "chip": "Unlimited",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "live-counter",
-                  "variantId": "lc-gupchup"
-                }
-              ],
-              "displayName": "Live Counter – Gupchup",
-              "note": null,
-              "badge": ""
+              "displayName": "Chinese Starter – Corn Roast",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtlke"
             },
             {
               "refs": [
                 {
-                  "itemId": "live-counter",
-                  "variantId": "lc-bhel"
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-crispy-corn"
                 }
               ],
-              "displayName": "Live Counter – Bhel",
-              "note": null,
-              "badge": ""
+              "displayName": "Chinese Starter – Crispy Corn",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtlke"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chinese-bhel"
+                }
+              ],
+              "displayName": "Chinese Starter – Chinese Bhel",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtlke"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chana-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Chana Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtlke"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-gobhi-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Gobhi Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtlke"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtlke"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-paneer-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Paneer Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtqyv"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-soya-chaap-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Soya Chaap Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtqyv"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-paneer-65"
+                }
+              ],
+              "displayName": "Chinese Starter – Paneer 65",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtqyv"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-honey-chilli-potato"
+                }
+              ],
+              "displayName": "Chinese Starter – Honey Chilli Potato",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtqyv"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-mushroom-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Mushroom Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtqyv"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-dahi-kebab"
+                }
+              ],
+              "displayName": "Tandoor Starter – Dahi Kebab",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtqyv"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-veg-kurkure-kebab"
+                }
+              ],
+              "displayName": "Tandoor Starter – Veg Kurkure Kebab",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtqyv"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-hara-bhara-kebab"
+                }
+              ],
+              "displayName": "Tandoor Starter – Hara Bhara Kebab",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtqyv"
             }
           ],
-          "servingQty": "Unlimited",
-          "servingRefill": ""
+          "servingQty": "1",
+          "servingRefill": "Refill twice",
+          "subgroups": [
+            {
+              "id": "sg-mqhmuhk9",
+              "label": "Choose Soup (Prebook, No Refill)"
+            },
+            {
+              "id": "sg-mqhmtlke",
+              "label": "Choose First Starter (Prebook, One Refill)"
+            },
+            {
+              "id": "sg-mqhmtqyv",
+              "label": "Choose Second Starter (Prebook, One Refill)"
+            }
+          ],
+          "choiceType": "party"
         },
         {
           "name": "Main",
-          "instruction": "Choose one",
-          "chip": "1 plate",
+          "instruction": "",
+          "chip": "1 Main",
           "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "dosa",
+                  "variantId": "dosa-plain-dosa"
+                }
+              ],
+              "displayName": "Dosa – Plain Dosa",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "dosa",
+                  "variantId": "dosa-classic-masala"
+                }
+              ],
+              "displayName": "Dosa – Classic Masala",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "dosa",
+                  "variantId": "dosa-onion-masala"
+                }
+              ],
+              "displayName": "Dosa – Onion Masala",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "uttapam",
+                  "variantId": "uttapam-plain"
+                }
+              ],
+              "displayName": "Uttapam – Plain",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "uttapam",
+                  "variantId": "uttapam-veg-uttapam"
+                }
+              ],
+              "displayName": "Uttapam – Veg Uttapam",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
+            },
             {
               "refs": [
                 {
@@ -3253,50 +4028,107 @@
                   "variantId": "north-indian-breakfast-chhole-bhature"
                 }
               ],
-              "displayName": "Chhole Bhature",
-              "note": null,
-              "badge": ""
+              "displayName": "North Indian Breakfast – Chhole Bhature",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "north-indian-breakfast",
+                  "variantId": "north-indian-breakfast-poori-sabji"
+                }
+              ],
+              "displayName": "North Indian Breakfast – Poori Sabji",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
             },
             {
               "refs": [
                 {
                   "itemId": "noodles",
-                  "variantId": "noodles-schezwan"
+                  "variantId": "noodles-chowmein"
                 }
               ],
-              "displayName": "Schezwan Noodles",
-              "note": null,
-              "badge": ""
+              "displayName": "Noodles – Chowmein",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "noodles",
+                  "variantId": "noodles-hakka"
+                }
+              ],
+              "displayName": "Noodles – Hakka",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
             },
             {
               "refs": [
                 {
                   "itemId": "fried-rice",
-                  "variantId": "fried-rice-paneer-fried-rice"
+                  "variantId": "fried-rice-veg-fried-rice"
                 }
               ],
-              "displayName": "Paneer Fried Rice",
-              "note": null,
-              "badge": ""
+              "displayName": "Fried Rice – Veg Fried Rice",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "fried-rice",
+                  "variantId": "fried-rice-schezwan"
+                }
+              ],
+              "displayName": "Fried Rice – Schezwan",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
             }
           ],
           "servingQty": "1 plate",
-          "servingRefill": ""
+          "servingRefill": "",
+          "subgroups": [
+            {
+              "id": "sg-mqhoqhr2",
+              "label": "Choose Main (Prebook, No Refill)"
+            }
+          ],
+          "choiceType": "party"
         },
         {
           "name": "Dessert",
           "instruction": "",
-          "chip": "At close",
+          "chip": "1 Dessert",
           "items": [
             {
               "refs": [
                 {
-                  "itemId": "gulab-jamun",
-                  "variantId": "gulab-jamun-2-pcs"
+                  "itemId": "ice-cream",
+                  "variantId": "ice-cream-single-scoop"
                 }
               ],
-              "displayName": "Gulab Jamun",
-              "note": null,
+              "displayName": "Ice Cream – Single Scoop",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "gulab-jamun",
+                  "variantId": "gulab-jamun-1-pc-with-ice-cream"
+                }
+              ],
+              "displayName": "Gulab Jamun – 1 Pc With Ice Cream",
+              "note": "",
               "badge": ""
             },
             {
@@ -3306,37 +4138,20 @@
                   "variantId": "gulab-jamun-2-pcs"
                 }
               ],
-              "displayName": "Kheer",
-              "note": null,
+              "displayName": "Gulab Jamun – 2 Pcs",
+              "note": "",
               "badge": ""
             }
           ],
           "servingQty": "1",
-          "servingRefill": ""
-        },
-        {
-          "name": "To Close",
-          "instruction": "",
-          "chip": "1 per person",
-          "items": [
+          "servingRefill": "",
+          "choiceType": "party",
+          "subgroups": [
             {
-              "refs": [
-                {
-                  "itemId": "tea",
-                  "variantId": "tea-regular"
-                },
-                {
-                  "itemId": "coffee",
-                  "variantId": "coffee-instant"
-                }
-              ],
-              "displayName": "Tea / Coffee",
-              "note": null,
-              "badge": ""
+              "id": "sg-mqhouzlb",
+              "label": "Choose Dessert (Prebook, No Refill)"
             }
-          ],
-          "servingQty": "1",
-          "servingRefill": ""
+          ]
         }
       ],
       "booking": {
