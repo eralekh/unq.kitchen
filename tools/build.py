@@ -43,14 +43,13 @@ def _ref_names(ref, catalog):
     return item_name, variant_name
 
 def group_section_items(items, catalog):
-    """Turn a section's `items` list into render units, deriving names from
-    the catalog instead of relying on hand-typed `displayName`.
+    """Turn a section's `items` list into render units, grouping all variants
+    of the same catalog item together (including non-consecutive ones).
 
-    Consecutive items that are single-ref variants of the SAME catalog item
-    (e.g. Tea – Masala, Tea – Black, Tea – Lemon) are collapsed into one
-    'group' unit: a label (the item name, e.g. "Tea") plus one option per
-    variant (e.g. "Masala", "Black", "Lemon") — each option becomes its own
-    selectable checkbox/chip, but the item name is shown only once.
+    All single-ref items that are variants of the SAME catalog item
+    (e.g. Pakoda – Onion, Pakoda – Potato, Pakoda – Gobhi) are collapsed into
+    one 'group' unit: a label (the item name, e.g. "Pakoda") plus one option per
+    variant — the item name is shown only once even when variants are not adjacent.
 
     Returns a list of:
       {'kind':'single', 'name':..., 'note':..., 'badge':...}
@@ -59,31 +58,23 @@ def group_section_items(items, catalog):
     Multi-ref combo items (e.g. "Tea / Coffee") keep their curated
     `displayName` as-is, since that phrasing is hand-picked, not derivable."""
     out = []
-    i, n = 0, len(items)
-    while i < n:
-        it = items[i]
+    seen_ids = {}  # itemId -> index in out (for group items)
+    for it in items:
         refs = it.get('refs') or []
         names = _ref_names(refs[0], catalog) if len(refs) == 1 else None
         if names and names[1]:
-            item_name, variant_name = names
-            group = [{'name': variant_name, 'note': it.get('note'), 'badge': it.get('badge')}]
-            j = i + 1
-            while j < n:
-                refs2 = items[j].get('refs') or []
-                names2 = _ref_names(refs2[0], catalog) if len(refs2) == 1 else None
-                if names2 and names2[1] and refs2[0].get('itemId') == refs[0].get('itemId'):
-                    group.append({'name': names2[1], 'note': items[j].get('note'), 'badge': items[j].get('badge')})
-                    j += 1
-                    continue
-                break
-            out.append({'kind': 'group', 'label': item_name, 'options': group})
-            i = j
+            item_id = refs[0].get('itemId')
+            opt = {'name': names[1], 'note': it.get('note'), 'badge': it.get('badge')}
+            if item_id in seen_ids:
+                out[seen_ids[item_id]]['options'].append(opt)
+            else:
+                seen_ids[item_id] = len(out)
+                out.append({'kind': 'group', 'label': names[0], 'options': [opt]})
             continue
         if names:
             out.append({'kind': 'single', 'name': names[0], 'note': it.get('note'), 'badge': it.get('badge')})
         else:
             out.append({'kind': 'single', 'name': it.get('displayName') or '', 'note': it.get('note'), 'badge': it.get('badge')})
-        i += 1
     return out
 
 def section_render_blocks(section, catalog):
@@ -109,7 +100,7 @@ def section_render_blocks(section, catalog):
         pid = it.get('poolId')   or None
         if sg not in buckets:
             buckets[sg] = {'non_pool': [], 'pools': {}}
-        if pid:
+        if pid and pid in pools_map:
             buckets[sg]['pools'].setdefault(pid, []).append(it)
         else:
             buckets[sg]['non_pool'].append(it)

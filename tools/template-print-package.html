@@ -1215,5 +1215,53 @@ body.layout-airy .chip-badge { font-size:7px; font-family:'Inter',Arial,sans-ser
   });
 })();
 </script>
+<script>
+/* Auto-fit: scale .content so it never overflows the A4 page boundary.
+   Runs on load (page is already 297mm on screen) and again on beforeprint. */
+(function(){
+  var MM_PX = 96 / 25.4; // CSS px per mm
+  var PAGE_INNER = (297 - 11 - 9) * MM_PX; // 277mm in CSS px ≈ 1047px
+
+  function autoFit(){
+    document.querySelectorAll('.page').forEach(function(page){
+      var content = page.querySelector('.content');
+      if (!content) return;
+      // Reset any previous scale so scrollHeight measures natural size
+      content.style.transform = '';
+      content.style.transformOrigin = '';
+      void page.offsetHeight; // force reflow
+      // Height taken by siblings below .content (booking-note, footer, page-num)
+      var belowH = 0, sib = content.nextElementSibling;
+      while (sib) { belowH += sib.getBoundingClientRect().height; sib = sib.nextElementSibling; }
+      var available = PAGE_INNER - belowH;
+      var needed = content.scrollHeight;
+      if (needed > available + 1) {
+        var scale = (available / needed) * 0.99; // 1% safety buffer
+        content.style.transformOrigin = 'top left';
+        content.style.transform = 'scale(' + scale.toFixed(4) + ')';
+      }
+    });
+  }
+  function clearFit(){
+    document.querySelectorAll('.page .content').forEach(function(el){
+      el.style.transform = ''; el.style.transformOrigin = '';
+    });
+  }
+
+  // Run immediately on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', autoFit);
+  } else {
+    autoFit();
+  }
+  // Re-run when layout template is switched
+  document.addEventListener('click', function(e){
+    if (e.target.closest('[data-tmpl]')) setTimeout(autoFit, 80);
+  });
+  // Also run on print in case browser re-lays out
+  window.addEventListener('beforeprint', autoFit);
+  window.addEventListener('afterprint', clearFit);
+})();
+</script>
 </body>
 </html>

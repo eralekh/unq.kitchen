@@ -4190,60 +4190,12 @@
       "description": "A proper buffet spread — warm, wholesome and complete",
       "idealLabel": "Ideal For",
       "idealValue": "Birthdays · Office lunches · Family gatherings · Casual parties",
-      "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
+      "waterNote": "Complimentary RO water available. Packaged water charged extra",
       "sections": [
         {
-          "name": "Welcome",
-          "instruction": "On arrival",
-          "chip": "1 per person",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "lassi",
-                  "variantId": "lassi-punjabi-lassi"
-                },
-                {
-                  "itemId": "butter-milk",
-                  "variantId": "butter-milk-masala"
-                }
-              ],
-              "displayName": "Lassi / Buttermilk",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "1",
-          "servingRefill": ""
-        },
-        {
-          "name": "Soup",
-          "instruction": "Choose one",
-          "chip": "Served once",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "soup",
-                  "variantId": "soup-cream-of-tomato"
-                },
-                {
-                  "itemId": "soup",
-                  "variantId": "soup-sweet-corn"
-                }
-              ],
-              "displayName": "Tomato Soup / Sweet Corn Soup",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Served once",
-          "servingRefill": ""
-        },
-        {
           "name": "Starters",
-          "instruction": "Pre-portioned",
-          "chip": "~3 pcs / person",
+          "instruction": "",
+          "chip": "1 Soup, 2 Starter",
           "items": [
             {
               "refs": [
@@ -4269,7 +4221,22 @@
             }
           ],
           "servingQty": "2",
-          "servingRefill": ""
+          "servingRefill": "",
+          "choiceType": "party",
+          "subgroups": [
+            {
+              "id": "sg-mqhvw4q6",
+              "label": "Choose Soup (Prebook, No Refill)"
+            },
+            {
+              "id": "sg-mqhvw52o",
+              "label": "Choose First Starter (Prebook, One Refill)"
+            },
+            {
+              "id": "sg-mqhvwr0f",
+              "label": "Choose Second Starter (Prebook, One Refill)"
+            }
+          ]
         },
         {
           "name": "Main",
@@ -4336,77 +4303,11 @@
           "servingRefill": ""
         },
         {
-          "name": "Breads",
-          "instruction": "Tandoor throughout",
-          "chip": "Unlimited",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "roti",
-                  "variantId": "roti-tawa-roti"
-                }
-              ],
-              "displayName": "Roti",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "naan",
-                  "variantId": "naan-plain-naan"
-                }
-              ],
-              "displayName": "Naan",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Unlimited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Rice & Sides",
+          "name": "Accompaniments",
           "instruction": "",
-          "chip": "Served once",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "rice-2",
-                  "variantId": "rice-2-jeera-rice"
-                }
-              ],
-              "displayName": "Jeera Rice",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-mix-raita"
-                }
-              ],
-              "displayName": "Raita",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-masala-papad"
-                }
-              ],
-              "displayName": "Papad",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Served once",
-          "servingRefill": ""
+          "chip": "",
+          "choiceType": "",
+          "items": []
         },
         {
           "name": "Dessert",
@@ -4427,6 +4328,13 @@
           ],
           "servingQty": "Unlimited",
           "servingRefill": ""
+        },
+        {
+          "name": "Bevarages",
+          "instruction": "",
+          "chip": "",
+          "choiceType": "",
+          "items": []
         }
       ],
       "booking": {
