@@ -437,6 +437,12 @@ async function save(){
     if(dirty){const r=await fetch('/api/data',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(DATA)});const j=await r.json();if(!j.ok)throw new Error(j.error||j.build||'data build failed');dirty=false;}
     if(dirtyL){const r=await fetch('/api/layout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(LAYOUT)});const j=await r.json();if(!j.ok)throw new Error(j.error||j.build||'layout build failed');dirtyL=false;}
     status('Saved & rebuilt all outputs ✓','ok');
+    // Append a fresh timestamp to every preview link so the browser never
+    // serves a 304-cached version of the just-rebuilt output files.
+    const _cbv='?v='+Date.now();
+    document.querySelectorAll('.previews a').forEach(a=>{
+      a.setAttribute('href',a.getAttribute('href').replace(/\?v=\d+/,'')+_cbv);
+    });
   }catch(e){status('Save failed: '+e.message,'err');$('#save').disabled=false;}
 }
 $('#save').addEventListener('click',save);
@@ -870,7 +876,15 @@ function renderCoverage(){
     });
   });
   h+='</tbody></table></div>';
+  // Preserve scroll positions across re-render
+  const _mainSt=$('#pkgmain').scrollTop;
+  const _wrap=$('#pkgmain').querySelector('.cov-wrap');
+  const _wrapSl=_wrap?_wrap.scrollLeft:0;
+  const _wrapSt=_wrap?_wrap.scrollTop:0;
   $('#pkgmain').innerHTML=h;
+  $('#pkgmain').scrollTop=_mainSt;
+  const _newWrap=$('#pkgmain').querySelector('.cov-wrap');
+  if(_newWrap){_newWrap.scrollLeft=_wrapSl;_newWrap.scrollTop=_wrapSt;}
 
   // collapse-all / expand-all toolbar
   $('#pkgmain').querySelectorAll('[data-covact]').forEach(b=>{

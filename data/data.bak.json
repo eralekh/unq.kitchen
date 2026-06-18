@@ -2686,7 +2686,8 @@
               ],
               "displayName": "Mocktails – Lemonade",
               "note": "",
-              "badge": ""
+              "badge": "",
+              "subgroup": "sg-mqg8yku8"
             }
           ],
           "servingQty": "1",
@@ -3006,47 +3007,11 @@
             {
               "refs": [
                 {
-                  "itemId": "soft-drink",
-                  "variantId": "soft-drink-masala-flavoured"
-                }
-              ],
-              "displayName": "Soft Drink – Masala / Flavoured",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhl6hez"
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "lassi",
-                  "variantId": "lassi-punjabi-lassi"
-                }
-              ],
-              "displayName": "Lassi – Punjabi Lassi",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhl6hez"
-            },
-            {
-              "refs": [
-                {
                   "itemId": "mocktails",
                   "variantId": "mocktails-lemonade"
                 }
               ],
               "displayName": "Mocktails – Lemonade",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhl6hez"
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-ice-tea"
-                }
-              ],
-              "displayName": "Mocktails – Ice Tea",
               "note": "",
               "badge": "",
               "subgroup": "sg-mqhl6hez"
@@ -3068,18 +3033,6 @@
           "chip": "1 Snack",
           "choiceType": "party",
           "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "pakoda",
-                  "variantId": "pakoda-mix"
-                }
-              ],
-              "displayName": "Pakoda – Mix",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhmcpvx"
-            },
             {
               "refs": [
                 {
@@ -3107,48 +3060,56 @@
             {
               "refs": [
                 {
-                  "itemId": "momo",
-                  "variantId": "momo-steamed-veg"
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-gobhi"
                 }
               ],
-              "displayName": "Momo – Steamed Veg",
+              "displayName": "Pakoda – Gobhi",
               "note": "",
               "badge": "",
-              "subgroup": "sg-mqhmhymq"
+              "subgroup": "sg-mqhmcpvx"
             },
             {
               "refs": [
                 {
-                  "itemId": "momo",
-                  "variantId": "momo-fried-momos"
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-onion"
                 }
               ],
-              "displayName": "Momo – Fried Momos",
+              "displayName": "Pakoda – Onion",
               "note": "",
               "badge": "",
-              "subgroup": "sg-mqhmhymq"
+              "subgroup": "sg-mqhmcpvx"
             },
             {
               "refs": [
                 {
-                  "itemId": "grilled-sandwich",
-                  "variantId": "grilled-sandwich-veg"
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-potato"
                 }
               ],
-              "displayName": "Grilled Sandwich – Veg",
+              "displayName": "Pakoda – Potato",
               "note": "",
               "badge": "",
-              "subgroup": "sg-mqhmhymq"
+              "subgroup": "sg-mqhmcpvx"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pakoda",
+                  "variantId": "pakoda-mix"
+                }
+              ],
+              "displayName": "Pakoda – Mix",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmcpvx"
             }
           ],
           "subgroups": [
             {
               "id": "sg-mqhmcpvx",
               "label": "Choose First Snack (Prebook, One Refill)"
-            },
-            {
-              "id": "sg-mqhmhymq",
-              "label": "Choose Second Snack (Prebook, No Refill)"
             }
           ]
         },
@@ -3466,8 +3427,7 @@
               ],
               "displayName": "Ice Cream – Single Scoop",
               "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhouglk"
+              "badge": ""
             }
           ],
           "servingQty": "2",
@@ -3477,6 +3437,25 @@
             {
               "id": "sg-mqhouglk",
               "label": "Choose Dessert (Prebook, No Refill)"
+            }
+          ]
+        },
+        {
+          "name": "Live Counter",
+          "instruction": "1 Live (Optional)",
+          "chip": "+50 Rs",
+          "choiceType": "",
+          "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "live-counter",
+                  "variantId": "lc-gupchup"
+                }
+              ],
+              "displayName": "Live Counter – Gupchup",
+              "note": "",
+              "badge": ""
             }
           ]
         }
@@ -3510,7 +3489,7 @@
       "number": 4,
       "name": "Kitty Premium",
       "price": 349,
-      "description": "Premium starters, a live counter — the kitty party they will talk about",
+      "description": "Premium starters — the kitty party they will talk about",
       "idealLabel": "Ideal For",
       "idealValue": "Kitty parties · Small birthdays · Ladies celebrations",
       "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
@@ -3571,47 +3550,11 @@
             {
               "refs": [
                 {
-                  "itemId": "soft-drink",
-                  "variantId": "soft-drink-masala-flavoured"
-                }
-              ],
-              "displayName": "Soft Drink – Masala / Flavoured",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhmnvvf"
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "lassi",
-                  "variantId": "lassi-punjabi-lassi"
-                }
-              ],
-              "displayName": "Lassi – Punjabi Lassi",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhmnvvf"
-            },
-            {
-              "refs": [
-                {
                   "itemId": "mocktails",
                   "variantId": "mocktails-lemonade"
                 }
               ],
               "displayName": "Mocktails – Lemonade",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhmnvvf"
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-ice-tea"
-                }
-              ],
-              "displayName": "Mocktails – Ice Tea",
               "note": "",
               "badge": "",
               "subgroup": "sg-mqhmnvvf"
@@ -3630,7 +3573,7 @@
         {
           "name": "Snacks",
           "instruction": "",
-          "chip": "1 Snack",
+          "chip": "2 Snacks",
           "choiceType": "party",
           "items": [
             {
@@ -3668,52 +3611,12 @@
               "note": "",
               "badge": "",
               "subgroup": "sg-mqhmqblq"
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "momo",
-                  "variantId": "momo-steamed-veg"
-                }
-              ],
-              "displayName": "Momo – Steamed Veg",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhmqitx"
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "momo",
-                  "variantId": "momo-fried-momos"
-                }
-              ],
-              "displayName": "Momo – Fried Momos",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhmqitx"
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "grilled-sandwich",
-                  "variantId": "grilled-sandwich-veg"
-                }
-              ],
-              "displayName": "Grilled Sandwich – Veg",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhmqitx"
             }
           ],
           "subgroups": [
             {
               "id": "sg-mqhmqblq",
               "label": "Choose First Snack (Prebook, One Refill)"
-            },
-            {
-              "id": "sg-mqhmqitx",
-              "label": "Choose Second Snack (Prebook, No Refill)"
             }
           ]
         },
@@ -3937,6 +3840,18 @@
               "note": "",
               "badge": "",
               "subgroup": "sg-mqhmtqyv"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-veg-manchurian"
+                }
+              ],
+              "displayName": "Chinese Starter – Veg Manchurian",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhmtqyv"
             }
           ],
           "servingQty": "1",
@@ -4093,6 +4008,30 @@
               "note": "",
               "badge": "",
               "subgroup": "sg-mqhoqhr2"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pulav",
+                  "variantId": "pulav-veg-pulav"
+                }
+              ],
+              "displayName": "Pulav – Veg Pulav",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "biryani",
+                  "variantId": "biryani-veg-biryani"
+                }
+              ],
+              "displayName": "Biryani – Veg Biryani",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhoqhr2"
             }
           ],
           "servingQty": "1 plate",
@@ -4113,35 +4052,23 @@
             {
               "refs": [
                 {
-                  "itemId": "ice-cream",
-                  "variantId": "ice-cream-single-scoop"
-                }
-              ],
-              "displayName": "Ice Cream – Single Scoop",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhouzlb"
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "gulab-jamun",
-                  "variantId": "gulab-jamun-1-pc-with-ice-cream"
-                }
-              ],
-              "displayName": "Gulab Jamun – 1 Pc With Ice Cream",
-              "note": "",
-              "badge": "",
-              "subgroup": "sg-mqhouzlb"
-            },
-            {
-              "refs": [
-                {
                   "itemId": "gulab-jamun",
                   "variantId": "gulab-jamun-2-pcs"
                 }
               ],
               "displayName": "Gulab Jamun – 2 Pcs",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhouzlb"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "ice-cream",
+                  "variantId": "ice-cream-single-scoop"
+                }
+              ],
+              "displayName": "Ice Cream – Single Scoop",
               "note": "",
               "badge": "",
               "subgroup": "sg-mqhouzlb"
@@ -4154,6 +4081,56 @@
             {
               "id": "sg-mqhouzlb",
               "label": "Choose Dessert (Prebook, No Refill)"
+            }
+          ]
+        },
+        {
+          "name": "Live Counter",
+          "instruction": "1 Live (Optional)",
+          "chip": "+50 Rs",
+          "choiceType": "party",
+          "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "live-counter",
+                  "variantId": "lc-gupchup"
+                }
+              ],
+              "displayName": "Live Counter – Gupchup",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhy5pdb"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "live-counter",
+                  "variantId": "lc-bhel"
+                }
+              ],
+              "displayName": "Live Counter – Bhel",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhy5pdb"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "live-counter",
+                  "variantId": "lc-chaat"
+                }
+              ],
+              "displayName": "Live Counter – Chaat",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhy5pdb"
+            }
+          ],
+          "subgroups": [
+            {
+              "id": "sg-mqhy5pdb",
+              "label": "Choose One Live Counter (Prebook)"
             }
           ]
         }
@@ -4195,29 +4172,139 @@
         {
           "name": "Starters",
           "instruction": "",
-          "chip": "1 Soup, 2 Starter",
+          "chip": "1 Soup, 1 Starter",
           "items": [
             {
               "refs": [
                 {
-                  "itemId": "pakoda",
-                  "variantId": "pakoda-mix"
+                  "itemId": "soup",
+                  "variantId": "soup-manchow"
                 }
               ],
-              "displayName": "Veg Pakoda",
-              "note": null,
-              "badge": ""
+              "displayName": "Soup – Manchow",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvw4q6"
             },
             {
               "refs": [
                 {
-                  "itemId": "momo",
-                  "variantId": "momo-steamed-veg"
+                  "itemId": "soup",
+                  "variantId": "soup-hot-sour"
                 }
               ],
-              "displayName": "Steamed Momo",
-              "note": null,
-              "badge": ""
+              "displayName": "Soup – Hot & Sour",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvw4q6"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-lemon-coriander"
+                }
+              ],
+              "displayName": "Soup – Lemon Coriander",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvw4q6"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-veg-clear"
+                }
+              ],
+              "displayName": "Soup – Veg Clear",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvw4q6"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-crispy-corn"
+                }
+              ],
+              "displayName": "Chinese Starter – Crispy Corn",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvw52o"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-roast"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Roast",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvw52o"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvw52o"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-gobhi-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Gobhi Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvw52o"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chinese-bhel"
+                }
+              ],
+              "displayName": "Chinese Starter – Chinese Bhel",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvw52o"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chana-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Chana Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvw52o"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-veg-manchurian"
+                }
+              ],
+              "displayName": "Chinese Starter – Veg Manchurian",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvw52o"
             }
           ],
           "servingQty": "2",
@@ -4226,19 +4313,67 @@
           "subgroups": [
             {
               "id": "sg-mqhvw4q6",
-              "label": "Choose Soup (Prebook, No Refill)"
+              "label": "Choose Soup (Prebook, Buffet)"
             },
             {
               "id": "sg-mqhvw52o",
-              "label": "Choose First Starter (Prebook, One Refill)"
+              "label": "Choose One Starter (Prebook, Buffet)"
             }
           ]
         },
         {
           "name": "Main",
-          "instruction": "Choose two sabzis",
-          "chip": "Limited",
+          "instruction": "",
+          "chip": "",
           "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-garden-green-salad"
+                }
+              ],
+              "displayName": "Accompaniments – Garden Green Salad",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi19wdz"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-fry-papad"
+                }
+              ],
+              "displayName": "Accompaniments – Fry Papad",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi19wdz"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-boondi-raita"
+                }
+              ],
+              "displayName": "Accompaniments – Boondi Raita",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi19wdz"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-peanut-fry"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Peanut Fry",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvz83d"
+            },
             {
               "refs": [
                 {
@@ -4246,20 +4381,22 @@
                   "variantId": "aloo-jeera-aloo"
                 }
               ],
-              "displayName": "Aloo Jeera",
-              "note": null,
-              "badge": ""
+              "displayName": "Aloo – Jeera Aloo",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvz83d"
             },
             {
               "refs": [
                 {
-                  "itemId": "bhindi",
-                  "variantId": "bhindi-bhindi-masala"
+                  "itemId": "aloo",
+                  "variantId": "aloo-bhujiya-aloo"
                 }
               ],
-              "displayName": "Bhindi Masala",
-              "note": null,
-              "badge": ""
+              "displayName": "Aloo – Bhujiya Aloo",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqhvz83d"
             },
             {
               "refs": [
@@ -4268,20 +4405,46 @@
                   "variantId": "chana-chana-masala"
                 }
               ],
-              "displayName": "Chana Masala",
-              "note": null,
-              "badge": ""
+              "displayName": "Chana – Chana Masala",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1b9sm"
             },
             {
               "refs": [
                 {
-                  "itemId": "seasonal",
-                  "variantId": "seasonal-seasonal-veg-bhaji"
+                  "itemId": "sev",
+                  "variantId": "sev-sev-masala"
                 }
               ],
-              "displayName": "Seasonal Veg",
-              "note": null,
-              "badge": ""
+              "displayName": "Sev – Sev Masala",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1b9sm"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "sev",
+                  "variantId": "sev-sev-tamatar"
+                }
+              ],
+              "displayName": "Sev – Sev Tamatar",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1b9sm"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "daal",
+                  "variantId": "daal-daal-fry-jeera"
+                }
+              ],
+              "displayName": "Daal – Daal Fry / Jeera",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1iqa0"
             },
             {
               "refs": [
@@ -4290,20 +4453,68 @@
                   "variantId": "daal-daal-tadka"
                 }
               ],
-              "displayName": "Dal Tadka",
-              "note": null,
+              "displayName": "Daal – Daal Tadka",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1iqa0"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-steam-rice"
+                }
+              ],
+              "displayName": "Rice – Steam Rice",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1iqa0"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-jeera-rice"
+                }
+              ],
+              "displayName": "Rice – Jeera Rice",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1iqa0"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pulav",
+                  "variantId": "pulav-veg-pulav"
+                }
+              ],
+              "displayName": "Pulav – Veg Pulav",
+              "note": "",
               "badge": ""
             }
           ],
           "servingQty": "Limited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Accompaniments",
-          "instruction": "",
-          "chip": "",
-          "choiceType": "",
-          "items": []
+          "servingRefill": "",
+          "choiceType": "party",
+          "subgroups": [
+            {
+              "id": "sg-mqi19wdz",
+              "label": "Accompaniments (Fixed)"
+            },
+            {
+              "id": "sg-mqhvz83d",
+              "label": "Choose Dry Veg (Prebook)"
+            },
+            {
+              "id": "sg-mqi1b9sm",
+              "label": "Choose Curry (Prebook)"
+            },
+            {
+              "id": "sg-mqi1iqa0",
+              "label": "Choose Rice - Daal (Prebook)"
+            }
+          ]
         },
         {
           "name": "Dessert",
@@ -4313,24 +4524,17 @@
             {
               "refs": [
                 {
-                  "itemId": "gulab-jamun",
-                  "variantId": "gulab-jamun-2-pcs"
+                  "itemId": "ice-cream",
+                  "variantId": "ice-cream-single-scoop"
                 }
               ],
-              "displayName": "Gulab Jamun",
-              "note": null,
+              "displayName": "Ice Cream – Single Scoop",
+              "note": "",
               "badge": ""
             }
           ],
           "servingQty": "Unlimited",
           "servingRefill": ""
-        },
-        {
-          "name": "Bevarages",
-          "instruction": "",
-          "chip": "",
-          "choiceType": "",
-          "items": []
         }
       ],
       "booking": {
@@ -4368,110 +4572,156 @@
       "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
       "sections": [
         {
-          "name": "Welcome",
-          "instruction": "On arrival",
-          "chip": "1 per person",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-mint-mojito"
-                }
-              ],
-              "displayName": "Mocktail",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "1",
-          "servingRefill": ""
-        },
-        {
-          "name": "Soup",
-          "instruction": "Choose one",
-          "chip": "Served once",
+          "name": "Starters",
+          "instruction": "",
+          "chip": "1 Soup, 1 Starter",
           "items": [
             {
               "refs": [
                 {
                   "itemId": "soup",
-                  "variantId": "soup-cream-of-tomato"
-                },
+                  "variantId": "soup-manchow"
+                }
+              ],
+              "displayName": "Soup – Manchow",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1qj98"
+            },
+            {
+              "refs": [
                 {
                   "itemId": "soup",
                   "variantId": "soup-hot-sour"
                 }
               ],
-              "displayName": "Tomato Soup / Hot & Sour",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Served once",
-          "servingRefill": ""
-        },
-        {
-          "name": "Starters",
-          "instruction": "Limited quantity",
-          "chip": "Limited",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "tandoor-starter",
-                  "variantId": "tandoor-starter-paneer-tikka"
-                }
-              ],
-              "displayName": "Paneer Tikka",
-              "note": null,
-              "badge": ""
+              "displayName": "Soup – Hot & Sour",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1qj98"
             },
             {
               "refs": [
                 {
-                  "itemId": "tandoor-starter",
-                  "variantId": "tandoor-starter-soya-chaap-tikka"
+                  "itemId": "soup",
+                  "variantId": "soup-lemon-coriander"
                 }
               ],
-              "displayName": "Chaap Tikka",
-              "note": null,
-              "badge": ""
+              "displayName": "Soup – Lemon Coriander",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1qj98"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-veg-clear"
+                }
+              ],
+              "displayName": "Soup – Veg Clear",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1qj98"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-gobhi-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Gobhi Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1qjdw"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1qjdw"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-veg-manchurian"
+                }
+              ],
+              "displayName": "Chinese Starter – Veg Manchurian",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1qjdw"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chana-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Chana Chilli",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1qjdw"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chinese-bhel"
+                }
+              ],
+              "displayName": "Chinese Starter – Chinese Bhel",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1qjdw"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-crispy-corn"
+                }
+              ],
+              "displayName": "Chinese Starter – Crispy Corn",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1qjdw"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-roast"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Roast",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi1qjdw"
             }
           ],
           "servingQty": "Limited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Live Counter",
-          "instruction": "Choose one",
-          "chip": "Unlimited",
-          "items": [
+          "servingRefill": "",
+          "choiceType": "party",
+          "subgroups": [
             {
-              "refs": [
-                {
-                  "itemId": "live-counter",
-                  "variantId": "lc-chaat"
-                }
-              ],
-              "displayName": "Live Counter – Chaat",
-              "note": null,
-              "badge": ""
+              "id": "sg-mqi1qj98",
+              "label": "Choose Soup (Prebook, Buffet)"
             },
             {
-              "refs": [
-                {
-                  "itemId": "live-counter",
-                  "variantId": "lc-gupchup"
-                }
-              ],
-              "displayName": "Live Counter – Gupchup",
-              "note": null,
-              "badge": ""
+              "id": "sg-mqi1qjdw",
+              "label": "Choose One Starter (Prebook, Buffet)"
             }
-          ],
-          "servingQty": "Unlimited",
-          "servingRefill": ""
+          ]
         },
         {
           "name": "Main",
@@ -4481,45 +4731,260 @@
             {
               "refs": [
                 {
-                  "itemId": "paneer",
-                  "variantId": "paneer-unq-special-paneer"
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-garden-green-salad"
                 }
               ],
-              "displayName": "Paneer or Chaap — 1 premium",
-              "note": null,
+              "displayName": "Accompaniments – Garden Green Salad",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi3eq7o"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-fry-papad"
+                }
+              ],
+              "displayName": "Accompaniments – Fry Papad",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi3eq7o"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-boondi-raita"
+                }
+              ],
+              "displayName": "Accompaniments – Boondi Raita",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi3eq7o"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-masala"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Masala",
+              "note": "",
+              "badge": "",
+              "subgroup": "sg-mqi3eq7o"
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-do-pyaza"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Do Pyaza",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "seasonal",
-                  "variantId": "seasonal-seasonal-veg-bhaji"
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-peanut-fry"
                 }
               ],
-              "displayName": "2 Regular Sabzis",
-              "note": null,
+              "displayName": "Bhindi – Bhindi Peanut Fry",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-jeera-aloo"
+                }
+              ],
+              "displayName": "Aloo – Jeera Aloo",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-bhujiya-aloo"
+                }
+              ],
+              "displayName": "Aloo – Bhujiya Aloo",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-gobhi-matar-dry"
+                }
+              ],
+              "displayName": "Aloo – Aloo Gobhi Matar Dry",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-matar"
+                }
+              ],
+              "displayName": "Aloo – Aloo Matar",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-dam"
+                }
+              ],
+              "displayName": "Aloo – Aloo Dam",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chana",
+                  "variantId": "chana-chana-masala"
+                }
+              ],
+              "displayName": "Chana – Chana Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "sev",
+                  "variantId": "sev-sev-masala"
+                }
+              ],
+              "displayName": "Sev – Sev Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "sev",
+                  "variantId": "sev-sev-tamatar"
+                }
+              ],
+              "displayName": "Sev – Sev Tamatar",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
                   "itemId": "daal",
-                  "variantId": "daal-daal-makhani"
+                  "variantId": "daal-daal-fry-jeera"
                 }
               ],
-              "displayName": "Dal Makhani",
-              "note": null,
+              "displayName": "Daal – Daal Fry / Jeera",
+              "note": "",
               "badge": ""
-            }
-          ],
-          "servingQty": "Limited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Breads",
-          "instruction": "",
-          "chip": "Unlimited",
-          "items": [
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "daal",
+                  "variantId": "daal-daal-tadka"
+                }
+              ],
+              "displayName": "Daal – Daal Tadka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-matar-paneer"
+                }
+              ],
+              "displayName": "Paneer – Matar Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chaap",
+                  "variantId": "chaap-chaap-masala"
+                }
+              ],
+              "displayName": "Chaap – Chaap Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mushroom",
+                  "variantId": "mushroom-mushroom-masala"
+                }
+              ],
+              "displayName": "Mushroom – Mushroom Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mushroom",
+                  "variantId": "mushroom-mushroom-do-pyaza"
+                }
+              ],
+              "displayName": "Mushroom – Mushroom Do Pyaza",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "corn",
+                  "variantId": "corn-corn-masala"
+                }
+              ],
+              "displayName": "Corn – Corn Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mix",
+                  "variantId": "mix-mix-veg"
+                }
+              ],
+              "displayName": "Mix – Mix Veg",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mix",
+                  "variantId": "mix-mix-veg-dry"
+                }
+              ],
+              "displayName": "Mix – Mix Veg Dry",
+              "note": "",
+              "badge": ""
+            },
             {
               "refs": [
                 {
@@ -4527,81 +4992,76 @@
                   "variantId": "roti-tandoori-roti"
                 }
               ],
-              "displayName": "Roti",
-              "note": null,
+              "displayName": "Roti – Tandoori Roti",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "naan",
-                  "variantId": "naan-butter-naan"
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-steam-rice"
                 }
               ],
-              "displayName": "Naan",
-              "note": null,
+              "displayName": "Rice – Steam Rice",
+              "note": "",
               "badge": ""
-            }
-          ],
-          "servingQty": "Unlimited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Rice & Sides",
-          "instruction": "",
-          "chip": "Served once",
-          "items": [
+            },
             {
               "refs": [
                 {
-                  "itemId": "biryani",
-                  "variantId": "biryani-veg-biryani"
-                },
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-jeera-rice"
+                }
+              ],
+              "displayName": "Rice – Jeera Rice",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
                 {
                   "itemId": "pulav",
                   "variantId": "pulav-veg-pulav"
                 }
               ],
-              "displayName": "Biryani / Pulav",
-              "note": null,
+              "displayName": "Pulav – Veg Pulav",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-mix-raita"
+                  "itemId": "biryani",
+                  "variantId": "biryani-veg-biryani"
                 }
               ],
-              "displayName": "Raita",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-garden-green-salad"
-                }
-              ],
-              "displayName": "Salad",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-masala-papad"
-                }
-              ],
-              "displayName": "Papad + Pickle",
-              "note": null,
+              "displayName": "Biryani – Veg Biryani",
+              "note": "",
               "badge": ""
             }
           ],
-          "servingQty": "Served once",
-          "servingRefill": ""
+          "servingQty": "Limited",
+          "servingRefill": "",
+          "choiceType": "party",
+          "subgroups": [
+            {
+              "id": "sg-mqi3eq7o",
+              "label": "Accompaniments (Fixed)"
+            },
+            {
+              "id": "sg-mqi3erjv",
+              "label": "Choose Dry Veg (Prebook)"
+            },
+            {
+              "id": "sg-mqi3erpe",
+              "label": "Choose Curry (Prebook)"
+            },
+            {
+              "id": "sg-mqi3erve",
+              "label": "Choose Rice - Daal (Prebook)"
+            }
+          ]
         },
         {
           "name": "Dessert",
@@ -4632,7 +5092,15 @@
             }
           ],
           "servingQty": "1",
-          "servingRefill": ""
+          "servingRefill": "",
+          "choiceType": "party"
+        },
+        {
+          "name": "Bevarages",
+          "instruction": "",
+          "chip": "",
+          "choiceType": "party",
+          "items": []
         }
       ],
       "booking": {
@@ -4670,61 +5138,6 @@
       "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
       "sections": [
         {
-          "name": "Welcome",
-          "instruction": "On arrival",
-          "chip": "1 per person",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-mint-mojito"
-                },
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-blue-lagoon"
-                }
-              ],
-              "displayName": "Mocktail Bar (2 options)",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "1",
-          "servingRefill": ""
-        },
-        {
-          "name": "Soup",
-          "instruction": "Both served",
-          "chip": "Served once",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "soup",
-                  "variantId": "soup-cream-of-tomato"
-                }
-              ],
-              "displayName": "Tomato Soup",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "soup",
-                  "variantId": "soup-hot-sour"
-                }
-              ],
-              "displayName": "Hot & Sour",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Served once",
-          "servingRefill": ""
-        },
-        {
           "name": "Starters",
           "instruction": "Three items",
           "chip": "Limited",
@@ -4743,17 +5156,6 @@
             {
               "refs": [
                 {
-                  "itemId": "tandoor-starter",
-                  "variantId": "tandoor-starter-soya-malai-chaap-tikka"
-                }
-              ],
-              "displayName": "Chaap Tikka",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
                   "itemId": "chinese-starter",
                   "variantId": "chinese-starter-paneer-chilli"
                 }
@@ -4761,52 +5163,275 @@
               "displayName": "Chinese Starter",
               "note": null,
               "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-manchow"
+                }
+              ],
+              "displayName": "Soup – Manchow",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-hot-sour"
+                }
+              ],
+              "displayName": "Soup – Hot & Sour",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-lemon-coriander"
+                }
+              ],
+              "displayName": "Soup – Lemon Coriander",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-veg-clear"
+                }
+              ],
+              "displayName": "Soup – Veg Clear",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-cream-of-tomato"
+                }
+              ],
+              "displayName": "Soup – Cream of Tomato",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-sweet-corn"
+                }
+              ],
+              "displayName": "Soup – Sweet Corn",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-soya-chaap-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Soya Chaap Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-paneer-65"
+                }
+              ],
+              "displayName": "Chinese Starter – Paneer 65",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-honey-chilli-potato"
+                }
+              ],
+              "displayName": "Chinese Starter – Honey Chilli Potato",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-mushroom-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Mushroom Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-gobhi-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Gobhi Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-veg-manchurian"
+                }
+              ],
+              "displayName": "Chinese Starter – Veg Manchurian",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chana-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Chana Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chinese-bhel"
+                }
+              ],
+              "displayName": "Chinese Starter – Chinese Bhel",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-crispy-corn"
+                }
+              ],
+              "displayName": "Chinese Starter – Crispy Corn",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-roast"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Roast",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-mushroom-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Mushroom Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-hara-bhara-kebab"
+                }
+              ],
+              "displayName": "Tandoor Starter – Hara Bhara Kebab",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-soya-hariyali-chaap"
+                }
+              ],
+              "displayName": "Tandoor Starter – Soya Hariyali Chaap",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-dahi-kebab"
+                }
+              ],
+              "displayName": "Tandoor Starter – Dahi Kebab",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-soya-chaap-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Soya Chaap Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-paneer-lehsuni-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Paneer Lehsuni Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-paneer-hariyali-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Paneer Hariyali Tikka",
+              "note": "",
+              "badge": ""
             }
           ],
           "servingQty": "Limited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Live Counter",
-          "instruction": "Choose one",
-          "chip": "Unlimited",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "live-counter",
-                  "variantId": "lc-chaat"
-                }
-              ],
-              "displayName": "Live Counter – Chaat",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "live-counter",
-                  "variantId": "lc-gupchup"
-                }
-              ],
-              "displayName": "Live Counter – Gupchup",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "live-counter",
-                  "variantId": "lc-bhel"
-                }
-              ],
-              "displayName": "Live Counter – Bhel",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Unlimited",
-          "servingRefill": ""
+          "servingRefill": "",
+          "choiceType": "party"
         },
         {
           "name": "Main",
@@ -4816,33 +5441,11 @@
             {
               "refs": [
                 {
-                  "itemId": "kaju",
-                  "variantId": "kaju-kaju-masala"
-                }
-              ],
-              "displayName": "Kaju Masala",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
                   "itemId": "paneer",
                   "variantId": "paneer-paneer-butter-masala"
                 }
               ],
               "displayName": "Paneer Gravy",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "seasonal",
-                  "variantId": "seasonal-seasonal-veg-bhaji"
-                }
-              ],
-              "displayName": "2 Regular Sabzis",
               "note": null,
               "badge": ""
             },
@@ -4860,23 +5463,300 @@
             {
               "refs": [
                 {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-garden-green-salad"
+                }
+              ],
+              "displayName": "Accompaniments – Garden Green Salad",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-fry-papad"
+                }
+              ],
+              "displayName": "Accompaniments – Fry Papad",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-pineapple-raita"
+                }
+              ],
+              "displayName": "Accompaniments – Pineapple Raita",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-matar-paneer"
+                }
+              ],
+              "displayName": "Paneer – Matar Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-punjabi-paneer"
+                }
+              ],
+              "displayName": "Paneer – Punjabi Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-kadhai-paneer"
+                }
+              ],
+              "displayName": "Paneer – Kadhai Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chaap",
+                  "variantId": "chaap-chaap-masala"
+                }
+              ],
+              "displayName": "Chaap – Chaap Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mushroom",
+                  "variantId": "mushroom-mushroom-masala"
+                }
+              ],
+              "displayName": "Mushroom – Mushroom Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mushroom",
+                  "variantId": "mushroom-mushroom-do-pyaza"
+                }
+              ],
+              "displayName": "Mushroom – Mushroom Do Pyaza",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "kofta",
+                  "variantId": "kofta-veg"
+                }
+              ],
+              "displayName": "Kofta – Veg",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "corn",
+                  "variantId": "corn-corn-masala"
+                }
+              ],
+              "displayName": "Corn – Corn Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mix",
+                  "variantId": "mix-mix-veg"
+                }
+              ],
+              "displayName": "Mix – Mix Veg",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mix",
+                  "variantId": "mix-mix-veg-dry"
+                }
+              ],
+              "displayName": "Mix – Mix Veg Dry",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-masala"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-do-pyaza"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Do Pyaza",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-peanut-fry"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Peanut Fry",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-dam"
+                }
+              ],
+              "displayName": "Aloo – Aloo Dam",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-matar"
+                }
+              ],
+              "displayName": "Aloo – Aloo Matar",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-gobhi-matar-dry"
+                }
+              ],
+              "displayName": "Aloo – Aloo Gobhi Matar Dry",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-jeera-aloo"
+                }
+              ],
+              "displayName": "Aloo – Jeera Aloo",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-bhujiya-aloo"
+                }
+              ],
+              "displayName": "Aloo – Bhujiya Aloo",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chana",
+                  "variantId": "chana-chana-masala"
+                }
+              ],
+              "displayName": "Chana – Chana Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "sev",
+                  "variantId": "sev-sev-masala"
+                }
+              ],
+              "displayName": "Sev – Sev Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "sev",
+                  "variantId": "sev-sev-tamatar"
+                }
+              ],
+              "displayName": "Sev – Sev Tamatar",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "daal",
+                  "variantId": "daal-daal-fry-jeera"
+                }
+              ],
+              "displayName": "Daal – Daal Fry / Jeera",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
                   "itemId": "daal",
                   "variantId": "daal-daal-tadka"
                 }
               ],
-              "displayName": "Dal Tadka",
-              "note": null,
+              "displayName": "Daal – Daal Tadka",
+              "note": "",
               "badge": ""
-            }
-          ],
-          "servingQty": "Limited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Breads",
-          "instruction": "",
-          "chip": "Unlimited",
-          "items": [
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "daal",
+                  "variantId": "daal-dhaaba-daal"
+                }
+              ],
+              "displayName": "Daal – Dhaaba Daal",
+              "note": "",
+              "badge": ""
+            },
             {
               "refs": [
                 {
@@ -4884,8 +5764,30 @@
                   "variantId": "roti-tandoori-roti"
                 }
               ],
-              "displayName": "Roti",
-              "note": null,
+              "displayName": "Roti – Tandoori Roti",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "roti",
+                  "variantId": "roti-butter-tandoori-roti"
+                }
+              ],
+              "displayName": "Roti – Butter Tandoori Roti",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "naan",
+                  "variantId": "naan-plain-naan"
+                }
+              ],
+              "displayName": "Naan – Plain Naan",
+              "note": "",
               "badge": ""
             },
             {
@@ -4895,39 +5797,19 @@
                   "variantId": "naan-butter-naan"
                 }
               ],
-              "displayName": "Naan",
-              "note": null,
+              "displayName": "Naan – Butter Naan",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "naan",
-                  "variantId": "naan-garlic-naan"
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-steam-rice"
                 }
               ],
-              "displayName": "Garlic Naan",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Unlimited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Rice & Sides",
-          "instruction": "",
-          "chip": "Served once",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "biryani",
-                  "variantId": "biryani-veg-biryani"
-                }
-              ],
-              "displayName": "Veg Biryani",
-              "note": null,
+              "displayName": "Rice – Steam Rice",
+              "note": "",
               "badge": ""
             },
             {
@@ -4937,45 +5819,58 @@
                   "variantId": "rice-2-jeera-rice"
                 }
               ],
-              "displayName": "Jeera Rice",
-              "note": null,
+              "displayName": "Rice – Jeera Rice",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-unq-special-salad"
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-tomato-onion-rice"
                 }
               ],
-              "displayName": "Salad Bar",
-              "note": null,
+              "displayName": "Rice – Tomato Onion Rice",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-mix-raita"
-                },
-                {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-masala-papad"
+                  "itemId": "pulav",
+                  "variantId": "pulav-veg-pulav"
                 }
               ],
-              "displayName": "Raita + Papad",
-              "note": null,
+              "displayName": "Pulav – Veg Pulav",
+              "note": "",
               "badge": ""
             },
             {
-              "refs": [],
-              "displayName": "2 Chutneys",
-              "note": null,
+              "refs": [
+                {
+                  "itemId": "pulav",
+                  "variantId": "pulav-matar-pulav"
+                }
+              ],
+              "displayName": "Pulav – Matar Pulav",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "biryani",
+                  "variantId": "biryani-veg-biryani"
+                }
+              ],
+              "displayName": "Biryani – Veg Biryani",
+              "note": "",
               "badge": ""
             }
           ],
-          "servingQty": "Served once",
-          "servingRefill": ""
+          "servingQty": "Limited",
+          "servingRefill": "",
+          "choiceType": "party"
         },
         {
           "name": "Dessert",
@@ -5017,7 +5912,15 @@
             }
           ],
           "servingQty": "1",
-          "servingRefill": ""
+          "servingRefill": "",
+          "choiceType": "party"
+        },
+        {
+          "name": "Bevarages",
+          "instruction": "",
+          "chip": "",
+          "choiceType": "party",
+          "items": []
         }
       ],
       "booking": {
@@ -5055,65 +5958,6 @@
       "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
       "sections": [
         {
-          "name": "Welcome",
-          "instruction": "On arrival",
-          "chip": "1 per person",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-mint-mojito"
-                },
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-blue-lagoon"
-                },
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-flavoured-mojito"
-                }
-              ],
-              "displayName": "Mocktail Bar (3 options)",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "1",
-          "servingRefill": ""
-        },
-        {
-          "name": "Soup",
-          "instruction": "Both served",
-          "chip": "Served once",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "soup",
-                  "variantId": "soup-cream-of-tomato"
-                }
-              ],
-              "displayName": "Tomato Soup",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "soup",
-                  "variantId": "soup-hot-sour"
-                }
-              ],
-              "displayName": "Hot & Sour",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Served once",
-          "servingRefill": ""
-        },
-        {
           "name": "Starters",
           "instruction": "Four items",
           "chip": "Limited",
@@ -5126,17 +5970,6 @@
                 }
               ],
               "displayName": "Paneer Tikka",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "tandoor-starter",
-                  "variantId": "tandoor-starter-soya-malai-chaap-tikka"
-                }
-              ],
-              "displayName": "Chaap Tikka",
               "note": null,
               "badge": ""
             },
@@ -5161,41 +5994,286 @@
               "displayName": "Chinese Starter",
               "note": null,
               "badge": ""
-            }
-          ],
-          "servingQty": "Limited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Live Counter",
-          "instruction": "Both simultaneously",
-          "chip": "Unlimited",
-          "items": [
+            },
             {
               "refs": [
                 {
-                  "itemId": "live-counter",
-                  "variantId": "lc-momos"
+                  "itemId": "soup",
+                  "variantId": "soup-manchow"
                 }
               ],
-              "displayName": "Live Counter – Momos",
-              "note": null,
+              "displayName": "Soup – Manchow",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "live-counter",
-                  "variantId": "lc-chaat"
+                  "itemId": "soup",
+                  "variantId": "soup-hot-sour"
                 }
               ],
-              "displayName": "Live Counter – Chaat",
-              "note": null,
+              "displayName": "Soup – Hot & Sour",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-lemon-coriander"
+                }
+              ],
+              "displayName": "Soup – Lemon Coriander",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-veg-clear"
+                }
+              ],
+              "displayName": "Soup – Veg Clear",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-cream-of-tomato"
+                }
+              ],
+              "displayName": "Soup – Cream of Tomato",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-sweet-corn"
+                }
+              ],
+              "displayName": "Soup – Sweet Corn",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-soya-chaap-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Soya Chaap Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-paneer-65"
+                }
+              ],
+              "displayName": "Chinese Starter – Paneer 65",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-honey-chilli-potato"
+                }
+              ],
+              "displayName": "Chinese Starter – Honey Chilli Potato",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-mushroom-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Mushroom Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-gobhi-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Gobhi Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-veg-manchurian"
+                }
+              ],
+              "displayName": "Chinese Starter – Veg Manchurian",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chana-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Chana Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-crispy-corn"
+                }
+              ],
+              "displayName": "Chinese Starter – Crispy Corn",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chinese-bhel"
+                }
+              ],
+              "displayName": "Chinese Starter – Chinese Bhel",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-roast"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Roast",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-hara-bhara-kebab"
+                }
+              ],
+              "displayName": "Tandoor Starter – Hara Bhara Kebab",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-soya-hariyali-chaap"
+                }
+              ],
+              "displayName": "Tandoor Starter – Soya Hariyali Chaap",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-dahi-kebab"
+                }
+              ],
+              "displayName": "Tandoor Starter – Dahi Kebab",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-soya-chaap-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Soya Chaap Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-paneer-lehsuni-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Paneer Lehsuni Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-paneer-malai-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Paneer Malai Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-soya-malai-chaap-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Soya Malai Chaap Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-paneer-hariyali-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Paneer Hariyali Tikka",
+              "note": "",
               "badge": ""
             }
           ],
-          "servingQty": "Unlimited",
-          "servingRefill": ""
+          "servingQty": "Limited",
+          "servingRefill": "",
+          "choiceType": "party"
         },
         {
           "name": "Main",
@@ -5249,17 +6327,6 @@
             {
               "refs": [
                 {
-                  "itemId": "seasonal",
-                  "variantId": "seasonal-seasonal-veg-bhaji"
-                }
-              ],
-              "displayName": "Seasonal Sabzi",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
                   "itemId": "daal",
                   "variantId": "daal-daal-makhani"
                 }
@@ -5278,16 +6345,326 @@
               "displayName": "Dal Tadka",
               "note": null,
               "badge": ""
-            }
-          ],
-          "servingQty": "Limited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Breads",
-          "instruction": "",
-          "chip": "Unlimited",
-          "items": [
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-garden-green-salad"
+                }
+              ],
+              "displayName": "Accompaniments – Garden Green Salad",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-fry-papad"
+                }
+              ],
+              "displayName": "Accompaniments – Fry Papad",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-pineapple-raita"
+                }
+              ],
+              "displayName": "Accompaniments – Pineapple Raita",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-matar-paneer"
+                }
+              ],
+              "displayName": "Paneer – Matar Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-punjabi-paneer"
+                }
+              ],
+              "displayName": "Paneer – Punjabi Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-kadhai-paneer"
+                }
+              ],
+              "displayName": "Paneer – Kadhai Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-methi-malai-paneer"
+                }
+              ],
+              "displayName": "Paneer – Methi Malai Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chaap",
+                  "variantId": "chaap-chaap-kadhai"
+                }
+              ],
+              "displayName": "Chaap – Chaap Kadhai",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mushroom",
+                  "variantId": "mushroom-mushroom-do-pyaza"
+                }
+              ],
+              "displayName": "Mushroom – Mushroom Do Pyaza",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mushroom",
+                  "variantId": "mushroom-mushroom-kadhai"
+                }
+              ],
+              "displayName": "Mushroom – Mushroom Kadhai",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "kaju",
+                  "variantId": "kaju-kaju-mushroom"
+                }
+              ],
+              "displayName": "Kaju – Kaju Mushroom",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "kofta",
+                  "variantId": "kofta-veg"
+                }
+              ],
+              "displayName": "Kofta – Veg",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "corn",
+                  "variantId": "corn-corn-masala"
+                }
+              ],
+              "displayName": "Corn – Corn Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "corn",
+                  "variantId": "corn-corn-palak"
+                }
+              ],
+              "displayName": "Corn – Corn Palak",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mix",
+                  "variantId": "mix-mix-veg"
+                }
+              ],
+              "displayName": "Mix – Mix Veg",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mix",
+                  "variantId": "mix-mix-veg-dry"
+                }
+              ],
+              "displayName": "Mix – Mix Veg Dry",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-masala"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-do-pyaza"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Do Pyaza",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-peanut-fry"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Peanut Fry",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-dam"
+                }
+              ],
+              "displayName": "Aloo – Aloo Dam",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-matar"
+                }
+              ],
+              "displayName": "Aloo – Aloo Matar",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-gobhi-matar-dry"
+                }
+              ],
+              "displayName": "Aloo – Aloo Gobhi Matar Dry",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-jeera-aloo"
+                }
+              ],
+              "displayName": "Aloo – Jeera Aloo",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-bhujiya-aloo"
+                }
+              ],
+              "displayName": "Aloo – Bhujiya Aloo",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chana",
+                  "variantId": "chana-chana-masala"
+                }
+              ],
+              "displayName": "Chana – Chana Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "sev",
+                  "variantId": "sev-sev-masala"
+                }
+              ],
+              "displayName": "Sev – Sev Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "sev",
+                  "variantId": "sev-sev-tamatar"
+                }
+              ],
+              "displayName": "Sev – Sev Tamatar",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "daal",
+                  "variantId": "daal-daal-fry-jeera"
+                }
+              ],
+              "displayName": "Daal – Daal Fry / Jeera",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "daal",
+                  "variantId": "daal-dhaaba-daal"
+                }
+              ],
+              "displayName": "Daal – Dhaaba Daal",
+              "note": "",
+              "badge": ""
+            },
             {
               "refs": [
                 {
@@ -5295,8 +6672,30 @@
                   "variantId": "roti-tandoori-roti"
                 }
               ],
-              "displayName": "Roti",
-              "note": null,
+              "displayName": "Roti – Tandoori Roti",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "roti",
+                  "variantId": "roti-butter-tandoori-roti"
+                }
+              ],
+              "displayName": "Roti – Butter Tandoori Roti",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "naan",
+                  "variantId": "naan-plain-naan"
+                }
+              ],
+              "displayName": "Naan – Plain Naan",
+              "note": "",
               "badge": ""
             },
             {
@@ -5306,50 +6705,19 @@
                   "variantId": "naan-butter-naan"
                 }
               ],
-              "displayName": "Naan",
-              "note": null,
+              "displayName": "Naan – Butter Naan",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "naan",
-                  "variantId": "naan-garlic-naan"
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-steam-rice"
                 }
               ],
-              "displayName": "Garlic Naan",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Unlimited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Rice & Sides",
-          "instruction": "",
-          "chip": "Served once",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "biryani",
-                  "variantId": "biryani-veg-biryani"
-                }
-              ],
-              "displayName": "Veg Biryani",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "pulav",
-                  "variantId": "pulav-veg-pulav"
-                }
-              ],
-              "displayName": "Pulav",
-              "note": null,
+              "displayName": "Rice – Steam Rice",
+              "note": "",
               "badge": ""
             },
             {
@@ -5359,45 +6727,80 @@
                   "variantId": "rice-2-jeera-rice"
                 }
               ],
-              "displayName": "Jeera Rice",
-              "note": null,
+              "displayName": "Rice – Jeera Rice",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-unq-special-salad"
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-ghee-onion-rice"
                 }
               ],
-              "displayName": "Full Salad Bar",
-              "note": null,
+              "displayName": "Rice – Ghee Onion Rice",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-mix-raita"
-                },
-                {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-masala-papad"
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-tomato-onion-rice"
                 }
               ],
-              "displayName": "Raita + Papad",
-              "note": null,
+              "displayName": "Rice – Tomato Onion Rice",
+              "note": "",
               "badge": ""
             },
             {
-              "refs": [],
-              "displayName": "Chutney Bar (3 options)",
-              "note": null,
+              "refs": [
+                {
+                  "itemId": "pulav",
+                  "variantId": "pulav-veg-pulav"
+                }
+              ],
+              "displayName": "Pulav – Veg Pulav",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pulav",
+                  "variantId": "pulav-matar-pulav"
+                }
+              ],
+              "displayName": "Pulav – Matar Pulav",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "biryani",
+                  "variantId": "biryani-veg-biryani"
+                }
+              ],
+              "displayName": "Biryani – Veg Biryani",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "biryani",
+                  "variantId": "biryani-paneer-biryani"
+                }
+              ],
+              "displayName": "Biryani – Paneer Biryani",
+              "note": "",
               "badge": ""
             }
           ],
-          "servingQty": "Served once",
-          "servingRefill": ""
+          "servingQty": "Limited",
+          "servingRefill": "",
+          "choiceType": "party"
         },
         {
           "name": "Dessert",
@@ -5436,10 +6839,52 @@
               "displayName": "Rasmalai",
               "note": "1 serving",
               "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "ice-cream",
+                  "variantId": "ice-cream-single-scoop"
+                }
+              ],
+              "displayName": "Ice Cream – Single Scoop",
+              "note": "",
+              "badge": ""
             }
           ],
           "servingQty": "1",
-          "servingRefill": ""
+          "servingRefill": "",
+          "choiceType": "party"
+        },
+        {
+          "name": "Bevarages",
+          "instruction": "",
+          "chip": "",
+          "choiceType": "party",
+          "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "coffee",
+                  "variantId": "coffee-instant"
+                }
+              ],
+              "displayName": "Coffee – Instant",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tea",
+                  "variantId": "tea-masala"
+                }
+              ],
+              "displayName": "Tea – Masala",
+              "note": "",
+              "badge": ""
+            }
+          ]
         }
       ],
       "booking": {
@@ -5477,106 +6922,10 @@
       "waterNote": "Water Caneis complimentary. Additional water bottles will be charged separately.",
       "sections": [
         {
-          "name": "Welcome",
-          "instruction": "On arrival",
-          "chip": "1 per person",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-mint-mojito"
-                },
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-blue-lagoon"
-                },
-                {
-                  "itemId": "mocktails",
-                  "variantId": "mocktails-flavoured-mojito"
-                }
-              ],
-              "displayName": "Mocktail Bar (3 options)",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "momo",
-                  "variantId": "momo-steamed-veg"
-                },
-                {
-                  "itemId": "nuggets",
-                  "variantId": "nuggets-veg"
-                }
-              ],
-              "displayName": "Welcome Snack — Momo / Nuggets",
-              "note": "Complimentary",
-              "badge": ""
-            }
-          ],
-          "servingQty": "1",
-          "servingRefill": ""
-        },
-        {
-          "name": "Soup",
-          "instruction": "Served at table",
-          "chip": "Table service",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "soup",
-                  "variantId": "soup-cream-of-tomato"
-                }
-              ],
-              "displayName": "Tomato Soup",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "soup",
-                  "variantId": "soup-hot-sour"
-                }
-              ],
-              "displayName": "Hot & Sour",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "1",
-          "servingRefill": ""
-        },
-        {
           "name": "Starters",
           "instruction": "Four items",
           "chip": "Limited",
           "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "tandoor-starter",
-                  "variantId": "tandoor-starter-flavours-of-paneer-tikka"
-                }
-              ],
-              "displayName": "Paneer Tikka",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "tandoor-starter",
-                  "variantId": "tandoor-starter-soya-malai-chaap-tikka"
-                }
-              ],
-              "displayName": "Chaap Tikka",
-              "note": null,
-              "badge": ""
-            },
             {
               "refs": [
                 {
@@ -5598,63 +6947,297 @@
               "displayName": "Chinese Starter",
               "note": null,
               "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-manchow"
+                }
+              ],
+              "displayName": "Soup – Manchow",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-hot-sour"
+                }
+              ],
+              "displayName": "Soup – Hot & Sour",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-lemon-coriander"
+                }
+              ],
+              "displayName": "Soup – Lemon Coriander",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-veg-clear"
+                }
+              ],
+              "displayName": "Soup – Veg Clear",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-cream-of-tomato"
+                }
+              ],
+              "displayName": "Soup – Cream of Tomato",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soup",
+                  "variantId": "soup-sweet-corn"
+                }
+              ],
+              "displayName": "Soup – Sweet Corn",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-soya-chaap-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Soya Chaap Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-paneer-65"
+                }
+              ],
+              "displayName": "Chinese Starter – Paneer 65",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-honey-chilli-potato"
+                }
+              ],
+              "displayName": "Chinese Starter – Honey Chilli Potato",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-mushroom-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Mushroom Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-gobhi-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Gobhi Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-veg-manchurian"
+                }
+              ],
+              "displayName": "Chinese Starter – Veg Manchurian",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chana-chilli"
+                }
+              ],
+              "displayName": "Chinese Starter – Chana Chilli",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-chinese-bhel"
+                }
+              ],
+              "displayName": "Chinese Starter – Chinese Bhel",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-crispy-corn"
+                }
+              ],
+              "displayName": "Chinese Starter – Crispy Corn",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chinese-starter",
+                  "variantId": "chinese-starter-corn-roast"
+                }
+              ],
+              "displayName": "Chinese Starter – Corn Roast",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-paneer-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Paneer Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-hara-bhara-kebab"
+                }
+              ],
+              "displayName": "Tandoor Starter – Hara Bhara Kebab",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-soya-hariyali-chaap"
+                }
+              ],
+              "displayName": "Tandoor Starter – Soya Hariyali Chaap",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-dahi-kebab"
+                }
+              ],
+              "displayName": "Tandoor Starter – Dahi Kebab",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-soya-chaap-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Soya Chaap Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-paneer-lehsuni-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Paneer Lehsuni Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-paneer-malai-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Paneer Malai Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-soya-malai-chaap-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Soya Malai Chaap Tikka",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "tandoor-starter",
+                  "variantId": "tandoor-starter-paneer-hariyali-tikka"
+                }
+              ],
+              "displayName": "Tandoor Starter – Paneer Hariyali Tikka",
+              "note": "",
+              "badge": ""
             }
           ],
           "servingQty": "Limited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Live Counter",
-          "instruction": "Both simultaneously",
-          "chip": "Unlimited",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "live-counter",
-                  "variantId": "lc-momos"
-                }
-              ],
-              "displayName": "Live Counter – Momos",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "live-counter",
-                  "variantId": "lc-chaat"
-                }
-              ],
-              "displayName": "Live Counter – Chaat",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "live-counter",
-                  "variantId": "lc-gupchup"
-                }
-              ],
-              "displayName": "Live Counter – Gupchup",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "live-counter",
-                  "variantId": "lc-bhel"
-                }
-              ],
-              "displayName": "Live Counter – Bhel",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Unlimited",
-          "servingRefill": ""
+          "servingRefill": "",
+          "choiceType": "party"
         },
         {
           "name": "Main",
@@ -5708,17 +7291,6 @@
             {
               "refs": [
                 {
-                  "itemId": "seasonal",
-                  "variantId": "seasonal-seasonal-veg-bhaji"
-                }
-              ],
-              "displayName": "Premium Seasonal",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
                   "itemId": "daal",
                   "variantId": "daal-daal-makhani"
                 }
@@ -5737,16 +7309,370 @@
               "displayName": "Dal Tadka",
               "note": null,
               "badge": ""
-            }
-          ],
-          "servingQty": "Limited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Breads",
-          "instruction": "Four varieties",
-          "chip": "Unlimited",
-          "items": [
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-garden-green-salad"
+                }
+              ],
+              "displayName": "Accompaniments – Garden Green Salad",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-fry-papad"
+                }
+              ],
+              "displayName": "Accompaniments – Fry Papad",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "accompaniments",
+                  "variantId": "accompaniments-pineapple-raita"
+                }
+              ],
+              "displayName": "Accompaniments – Pineapple Raita",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-matar-paneer"
+                }
+              ],
+              "displayName": "Paneer – Matar Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-punjabi-paneer"
+                }
+              ],
+              "displayName": "Paneer – Punjabi Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-kadhai-paneer"
+                }
+              ],
+              "displayName": "Paneer – Kadhai Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-methi-malai-paneer"
+                }
+              ],
+              "displayName": "Paneer – Methi Malai Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "paneer",
+                  "variantId": "paneer-tikka-masala"
+                }
+              ],
+              "displayName": "Paneer – Tikka Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chaap",
+                  "variantId": "chaap-chaap-tikka-masala"
+                }
+              ],
+              "displayName": "Chaap – Chaap Tikka Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chaap",
+                  "variantId": "chaap-chaap-kadhai"
+                }
+              ],
+              "displayName": "Chaap – Chaap Kadhai",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mushroom",
+                  "variantId": "mushroom-mushroom-do-pyaza"
+                }
+              ],
+              "displayName": "Mushroom – Mushroom Do Pyaza",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mushroom",
+                  "variantId": "mushroom-mushroom-kadhai"
+                }
+              ],
+              "displayName": "Mushroom – Mushroom Kadhai",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "kaju",
+                  "variantId": "kaju-kaju-paneer"
+                }
+              ],
+              "displayName": "Kaju – Kaju Paneer",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "kaju",
+                  "variantId": "kaju-kaju-mushroom"
+                }
+              ],
+              "displayName": "Kaju – Kaju Mushroom",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "kofta",
+                  "variantId": "kofta-veg"
+                }
+              ],
+              "displayName": "Kofta – Veg",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "kofta",
+                  "variantId": "kofta-malai"
+                }
+              ],
+              "displayName": "Kofta – Malai",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "corn",
+                  "variantId": "corn-corn-masala"
+                }
+              ],
+              "displayName": "Corn – Corn Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "corn",
+                  "variantId": "corn-corn-palak"
+                }
+              ],
+              "displayName": "Corn – Corn Palak",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mix",
+                  "variantId": "mix-mix-veg"
+                }
+              ],
+              "displayName": "Mix – Mix Veg",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "mix",
+                  "variantId": "mix-mix-veg-dry"
+                }
+              ],
+              "displayName": "Mix – Mix Veg Dry",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-masala"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-do-pyaza"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Do Pyaza",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "bhindi",
+                  "variantId": "bhindi-bhindi-peanut-fry"
+                }
+              ],
+              "displayName": "Bhindi – Bhindi Peanut Fry",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-dam"
+                }
+              ],
+              "displayName": "Aloo – Aloo Dam",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-matar"
+                }
+              ],
+              "displayName": "Aloo – Aloo Matar",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-aloo-gobhi-matar-dry"
+                }
+              ],
+              "displayName": "Aloo – Aloo Gobhi Matar Dry",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-jeera-aloo"
+                }
+              ],
+              "displayName": "Aloo – Jeera Aloo",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "aloo",
+                  "variantId": "aloo-bhujiya-aloo"
+                }
+              ],
+              "displayName": "Aloo – Bhujiya Aloo",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "chana",
+                  "variantId": "chana-chana-masala"
+                }
+              ],
+              "displayName": "Chana – Chana Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "sev",
+                  "variantId": "sev-sev-masala"
+                }
+              ],
+              "displayName": "Sev – Sev Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "sev",
+                  "variantId": "sev-sev-tamatar"
+                }
+              ],
+              "displayName": "Sev – Sev Tamatar",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "daal",
+                  "variantId": "daal-daal-fry-jeera"
+                }
+              ],
+              "displayName": "Daal – Daal Fry / Jeera",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "daal",
+                  "variantId": "daal-dhaaba-daal"
+                }
+              ],
+              "displayName": "Daal – Dhaaba Daal",
+              "note": "",
+              "badge": ""
+            },
             {
               "refs": [
                 {
@@ -5754,8 +7680,30 @@
                   "variantId": "roti-tandoori-roti"
                 }
               ],
-              "displayName": "Roti",
-              "note": null,
+              "displayName": "Roti – Tandoori Roti",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "roti",
+                  "variantId": "roti-butter-tandoori-roti"
+                }
+              ],
+              "displayName": "Roti – Butter Tandoori Roti",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "naan",
+                  "variantId": "naan-plain-naan"
+                }
+              ],
+              "displayName": "Naan – Plain Naan",
+              "note": "",
               "badge": ""
             },
             {
@@ -5765,8 +7713,8 @@
                   "variantId": "naan-butter-naan"
                 }
               ],
-              "displayName": "Naan",
-              "note": null,
+              "displayName": "Naan – Butter Naan",
+              "note": "",
               "badge": ""
             },
             {
@@ -5776,50 +7724,19 @@
                   "variantId": "naan-garlic-naan"
                 }
               ],
-              "displayName": "Garlic Naan",
-              "note": null,
+              "displayName": "Naan – Garlic Naan",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "kulcha",
-                  "variantId": "kulcha-aloo-kulcha"
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-steam-rice"
                 }
               ],
-              "displayName": "Kulcha",
-              "note": null,
-              "badge": ""
-            }
-          ],
-          "servingQty": "Unlimited",
-          "servingRefill": ""
-        },
-        {
-          "name": "Rice & Sides",
-          "instruction": "",
-          "chip": "Served once",
-          "items": [
-            {
-              "refs": [
-                {
-                  "itemId": "biryani",
-                  "variantId": "biryani-veg-biryani"
-                }
-              ],
-              "displayName": "Veg Biryani",
-              "note": null,
-              "badge": ""
-            },
-            {
-              "refs": [
-                {
-                  "itemId": "pulav",
-                  "variantId": "pulav-veg-pulav"
-                }
-              ],
-              "displayName": "Pulav",
-              "note": null,
+              "displayName": "Rice – Steam Rice",
+              "note": "",
               "badge": ""
             },
             {
@@ -5829,45 +7746,113 @@
                   "variantId": "rice-2-jeera-rice"
                 }
               ],
-              "displayName": "Saffron Rice",
-              "note": null,
+              "displayName": "Rice – Jeera Rice",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-unq-special-salad"
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-ghee-onion-rice"
                 }
               ],
-              "displayName": "Full Salad Bar",
-              "note": null,
+              "displayName": "Rice – Ghee Onion Rice",
+              "note": "",
               "badge": ""
             },
             {
               "refs": [
                 {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-mix-raita"
-                },
-                {
-                  "itemId": "accompaniments",
-                  "variantId": "accompaniments-masala-papad"
+                  "itemId": "rice-2",
+                  "variantId": "rice-2-tomato-onion-rice"
                 }
               ],
-              "displayName": "Raita + Papad",
-              "note": null,
+              "displayName": "Rice – Tomato Onion Rice",
+              "note": "",
               "badge": ""
             },
             {
-              "refs": [],
-              "displayName": "Full Chutney Bar",
-              "note": null,
+              "refs": [
+                {
+                  "itemId": "pulav",
+                  "variantId": "pulav-veg-pulav"
+                }
+              ],
+              "displayName": "Pulav – Veg Pulav",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "pulav",
+                  "variantId": "pulav-matar-pulav"
+                }
+              ],
+              "displayName": "Pulav – Matar Pulav",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "biryani",
+                  "variantId": "biryani-veg-biryani"
+                }
+              ],
+              "displayName": "Biryani – Veg Biryani",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "biryani",
+                  "variantId": "biryani-paneer-biryani"
+                }
+              ],
+              "displayName": "Biryani – Paneer Biryani",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "biryani",
+                  "variantId": "biryani-chaap-biryani"
+                }
+              ],
+              "displayName": "Biryani – Chaap Biryani",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "biryani",
+                  "variantId": "biryani-mushroom-biryani"
+                }
+              ],
+              "displayName": "Biryani – Mushroom Biryani",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "biryani",
+                  "variantId": "biryani-paneer-tikka-biryani"
+                }
+              ],
+              "displayName": "Biryani – Paneer Tikka Biryani",
+              "note": "",
               "badge": ""
             }
           ],
-          "servingQty": "Served once",
-          "servingRefill": ""
+          "servingQty": "Limited",
+          "servingRefill": "",
+          "choiceType": "party"
         },
         {
           "name": "Dessert",
@@ -5920,7 +7905,71 @@
             }
           ],
           "servingQty": "1",
-          "servingRefill": ""
+          "servingRefill": "",
+          "choiceType": "party"
+        },
+        {
+          "name": "Bevarages",
+          "instruction": "",
+          "chip": "",
+          "choiceType": "party",
+          "items": [
+            {
+              "refs": [
+                {
+                  "itemId": "tea",
+                  "variantId": "tea-masala"
+                }
+              ],
+              "displayName": "Tea – Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "coffee",
+                  "variantId": "coffee-instant"
+                }
+              ],
+              "displayName": "Coffee – Instant",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "butter-milk",
+                  "variantId": "butter-milk-masala"
+                }
+              ],
+              "displayName": "Butter Milk – Masala",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "soft-drink",
+                  "variantId": "soft-drink-regular"
+                }
+              ],
+              "displayName": "Soft Drink – Regular",
+              "note": "",
+              "badge": ""
+            },
+            {
+              "refs": [
+                {
+                  "itemId": "water",
+                  "variantId": "water-water-bottle"
+                }
+              ],
+              "displayName": "Water – Water Bottle",
+              "note": "",
+              "badge": ""
+            }
+          ]
         }
       ],
       "booking": {

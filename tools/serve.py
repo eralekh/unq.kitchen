@@ -21,6 +21,15 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *a, **k):
         super().__init__(*a, directory=ROOT, **k)
 
+    def end_headers(self):
+        # Prevent browsers from caching rebuilt output files.
+        # Without this, two rapid saves within the same second share the same
+        # file mtime → the browser returns 304 Not Modified and shows stale content.
+        self.send_header('Cache-Control', 'no-store, must-revalidate')
+        self.send_header('Pragma', 'no-cache')
+        self.send_header('Expires', '0')
+        super().end_headers()
+
     def _json(self, code, obj):
         body = json.dumps(obj, ensure_ascii=False).encode('utf-8')
         self.send_response(code)
